@@ -98,7 +98,13 @@ def season_started(bootstrap: dict) -> bool:
     return any(t["played"] > 0 for t in bootstrap["teams"])
 
 
-def _blended_rate(stat: str, element: dict, prior: PlayerPrior | None, season_started: bool) -> float:
+def _blended_rate(
+    stat: str,
+    element: dict,
+    prior: PlayerPrior | None,
+    season_started: bool,
+    attack_mult_table: dict[int, float] | None = None,
+) -> float:
     """Adaptive blend of this-season-so-far and multi-season-prior per-90
     rates for one stat (see engine.stabilize). Pre-season, current_minutes
     is forced to 0 - bootstrap's per-90 fields are last season's completed
@@ -106,10 +112,26 @@ def _blended_rate(stat: str, element: dict, prior: PlayerPrior | None, season_st
     correctly returns exactly the multi-season prior. Once real gameweeks
     exist, bootstrap's fields *are* this season's rolling totals, so no extra
     API calls are needed to feed the "current" side of the blend.
+
+    When `attack_mult_table` is given (only for the attacking stats -
+    expected_goals/expected_assists), the current-season rate is first
+    rebased to an FDR-3-equivalent using `prior.current_season_avg_fdr` (the
+    average difficulty already faced this season, computed weekly in
+    engine/priors.py from element-summary's per-gameweek `history`) - this is
+    what stops a hot streak against soft fixtures from being over-trusted.
+    The calibrated FDR multipliers are applied a second time, separately, to
+    the *upcoming* fixtures being forecast (see the fixture loop below) - so
+    opponent strength is accounted for once on the way in, once on the way
+    out, never both for the same fixture.
     """
     bootstrap_key, prior_key = RATE_FIELD_MAP[stat]
     current_rate = element.get(bootstrap_key) or 0.0
     current_minutes = (element.get("minutes") or 0) if season_started else 0
+
+    if attack_mult_table and prior and prior.current_season_avg_fdr and current_minutes > 0:
+        nearest_fdr = min(5, max(1, round(prior.current_season_avg_fdr)))
+        current_rate = current_rate / attack_mult_table[nearest_fdr]
+
     prior_rate = prior.per90.get(prior_key, 0.0) if prior else current_rate
     return stabilize.blend_rate(stat, current_rate, current_minutes, prior_rate)
 
@@ -335,8 +357,8 @@ def build_player_ev(
         )
 
         mp = _expected_minutes_profile(e, prior, team["played"], season_started_flag)
-        xg90 = _blended_rate("expected_goals", e, prior, season_started_flag)
-        xa90 = _blended_rate("expected_assists", e, prior, season_started_flag)
+        xg90 = _blended_rate("expected_goals", e, prior, season_started_flag, attack_mult_table)
+        xa90 = _blended_rate("expected_assists", e, prior, season_started_flag, attack_mult_table)
         xgi90 = xg90 + xa90
         dc90 = _blended_rate("defensive_contribution", e, prior, season_started_flag)
         saves90 = _blended_rate("saves", e, prior, season_started_flag)

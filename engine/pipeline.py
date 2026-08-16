@@ -12,7 +12,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from engine import fetch, model, my_team, optimise, planner, priors, transfers
+from engine import accuracy, fetch, model, my_team, optimise, planner, priors, transfers
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 COEFFICIENTS_PATH = Path(__file__).resolve().parent / "calibration" / "coefficients.json"
@@ -47,13 +47,21 @@ def run() -> None:
     players = model.build_player_ev(bootstrap, fixtures, priors=player_priors, coefficients=coefficients)
     players_by_id = {p.id: p for p in players}
 
+    generated_at = datetime.now(timezone.utc).isoformat()
+
+    print("Tracking prediction accuracy...")
+    if next_event:
+        accuracy.record_predictions(players, next_event["id"], generated_at)
+    accuracy.score_finished_gameweeks(bootstrap)
+    accuracy_out = accuracy.summary()
+
     print("Optimising initial squad...")
     squad_result = optimise.select_squad(players)
     squad_players = [players_by_id[i] for i in squad_result.squad_ids]
     xi_result = optimise.select_starting_xi(squad_players)
 
     meta = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": generated_at,
         "season_started": model.season_started(bootstrap),
         "forecast_gameweeks": model.FORECAST_GAMEWEEKS,
         "current_gameweek": current_event["id"] if current_event else None,
@@ -170,6 +178,7 @@ def run() -> None:
     _write_json("my_team.json", my_team_out)
     _write_json("transfer_suggestions.json", transfer_suggestions_out)
     _write_json("transfer_plan.json", transfer_plan_out)
+    _write_json("accuracy_summary.json", accuracy_out)
     print("Pipeline complete.")
 
 

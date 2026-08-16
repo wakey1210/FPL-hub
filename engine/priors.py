@@ -53,6 +53,11 @@ class PlayerPrior:
     avg_minutes_per_start: float = 0.0
     per90: dict[str, float] = field(default_factory=dict)
     total_weight_minutes: float = 0.0
+    # Minutes-weighted average FDR faced in this-season-so-far matches (None
+    # pre-season / before a player's first appearance) - lets model.py rebase
+    # their current-season rate to an FDR-3-equivalent before blending, so a
+    # hot streak against soft fixtures isn't over-trusted. See engine/model.py.
+    current_season_avg_fdr: float | None = None
 
 
 def _blend_seasons(
@@ -114,13 +119,37 @@ def _blend_seasons(
     )
 
 
+def _avg_fdr_faced(history: list[dict], fixtures_by_id: dict[int, dict]) -> float | None:
+    """Minutes-weighted average FDR faced in this-season-so-far matches
+    (`history` is the current season's per-gameweek rows from
+    element-summary - empty pre-season, populated once real gameweeks are
+    played). `was_home` tells us directly which side of the fixture the
+    player's team was on, so no separate team-id lookup is needed.
+    """
+    weighted_sum = 0.0
+    total_minutes = 0
+    for gw in history:
+        minutes = gw.get("minutes") or 0
+        if minutes == 0:
+            continue
+        fixture = fixtures_by_id.get(gw.get("fixture"))
+        if not fixture:
+            continue
+        fdr = fixture["team_h_difficulty"] if gw.get("was_home") else fixture["team_a_difficulty"]
+        weighted_sum += fdr * minutes
+        total_minutes += minutes
+    return round(weighted_sum / total_minutes, 3) if total_minutes else None
+
+
 def build_player_priors(
     element_ids: list[int],
     element_names: dict[int, str],
     already_cached: dict[int, dict] | None = None,
     force: bool = False,
+    fixtures_by_id: dict[int, dict] | None = None,
 ) -> dict[int, PlayerPrior]:
     already_cached = already_cached or {}
+    fixtures_by_id = fixtures_by_id or {}
     priors: dict[int, PlayerPrior] = {}
     to_fetch = element_ids if force else [i for i in element_ids if i not in already_cached]
     skipped = len(element_ids) - len(to_fetch)
@@ -153,6 +182,7 @@ def build_player_priors(
             avg_minutes_per_start=avg_minutes_per_start,
             per90=per90,
             total_weight_minutes=weight_minutes,
+            current_season_avg_fdr=_avg_fdr_faced(summary.get("history", []), fixtures_by_id),
         )
         if (i + 1) % 50 == 0:
             print(f"  ...{i + 1}/{len(to_fetch)} fetched")
@@ -188,10 +218,19 @@ def _write_cache(priors: dict[int, PlayerPrior], path: Path = CACHE_PATH) -> Non
 
 
 def main() -> None:
-    force = "--force" in sys.argv
     bootstrap = fetch.get_bootstrap()
     element_ids = [e["id"] for e in bootstrap["elements"] if not e.get("removed")]
     element_names = {e["id"]: e["web_name"] for e in bootstrap["elements"]}
+
+    # current_season_avg_fdr needs refreshing every week once real gameweeks
+    # exist (unlike the historical seasons blend, which is static once
+    # fetched) - so once the season's started, this is always a full refetch,
+    # not incremental. Pre-season this doesn't cost anything extra: there's
+    # no `history` yet for any player, so the field is just None either way.
+    season_started = any(t["played"] > 0 for t in bootstrap["teams"])
+    force = "--force" in sys.argv or season_started
+
+    fixtures_by_id = {fx["id"]: fx for fx in fetch.get_fixtures()}
 
     existing_raw = {}
     if CACHE_PATH.exists() and not force:
@@ -199,7 +238,9 @@ def main() -> None:
             int(pid): p for pid, p in json.loads(CACHE_PATH.read_text()).get("players", {}).items()
         }
 
-    priors = build_player_priors(element_ids, element_names, already_cached=existing_raw, force=force)
+    priors = build_player_priors(
+        element_ids, element_names, already_cached=existing_raw, force=force, fixtures_by_id=fixtures_by_id
+    )
     _write_cache(priors)
 
 

@@ -2,8 +2,10 @@ import { useMemo, useState } from 'react'
 import { useJsonData } from '../lib/data'
 import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { PitchView } from '../components/PitchView'
+import { SquadListView } from '../components/SquadListView'
 import { PlayerDetailSheet, type SheetAction } from '../components/PlayerDetailSheet'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
+import { optimiseStartingXI } from '../lib/formation'
 import type { PlayerEV, SquadRecommendation } from '../types/fpl'
 import type { MyTeam } from '../types/myTeam'
 
@@ -12,7 +14,10 @@ export function PickTeamPage() {
   const myTeam = useJsonData<MyTeam>('my_team.json')
   const allPlayers = useJsonData<PlayerEV[]>('players.json')
   const [selected, setSelected] = useState<PlayerEV | null>(null)
-  const { plan, swapToStarting, swapToBench, setCaptain, setViceCaptain, resetLineup } = usePlannedChanges()
+  const [swapAnchor, setSwapAnchor] = useState<PlayerEV | null>(null)
+  const [swapError, setSwapError] = useState<string | null>(null)
+  const [viewMode, setViewMode] = useState<'pitch' | 'list'>('pitch')
+  const { plan, trySwap, applyOptimisedLineup, setCaptain, setViceCaptain, resetLineup } = usePlannedChanges()
 
   const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
 
@@ -55,57 +60,60 @@ export function PickTeamPage() {
     viceCaptainId: plan.viceCaptainId ?? baseView.viceCaptainId,
   }
 
+  const handleSelectPlayer = (player: PlayerEV) => {
+    if (swapAnchor) {
+      if (swapAnchor.id === player.id) {
+        setSwapAnchor(null)
+        return
+      }
+      const result = trySwap(swapAnchor.id, player.id, view.squad, view.startingIds, view.benchIds)
+      if (result.success) {
+        setSwapAnchor(null)
+        setSwapError(null)
+      } else {
+        setSwapError(result.error ?? 'That swap is not allowed.')
+      }
+      return
+    }
+    setSelected(player)
+  }
+
   const actionsFor = (player: PlayerEV): SheetAction[] => {
-    const actions: SheetAction[] = []
-    const isStarting = view.startingIds.includes(player.id)
-    if (isStarting) {
-      const sameOnBench = view.benchIds
-        .map((id) => view.squad.find((p) => p.id === id))
-        .some((p) => p?.position === player.position)
-      if (sameOnBench) {
-        actions.push({
-          label: 'Move to bench',
-          onClick: () => {
-            swapToBench(player.id, view.squad, view.startingIds, view.benchIds)
-            setSelected(null)
-          },
-        })
-      }
-      if (view.captainId !== player.id) {
-        actions.push({
-          label: 'Make captain',
-          onClick: () => {
-            setCaptain(player.id, view.captainId, view.viceCaptainId)
-            setSelected(null)
-          },
-          variant: 'secondary',
-        })
-      }
-      if (view.viceCaptainId !== player.id) {
-        actions.push({
-          label: 'Make vice-captain',
-          onClick: () => {
-            setViceCaptain(player.id, view.captainId, view.viceCaptainId)
-            setSelected(null)
-          },
-          variant: 'secondary',
-        })
-      }
-    } else {
-      const sameOnField = view.startingIds
-        .map((id) => view.squad.find((p) => p.id === id))
-        .some((p) => p?.position === player.position)
-      if (sameOnField) {
-        actions.push({
-          label: 'Swap into starting XI',
-          onClick: () => {
-            swapToStarting(player.id, view.squad, view.startingIds, view.benchIds)
-            setSelected(null)
-          },
-        })
-      }
+    const actions: SheetAction[] = [
+      {
+        label: 'Substitute',
+        onClick: () => {
+          setSelected(null)
+          setSwapAnchor(player)
+        },
+      },
+    ]
+    if (view.captainId !== player.id) {
+      actions.push({
+        label: 'Make captain',
+        onClick: () => {
+          setCaptain(player.id, view.captainId, view.viceCaptainId)
+          setSelected(null)
+        },
+        variant: 'secondary',
+      })
+    }
+    if (view.viceCaptainId !== player.id) {
+      actions.push({
+        label: 'Make vice-captain',
+        onClick: () => {
+          setViceCaptain(player.id, view.captainId, view.viceCaptainId)
+          setSelected(null)
+        },
+        variant: 'secondary',
+      })
     }
     return actions
+  }
+
+  const handleOptimise = () => {
+    const lineup = optimiseStartingXI(view.squad)
+    applyOptimisedLineup(lineup)
   }
 
   return (
@@ -115,28 +123,90 @@ export function PickTeamPage() {
           ? `Your actual squad from GW${myTeam.data?.picks_event}.`
           : "AI-recommended squad, ahead of your first deadline. Once you've picked a squad, this will track your actual picks."}
       </p>
-      <div className="flex items-center justify-between mb-3 rounded-xl bg-[#1e1e2a] px-3 py-2">
-        <p className="text-[11px] text-white/60">
-          Tap a player to swap starters/bench or set captain — changes are a plan to apply on the official
-          FPL app, not a live change.
-        </p>
-        {hasOverrides && (
+
+      {swapAnchor ? (
+        <div className="flex items-center justify-between mb-3 rounded-xl bg-[#00ff87]/10 border border-[#00ff87]/40 px-3 py-2">
+          <p className="text-[11px] text-white/80">
+            Choose a player to swap with <span className="font-semibold text-white">{swapAnchor.web_name}</span>.
+          </p>
           <button
-            onClick={resetLineup}
-            className="ml-2 shrink-0 min-h-[44px] px-3 rounded-lg bg-white/10 text-xs font-semibold text-white transition-colors active:bg-white/20"
+            onClick={() => setSwapAnchor(null)}
+            className="ml-2 shrink-0 min-h-[36px] px-3 rounded-lg bg-white/10 text-xs font-semibold text-white transition-colors active:bg-white/20"
           >
-            Reset
+            Cancel
           </button>
-        )}
+        </div>
+      ) : (
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <button
+            onClick={handleOptimise}
+            className="flex-1 min-h-[44px] px-3 rounded-xl bg-[#00ff87] text-black text-sm font-semibold transition-colors active:opacity-80"
+          >
+            Optimise lineup
+          </button>
+          {hasOverrides && (
+            <button
+              onClick={resetLineup}
+              className="shrink-0 min-h-[44px] px-3 rounded-lg bg-white/10 text-xs font-semibold text-white transition-colors active:bg-white/20"
+            >
+              Reset
+            </button>
+          )}
+        </div>
+      )}
+
+      {swapError && (
+        <div className="flex items-start justify-between gap-2 mb-3 rounded-xl bg-rose-950/40 border border-rose-500/40 px-3 py-2">
+          <p className="text-[11px] text-rose-200">{swapError}</p>
+          <button
+            onClick={() => setSwapError(null)}
+            aria-label="Dismiss"
+            className="shrink-0 text-rose-300 px-1 min-h-[36px] min-w-[36px]"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
+      <p className="text-[10px] text-white/30 mb-3">
+        Changes are a plan to apply on the official FPL app, not a live change.
+      </p>
+
+      <div className="flex gap-1 mb-3 bg-[#1e1e2a] rounded-xl p-1 w-fit">
+        {(['pitch', 'list'] as const).map((mode) => (
+          <button
+            key={mode}
+            onClick={() => setViewMode(mode)}
+            className={`min-h-[36px] px-4 rounded-lg text-xs font-semibold capitalize transition-colors ${
+              viewMode === mode ? 'bg-[#00ff87] text-black' : 'text-white/60'
+            }`}
+          >
+            {mode}
+          </button>
+        ))}
       </div>
-      <PitchView
-        squad={view.squad}
-        startingIds={view.startingIds}
-        benchIds={view.benchIds}
-        captainId={view.captainId}
-        viceCaptainId={view.viceCaptainId}
-        onSelectPlayer={setSelected}
-      />
+
+      {viewMode === 'pitch' ? (
+        <PitchView
+          squad={view.squad}
+          startingIds={view.startingIds}
+          benchIds={view.benchIds}
+          captainId={view.captainId}
+          viceCaptainId={view.viceCaptainId}
+          onSelectPlayer={handleSelectPlayer}
+          highlightId={swapAnchor?.id ?? null}
+        />
+      ) : (
+        <SquadListView
+          squad={view.squad}
+          startingIds={view.startingIds}
+          benchIds={view.benchIds}
+          captainId={view.captainId}
+          viceCaptainId={view.viceCaptainId}
+          onSelectPlayer={handleSelectPlayer}
+          highlightId={swapAnchor?.id ?? null}
+        />
+      )}
       <PlayerDetailSheet
         player={selected}
         onClose={() => setSelected(null)}

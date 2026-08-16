@@ -14,7 +14,8 @@ Commercial FPL "AI" pickers are black boxes - no published methodology, no
 accuracy tracking, no explanation of *why* a player is rated highly. This
 project does the opposite: every prediction ships with an uncertainty band
 and a plain-English breakdown of what drove it, and the model's real
-gameweek-by-gameweek error will be tracked in-app once the season starts.
+gameweek-by-gameweek error is tracked in-app (More tab) from the first
+scored gameweek onward.
 
 ## Architecture
 
@@ -106,11 +107,30 @@ draw on multiple past seasons:
    one soft fixture) by mid-season. Pre-season, current-season minutes are
    zero, so this correctly resolves to exactly the multi-season prior.
 
-Known limitation: the current-season rate blended in isn't yet adjusted for
-the difficulty of opponents already faced this season (only the calibrated
-FDR tables applied to *upcoming* fixtures are) - full per-gameweek-with-FDR
-history for every player would add ~587 more calls to what's otherwise a
-deliberately cheap, 2-call hot loop. Flagged as a fast-follow.
+The current-season rate blended in *is* adjusted for the difficulty of
+opponents already faced this season, not just the calibrated FDR tables
+applied to upcoming fixtures: `engine/priors.py` computes each player's
+minutes-weighted average FDR faced so far (from element-summary's
+per-gameweek `history`, cross-referenced with fixture difficulty) and
+`engine/model.py` rebases their current-season attacking rate to an
+FDR-3-equivalent before blending it with the prior - so a hot streak against
+soft fixtures isn't over-trusted. This piggybacks on the weekly priors job
+rather than the 3-hourly hot loop (which stays at 2 API calls): once the
+season starts, that weekly job switches from incremental to a full refetch,
+since this average changes every gameweek unlike the static historical
+seasons blend.
+
+### Prediction accuracy, tracked openly
+
+`engine/accuracy.py` logs every gameweek's predictions before that
+gameweek's deadline (overwriting the same slot with the freshest pre-
+deadline prediction each run - team news lands late), then once real
+results exist, scores them - RMSE/MAE at player-gameweek granularity,
+matching how the OpenFPL benchmark above is reported. A scored gameweek is
+locked and never rewritten, so what's shown is always what the model
+genuinely said beforehand, not adjusted with hindsight. Visible on the More
+tab from the first scored gameweek - FFH publishes no accuracy record at
+all; this one is visible whatever it says.
 
 ### Playing time: appearance vs. a genuine long appearance
 
@@ -164,6 +184,21 @@ the browser, with a persistent reminder to apply it on the official site
 before your deadline. This is a deliberate scope boundary, not a missing
 feature.
 
+Swapping players follows the same pattern as the reference apps this was
+benchmarked against: tap a player, tap "Substitute", then tap *any* other
+player to attempt the swap with them - it's validated against the real
+starting-XI rules (`engine/optimise.py`'s `PLAY_MIN_MAX`, mirrored
+client-side in `app/src/lib/formation.ts`) after the attempt, with a clear
+error naming exactly which rule would be broken, rather than restricting
+which players can be tapped in the first place. An "Optimise lineup" button
+picks the exact best-EV valid starting XI from your current 15 (no budget
+involved, just formation counts - a small enough search to solve exactly
+by enumeration, not a heuristic). The pitch view shows next-gameweek points
+per player, since that's what matters when picking a lineup/captain; a
+"List" view alongside it (the same tap-to-swap/optimise controls, in a
+table) surfaces the multi-gameweek total too, which matters more for
+transfer decisions.
+
 ## Running locally
 
 ```bash
@@ -188,7 +223,9 @@ npm run dev                      # app reads /data via a symlink in app/public
 - [x] Multi-season historical priors + calibrated FDR/DC constants + adaptive in-season blending
 - [x] Playing-time overhaul: starts-based `p_appearance`/`p_60_plus` split, not one flat ratio
 - [x] Five-week transfer/chip planner with verified chip-window rules
-- [x] Interactive Pick Team (swap XI/bench, captain) and Transfers/Planner staging cart
-- [ ] Prediction-accuracy page (logged RMSE/MAE vs. actual results)
-- [ ] Fixture-adjust the current-season rate blended into stabilization (see "known limitation" above)
-- [ ] Optional: FPL account token auth for pre-deadline squad sync
+- [x] Interactive Pick Team (validated tap-to-swap, optimise-lineup, captain) and Transfers/Planner staging cart
+- [x] Prediction-accuracy tracking (logged RMSE/MAE vs. actual results, once gameweeks are scored)
+- [x] Fixture-adjust the current-season rate blended into stabilization
+- [x] Pitch/List view toggle - next-GW points on the pitch, multi-GW total in the list
+- Skipped by choice: FPL account token auth for pre-deadline squad sync - too fragile (manual OIDC
+  token extraction, periodic re-pasting) for what it'd add on top of public team-ID tracking

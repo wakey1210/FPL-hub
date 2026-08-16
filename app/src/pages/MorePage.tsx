@@ -1,12 +1,15 @@
 import { useJsonData } from '../lib/data'
 import { useLocalStorage } from '../lib/useLocalStorage'
 import { Layout } from '../components/Layout'
+import { AccuracySummary } from '../components/AccuracySummary'
 import type { Meta } from '../types/fpl'
 import type { MyTeam } from '../types/myTeam'
+import type { AccuracySummary as AccuracySummaryData } from '../types/accuracy'
 
 export function MorePage() {
   const meta = useJsonData<Meta>('meta.json')
   const myTeam = useJsonData<MyTeam>('my_team.json')
+  const accuracy = useJsonData<AccuracySummaryData>('accuracy_summary.json')
   const [teamId, setTeamId] = useLocalStorage('fpl_team_id')
 
   return (
@@ -50,16 +53,17 @@ export function MorePage() {
         </div>
 
         <div className="rounded-2xl bg-[#1e1e2a] p-5 text-sm text-white/70">
+          <h2 className="text-sm font-semibold text-white mb-2">Prediction accuracy</h2>
+          {accuracy.data ? <AccuracySummary data={accuracy.data} /> : <p className="text-xs">…</p>}
+        </div>
+
+        <div className="rounded-2xl bg-[#1e1e2a] p-5 text-sm text-white/70">
           <h2 className="text-sm font-semibold text-white mb-2">Model &amp; data</h2>
           <ul className="space-y-1 text-xs">
             <li>Model version: {meta.data?.model_version ?? '…'}</li>
             <li>Data last refreshed: {meta.data ? new Date(meta.data.generated_at).toLocaleString() : '…'}</li>
             <li>Source: official FPL API (public endpoints only)</li>
           </ul>
-          <p className="text-xs mt-3">
-            Prediction accuracy will be tracked here gameweek-by-gameweek once the season starts, so the
-            model's real error rate stays visible rather than a black box.
-          </p>
         </div>
 
         <div className="rounded-2xl bg-[#1e1e2a] p-5 text-xs text-white/40">

@@ -8,11 +8,27 @@ interface Props {
   captainId: number
   viceCaptainId: number
   onSelectPlayer?: (player: PlayerEV) => void
+  highlightId?: number | null
 }
 
 const ROW_ORDER: Position[] = ['GKP', 'DEF', 'MID', 'FWD']
 
-export function PitchView({ squad, startingIds, benchIds, captainId, viceCaptainId, onSelectPlayer }: Props) {
+/** Next gameweek's points, not the multi-gameweek total - when picking your
+ * XI/captain, what happens THIS week is what matters; the combined total is
+ * more useful for transfer decisions (see TransfersPage/PlanStepCard). */
+function nextGwPoints(player: PlayerEV): number {
+  return player.fixtures[0]?.points ?? 0
+}
+
+export function PitchView({
+  squad,
+  startingIds,
+  benchIds,
+  captainId,
+  viceCaptainId,
+  onSelectPlayer,
+  highlightId,
+}: Props) {
   const byId = new Map(squad.map((p) => [p.id, p]))
   const starting = startingIds.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p)
   const bench = benchIds.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p)
@@ -32,8 +48,10 @@ export function PitchView({ squad, startingIds, benchIds, captainId, viceCaptain
                   <PlayerChip
                     key={p.id}
                     player={p}
+                    points={nextGwPoints(p)}
                     badge={badgeFor(p.id)}
                     onClick={() => onSelectPlayer?.(p)}
+                    highlighted={p.id === highlightId}
                   />
                 ))}
               </div>
@@ -46,7 +64,13 @@ export function PitchView({ squad, startingIds, benchIds, captainId, viceCaptain
         <p className="text-[11px] uppercase tracking-wide text-white/50 mb-2 px-1">Bench</p>
         <div className="flex gap-3 overflow-x-auto pb-1">
           {bench.map((p) => (
-            <PlayerChip key={p.id} player={p} onClick={() => onSelectPlayer?.(p)} />
+            <PlayerChip
+              key={p.id}
+              player={p}
+              points={nextGwPoints(p)}
+              onClick={() => onSelectPlayer?.(p)}
+              highlighted={p.id === highlightId}
+            />
           ))}
         </div>
       </div>

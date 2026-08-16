@@ -52,6 +52,12 @@ def get_element_summary(player_id: int) -> dict:
     return _get(f"element-summary/{player_id}/")
 
 
+def get_event_live(event: int) -> dict:
+    """Actual per-player stats/points for a gameweek - `elements` is empty
+    until that gameweek's matches have actually been played."""
+    return _get(f"event/{event}/live/")
+
+
 def get_entry(team_id: int) -> dict:
     return _get(f"entry/{team_id}/")
 

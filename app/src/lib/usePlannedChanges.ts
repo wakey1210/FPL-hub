@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import type { PlannedChanges, StagedTransfer } from '../types/plannedChanges'
 import { EMPTY_PLAN } from '../types/plannedChanges'
 import type { PlayerEV } from '../types/fpl'
+import { attemptSwap, type OptimisedLineup, type SwapResult } from './formation'
 
 const STORAGE_KEY = 'fpl_planned_changes'
 
@@ -25,44 +26,31 @@ export function usePlannedChanges() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(plan))
   }, [plan])
 
-  const bySameId = (byId: Map<number, PlayerEV>, id: number) => byId.get(id)
-
-  const swapToStarting = useCallback(
-    (playerId: number, squad: PlayerEV[], startingIds: number[], benchIds: number[]) => {
-      const byId = new Map(squad.map((p) => [p.id, p]))
-      const incoming = bySameId(byId, playerId)
-      if (!incoming) return
-      // Only same-position swaps are offered - this always keeps the formation
-      // valid (position counts per the starting XI don't change), so no
-      // separate formation-legality check is needed.
-      const sameOnField = startingIds
-        .map((id) => byId.get(id))
-        .filter((p): p is PlayerEV => !!p && p.position === incoming.position)
-      if (sameOnField.length === 0) return
-      const weakest = sameOnField.reduce((a, b) => (a.total_ev <= b.total_ev ? a : b))
-      const newStarting = startingIds.filter((id) => id !== weakest.id).concat(playerId)
-      const newBench = benchIds.filter((id) => id !== playerId).concat(weakest.id)
-      setPlan((p) => ({ ...p, startingIds: newStarting, benchIds: newBench }))
+  /** Tries to swap two specific players (a starter and a bench player, in
+   * either order) - the caller picks exactly who, matching the "choose a
+   * player to swap with X" pattern rather than an auto-picked partner.
+   * Returns the validation result so the caller can show an error if the
+   * resulting formation would be invalid (e.g. 2 goalkeepers). */
+  const trySwap = useCallback(
+    (idA: number, idB: number, squad: PlayerEV[], startingIds: number[], benchIds: number[]): SwapResult => {
+      const result = attemptSwap(idA, idB, squad, startingIds, benchIds)
+      if (result.success) {
+        setPlan((p) => ({ ...p, startingIds: result.startingIds!, benchIds: result.benchIds! }))
+      }
+      return result
     },
     []
   )
 
-  const swapToBench = useCallback(
-    (playerId: number, squad: PlayerEV[], startingIds: number[], benchIds: number[]) => {
-      const byId = new Map(squad.map((p) => [p.id, p]))
-      const outgoing = bySameId(byId, playerId)
-      if (!outgoing) return
-      const sameOnBench = benchIds
-        .map((id) => byId.get(id))
-        .filter((p): p is PlayerEV => !!p && p.position === outgoing.position)
-      if (sameOnBench.length === 0) return
-      const strongest = sameOnBench.reduce((a, b) => (a.total_ev >= b.total_ev ? a : b))
-      const newStarting = startingIds.filter((id) => id !== playerId).concat(strongest.id)
-      const newBench = benchIds.filter((id) => id !== strongest.id).concat(playerId)
-      setPlan((p) => ({ ...p, startingIds: newStarting, benchIds: newBench }))
-    },
-    []
-  )
+  const applyOptimisedLineup = useCallback((lineup: OptimisedLineup) => {
+    setPlan((p) => ({
+      ...p,
+      startingIds: lineup.startingIds,
+      benchIds: lineup.benchIds,
+      captainId: lineup.captainId,
+      viceCaptainId: lineup.viceCaptainId,
+    }))
+  }, [])
 
   /** Sets a new captain. If the new captain was the vice, the old captain
    * becomes the new vice (a straight swap) - otherwise the vice is untouched. */
@@ -105,8 +93,8 @@ export function usePlannedChanges() {
 
   return {
     plan,
-    swapToStarting,
-    swapToBench,
+    trySwap,
+    applyOptimisedLineup,
     setCaptain,
     setViceCaptain,
     resetLineup,
