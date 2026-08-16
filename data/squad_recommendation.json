@@ -1,0 +1,956 @@
+{
+  "budget_tenths": 1000,
+  "total_cost": 1000,
+  "total_ev": 450.36,
+  "squad": [
+    {
+      "id": 55,
+      "web_name": "Watkins",
+      "team_short": "AVL",
+      "position": "FWD",
+      "now_cost": 80,
+      "selected_by_percent": 12.5,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 27.68,
+      "uncertainty": 5.23,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.53 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "BHA",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.63
+        },
+        {
+          "event": 2,
+          "opponent_short": "ARS",
+          "is_home": true,
+          "fdr": 4,
+          "points": 4.34
+        },
+        {
+          "event": 3,
+          "opponent_short": "HUL",
+          "is_home": false,
+          "fdr": 2,
+          "points": 4.82
+        },
+        {
+          "event": 4,
+          "opponent_short": "NFO",
+          "is_home": true,
+          "fdr": 3,
+          "points": 4.63
+        },
+        {
+          "event": 5,
+          "opponent_short": "TOT",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.63
+        },
+        {
+          "event": 6,
+          "opponent_short": "BRE",
+          "is_home": true,
+          "fdr": 3,
+          "points": 4.63
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "web_name": "Tavernier",
+      "team_short": "BOU",
+      "position": "MID",
+      "now_cost": 60,
+      "selected_by_percent": 1.8,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 30.18,
+      "uncertainty": 5.67,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.45 combined xG+xA per 90 minutes",
+        "Tough run of fixtures (avg FDR 3.7 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "MCI",
+          "is_home": false,
+          "fdr": 5,
+          "points": 4.57
+        },
+        {
+          "event": 2,
+          "opponent_short": "EVE",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.27
+        },
+        {
+          "event": 3,
+          "opponent_short": "NEW",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.24
+        },
+        {
+          "event": 4,
+          "opponent_short": "BRE",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.27
+        },
+        {
+          "event": 5,
+          "opponent_short": "LIV",
+          "is_home": true,
+          "fdr": 4,
+          "points": 4.93
+        },
+        {
+          "event": 6,
+          "opponent_short": "CHE",
+          "is_home": false,
+          "fdr": 4,
+          "points": 4.9
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "web_name": "Schade",
+      "team_short": "BRE",
+      "position": "MID",
+      "now_cost": 60,
+      "selected_by_percent": 2.5,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 30.9,
+      "uncertainty": 5.8,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.47 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 3.2 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "TOT",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.24
+        },
+        {
+          "event": 2,
+          "opponent_short": "LEE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.22
+        },
+        {
+          "event": 3,
+          "opponent_short": "SUN",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.52
+        },
+        {
+          "event": 4,
+          "opponent_short": "BOU",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.22
+        },
+        {
+          "event": 5,
+          "opponent_short": "CHE",
+          "is_home": true,
+          "fdr": 4,
+          "points": 4.86
+        },
+        {
+          "event": 6,
+          "opponent_short": "AVL",
+          "is_home": false,
+          "fdr": 4,
+          "points": 4.84
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "web_name": "Thiago",
+      "team_short": "BRE",
+      "position": "FWD",
+      "now_cost": 80,
+      "selected_by_percent": 16.3,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 31.3,
+      "uncertainty": 5.87,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.61 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 3.2 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "TOT",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.29
+        },
+        {
+          "event": 2,
+          "opponent_short": "LEE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.29
+        },
+        {
+          "event": 3,
+          "opponent_short": "SUN",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.51
+        },
+        {
+          "event": 4,
+          "opponent_short": "BOU",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.29
+        },
+        {
+          "event": 5,
+          "opponent_short": "CHE",
+          "is_home": true,
+          "fdr": 4,
+          "points": 4.96
+        },
+        {
+          "event": 6,
+          "opponent_short": "AVL",
+          "is_home": false,
+          "fdr": 4,
+          "points": 4.96
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "web_name": "Verbruggen",
+      "team_short": "BHA",
+      "position": "GKP",
+      "now_cost": 45,
+      "selected_by_percent": 18.5,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 22.37,
+      "uncertainty": 4.28,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "AVL",
+          "is_home": true,
+          "fdr": 3,
+          "points": 3.8
+        },
+        {
+          "event": 2,
+          "opponent_short": "CHE",
+          "is_home": false,
+          "fdr": 4,
+          "points": 3.23
+        },
+        {
+          "event": 3,
+          "opponent_short": "LEE",
+          "is_home": true,
+          "fdr": 2,
+          "points": 4.21
+        },
+        {
+          "event": 4,
+          "opponent_short": "COV",
+          "is_home": false,
+          "fdr": 2,
+          "points": 4.1
+        },
+        {
+          "event": 5,
+          "opponent_short": "ARS",
+          "is_home": true,
+          "fdr": 4,
+          "points": 3.34
+        },
+        {
+          "event": 6,
+          "opponent_short": "SUN",
+          "is_home": false,
+          "fdr": 3,
+          "points": 3.69
+        }
+      ]
+    },
+    {
+      "id": 155,
+      "web_name": "Enzo",
+      "team_short": "CHE",
+      "position": "MID",
+      "now_cost": 70,
+      "selected_by_percent": 5.5,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 33.59,
+      "uncertainty": 6.28,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.54 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "FUL",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.62
+        },
+        {
+          "event": 2,
+          "opponent_short": "BHA",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.93
+        },
+        {
+          "event": 3,
+          "opponent_short": "ARS",
+          "is_home": false,
+          "fdr": 5,
+          "points": 4.85
+        },
+        {
+          "event": 4,
+          "opponent_short": "HUL",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.93
+        },
+        {
+          "event": 5,
+          "opponent_short": "BRE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.62
+        },
+        {
+          "event": 6,
+          "opponent_short": "BOU",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.64
+        }
+      ]
+    },
+    {
+      "id": 165,
+      "web_name": "Jo\u00e3o Pedro",
+      "team_short": "CHE",
+      "position": "FWD",
+      "now_cost": 75,
+      "selected_by_percent": 57.1,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 28.23,
+      "uncertainty": 5.32,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.57 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "FUL",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.74
+        },
+        {
+          "event": 2,
+          "opponent_short": "BHA",
+          "is_home": true,
+          "fdr": 2,
+          "points": 4.94
+        },
+        {
+          "event": 3,
+          "opponent_short": "ARS",
+          "is_home": false,
+          "fdr": 5,
+          "points": 4.13
+        },
+        {
+          "event": 4,
+          "opponent_short": "HUL",
+          "is_home": true,
+          "fdr": 2,
+          "points": 4.94
+        },
+        {
+          "event": 5,
+          "opponent_short": "BRE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.74
+        },
+        {
+          "event": 6,
+          "opponent_short": "BOU",
+          "is_home": true,
+          "fdr": 3,
+          "points": 4.74
+        }
+      ]
+    },
+    {
+      "id": 229,
+      "web_name": "Tarkowski",
+      "team_short": "EVE",
+      "position": "DEF",
+      "now_cost": 60,
+      "selected_by_percent": 9.6,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 30.41,
+      "uncertainty": 5.71,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.13 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "CRY",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.06
+        },
+        {
+          "event": 2,
+          "opponent_short": "BOU",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.95
+        },
+        {
+          "event": 3,
+          "opponent_short": "MUN",
+          "is_home": true,
+          "fdr": 4,
+          "points": 4.52
+        },
+        {
+          "event": 4,
+          "opponent_short": "TOT",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.95
+        },
+        {
+          "event": 5,
+          "opponent_short": "IPS",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.52
+        },
+        {
+          "event": 6,
+          "opponent_short": "HUL",
+          "is_home": false,
+          "fdr": 2,
+          "points": 5.41
+        }
+      ]
+    },
+    {
+      "id": 356,
+      "web_name": "Virgil",
+      "team_short": "LIV",
+      "position": "DEF",
+      "now_cost": 65,
+      "selected_by_percent": 17.1,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 30.38,
+      "uncertainty": 5.71,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.14 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "NEW",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.94
+        },
+        {
+          "event": 2,
+          "opponent_short": "NFO",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.05
+        },
+        {
+          "event": 3,
+          "opponent_short": "IPS",
+          "is_home": false,
+          "fdr": 2,
+          "points": 5.42
+        },
+        {
+          "event": 4,
+          "opponent_short": "FUL",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.53
+        },
+        {
+          "event": 5,
+          "opponent_short": "BOU",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.94
+        },
+        {
+          "event": 6,
+          "opponent_short": "MCI",
+          "is_home": true,
+          "fdr": 4,
+          "points": 4.5
+        }
+      ]
+    },
+    {
+      "id": 387,
+      "web_name": "O'Reilly",
+      "team_short": "MCI",
+      "position": "DEF",
+      "now_cost": 65,
+      "selected_by_percent": 22.1,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 31.01,
+      "uncertainty": 5.82,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.30 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "BOU",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.26
+        },
+        {
+          "event": 2,
+          "opponent_short": "CRY",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.15
+        },
+        {
+          "event": 3,
+          "opponent_short": "COV",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.81
+        },
+        {
+          "event": 4,
+          "opponent_short": "MUN",
+          "is_home": false,
+          "fdr": 4,
+          "points": 4.49
+        },
+        {
+          "event": 5,
+          "opponent_short": "SUN",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.81
+        },
+        {
+          "event": 6,
+          "opponent_short": "LIV",
+          "is_home": false,
+          "fdr": 4,
+          "points": 4.49
+        }
+      ]
+    },
+    {
+      "id": 426,
+      "web_name": "B.Fernandes",
+      "team_short": "MUN",
+      "position": "MID",
+      "now_cost": 120,
+      "selected_by_percent": 47.9,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 37.25,
+      "uncertainty": 6.93,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.68 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "HUL",
+          "is_home": false,
+          "fdr": 2,
+          "points": 6.48
+        },
+        {
+          "event": 2,
+          "opponent_short": "IPS",
+          "is_home": true,
+          "fdr": 2,
+          "points": 6.51
+        },
+        {
+          "event": 3,
+          "opponent_short": "EVE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 6.16
+        },
+        {
+          "event": 4,
+          "opponent_short": "MCI",
+          "is_home": true,
+          "fdr": 4,
+          "points": 5.75
+        },
+        {
+          "event": 5,
+          "opponent_short": "FUL",
+          "is_home": false,
+          "fdr": 3,
+          "points": 6.16
+        },
+        {
+          "event": 6,
+          "opponent_short": "TOT",
+          "is_home": true,
+          "fdr": 3,
+          "points": 6.19
+        }
+      ]
+    },
+    {
+      "id": 427,
+      "web_name": "Mbeumo",
+      "team_short": "MUN",
+      "position": "MID",
+      "now_cost": 80,
+      "selected_by_percent": 27.7,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 33.76,
+      "uncertainty": 6.31,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.58 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "HUL",
+          "is_home": false,
+          "fdr": 2,
+          "points": 5.89
+        },
+        {
+          "event": 2,
+          "opponent_short": "IPS",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.92
+        },
+        {
+          "event": 3,
+          "opponent_short": "EVE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.58
+        },
+        {
+          "event": 4,
+          "opponent_short": "MCI",
+          "is_home": true,
+          "fdr": 4,
+          "points": 5.18
+        },
+        {
+          "event": 5,
+          "opponent_short": "FUL",
+          "is_home": false,
+          "fdr": 3,
+          "points": 5.58
+        },
+        {
+          "event": 6,
+          "opponent_short": "TOT",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.61
+        }
+      ]
+    },
+    {
+      "id": 445,
+      "web_name": "Thiaw",
+      "team_short": "NEW",
+      "position": "DEF",
+      "now_cost": 50,
+      "selected_by_percent": 2.0,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 30.14,
+      "uncertainty": 5.66,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.18 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "LIV",
+          "is_home": true,
+          "fdr": 4,
+          "points": 4.42
+        },
+        {
+          "event": 2,
+          "opponent_short": "TOT",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.9
+        },
+        {
+          "event": 3,
+          "opponent_short": "BOU",
+          "is_home": true,
+          "fdr": 3,
+          "points": 5.01
+        },
+        {
+          "event": 4,
+          "opponent_short": "LEE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.9
+        },
+        {
+          "event": 5,
+          "opponent_short": "HUL",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.51
+        },
+        {
+          "event": 6,
+          "opponent_short": "COV",
+          "is_home": false,
+          "fdr": 2,
+          "points": 5.4
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "web_name": "Van Hecke",
+      "team_short": "TOT",
+      "position": "DEF",
+      "now_cost": 50,
+      "selected_by_percent": 8.8,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 29.23,
+      "uncertainty": 5.5,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Underlying output: 0.13 combined xG+xA per 90 minutes",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "BRE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.83
+        },
+        {
+          "event": 2,
+          "opponent_short": "NEW",
+          "is_home": true,
+          "fdr": 2,
+          "points": 5.41
+        },
+        {
+          "event": 3,
+          "opponent_short": "NFO",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.83
+        },
+        {
+          "event": 4,
+          "opponent_short": "EVE",
+          "is_home": true,
+          "fdr": 3,
+          "points": 4.94
+        },
+        {
+          "event": 5,
+          "opponent_short": "AVL",
+          "is_home": true,
+          "fdr": 3,
+          "points": 4.94
+        },
+        {
+          "event": 6,
+          "opponent_short": "MUN",
+          "is_home": false,
+          "fdr": 4,
+          "points": 4.28
+        }
+      ]
+    },
+    {
+      "id": 497,
+      "web_name": "Dubravka",
+      "team_short": "TOT",
+      "position": "GKP",
+      "now_cost": 40,
+      "selected_by_percent": 22.3,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "total_ev": 23.93,
+      "uncertainty": 4.56,
+      "why": [
+        "Expected to start (a regular starter last season)",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "BRE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 3.94
+        },
+        {
+          "event": 2,
+          "opponent_short": "NEW",
+          "is_home": true,
+          "fdr": 2,
+          "points": 4.46
+        },
+        {
+          "event": 3,
+          "opponent_short": "NFO",
+          "is_home": false,
+          "fdr": 3,
+          "points": 3.94
+        },
+        {
+          "event": 4,
+          "opponent_short": "EVE",
+          "is_home": true,
+          "fdr": 3,
+          "points": 4.05
+        },
+        {
+          "event": 5,
+          "opponent_short": "AVL",
+          "is_home": true,
+          "fdr": 3,
+          "points": 4.05
+        },
+        {
+          "event": 6,
+          "opponent_short": "MUN",
+          "is_home": false,
+          "fdr": 4,
+          "points": 3.49
+        }
+      ]
+    }
+  ],
+  "starting_ids": [
+    68,
+    94,
+    106,
+    155,
+    229,
+    356,
+    387,
+    426,
+    427,
+    445,
+    497
+  ],
+  "bench_ids": [
+    112,
+    165,
+    55,
+    109
+  ],
+  "captain_id": 426,
+  "vice_captain_id": 427
+}
