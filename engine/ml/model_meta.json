@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-08-16T14:33:02.142564+00:00",
+  "seasons": [
+    "2022-23",
+    "2023-24",
+    "2024-25",
+    "2025-26"
+  ],
+  "holdout_season": "2025-26",
+  "holdout_rmse": 3.373,
+  "n_obs": 33518,
+  "feature_names": [
+    "xg90",
+    "xa90",
+    "dc90",
+    "saves90",
+    "dc_prob",
+    "p_appearance",
+    "p_60_plus",
+    "expected_minutes_if_appears",
+    "fdr",
+    "is_home",
+    "attack_mult",
+    "cs_prob",
+    "expected_conceded",
+    "now_cost",
+    "selected_by_percent",
+    "has_penalties",
+    "has_direct_freekicks",
+    "has_corners",
+    "position_GKP",
+    "position_DEF",
+    "position_MID",
+    "position_FWD"
+  ],
+  "xgb_params": {
+    "max_depth": 4,
+    "eta": 0.1,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "objective": "reg:squarederror",
+    "eval_metric": "rmse"
+  },
+  "num_boost_round": 200
+}

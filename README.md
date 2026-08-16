@@ -261,11 +261,98 @@ per player, since that's what matters when picking a lineup/captain; a
 table) surfaces the multi-gameweek total too, which matters more for
 transfer decisions.
 
+### Confirm my squad - a rolling planner before any live sync
+
+The Planner tab is meant to replace a transfer-planning spreadsheet, which
+is most valuable exactly when there's no live-synced FPL team yet to work
+from. A "Confirm my squad" button on Pick Team (shown whenever there's no
+live team sync) saves the currently-shown 15 plus a manually-entered bank
+and free-transfers count locally (`app/src/lib/useDeclaredTeam.ts`) - never
+written back to FPL, same boundary as everything else in this app. From
+there, `engine/transfers.py`'s single-swap suggester and `engine/planner.py`'s
+full 5-week/chip planner are ported line-for-line to TypeScript
+(`app/src/lib/transferSuggestions.ts`, `transferPlanner.ts`) so both run
+entirely client-side against the already-fetched `players.json` - "rolling"
+comes for free, since that data already refreshes every 3 hours via the
+existing hot loop, with no new backend polling. A "Chips used" editor
+(`ChipsUsedEditor.tsx`) lets the plan know which of each chip's two
+half-season windows are already spent, since there's no live sync to read
+that from otherwise. The moment a real FPL team ID starts returning
+post-deadline picks, the declared state is cleared and the server-computed
+`transfer_plan.json`/`transfer_suggestions.json` take over as the
+authoritative source, exactly mirroring the existing pitch-view fallback.
+
+Every suggestion and plan step explains itself using the incoming player's
+own underlying-stats/fixture-difficulty "why" factors plus a line
+quantifying the edge over the outgoing player - on both the server
+(`engine/transfers.py`/`engine/planner.py`) and client paths, so this isn't
+just a raw EV-delta number.
+
+### "Form is temporary, class is permanent" - a consistency-weighted risk
+
+A player who's been reliably good across several seasons is lower-risk than
+one whose similar average was driven by a single standout season or a short
+hot streak. `engine/priors.py` computes the coefficient of variation of
+each qualifying season's own `expected_goal_involvements` per-90 rate (zero
+new API calls - each season's rate is already derived inside the existing
+multi-season blend, before being collapsed into a weighted average); `None`
+if fewer than 2 seasons qualify, since a single season has no meaningful
+spread to measure. `engine/model.py` composes a small, bounded adjustment
+onto the uncertainty band from this - tightening it for consistently
+productive players, widening it for boom-bust ones - and surfaces a "why"
+clause when it's a materially notable case either way.
+
+### Historical backtest + a genuine ML prediction, run in parallel
+
+Prompted by a technique used to backtest statistical models against real
+sports results: `engine/historical/` reconstructs a bootstrap-shaped state
+for any cached historical season "as of" a given gameweek (no lookahead -
+only gameweeks strictly before are ever visible), letting the *existing*
+model/optimiser/transfer logic - completely unmodified - simulate a full
+season's real squad-selection and transfer decisions, scored against real
+recorded results. `engine.historical.run_season`/`score.py` validate the
+transfer/planner *decisions* this way (distinct from `fit_coefficients.py`'s
+per-player-gameweek RMSE), and `tune.py` reuses the same harness for a
+small, human-reviewed grid search over a handful of hand-picked constants -
+never gradient-based/RL tuning, always a printed old-vs-new table a person
+reviews before manually adopting a change. See that package's module
+docstrings for the honest limitations found while building it (a same-season
+synthetic prior was needed since no real prior data exists historically; a
+documented run-to-run variance from EV ties; a necessarily uninformed GW1).
+
+That same historical reconstruction is the shared foundation for a second,
+genuinely-trained prediction: `engine/ml/` fits an XGBoost model (matching
+OpenFPL's own published approach) on real player-gameweek outcomes across
+the seasons with full xG data (2022-23 onward - confirmed by inspecting the
+cached CSVs, since earlier seasons are missing either `position`/`team`
+columns or the xG stats entirely) plus the current season's own gameweeks
+already played, **refetched and fully retrained from scratch every week**
+(`retrain-model.yml`) - not incremental boosting-continuation, which is
+fragile and hard to roll back. Every feature it trains/predicts on is read
+directly off `engine.model.build_player_ev()`'s own output (several
+previously-internal quantities - `xg90`, `attack_mult`, `cs_prob`, etc. -
+are now exposed on `PlayerEV`/`FixtureEV` specifically for this), so the
+exact same code computes a feature whether called live or during training -
+eliminating train/serve skew by construction, not by discipline.
+
+This `ml_ev`/`ml_why` prediction is **parallel, never a replacement**:
+`engine/accuracy.py` logs and scores both the heuristic and the ML model
+side by side every gameweek, and the ML numbers are only ever surfaced in
+the app (currently just the More tab's accuracy comparison) once gameweek 6
+has passed *and* its logged RMSE has beaten the heuristic's over 4
+consecutive scored gameweeks - a code-level check
+(`accuracy.ml_currently_better()`), not a one-off manual judgment, and it's
+hidden again automatically if it falls behind. Explanations use SHAP's
+per-prediction feature attributions, so this doesn't regress into FFH-style
+"trust me" even though it's a trained model, not a hand-picked formula.
+
 ## Running locally
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+# macOS only, for engine/ml/: brew install libomp (xgboost needs it locally;
+# Linux/CI runners already bundle libgomp)
 
 python -m engine.priors                       # writes data/player_priors.json (~3 min first run)
 python -m engine.calibration.fetch_historical  # downloads historical seasons (~20MB, cached)
@@ -273,7 +360,11 @@ python -m engine.calibration.fit_coefficients  # writes engine/calibration/coeff
 python -m engine.calibration.team_strength     # writes engine/calibration/team_strength.json
 ODDS_API_KEY=... python -m engine.odds         # writes data/odds.json (skips gracefully if unset)
 python -m engine.understat                     # writes data/understat_xg.json
+python -m engine.ml.train                      # writes engine/ml/model.json (skips gracefully if slow/unavailable)
 python -m engine.pipeline                      # writes the rest of /data/*.json
+
+# Optional, ad hoc - not part of any scheduled workflow:
+python -m engine.historical.run_season --season 2024-25
 
 cd app
 npm install
@@ -296,5 +387,10 @@ npm run dev                      # app reads /data via a symlink in app/public
 - [x] Betting-odds integration (The Odds API) - devig + Poisson clean-sheet/xG, replacing FDR per-fixture where priced
 - [x] Understat penalty/xG split correcting the multi-season prior for players who've lost/gained set-piece duty
 - [x] Team-level historical strength model - replaces FPL's FDR for newly-promoted opponents only
+- [x] Confirm-my-squad + fully rolling (single-GW and 5-week/chip) planner, ported to run client-side
+- [x] Transfer/plan-step rationale using the incoming player's own underlying-stats/fixture-difficulty "why"
+- [x] Consistency-weighted uncertainty ("form is temporary, class is permanent")
+- [x] Historical backtest/replay harness (`engine/historical/`) + human-reviewed constant-tuning tool
+- [x] Parallel OpenFPL-style ML prediction (XGBoost, retrained weekly), tracked but gated behind proven real accuracy
 - Skipped by choice: FPL account token auth for pre-deadline squad sync - too fragile (manual OIDC
   token extraction, periodic re-pasting) for what it'd add on top of public team-ID tracking

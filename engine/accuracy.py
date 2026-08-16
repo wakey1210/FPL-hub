@@ -39,6 +39,12 @@ def record_predictions(players: list[PlayerEV], event: int, generated_at: str) -
     """Snapshots this run's prediction for `event` (the next unplayed
     gameweek). Safe to call every pipeline run - see module docstring for why
     overwriting an unscored entry is correct and scored ones are protected.
+
+    Also snapshots the parallel ML prediction (`ml_points`) alongside the
+    heuristic's, when a trained model was available this run - `ml_points`
+    stays at its 0.0 default (a real, if usually wrong, prediction) when it
+    wasn't, so a gameweek's `ml_predictions` map is only meaningfully
+    non-trivial once `engine/ml/predict.py` has actually run.
     """
     log = _load_log()
     gw_key = str(event)
@@ -46,20 +52,26 @@ def record_predictions(players: list[PlayerEV], event: int, generated_at: str) -
         return
 
     predictions = {}
+    ml_predictions = {}
     for p in players:
         fixture = next((f for f in p.fixtures if f.event == event), None)
         if fixture is not None:
             predictions[str(p.id)] = fixture.points
+            ml_predictions[str(p.id)] = fixture.ml_points
 
     log["gameweeks"][gw_key] = {
         "event": event,
         "generated_at": generated_at,
         "predictions": predictions,
+        "ml_predictions": ml_predictions,
         "scored": False,
         "actuals": None,
         "rmse": None,
         "mae": None,
         "n": None,
+        "ml_rmse": None,
+        "ml_mae": None,
+        "ml_n": None,
     }
     _write_log(log)
 
@@ -97,6 +109,15 @@ def score_finished_gameweeks(bootstrap: dict) -> None:
         entry["mae"] = round(sum(abs(e) for e in errors) / n, 3)
         entry["rmse"] = round((sum(e * e for e in errors) / n) ** 0.5, 3)
         entry["n"] = n
+
+        ml_predictions = entry.get("ml_predictions") or {}
+        ml_errors = [ml_predictions[pid] - actuals[pid] for pid in ml_predictions if pid in actuals]
+        if ml_errors:
+            ml_n = len(ml_errors)
+            entry["ml_mae"] = round(sum(abs(e) for e in ml_errors) / ml_n, 3)
+            entry["ml_rmse"] = round((sum(e * e for e in ml_errors) / ml_n) ** 0.5, 3)
+            entry["ml_n"] = ml_n
+
         entry["scored"] = True
         changed = True
 
@@ -105,9 +126,30 @@ def score_finished_gameweeks(bootstrap: dict) -> None:
 
 
 def summary() -> list[dict]:
-    """Scored gameweeks, most recent first, with the (large) `actuals` map
-    stripped out - the frontend only needs the aggregate numbers."""
+    """Scored gameweeks, most recent first, with the (large) prediction/
+    actuals maps stripped out - the frontend only needs the aggregate numbers."""
     log = _load_log()
     scored = [gw for gw in log["gameweeks"].values() if gw["scored"]]
     scored.sort(key=lambda gw: -gw["event"])
-    return [{k: v for k, v in gw.items() if k not in ("predictions", "actuals")} for gw in scored]
+    strip = ("predictions", "ml_predictions", "actuals")
+    return [{k: v for k, v in gw.items() if k not in strip} for gw in scored]
+
+
+CONSECUTIVE_GWS_REQUIRED = 4
+
+
+def ml_currently_better() -> bool:
+    """True only once the ML model's logged RMSE has beaten the heuristic's
+    over the last `CONSECUTIVE_GWS_REQUIRED` scored gameweeks that both have
+    an ML score for - a code-level check, not a manual judgment call, and
+    automatically false again the moment it falls behind. `engine/pipeline.py`
+    uses this to decide whether `ml_ev` is exposed in the app at all - it's
+    always computed/logged regardless, so real evidence keeps accumulating
+    even while this returns False.
+    """
+    scored = summary()
+    comparable = [gw for gw in scored if gw.get("ml_rmse") is not None]
+    if len(comparable) < CONSECUTIVE_GWS_REQUIRED:
+        return False
+    recent = comparable[:CONSECUTIVE_GWS_REQUIRED]  # summary() is already most-recent-first
+    return all(gw["ml_rmse"] < gw["rmse"] for gw in recent)

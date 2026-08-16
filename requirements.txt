@@ -4,3 +4,5 @@ numpy==2.5.2  # only used by engine/calibration (the rare, manual fit step)
 scipy==1.18.0  # only used by engine/odds.py (devig -> Poisson lambda solve)
 understatapi==0.7.1  # only used by engine/understat.py
 rapidfuzz==3.14.5  # only used by engine/understat.py (name matching)
+xgboost==3.4.1  # only used by engine/ml/ (macOS local dev: `brew install libomp` first; Linux/CI runners bundle libgomp already)
+shap==0.52.0  # only used by engine/ml/predict.py (per-prediction feature explanations)

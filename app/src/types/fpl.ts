@@ -43,6 +43,8 @@ export interface Meta {
   next_gameweek: number | null
   next_deadline: string | null
   model_version: string
+  ml_model_loaded?: boolean
+  ml_eligible?: boolean
 }
 
 export interface SquadRecommendation {

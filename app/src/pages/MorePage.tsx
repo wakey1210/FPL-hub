@@ -63,6 +63,14 @@ export function MorePage() {
             <li>Model version: {meta.data?.model_version ?? '…'}</li>
             <li>Data last refreshed: {meta.data ? new Date(meta.data.generated_at).toLocaleString() : '…'}</li>
             <li>Source: official FPL API (public endpoints only)</li>
+            {meta.data?.ml_model_loaded && (
+              <li>
+                Experimental ML model (XGBoost, retrained weekly):{' '}
+                {meta.data.ml_eligible
+                  ? 'currently outperforming the heuristic - see Prediction accuracy above'
+                  : 'tracked for comparison, not yet beating the heuristic consistently enough to be trusted'}
+              </li>
+            )}
           </ul>
         </div>
 

@@ -29,43 +29,79 @@
           "opponent_short": "BHA",
           "is_home": false,
           "fdr": 3,
-          "points": 4.21
+          "points": 4.21,
+          "attack_mult": 0.969,
+          "cs_prob": 0.191,
+          "expected_conceded": 1.653,
+          "ml_points": 4.27
         },
         {
           "event": 2,
           "opponent_short": "ARS",
           "is_home": true,
           "fdr": 4,
-          "points": 4.03
+          "points": 4.03,
+          "attack_mult": 0.88,
+          "cs_prob": 0.192,
+          "expected_conceded": 1.5,
+          "ml_points": 4.1
         },
         {
           "event": 3,
           "opponent_short": "HUL",
           "is_home": false,
           "fdr": 1,
-          "points": 4.77
+          "points": 4.77,
+          "attack_mult": 1.24,
+          "cs_prob": 0.485,
+          "expected_conceded": 0.6,
+          "ml_points": 6.38
         },
         {
           "event": 4,
           "opponent_short": "NFO",
           "is_home": true,
           "fdr": 3,
-          "points": 4.28
+          "points": 4.28,
+          "attack_mult": 1.0,
+          "cs_prob": 0.291,
+          "expected_conceded": 1.213,
+          "ml_points": 5.53
         },
         {
           "event": 5,
           "opponent_short": "TOT",
           "is_home": false,
           "fdr": 3,
-          "points": 4.28
+          "points": 4.28,
+          "attack_mult": 1.0,
+          "cs_prob": 0.261,
+          "expected_conceded": 1.213,
+          "ml_points": 5.18
         },
         {
           "event": 6,
           "opponent_short": "BRE",
           "is_home": true,
           "fdr": 3,
-          "points": 4.28
+          "points": 4.28,
+          "attack_mult": 1.0,
+          "cs_prob": 0.291,
+          "expected_conceded": 1.213,
+          "ml_points": 5.53
         }
+      ],
+      "xg90": 0.516,
+      "xa90": 0.0623,
+      "dc90": 2.3316,
+      "saves90": 0.0,
+      "dc_prob": 0.0583,
+      "ml_ev": 30.99,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "price",
+        "expected goals per 90",
+        "chance of a long appearance"
       ]
     },
     {
@@ -94,43 +130,79 @@
           "opponent_short": "TOT",
           "is_home": true,
           "fdr": 3,
-          "points": 4.31
+          "points": 4.31,
+          "attack_mult": 1.058,
+          "cs_prob": 0.267,
+          "expected_conceded": 1.441,
+          "ml_points": 3.66
         },
         {
           "event": 2,
           "opponent_short": "LEE",
           "is_home": false,
           "fdr": 3,
-          "points": 4.18
+          "points": 4.18,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 3.83
         },
         {
           "event": 3,
           "opponent_short": "SUN",
           "is_home": true,
           "fdr": 2,
-          "points": 4.53
+          "points": 4.53,
+          "attack_mult": 1.146,
+          "cs_prob": 0.338,
+          "expected_conceded": 0.972,
+          "ml_points": 4.18
         },
         {
           "event": 4,
           "opponent_short": "BOU",
           "is_home": false,
           "fdr": 3,
-          "points": 4.18
+          "points": 4.18,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 3.83
         },
         {
           "event": 5,
           "opponent_short": "CHE",
           "is_home": true,
           "fdr": 4,
-          "points": 3.85
+          "points": 3.85,
+          "attack_mult": 0.854,
+          "cs_prob": 0.193,
+          "expected_conceded": 1.563,
+          "ml_points": 3.46
         },
         {
           "event": 6,
           "opponent_short": "AVL",
           "is_home": false,
           "fdr": 4,
-          "points": 3.83
+          "points": 3.83,
+          "attack_mult": 0.854,
+          "cs_prob": 0.163,
+          "expected_conceded": 1.563,
+          "ml_points": 3.17
         }
+      ],
+      "xg90": 0.3938,
+      "xa90": 0.0679,
+      "dc90": 6.2748,
+      "saves90": 0.0,
+      "dc_prob": 0.1569,
+      "ml_ev": 22.13,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "expected goals per 90",
+        "price",
+        "clean-sheet probability"
       ]
     },
     {
@@ -159,43 +231,79 @@
           "opponent_short": "TOT",
           "is_home": true,
           "fdr": 3,
-          "points": 5.11
+          "points": 5.11,
+          "attack_mult": 1.058,
+          "cs_prob": 0.267,
+          "expected_conceded": 1.441,
+          "ml_points": 3.36
         },
         {
           "event": 2,
           "opponent_short": "LEE",
           "is_home": false,
           "fdr": 3,
-          "points": 4.96
+          "points": 4.96,
+          "attack_mult": 1.0,
+          "cs_prob": 0.261,
+          "expected_conceded": 1.213,
+          "ml_points": 2.95
         },
         {
           "event": 3,
           "opponent_short": "SUN",
           "is_home": true,
           "fdr": 2,
-          "points": 5.26
+          "points": 5.26,
+          "attack_mult": 1.12,
+          "cs_prob": 0.341,
+          "expected_conceded": 0.976,
+          "ml_points": 4.4
         },
         {
           "event": 4,
           "opponent_short": "BOU",
           "is_home": false,
           "fdr": 3,
-          "points": 4.96
+          "points": 4.96,
+          "attack_mult": 1.0,
+          "cs_prob": 0.261,
+          "expected_conceded": 1.213,
+          "ml_points": 2.95
         },
         {
           "event": 5,
           "opponent_short": "CHE",
           "is_home": true,
           "fdr": 4,
-          "points": 4.66
+          "points": 4.66,
+          "attack_mult": 0.88,
+          "cs_prob": 0.192,
+          "expected_conceded": 1.5,
+          "ml_points": 2.99
         },
         {
           "event": 6,
           "opponent_short": "AVL",
           "is_home": false,
           "fdr": 4,
-          "points": 4.66
+          "points": 4.66,
+          "attack_mult": 0.88,
+          "cs_prob": 0.162,
+          "expected_conceded": 1.5,
+          "ml_points": 2.5
         }
+      ],
+      "xg90": 0.6449,
+      "xa90": 0.0502,
+      "dc90": 5.8684,
+      "saves90": 0.0,
+      "dc_prob": 0.1467,
+      "ml_ev": 19.15,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "price",
+        "clean-sheet probability",
+        "defensive contribution rate"
       ]
     },
     {
@@ -224,43 +332,79 @@
           "opponent_short": "AVL",
           "is_home": true,
           "fdr": 3,
-          "points": 3.19
+          "points": 3.19,
+          "attack_mult": 1.14,
+          "cs_prob": 0.275,
+          "expected_conceded": 1.406,
+          "ml_points": 2.58
         },
         {
           "event": 2,
           "opponent_short": "CHE",
           "is_home": false,
           "fdr": 4,
-          "points": 2.62
+          "points": 2.62,
+          "attack_mult": 0.85,
+          "cs_prob": 0.15,
+          "expected_conceded": 1.821,
+          "ml_points": 2.01
         },
         {
           "event": 3,
           "opponent_short": "LEE",
           "is_home": true,
           "fdr": 2,
-          "points": 3.5
+          "points": 3.5,
+          "attack_mult": 1.1,
+          "cs_prob": 0.338,
+          "expected_conceded": 1.153,
+          "ml_points": 2.74
         },
         {
           "event": 4,
           "opponent_short": "COV",
           "is_home": false,
           "fdr": 1,
-          "points": 3.96
+          "points": 3.96,
+          "attack_mult": 1.25,
+          "cs_prob": 0.426,
+          "expected_conceded": 0.757,
+          "ml_points": 3.52
         },
         {
           "event": 5,
           "opponent_short": "ARS",
           "is_home": true,
           "fdr": 4,
-          "points": 2.71
+          "points": 2.71,
+          "attack_mult": 0.85,
+          "cs_prob": 0.18,
+          "expected_conceded": 1.821,
+          "ml_points": 2.07
         },
         {
           "event": 6,
           "opponent_short": "SUN",
           "is_home": false,
           "fdr": 3,
-          "points": 3.06
+          "points": 3.06,
+          "attack_mult": 1.0,
+          "cs_prob": 0.238,
+          "expected_conceded": 1.449,
+          "ml_points": 2.37
         }
+      ],
+      "xg90": 0.0,
+      "xa90": 0.001,
+      "dc90": 0.0,
+      "saves90": 2.7295,
+      "dc_prob": 0.0,
+      "ml_ev": 15.29,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "price",
+        "goalkeeper position",
+        "clean-sheet probability"
       ]
     },
     {
@@ -289,43 +433,79 @@
           "opponent_short": "AVL",
           "is_home": true,
           "fdr": 3,
-          "points": 3.04
+          "points": 3.04,
+          "attack_mult": 1.14,
+          "cs_prob": 0.275,
+          "expected_conceded": 1.406,
+          "ml_points": 2.31
         },
         {
           "event": 2,
           "opponent_short": "CHE",
           "is_home": false,
           "fdr": 4,
-          "points": 2.24
+          "points": 2.24,
+          "attack_mult": 0.734,
+          "cs_prob": 0.139,
+          "expected_conceded": 1.727,
+          "ml_points": 1.56
         },
         {
           "event": 3,
           "opponent_short": "LEE",
           "is_home": true,
           "fdr": 2,
-          "points": 3.47
+          "points": 3.47,
+          "attack_mult": 1.327,
+          "cs_prob": 0.329,
+          "expected_conceded": 1.078,
+          "ml_points": 2.71
         },
         {
           "event": 4,
           "opponent_short": "COV",
           "is_home": false,
           "fdr": 1,
-          "points": 4.0
+          "points": 4.0,
+          "attack_mult": 1.413,
+          "cs_prob": 0.434,
+          "expected_conceded": 0.729,
+          "ml_points": 3.9
         },
         {
           "event": 5,
           "opponent_short": "ARS",
           "is_home": true,
           "fdr": 4,
-          "points": 2.33
+          "points": 2.33,
+          "attack_mult": 0.734,
+          "cs_prob": 0.169,
+          "expected_conceded": 1.727,
+          "ml_points": 1.58
         },
         {
           "event": 6,
           "opponent_short": "SUN",
           "is_home": false,
           "fdr": 3,
-          "points": 2.84
+          "points": 2.84,
+          "attack_mult": 1.0,
+          "cs_prob": 0.231,
+          "expected_conceded": 1.364,
+          "ml_points": 2.26
         }
+      ],
+      "xg90": 0.0592,
+      "xa90": 0.0952,
+      "dc90": 4.8882,
+      "saves90": 0.0,
+      "dc_prob": 0.176,
+      "ml_ev": 14.32,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "price",
+        "clean-sheet probability",
+        "fixture difficulty"
       ]
     },
     {
@@ -354,43 +534,79 @@
           "opponent_short": "FUL",
           "is_home": false,
           "fdr": 3,
-          "points": 6.03
+          "points": 6.03,
+          "attack_mult": 1.204,
+          "cs_prob": 0.273,
+          "expected_conceded": 1.298,
+          "ml_points": 4.19
         },
         {
           "event": 2,
           "opponent_short": "BHA",
           "is_home": true,
           "fdr": 2,
-          "points": 5.88
+          "points": 5.88,
+          "attack_mult": 1.146,
+          "cs_prob": 0.338,
+          "expected_conceded": 0.972,
+          "ml_points": 4.67
         },
         {
           "event": 3,
           "opponent_short": "ARS",
           "is_home": false,
           "fdr": 5,
-          "points": 4.3
+          "points": 4.3,
+          "attack_mult": 0.708,
+          "cs_prob": 0.091,
+          "expected_conceded": 1.956,
+          "ml_points": 4.08
         },
         {
           "event": 4,
           "opponent_short": "HUL",
           "is_home": true,
           "fdr": 1,
-          "points": 6.44
+          "points": 6.44,
+          "attack_mult": 1.292,
+          "cs_prob": 0.472,
+          "expected_conceded": 0.612,
+          "ml_points": 5.22
         },
         {
           "event": 5,
           "opponent_short": "BRE",
           "is_home": false,
           "fdr": 3,
-          "points": 5.35
+          "points": 5.35,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 3.85
         },
         {
           "event": 6,
           "opponent_short": "BOU",
           "is_home": true,
           "fdr": 3,
-          "points": 5.37
+          "points": 5.37,
+          "attack_mult": 1.0,
+          "cs_prob": 0.275,
+          "expected_conceded": 1.192,
+          "ml_points": 4.1
         }
+      ],
+      "xg90": 0.58,
+      "xa90": 0.2101,
+      "dc90": 4.5227,
+      "saves90": 0.0,
+      "dc_prob": 0.1131,
+      "ml_ev": 26.11,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "price",
+        "expected assists per 90",
+        "clean-sheet probability"
       ]
     },
     {
@@ -419,43 +635,79 @@
           "opponent_short": "FUL",
           "is_home": false,
           "fdr": 3,
-          "points": 4.28
+          "points": 4.28,
+          "attack_mult": 1.204,
+          "cs_prob": 0.273,
+          "expected_conceded": 1.298,
+          "ml_points": 4.1
         },
         {
           "event": 2,
           "opponent_short": "BHA",
           "is_home": true,
           "fdr": 2,
-          "points": 4.1
+          "points": 4.1,
+          "attack_mult": 1.12,
+          "cs_prob": 0.341,
+          "expected_conceded": 0.976,
+          "ml_points": 4.27
         },
         {
           "event": 3,
           "opponent_short": "ARS",
           "is_home": false,
           "fdr": 5,
-          "points": 3.33
+          "points": 3.33,
+          "attack_mult": 0.76,
+          "cs_prob": 0.118,
+          "expected_conceded": 1.815,
+          "ml_points": 3.35
         },
         {
           "event": 4,
           "opponent_short": "HUL",
           "is_home": true,
           "fdr": 1,
-          "points": 4.36
+          "points": 4.36,
+          "attack_mult": 1.24,
+          "cs_prob": 0.515,
+          "expected_conceded": 0.6,
+          "ml_points": 4.86
         },
         {
           "event": 5,
           "opponent_short": "BRE",
           "is_home": false,
           "fdr": 3,
-          "points": 3.85
+          "points": 3.85,
+          "attack_mult": 1.0,
+          "cs_prob": 0.261,
+          "expected_conceded": 1.213,
+          "ml_points": 3.98
         },
         {
           "event": 6,
           "opponent_short": "BOU",
           "is_home": true,
           "fdr": 3,
-          "points": 3.85
+          "points": 3.85,
+          "attack_mult": 1.0,
+          "cs_prob": 0.291,
+          "expected_conceded": 1.213,
+          "ml_points": 3.95
         }
+      ],
+      "xg90": 0.5158,
+      "xa90": 0.0845,
+      "dc90": 2.2373,
+      "saves90": 0.0,
+      "dc_prob": 0.0559,
+      "ml_ev": 24.51,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "price",
+        "expected goals per 90",
+        "clean-sheet probability"
       ]
     },
     {
@@ -484,43 +736,79 @@
           "opponent_short": "CRY",
           "is_home": true,
           "fdr": 3,
-          "points": 3.63
+          "points": 3.63,
+          "attack_mult": 1.067,
+          "cs_prob": 0.36,
+          "expected_conceded": 1.108,
+          "ml_points": 3.25
         },
         {
           "event": 2,
           "opponent_short": "BOU",
           "is_home": false,
           "fdr": 3,
-          "points": 3.06
+          "points": 3.06,
+          "attack_mult": 1.0,
+          "cs_prob": 0.238,
+          "expected_conceded": 1.449,
+          "ml_points": 3.09
         },
         {
           "event": 3,
           "opponent_short": "MUN",
           "is_home": true,
           "fdr": 4,
-          "points": 2.68
+          "points": 2.68,
+          "attack_mult": 0.85,
+          "cs_prob": 0.18,
+          "expected_conceded": 1.821,
+          "ml_points": 2.82
         },
         {
           "event": 4,
           "opponent_short": "TOT",
           "is_home": false,
           "fdr": 3,
-          "points": 3.06
+          "points": 3.06,
+          "attack_mult": 1.0,
+          "cs_prob": 0.238,
+          "expected_conceded": 1.449,
+          "ml_points": 3.09
         },
         {
           "event": 5,
           "opponent_short": "IPS",
           "is_home": true,
           "fdr": 2,
-          "points": 3.53
+          "points": 3.53,
+          "attack_mult": 1.1,
+          "cs_prob": 0.338,
+          "expected_conceded": 1.153,
+          "ml_points": 3.42
         },
         {
           "event": 6,
           "opponent_short": "HUL",
           "is_home": false,
           "fdr": 1,
-          "points": 4.02
+          "points": 4.02,
+          "attack_mult": 1.25,
+          "cs_prob": 0.426,
+          "expected_conceded": 0.757,
+          "ml_points": 4.01
         }
+      ],
+      "xg90": 0.0,
+      "xa90": 0.0066,
+      "dc90": 0.0,
+      "saves90": 2.9167,
+      "dc_prob": 0.0,
+      "ml_ev": 19.68,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "goalkeeper position",
+        "clean-sheet probability",
+        "fixture difficulty"
       ]
     },
     {
@@ -549,43 +837,79 @@
           "opponent_short": "CRY",
           "is_home": true,
           "fdr": 3,
-          "points": 3.86
+          "points": 3.86,
+          "attack_mult": 1.067,
+          "cs_prob": 0.36,
+          "expected_conceded": 1.108,
+          "ml_points": 2.76
         },
         {
           "event": 2,
           "opponent_short": "BOU",
           "is_home": false,
           "fdr": 3,
-          "points": 3.3
+          "points": 3.3,
+          "attack_mult": 1.0,
+          "cs_prob": 0.231,
+          "expected_conceded": 1.364,
+          "ml_points": 3.18
         },
         {
           "event": 3,
           "opponent_short": "MUN",
           "is_home": true,
           "fdr": 4,
-          "points": 2.8
+          "points": 2.8,
+          "attack_mult": 0.734,
+          "cs_prob": 0.169,
+          "expected_conceded": 1.727,
+          "ml_points": 2.12
         },
         {
           "event": 4,
           "opponent_short": "TOT",
           "is_home": false,
           "fdr": 3,
-          "points": 3.3
+          "points": 3.3,
+          "attack_mult": 1.0,
+          "cs_prob": 0.231,
+          "expected_conceded": 1.364,
+          "ml_points": 3.18
         },
         {
           "event": 5,
           "opponent_short": "IPS",
           "is_home": true,
           "fdr": 2,
-          "points": 3.91
+          "points": 3.91,
+          "attack_mult": 1.327,
+          "cs_prob": 0.329,
+          "expected_conceded": 1.078,
+          "ml_points": 3.25
         },
         {
           "event": 6,
           "opponent_short": "HUL",
           "is_home": false,
           "fdr": 1,
-          "points": 4.45
+          "points": 4.45,
+          "attack_mult": 1.413,
+          "cs_prob": 0.434,
+          "expected_conceded": 0.729,
+          "ml_points": 3.8
         }
+      ],
+      "xg90": 0.0597,
+      "xa90": 0.0637,
+      "dc90": 8.6008,
+      "saves90": 0.0,
+      "dc_prob": 0.3096,
+      "ml_ev": 18.29,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "chance of a long appearance",
+        "price",
+        "expected goals per 90"
       ]
     },
     {
@@ -614,43 +938,79 @@
           "opponent_short": "CRY",
           "is_home": true,
           "fdr": 3,
-          "points": 4.21
+          "points": 4.21,
+          "attack_mult": 1.067,
+          "cs_prob": 0.36,
+          "expected_conceded": 1.108,
+          "ml_points": 3.11
         },
         {
           "event": 2,
           "opponent_short": "BOU",
           "is_home": false,
           "fdr": 3,
-          "points": 4.02
+          "points": 4.02,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 3.32
         },
         {
           "event": 3,
           "opponent_short": "MUN",
           "is_home": true,
           "fdr": 4,
-          "points": 3.74
+          "points": 3.74,
+          "attack_mult": 0.854,
+          "cs_prob": 0.193,
+          "expected_conceded": 1.563,
+          "ml_points": 2.94
         },
         {
           "event": 4,
           "opponent_short": "TOT",
           "is_home": false,
           "fdr": 3,
-          "points": 4.02
+          "points": 4.02,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 3.32
         },
         {
           "event": 5,
           "opponent_short": "IPS",
           "is_home": true,
           "fdr": 2,
-          "points": 4.33
+          "points": 4.33,
+          "attack_mult": 1.146,
+          "cs_prob": 0.338,
+          "expected_conceded": 0.972,
+          "ml_points": 3.57
         },
         {
           "event": 6,
           "opponent_short": "HUL",
           "is_home": false,
           "fdr": 1,
-          "points": 4.65
+          "points": 4.65,
+          "attack_mult": 1.292,
+          "cs_prob": 0.442,
+          "expected_conceded": 0.612,
+          "ml_points": 3.9
         }
+      ],
+      "xg90": 0.3017,
+      "xa90": 0.1088,
+      "dc90": 9.4058,
+      "saves90": 0.0,
+      "dc_prob": 0.2351,
+      "ml_ev": 20.16,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "expected goals per 90",
+        "price",
+        "defensive contribution rate"
       ]
     },
     {
@@ -679,43 +1039,79 @@
           "opponent_short": "HUL",
           "is_home": false,
           "fdr": 1,
-          "points": 7.3
+          "points": 7.3,
+          "attack_mult": 1.591,
+          "cs_prob": 0.562,
+          "expected_conceded": 0.576,
+          "ml_points": 9.45
         },
         {
           "event": 2,
           "opponent_short": "IPS",
           "is_home": true,
           "fdr": 2,
-          "points": 5.9
+          "points": 5.9,
+          "attack_mult": 1.146,
+          "cs_prob": 0.338,
+          "expected_conceded": 0.972,
+          "ml_points": 10.99
         },
         {
           "event": 3,
           "opponent_short": "EVE",
           "is_home": false,
           "fdr": 3,
-          "points": 5.42
+          "points": 5.42,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 8.84
         },
         {
           "event": 4,
           "opponent_short": "MCI",
           "is_home": true,
           "fdr": 4,
-          "points": 4.98
+          "points": 4.98,
+          "attack_mult": 0.854,
+          "cs_prob": 0.193,
+          "expected_conceded": 1.563,
+          "ml_points": 10.66
         },
         {
           "event": 5,
           "opponent_short": "FUL",
           "is_home": false,
           "fdr": 3,
-          "points": 5.42
+          "points": 5.42,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 8.84
         },
         {
           "event": 6,
           "opponent_short": "TOT",
           "is_home": true,
           "fdr": 3,
-          "points": 5.45
+          "points": 5.45,
+          "attack_mult": 1.0,
+          "cs_prob": 0.275,
+          "expected_conceded": 1.192,
+          "ml_points": 10.72
         }
+      ],
+      "xg90": 0.4039,
+      "xa90": 0.3283,
+      "dc90": 7.7457,
+      "saves90": 0.0,
+      "dc_prob": 0.1936,
+      "ml_ev": 59.5,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "price",
+        "chance of a long appearance",
+        "expected goals per 90"
       ]
     },
     {
@@ -744,43 +1140,79 @@
           "opponent_short": "HUL",
           "is_home": false,
           "fdr": 1,
-          "points": 6.56
+          "points": 6.56,
+          "attack_mult": 1.591,
+          "cs_prob": 0.562,
+          "expected_conceded": 0.576,
+          "ml_points": 5.34
         },
         {
           "event": 2,
           "opponent_short": "IPS",
           "is_home": true,
           "fdr": 2,
-          "points": 5.31
+          "points": 5.31,
+          "attack_mult": 1.146,
+          "cs_prob": 0.338,
+          "expected_conceded": 0.972,
+          "ml_points": 5.01
         },
         {
           "event": 3,
           "opponent_short": "EVE",
           "is_home": false,
           "fdr": 3,
-          "points": 4.89
+          "points": 4.89,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 3.9
         },
         {
           "event": 4,
           "opponent_short": "MCI",
           "is_home": true,
           "fdr": 4,
-          "points": 4.5
+          "points": 4.5,
+          "attack_mult": 0.854,
+          "cs_prob": 0.193,
+          "expected_conceded": 1.563,
+          "ml_points": 4.18
         },
         {
           "event": 5,
           "opponent_short": "FUL",
           "is_home": false,
           "fdr": 3,
-          "points": 4.89
+          "points": 4.89,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 3.9
         },
         {
           "event": 6,
           "opponent_short": "TOT",
           "is_home": true,
           "fdr": 3,
-          "points": 4.91
+          "points": 4.91,
+          "attack_mult": 1.0,
+          "cs_prob": 0.275,
+          "expected_conceded": 1.192,
+          "ml_points": 4.3
         }
+      ],
+      "xg90": 0.4027,
+      "xa90": 0.2118,
+      "dc90": 5.2148,
+      "saves90": 0.0,
+      "dc_prob": 0.1304,
+      "ml_ev": 26.63,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "price",
+        "expected assists per 90",
+        "clean-sheet probability"
       ]
     },
     {
@@ -809,43 +1241,79 @@
           "opponent_short": "LIV",
           "is_home": true,
           "fdr": 4,
-          "points": 2.86
+          "points": 2.86,
+          "attack_mult": 0.721,
+          "cs_prob": 0.215,
+          "expected_conceded": 1.689,
+          "ml_points": 2.35
         },
         {
           "event": 2,
           "opponent_short": "TOT",
           "is_home": false,
           "fdr": 3,
-          "points": 3.3
+          "points": 3.3,
+          "attack_mult": 1.0,
+          "cs_prob": 0.231,
+          "expected_conceded": 1.364,
+          "ml_points": 2.64
         },
         {
           "event": 3,
           "opponent_short": "BOU",
           "is_home": true,
           "fdr": 3,
-          "points": 3.39
+          "points": 3.39,
+          "attack_mult": 1.0,
+          "cs_prob": 0.261,
+          "expected_conceded": 1.364,
+          "ml_points": 2.44
         },
         {
           "event": 4,
           "opponent_short": "LEE",
           "is_home": false,
           "fdr": 3,
-          "points": 3.3
+          "points": 3.3,
+          "attack_mult": 1.0,
+          "cs_prob": 0.231,
+          "expected_conceded": 1.364,
+          "ml_points": 2.64
         },
         {
           "event": 5,
           "opponent_short": "HUL",
           "is_home": true,
           "fdr": 1,
-          "points": 4.65
+          "points": 4.65,
+          "attack_mult": 1.413,
+          "cs_prob": 0.464,
+          "expected_conceded": 0.729,
+          "ml_points": 3.64
         },
         {
           "event": 6,
           "opponent_short": "COV",
           "is_home": false,
           "fdr": 1,
-          "points": 4.56
+          "points": 4.56,
+          "attack_mult": 1.413,
+          "cs_prob": 0.434,
+          "expected_conceded": 0.729,
+          "ml_points": 3.7
         }
+      ],
+      "xg90": 0.1458,
+      "xa90": 0.0292,
+      "dc90": 8.8694,
+      "saves90": 0.0,
+      "dc_prob": 0.3193,
+      "ml_ev": 17.41,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "clean-sheet probability",
+        "fixture difficulty",
+        "price"
       ]
     },
     {
@@ -874,43 +1342,79 @@
           "opponent_short": "LEE",
           "is_home": true,
           "fdr": 2,
-          "points": 3.49
+          "points": 3.49,
+          "attack_mult": 1.026,
+          "cs_prob": 0.351,
+          "expected_conceded": 1.137,
+          "ml_points": 3.05
         },
         {
           "event": 2,
           "opponent_short": "LIV",
           "is_home": false,
           "fdr": 4,
-          "points": 2.45
+          "points": 2.45,
+          "attack_mult": 0.734,
+          "cs_prob": 0.139,
+          "expected_conceded": 1.727,
+          "ml_points": 2.15
         },
         {
           "event": 3,
           "opponent_short": "TOT",
           "is_home": true,
           "fdr": 3,
-          "points": 3.12
+          "points": 3.12,
+          "attack_mult": 1.0,
+          "cs_prob": 0.261,
+          "expected_conceded": 1.364,
+          "ml_points": 2.49
         },
         {
           "event": 4,
           "opponent_short": "AVL",
           "is_home": false,
           "fdr": 4,
-          "points": 2.45
+          "points": 2.45,
+          "attack_mult": 0.734,
+          "cs_prob": 0.139,
+          "expected_conceded": 1.727,
+          "ml_points": 2.15
         },
         {
           "event": 5,
           "opponent_short": "COV",
           "is_home": true,
           "fdr": 1,
-          "points": 4.23
+          "points": 4.23,
+          "attack_mult": 1.413,
+          "cs_prob": 0.464,
+          "expected_conceded": 0.729,
+          "ml_points": 3.7
         },
         {
           "event": 6,
           "opponent_short": "CRY",
           "is_home": false,
           "fdr": 3,
-          "points": 3.04
+          "points": 3.04,
+          "attack_mult": 1.0,
+          "cs_prob": 0.231,
+          "expected_conceded": 1.364,
+          "ml_points": 2.61
         }
+      ],
+      "xg90": 0.0622,
+      "xa90": 0.1106,
+      "dc90": 6.8151,
+      "saves90": 0.0,
+      "dc_prob": 0.2453,
+      "ml_ev": 16.15,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "clean-sheet probability",
+        "fixture difficulty",
+        "price"
       ]
     },
     {
@@ -939,43 +1443,79 @@
           "opponent_short": "BRE",
           "is_home": false,
           "fdr": 3,
-          "points": 3.12
+          "points": 3.12,
+          "attack_mult": 0.994,
+          "cs_prob": 0.216,
+          "expected_conceded": 1.534,
+          "ml_points": 3.08
         },
         {
           "event": 2,
           "opponent_short": "NEW",
           "is_home": true,
           "fdr": 2,
-          "points": 3.94
+          "points": 3.94,
+          "attack_mult": 1.327,
+          "cs_prob": 0.329,
+          "expected_conceded": 1.078,
+          "ml_points": 3.85
         },
         {
           "event": 3,
           "opponent_short": "NFO",
           "is_home": false,
           "fdr": 3,
-          "points": 3.25
+          "points": 3.25,
+          "attack_mult": 1.0,
+          "cs_prob": 0.231,
+          "expected_conceded": 1.364,
+          "ml_points": 3.14
         },
         {
           "event": 4,
           "opponent_short": "EVE",
           "is_home": true,
           "fdr": 3,
-          "points": 3.33
+          "points": 3.33,
+          "attack_mult": 1.0,
+          "cs_prob": 0.261,
+          "expected_conceded": 1.364,
+          "ml_points": 3.36
         },
         {
           "event": 5,
           "opponent_short": "AVL",
           "is_home": true,
           "fdr": 3,
-          "points": 3.33
+          "points": 3.33,
+          "attack_mult": 1.0,
+          "cs_prob": 0.261,
+          "expected_conceded": 1.364,
+          "ml_points": 3.36
         },
         {
           "event": 6,
           "opponent_short": "MUN",
           "is_home": false,
           "fdr": 4,
-          "points": 2.59
+          "points": 2.59,
+          "attack_mult": 0.734,
+          "cs_prob": 0.139,
+          "expected_conceded": 1.727,
+          "ml_points": 2.34
         }
+      ],
+      "xg90": 0.0703,
+      "xa90": 0.1749,
+      "dc90": 5.6004,
+      "saves90": 0.0,
+      "dc_prob": 0.2016,
+      "ml_ev": 19.13,
+      "ml_uncertainty": 3.1,
+      "ml_why": [
+        "expected goals per 90",
+        "expected assists per 90",
+        "clean-sheet probability"
       ]
     }
   ],

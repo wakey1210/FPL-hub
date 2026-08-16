@@ -1,0 +1,58 @@
+name: Retrain ML model
+
+on:
+  schedule:
+    # Weekly, after Sunday's late kickoffs are typically scored - kept off
+    # the 3-hourly hot loop since a full retrain reads several seasons'
+    # historical CSVs (heavier than the 2-call budget), and off
+    # refresh-priors.yml's slot so neither ever blocks the other.
+    - cron: '0 6 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-fpl-data
+  cancel-in-progress: false
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install engine dependencies
+        run: pip install -r requirements.txt
+
+      - name: Retrain ML model
+        run: python -m engine.ml.train
+
+      - name: Commit updated model
+        id: commit
+        run: |
+          git config user.name "fpl-hub-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add engine/ml/model.json engine/ml/model_meta.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Retrain ML model ($(date -u +'%Y-%m-%d'))"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger a full pipeline re-run
+        # Inference needs to run against the freshly retrained model, not
+        # just a static-site rebuild - pipeline.yml itself triggers
+        # deploy-pages.yml once it's done, so this cascades correctly.
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pipeline.yml --ref main

@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from engine import accuracy, fetch, model, my_team, optimise, planner, priors, transfers
+from engine.ml import predict as ml_predict
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 COEFFICIENTS_PATH = Path(__file__).resolve().parent / "calibration" / "coefficients.json"
@@ -62,6 +63,10 @@ def run() -> None:
         odds=odds,
         understat=understat,
     )
+    if ml_predict.model_available():
+        print("Adding parallel ML prediction (engine/ml/predict.py)...")
+        ml_predict.add_ml_predictions(players, bootstrap)
+
     players_by_id = {p.id: p for p in players}
 
     generated_at = datetime.now(timezone.utc).isoformat()
@@ -71,6 +76,16 @@ def run() -> None:
         accuracy.record_predictions(players, next_event["id"], generated_at)
     accuracy.score_finished_gameweeks(bootstrap)
     accuracy_out = accuracy.summary()
+    # Always computed/logged above regardless - only gates whether the app
+    # actually surfaces ml_ev/ml_why, never whether it's tracked. Also
+    # requires a handful of real gameweeks to have been played first (too
+    # little in-season signal before then) - see engine/ml/predict.py.
+    ml_eligible = (
+        ml_predict.model_available()
+        and current_event is not None
+        and current_event["id"] >= ml_predict.MIN_GAMEWEEK_FOR_ML
+        and accuracy.ml_currently_better()
+    )
 
     print("Optimising initial squad...")
     squad_result = optimise.select_squad(players)
@@ -96,6 +111,8 @@ def run() -> None:
         "understat_loaded": understat is not None,
         "understat_generated_at": understat.get("generated_at") if understat else None,
         "understat_players_matched": len(understat["players"]) if understat else 0,
+        "ml_model_loaded": ml_predict.model_available(),
+        "ml_eligible": ml_eligible,
     }
 
     teams = [

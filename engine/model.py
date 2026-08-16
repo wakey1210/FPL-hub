@@ -82,6 +82,18 @@ class FixtureEV:
     is_home: bool
     fdr: int
     points: float
+    # Per-fixture intermediate quantities, otherwise computed and discarded -
+    # exposed so engine/ml/features.py can read ML training/inference
+    # features straight off the same build_player_ev() output every other
+    # consumer uses, rather than re-deriving them in a second code path
+    # (which is exactly the train/serve skew risk that module is designed
+    # to avoid).
+    attack_mult: float = 1.0
+    cs_prob: float = 0.0
+    expected_conceded: float = 0.0
+    # Parallel per-fixture ML prediction (engine/ml/predict.py) - populated
+    # afterward, same optional/additive status as PlayerEV.ml_ev below.
+    ml_points: float = 0.0
 
 
 @dataclass
@@ -102,6 +114,20 @@ class PlayerEV:
     uncertainty: float
     why: list[str] = field(default_factory=list)
     fixtures: list[FixtureEV] = field(default_factory=list)
+    # Same "expose, don't re-derive" reasoning as FixtureEV's extra fields above.
+    xg90: float = 0.0
+    xa90: float = 0.0
+    dc90: float = 0.0
+    saves90: float = 0.0
+    dc_prob: float = 0.0
+    # Parallel, optional ML prediction (engine/ml/predict.py) - never
+    # computed here, only ever populated afterward by pipeline.py if a
+    # trained model exists. Stays at these defaults (0.0/[]) when it
+    # doesn't, so `total_ev`/`why` remain the sole prediction unless a
+    # genuinely trained model is present.
+    ml_ev: float = 0.0
+    ml_uncertainty: float = 0.0
+    ml_why: list[str] = field(default_factory=list)
 
 
 def season_started(bootstrap: dict) -> bool:
@@ -536,6 +562,9 @@ def build_player_ev(
                     is_home=is_home,
                     fdr=fdr,
                     points=round(fixture_total, 2),
+                    attack_mult=round(attack_mult, 4),
+                    cs_prob=round(cs_prob, 4),
+                    expected_conceded=round(expected_conceded, 4),
                 )
             )
 
@@ -622,6 +651,11 @@ def build_player_ev(
                 uncertainty=uncertainty,
                 why=why[:3],
                 fixtures=fixture_evs,
+                xg90=round(xg90, 4),
+                xa90=round(xa90, 4),
+                dc90=round(dc90, 4),
+                saves90=round(saves90, 4),
+                dc_prob=round(dc_prob, 4),
             )
         )
 

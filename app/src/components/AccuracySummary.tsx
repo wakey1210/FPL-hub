@@ -24,12 +24,23 @@ export function AccuracySummary({ data }: { data: AccuracySummaryData }) {
         {data.map((gw) => {
           const inRange = gw.rmse >= BENCHMARK_LOW && gw.rmse <= BENCHMARK_HIGH
           return (
-            <div key={gw.event} className="flex items-center justify-between text-xs bg-white/5 rounded-lg px-3 py-2">
-              <span className="font-semibold">GW{gw.event}</span>
-              <span className={inRange ? 'text-[#00ff87]' : 'text-amber-300'}>
-                RMSE {gw.rmse.toFixed(2)} · MAE {gw.mae.toFixed(2)}
-              </span>
-              <span className="text-white/40">n={gw.n}</span>
+            <div key={gw.event} className="bg-white/5 rounded-lg px-3 py-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-semibold">GW{gw.event}</span>
+                <span className={inRange ? 'text-[#00ff87]' : 'text-amber-300'}>
+                  RMSE {gw.rmse.toFixed(2)} · MAE {gw.mae.toFixed(2)}
+                </span>
+                <span className="text-white/40">n={gw.n}</span>
+              </div>
+              {gw.ml_rmse != null && (
+                <div className="flex items-center justify-between text-[11px] text-white/40 mt-1">
+                  <span>ML model (experimental)</span>
+                  <span>
+                    RMSE {gw.ml_rmse.toFixed(2)} · MAE {(gw.ml_mae ?? 0).toFixed(2)}
+                  </span>
+                  <span>n={gw.ml_n}</span>
+                </div>
+              )}
             </div>
           )
         })}
