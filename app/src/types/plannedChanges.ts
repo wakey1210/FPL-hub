@@ -4,6 +4,7 @@ export interface StagedTransfer {
   outName: string
   inName: string
   hitCost: number
+  costDelta: number // tenths of £m; positive = the swap costs more money
 }
 
 export interface PlannedChanges {

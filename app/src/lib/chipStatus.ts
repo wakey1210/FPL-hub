@@ -1,7 +1,8 @@
 // Mirrors engine/planner.py's CHIP_WINDOWS - verified live from the 26/27
 // bootstrap["chips"] data: Wildcard/Free Hit playable from GW2, Bench Boost/
 // Triple Captain from GW1, both halves splitting at the GW19/20 boundary.
-const CHIP_WINDOWS: Record<string, [number, number][]> = {
+// Exported for reuse by transferPlanner.ts's ported chip-eligibility logic.
+export const CHIP_WINDOWS: Record<string, [number, number][]> = {
   wildcard: [
     [2, 19],
     [20, 38],

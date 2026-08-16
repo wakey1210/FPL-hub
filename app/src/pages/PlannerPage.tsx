@@ -1,13 +1,17 @@
+import { useMemo } from 'react'
 import { useJsonData } from '../lib/data'
 import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { fdrClasses } from '../lib/format'
 import { PlanStepCard } from '../components/PlanStepCard'
 import { StagedTransfersCart } from '../components/StagedTransfersCart'
 import { ChipStrategyWidget } from '../components/ChipStrategyWidget'
+import { ChipsUsedEditor } from '../components/ChipsUsedEditor'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
+import { useDeclaredTeam } from '../lib/useDeclaredTeam'
+import { planTransfers } from '../lib/transferPlanner'
 import type { TeamTicker } from '../types/ticker'
-import type { TransferPlan } from '../types/transferPlan'
-import type { Meta } from '../types/fpl'
+import type { PlanStep, TransferPlan } from '../types/transferPlan'
+import type { Meta, PlayerEV } from '../types/fpl'
 import type { MyTeam } from '../types/myTeam'
 
 export function PlannerPage() {
@@ -15,45 +19,87 @@ export function PlannerPage() {
   const transferPlan = useJsonData<TransferPlan>('transfer_plan.json')
   const meta = useJsonData<Meta>('meta.json')
   const myTeam = useJsonData<MyTeam>('my_team.json')
+  const players = useJsonData<PlayerEV[]>('players.json')
   const { plan, addStagedTransfer, removeStagedTransfer, clearStagedTransfers } = usePlannedChanges()
+  const { declared, setChipUsed, remainingBank, remainingFreeTransfers } = useDeclaredTeam()
+
+  const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
+  const currentEvent = meta.data?.next_gameweek ?? meta.data?.current_gameweek ?? null
+
+  // Client-side rolling 5-week/chip plan from a declared squad - recomputes
+  // whenever players.json refreshes, the staged-transfers cart changes, or
+  // chips-used is updated, off the same 3-hourly hot loop.
+  const declaredSteps = useMemo((): PlanStep[] => {
+    if (hasLiveTeam || !declared.squadIds || !players.data || currentEvent === null) return []
+    const byId = new Map(players.data.map((p) => [p.id, p]))
+    const squad = declared.squadIds.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p)
+    if (squad.length === 0) return []
+    const bank = remainingBank(plan.stagedTransfers)
+    const freeTransfers = remainingFreeTransfers(plan.stagedTransfers)
+    return planTransfers(squad, players.data, bank, freeTransfers, declared.chipsUsed, currentEvent).map((s) => ({
+      event: s.event,
+      transfers_out: s.transfersOut,
+      transfers_in: s.transfersIn,
+      hit_cost: s.hitCost,
+      chip_played: s.chipPlayed,
+      projected_gain: s.projectedGain,
+      free_transfers_after: s.freeTransfersAfter,
+      bank_after: s.bankAfter,
+      rationale: s.rationale,
+      out: s.transfersOut.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p),
+      in: s.transfersIn.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p),
+    }))
+  }, [
+    hasLiveTeam,
+    declared.squadIds,
+    declared.chipsUsed,
+    players.data,
+    currentEvent,
+    plan.stagedTransfers,
+    remainingBank,
+    remainingFreeTransfers,
+  ])
 
   if (ticker.loading) return <Layout title="Planner"><LoadingState /></Layout>
   if (ticker.error || !ticker.data) return <Layout title="Planner"><ErrorState message={ticker.error ?? 'no data'} /></Layout>
 
   const gwCount = Math.max(...ticker.data.map((t) => t.fixtures.length), 0)
   const gwLabels = Array.from({ length: gwCount }, (_, i) => i + 1)
-  const hasPlan = transferPlan.data?.available && (transferPlan.data.steps?.length ?? 0) > 0
+  const liveSteps = hasLiveTeam && transferPlan.data?.available ? transferPlan.data.steps ?? [] : []
+  const activeSteps = hasLiveTeam ? liveSteps : declaredSteps
+  const hasPlan = activeSteps.length > 0
 
   const isStaged = (outId: number, inId: number) =>
     plan.stagedTransfers.some((t) => t.outId === outId && t.inId === inId)
 
   const recommendedByChip: Record<string, number> = {}
-  if (hasPlan) {
-    for (const step of transferPlan.data!.steps!) {
-      if (step.chip_played) recommendedByChip[step.chip_played] = step.event
-    }
+  for (const step of activeSteps) {
+    if (step.chip_played) recommendedByChip[step.chip_played] = step.event
   }
-  const currentEvent = meta.data?.next_gameweek ?? meta.data?.current_gameweek ?? null
 
   return (
     <Layout title="Planner">
-      {myTeam.data?.configured && (
+      {hasLiveTeam ? (
         <ChipStrategyWidget
-          chipsUsed={myTeam.data.chips_used ?? []}
+          chipsUsed={myTeam.data!.chips_used ?? []}
           currentEvent={currentEvent}
           recommendedByChip={recommendedByChip}
         />
+      ) : (
+        <ChipsUsedEditor chipsUsed={declared.chipsUsed} onToggle={setChipUsed} />
       )}
       {hasPlan ? (
         <div className="mb-5">
           <p className="text-sm font-semibold mb-1">
-            Your 5-week plan (GW{transferPlan.data!.horizon_start}–{transferPlan.data!.horizon_end})
+            Your 5-week plan (GW{activeSteps[0].event}–{activeSteps[activeSteps.length - 1].event})
           </p>
           <p className="text-[11px] text-white/40 mb-2">
-            Suggested transfers and chip timing, factoring in your bank, free transfers and hit costs.
+            {hasLiveTeam
+              ? 'Suggested transfers and chip timing, factoring in your bank, free transfers and hit costs.'
+              : 'Based on your declared squad - will switch to your live FPL team once synced.'}
           </p>
           <div className="space-y-2">
-            {transferPlan.data!.steps!.map((step) => (
+            {activeSteps.map((step) => (
               <PlanStepCard
                 key={step.event}
                 step={step}
@@ -67,6 +113,7 @@ export function PlannerPage() {
                           outName: step.out[0].web_name,
                           inName: step.in[0].web_name,
                           hitCost: step.hit_cost,
+                          costDelta: step.in[0].now_cost - step.out[0].now_cost,
                         })
                     : undefined
                 }
@@ -77,7 +124,9 @@ export function PlannerPage() {
       ) : (
         <div className="mb-5 rounded-xl bg-[#1e1e2a] p-4">
           <p className="text-sm text-white/60">
-            {transferPlan.data?.reason ?? 'No 5-week plan available yet.'}
+            {hasLiveTeam
+              ? transferPlan.data?.reason ?? 'No 5-week plan available yet.'
+              : 'Confirm your squad on the Pick Team tab to see a 5-week plan.'}
           </p>
         </div>
       )}

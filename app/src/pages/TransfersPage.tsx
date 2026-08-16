@@ -6,18 +6,49 @@ import { PlayerDetailSheet } from '../components/PlayerDetailSheet'
 import { TransferSuggestionCard } from '../components/TransferSuggestionCard'
 import { StagedTransfersCart } from '../components/StagedTransfersCart'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
+import { useDeclaredTeam } from '../lib/useDeclaredTeam'
+import { suggestTransfers } from '../lib/transferSuggestions'
 import type { PlayerEV, Position } from '../types/fpl'
-import type { TransferSuggestions } from '../types/transferSuggestions'
+import type { MyTeam } from '../types/myTeam'
+import type { TransferSuggestion, TransferSuggestions } from '../types/transferSuggestions'
 
 const POSITIONS: (Position | 'ALL')[] = ['ALL', 'GKP', 'DEF', 'MID', 'FWD']
 
 export function TransfersPage() {
   const players = useJsonData<PlayerEV[]>('players.json')
   const suggestions = useJsonData<TransferSuggestions>('transfer_suggestions.json')
+  const myTeam = useJsonData<MyTeam>('my_team.json')
   const [query, setQuery] = useState('')
   const [position, setPosition] = useState<Position | 'ALL'>('ALL')
   const [selected, setSelected] = useState<PlayerEV | null>(null)
   const { plan, addStagedTransfer, removeStagedTransfer, clearStagedTransfers } = usePlannedChanges()
+  const { declared, remainingBank, remainingFreeTransfers } = useDeclaredTeam()
+
+  const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
+
+  // Client-side rolling suggestions from a declared (not live-synced) squad -
+  // recomputes automatically whenever players.json refreshes or the staged-
+  // transfers cart changes, off the same 3-hourly hot loop that already
+  // refreshes players.json, no extra polling needed.
+  const declaredSuggestions = useMemo((): TransferSuggestion[] => {
+    if (hasLiveTeam || !declared.squadIds || !players.data) return []
+    const byId = new Map(players.data.map((p) => [p.id, p]))
+    const squad = declared.squadIds.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p)
+    if (squad.length === 0) return []
+    const bank = remainingBank(plan.stagedTransfers)
+    const freeTransfers = remainingFreeTransfers(plan.stagedTransfers)
+    return suggestTransfers(squad, players.data, bank, freeTransfers).map((s) => ({
+      out_id: s.outId,
+      in_id: s.inId,
+      ev_delta: s.evDelta,
+      cost_delta: s.costDelta,
+      net_gain: s.netGain,
+      uses_hit: s.usesHit,
+      rationale: s.rationale,
+      out: s.out,
+      in: s.in,
+    }))
+  }, [hasLiveTeam, declared.squadIds, players.data, plan.stagedTransfers, remainingBank, remainingFreeTransfers])
 
   const filtered = useMemo(() => {
     if (!players.data) return []
@@ -31,22 +62,29 @@ export function TransfersPage() {
   if (players.loading) return <Layout title="Transfers"><LoadingState /></Layout>
   if (players.error || !players.data) return <Layout title="Transfers"><ErrorState message={players.error ?? 'no data'} /></Layout>
 
-  const hasSuggestions = suggestions.data?.available && (suggestions.data.suggestions?.length ?? 0) > 0
+  const liveSuggestions = hasLiveTeam && suggestions.data?.available ? suggestions.data.suggestions ?? [] : []
+  const activeSuggestions = hasLiveTeam ? liveSuggestions : declaredSuggestions
+  const hasSuggestions = activeSuggestions.length > 0
   const isStaged = (outId: number, inId: number) =>
     plan.stagedTransfers.some((t) => t.outId === outId && t.inId === inId)
 
   return (
     <Layout title="Transfers">
-      {hasSuggestions && (
+      {hasSuggestions ? (
         <div className="mb-4">
           <div className="flex items-baseline justify-between mb-2">
             <p className="text-sm font-semibold">Suggested transfers</p>
-            <p className="text-[11px] text-white/40">
-              {suggestions.data!.free_transfers} FT available
-            </p>
+            {hasLiveTeam && (
+              <p className="text-[11px] text-white/40">{suggestions.data!.free_transfers} FT available</p>
+            )}
           </div>
+          {!hasLiveTeam && (
+            <p className="text-[11px] text-white/40 mb-2">
+              Based on your declared squad - will switch to your live FPL team once synced.
+            </p>
+          )}
           <div className="space-y-2">
-            {suggestions.data!.suggestions!.map((s) => (
+            {activeSuggestions.map((s) => (
               <TransferSuggestionCard
                 key={`${s.out_id}-${s.in_id}`}
                 s={s}
@@ -58,12 +96,22 @@ export function TransfersPage() {
                     outName: s.out.web_name,
                     inName: s.in.web_name,
                     hitCost: s.uses_hit ? 4 : 0,
+                    costDelta: s.cost_delta,
                   })
                 }
               />
             ))}
           </div>
         </div>
+      ) : (
+        !hasLiveTeam &&
+        !declared.squadIds && (
+          <div className="mb-4 rounded-xl bg-[#1e1e2a] p-4">
+            <p className="text-sm text-white/60">
+              Confirm your squad on the Pick Team tab to see transfer suggestions.
+            </p>
+          </div>
+        )
       )}
 
       <input

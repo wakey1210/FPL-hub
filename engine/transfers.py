@@ -16,9 +16,9 @@ for players who have risen in price since being bought.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-from engine.model import PlayerEV
+from engine.model import FORECAST_GAMEWEEKS, PlayerEV
 
 HIT_COST = 4
 
@@ -31,6 +31,12 @@ class TransferSuggestion:
     cost_delta: int  # tenths of £m; positive = the swap costs more money
     net_gain: float  # ev_delta, minus a hit cost if it would use a paid transfer
     uses_hit: bool
+    # Why this specific swap - the incoming player's own top "why" factors
+    # (underlying stats, fixture difficulty, etc. - whatever build_player_ev
+    # already computed for them) plus one line quantifying the edge over the
+    # outgoing player, reusing the existing why-list infrastructure rather
+    # than a separate natural-language generator.
+    rationale: list[str] = field(default_factory=list)
 
 
 def suggest_transfers(
@@ -62,6 +68,9 @@ def suggest_transfers(
         ev_delta = round(best.total_ev - out_player.total_ev, 2)
         uses_hit = free_transfers < 1
         net_gain = round(ev_delta - (HIT_COST if uses_hit else 0), 2)
+        rationale = list(best.why[:2]) + [
+            f"+{ev_delta:.1f} EV over {out_player.web_name} across the next {FORECAST_GAMEWEEKS} gameweeks"
+        ]
         suggestions.append(
             TransferSuggestion(
                 out_id=out_player.id,
@@ -70,6 +79,7 @@ def suggest_transfers(
                 cost_delta=best.now_cost - out_player.now_cost,
                 net_gain=net_gain,
                 uses_hit=uses_hit,
+                rationale=rationale,
             )
         )
 

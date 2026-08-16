@@ -7,6 +7,7 @@ export interface TransferSuggestion {
   cost_delta: number
   net_gain: number
   uses_hit: boolean
+  rationale: string[]
   out: PlayerEV
   in: PlayerEV
 }

@@ -136,8 +136,13 @@ def _simulate_transfers(
                 step.transfers_in = [best.in_id]
                 step.projected_gain = round(best.ev_delta - step.hit_cost, 2)
                 hit_note = f" (takes a -{HIT_COST} hit)" if step.hit_cost else " (free transfer)"
+                # Lead with the incoming player's own top "why" factor
+                # (underlying stats, fixture difficulty, etc.) - the same
+                # reasoning already computed for them, not a separate
+                # explanation invented just for this plan step.
+                why_prefix = f"{in_player_full.why[0]} — " if in_player_full.why else ""
                 step.rationale = (
-                    f"OUT {out_player.web_name} → IN {in_player_full.web_name}: "
+                    f"{why_prefix}OUT {out_player.web_name} → IN {in_player_full.web_name}: "
                     f"+{best.ev_delta:.1f} EV over the rest of the plan{hit_note}"
                 )
             elif best.ev_delta > 0:

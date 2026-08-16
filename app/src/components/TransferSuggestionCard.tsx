@@ -39,6 +39,15 @@ export function TransferSuggestionCard({ s, onAdd, added }: Props) {
           </p>
         </div>
       </div>
+      {s.rationale?.length > 0 && (
+        <ul className="mt-2 space-y-0.5">
+          {s.rationale.map((line, i) => (
+            <li key={i} className="text-[11px] text-white/60 leading-snug">
+              {line}
+            </li>
+          ))}
+        </ul>
+      )}
       {s.uses_hit && (
         <p className="text-[11px] text-amber-300 mt-2">Uses a -4 hit (no free transfer left)</p>
       )}

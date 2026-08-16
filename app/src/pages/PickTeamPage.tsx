@@ -1,25 +1,38 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useJsonData } from '../lib/data'
 import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { PitchView } from '../components/PitchView'
 import { SquadListView } from '../components/SquadListView'
 import { PlayerDetailSheet, type SheetAction } from '../components/PlayerDetailSheet'
+import { ConfirmSquadModal } from '../components/ConfirmSquadModal'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
+import { useDeclaredTeam } from '../lib/useDeclaredTeam'
 import { optimiseStartingXI } from '../lib/formation'
-import type { PlayerEV, SquadRecommendation } from '../types/fpl'
+import type { Meta, PlayerEV, SquadRecommendation } from '../types/fpl'
 import type { MyTeam } from '../types/myTeam'
 
 export function PickTeamPage() {
   const squadRec = useJsonData<SquadRecommendation>('squad_recommendation.json')
   const myTeam = useJsonData<MyTeam>('my_team.json')
   const allPlayers = useJsonData<PlayerEV[]>('players.json')
+  const meta = useJsonData<Meta>('meta.json')
   const [selected, setSelected] = useState<PlayerEV | null>(null)
   const [swapAnchor, setSwapAnchor] = useState<PlayerEV | null>(null)
   const [swapError, setSwapError] = useState<string | null>(null)
   const [viewMode, setViewMode] = useState<'pitch' | 'list'>('pitch')
-  const { plan, trySwap, applyOptimisedLineup, setCaptain, setViceCaptain, resetLineup } = usePlannedChanges()
+  const [showConfirmModal, setShowConfirmModal] = useState(false)
+  const { plan, trySwap, applyOptimisedLineup, setCaptain, setViceCaptain, resetLineup, clearStagedTransfers } =
+    usePlannedChanges()
+  const { confirmSquad, clearDeclaredTeam } = useDeclaredTeam()
 
   const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
+
+  // Once a real team ID has synced, the server-computed suggestions/plan
+  // take over entirely - a stale client-declared squad from before the sync
+  // would otherwise linger and confuse which source is authoritative.
+  useEffect(() => {
+    if (hasLiveTeam) clearDeclaredTeam()
+  }, [hasLiveTeam, clearDeclaredTeam])
 
   const liveView = useMemo(() => {
     if (!hasLiveTeam || !allPlayers.data) return null
@@ -116,6 +129,14 @@ export function PickTeamPage() {
     applyOptimisedLineup(lineup)
   }
 
+  const handleConfirmSquad = (bank: number, freeTransfers: number) => {
+    const event = meta.data?.next_gameweek ?? meta.data?.current_gameweek ?? null
+    confirmSquad(view.squad.map((p) => p.id), bank, freeTransfers, event)
+    resetLineup()
+    clearStagedTransfers()
+    setShowConfirmModal(false)
+  }
+
   return (
     <Layout title="Pick Team">
       <p className="text-xs text-white/50 mb-2">
@@ -150,6 +171,14 @@ export function PickTeamPage() {
               className="shrink-0 min-h-[44px] px-3 rounded-lg bg-white/10 text-xs font-semibold text-white transition-colors active:bg-white/20"
             >
               Reset
+            </button>
+          )}
+          {!hasLiveTeam && (
+            <button
+              onClick={() => setShowConfirmModal(true)}
+              className="shrink-0 min-h-[44px] px-3 rounded-lg bg-white/10 text-xs font-semibold text-white transition-colors active:bg-white/20"
+            >
+              Confirm my squad
             </button>
           )}
         </div>
@@ -212,6 +241,14 @@ export function PickTeamPage() {
         onClose={() => setSelected(null)}
         actions={selected ? actionsFor(selected) : []}
       />
+      {showConfirmModal && (
+        <ConfirmSquadModal
+          squadSize={view.squad.length}
+          defaultBank={0}
+          onConfirm={handleConfirmSquad}
+          onClose={() => setShowConfirmModal(false)}
+        />
+      )}
     </Layout>
   )
 }

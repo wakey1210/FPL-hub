@@ -47,6 +47,17 @@ FDR_EXPECTED_CONCEDED = {1: 0.85, 2: 1.05, 3: 1.30, 4: 1.65, 5: 2.10}
 DC_DAMPING_DEFAULT = 0.85
 HOME_CS_BONUS = 0.03
 
+# "Form is temporary, class is permanent": a hand-picked neutral pivot for
+# prior.consistency (coefficient of variation of season-level xGI/90 across
+# up to 3 seasons - see engine/priors.py) - below it, output has been stable
+# across seasons and uncertainty tightens; above it, output was driven by
+# one standout season/hot streak and uncertainty widens. The +-0.15 clamp
+# keeps this smaller in magnitude than the promoted-opponent bump below,
+# since consistency is corroborating evidence, not a hard fixture fact.
+CONSISTENCY_NEUTRAL_CV = 0.35
+CONSISTENCY_ADJ_SCALE = 0.5
+CONSISTENCY_ADJ_CLAMP = 0.15
+
 # A full historical season is 38 games; used to turn total minutes into a
 # "how nailed-on were they" share, whether that's this-season-so-far minutes
 # once real gameweeks exist, or the multi-season prior's blended share before
@@ -538,6 +549,12 @@ def build_player_ev(
         # player's point sources actually depend on reaching.
         confidence_gap = 1 - mp.p_60_plus
         uncertainty = round(total_ev * (0.15 + 0.35 * confidence_gap) + 0.3, 2)
+        if prior and prior.consistency is not None:
+            consistency_adj = max(
+                -CONSISTENCY_ADJ_CLAMP,
+                min(CONSISTENCY_ADJ_CLAMP, (prior.consistency - CONSISTENCY_NEUTRAL_CV) * CONSISTENCY_ADJ_SCALE),
+            )
+            uncertainty = round(uncertainty + consistency_adj, 2)
         if faces_promoted_team:
             # A promoted opponent's fdr_equivalent leans on a bottom-quartile
             # fallback, not real data for that specific team - flag the lower
@@ -564,6 +581,10 @@ def build_player_ev(
             )
         elif xgi90 > 0:
             why.append(f"Underlying output: {xgi90:.2f} combined xG+xA per 90 minutes")
+        if prior and prior.consistency is not None and prior.consistency < 0.2:
+            why.append(f"Consistently productive across the last {len(prior.seasons_used)} seasons")
+        elif prior and prior.consistency is not None and prior.consistency > 0.6:
+            why.append("Output driven by one standout season - underlying rates are volatile")
         if e.get("penalties_order") == 1:
             why.append(f"Primary penalty taker (+{SET_PIECE_PENALTY_XG_BOOST:.2f} xG/90)")
         elif e.get("penalties_order") == 2:

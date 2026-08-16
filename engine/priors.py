@@ -58,14 +58,29 @@ class PlayerPrior:
     # their current-season rate to an FDR-3-equivalent before blending, so a
     # hot streak against soft fixtures isn't over-trusted. See engine/model.py.
     current_season_avg_fdr: float | None = None
+    # Coefficient of variation (std/mean) of each qualifying season's own
+    # expected_goal_involvements per-90 rate - None if fewer than 2 seasons
+    # qualified (a single season has no meaningful spread to measure) or the
+    # mean rate is too low for CV to be meaningful (near-zero attacking
+    # output, e.g. most defenders/keepers). Low values mean stable output
+    # across seasons ("class"); high values mean output was driven by one
+    # outlier season or a short hot streak ("form"). See engine/model.py's
+    # uncertainty adjustment.
+    consistency: float | None = None
+
+
+# Below this mean per-90 rate, CV is too noisy/explosive to be meaningful
+# (near-zero attacking output - most defenders/keepers).
+CONSISTENCY_MIN_MEAN_RATE = 0.05
 
 
 def _blend_seasons(
     seasons: list[dict],
-) -> tuple[list[str], list[str], float, float, float, dict[str, float], float]:
+) -> tuple[list[str], list[str], float, float, float, dict[str, float], float, float | None]:
     """`seasons` is history_past ordered most-recent-first, already capped to
     the last 3. Returns (used, excluded, weighted_minutes_share,
-    weighted_starts_share, avg_minutes_per_start, per90, total_weight_minutes).
+    weighted_starts_share, avg_minutes_per_start, per90, total_weight_minutes,
+    consistency).
     """
     used, excluded = [], []
     weight_minutes_sum = 0.0
@@ -74,6 +89,7 @@ def _blend_seasons(
     minutes_per_start_weight_sum = 0.0
     minutes_per_start_numerator = 0.0
     rate_numerators = {f: 0.0 for f in RATE_FIELDS}
+    season_xgi90_rates: list[float] = []
 
     for season, weight in zip(seasons, SEASON_WEIGHTS):
         minutes = season.get("minutes") or 0
@@ -95,9 +111,10 @@ def _blend_seasons(
             # FPL's API returns some of these as strings (e.g. "25.50") and
             # others as ints/floats - coerce defensively either way.
             rate_numerators[f] += weight * float(season.get(f) or 0.0)
+        season_xgi90_rates.append(90 * float(season.get("expected_goal_involvements") or 0.0) / minutes)
 
     if weight_minutes_sum == 0:
-        return used, excluded, 0.0, 0.0, 0.0, {f: 0.0 for f in RATE_FIELDS}, 0.0
+        return used, excluded, 0.0, 0.0, 0.0, {f: 0.0 for f in RATE_FIELDS}, 0.0, None
 
     per90 = {f: round(90 * rate_numerators[f] / weight_minutes_sum, 4) for f in RATE_FIELDS}
     total_weight = sum(w for s, w in zip(seasons, SEASON_WEIGHTS) if s["season_name"] in used)
@@ -108,6 +125,14 @@ def _blend_seasons(
         if minutes_per_start_weight_sum
         else 0.0
     )
+
+    consistency = None
+    if len(season_xgi90_rates) >= 2:
+        mean_xgi90 = sum(season_xgi90_rates) / len(season_xgi90_rates)
+        if mean_xgi90 > CONSISTENCY_MIN_MEAN_RATE:
+            variance = sum((r - mean_xgi90) ** 2 for r in season_xgi90_rates) / len(season_xgi90_rates)
+            consistency = round((variance ** 0.5) / mean_xgi90, 4)
+
     return (
         used,
         excluded,
@@ -116,6 +141,7 @@ def _blend_seasons(
         avg_minutes_per_start,
         per90,
         weight_minutes_sum,
+        consistency,
     )
 
 
@@ -171,6 +197,7 @@ def build_player_priors(
             avg_minutes_per_start,
             per90,
             weight_minutes,
+            consistency,
         ) = _blend_seasons(recent_seasons)
         priors[player_id] = PlayerPrior(
             id=player_id,
@@ -183,6 +210,7 @@ def build_player_priors(
             per90=per90,
             total_weight_minutes=weight_minutes,
             current_season_avg_fdr=_avg_fdr_faced(summary.get("history", []), fixtures_by_id),
+            consistency=consistency,
         )
         if (i + 1) % 50 == 0:
             print(f"  ...{i + 1}/{len(to_fetch)} fetched")
