@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-08-16T13:19:49.790097+00:00",
+  "source": "the-odds-api",
+  "events_fetched": 10,
+  "fixtures_matched": 10,
+  "fixtures": {
+    "1": {
+      "clean_sheet_prob_home": 0.905,
+      "clean_sheet_prob_away": 0.07,
+      "expected_conceded_home": 0.1,
+      "expected_conceded_away": 2.662,
+      "attack_mult_home": 1.836,
+      "attack_mult_away": 0.069
+    },
+    "4": {
+      "clean_sheet_prob_home": 0.1,
+      "clean_sheet_prob_away": 0.562,
+      "expected_conceded_home": 2.306,
+      "expected_conceded_away": 0.576,
+      "attack_mult_home": 0.398,
+      "attack_mult_away": 1.591
+    },
+    "3": {
+      "clean_sheet_prob_home": 0.33,
+      "clean_sheet_prob_away": 0.213,
+      "expected_conceded_home": 1.108,
+      "expected_conceded_away": 1.548,
+      "attack_mult_home": 1.067,
+      "attack_mult_away": 0.764
+    },
+    "5": {
+      "clean_sheet_prob_home": 0.263,
+      "clean_sheet_prob_away": 0.275,
+      "expected_conceded_home": 1.336,
+      "expected_conceded_away": 1.291,
+      "attack_mult_home": 0.891,
+      "attack_mult_away": 0.921
+    },
+    "6": {
+      "clean_sheet_prob_home": 0.321,
+      "clean_sheet_prob_away": 0.226,
+      "expected_conceded_home": 1.137,
+      "expected_conceded_away": 1.488,
+      "attack_mult_home": 1.026,
+      "attack_mult_away": 0.784
+    },
+    "2": {
+      "clean_sheet_prob_home": 0.237,
+      "clean_sheet_prob_away": 0.216,
+      "expected_conceded_home": 1.441,
+      "expected_conceded_away": 1.534,
+      "attack_mult_home": 1.058,
+      "attack_mult_away": 0.994
+    },
+    "7": {
+      "clean_sheet_prob_home": 0.245,
+      "clean_sheet_prob_away": 0.191,
+      "expected_conceded_home": 1.406,
+      "expected_conceded_away": 1.653,
+      "attack_mult_home": 1.14,
+      "attack_mult_away": 0.969
+    },
+    "8": {
+      "clean_sheet_prob_home": 0.331,
+      "clean_sheet_prob_away": 0.073,
+      "expected_conceded_home": 1.106,
+      "expected_conceded_away": 2.617,
+      "attack_mult_home": 1.805,
+      "attack_mult_away": 0.763
+    },
+    "9": {
+      "clean_sheet_prob_home": 0.185,
+      "clean_sheet_prob_away": 0.352,
+      "expected_conceded_home": 1.689,
+      "expected_conceded_away": 1.045,
+      "attack_mult_home": 0.721,
+      "attack_mult_away": 1.165
+    },
+    "10": {
+      "clean_sheet_prob_home": 0.175,
+      "clean_sheet_prob_away": 0.273,
+      "expected_conceded_home": 1.746,
+      "expected_conceded_away": 1.298,
+      "attack_mult_home": 0.895,
+      "attack_mult_away": 1.204
+    }
+  }
+}
