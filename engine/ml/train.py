@@ -62,8 +62,16 @@ def _training_seasons() -> list[str]:
     """Historical seasons + the current season if it has any real gameweeks
     played yet - pre-season, this correctly resolves to historical-only,
     same cold-start posture as everything else in this project.
+
+    `engine/calibration/cache/` is gitignored (large, re-downloadable), so a
+    fresh checkout - like a CI runner - has none of it; every season here
+    must be explicitly fetched, not just assumed already cached like
+    `fit_coefficients.py` gets away with when run right after
+    `fetch_historical.py` in the same manual workflow.
     """
     seasons = list(SEASONS)
+    for season in seasons:
+        fetch_season(season)  # force=False - a no-op if already cached locally
     try:
         fetch_season(CURRENT_SEASON, force=True)
         merged_gw_rows, _, _ = _load_season_data(CURRENT_SEASON)
