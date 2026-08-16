@@ -34,12 +34,15 @@ jobs:
       - name: Fit coefficients
         run: python -m engine.calibration.fit_coefficients
 
+      - name: Fit team strength
+        run: python -m engine.calibration.team_strength
+
       - name: Commit updated coefficients
         id: commit
         run: |
           git config user.name "fpl-hub-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add engine/calibration/coefficients.json
+          git add engine/calibration/coefficients.json engine/calibration/team_strength.json
           if git diff --cached --quiet; then
             echo "No changes."
             echo "changed=false" >> "$GITHUB_OUTPUT"

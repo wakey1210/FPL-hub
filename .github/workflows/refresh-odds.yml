@@ -1,0 +1,58 @@
+name: Refresh betting odds
+
+on:
+  schedule:
+    # Twice weekly - kept off the 3-hourly hot loop and off refresh-priors.yml's
+    # weekly slot so a missing ODDS_API_KEY secret or an API outage never
+    # blocks either. engine/odds.py itself skips the fetch entirely if every
+    # upcoming fixture is already cached, so this stays well inside The Odds
+    # API's free-tier 500 credits/month even on manual re-runs.
+    - cron: '0 6 * * 2,5'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-fpl-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install engine dependencies
+        run: pip install -r requirements.txt
+
+      - name: Refresh betting odds
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python -m engine.odds
+
+      - name: Commit updated odds
+        id: commit
+        run: |
+          git config user.name "fpl-hub-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/odds.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Refresh betting odds ($(date -u +'%Y-%m-%d'))"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger Pages redeploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy-pages.yml --ref main

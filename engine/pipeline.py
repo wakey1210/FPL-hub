@@ -16,6 +16,9 @@ from engine import accuracy, fetch, model, my_team, optimise, planner, priors, t
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 COEFFICIENTS_PATH = Path(__file__).resolve().parent / "calibration" / "coefficients.json"
+TEAM_STRENGTH_PATH = Path(__file__).resolve().parent / "calibration" / "team_strength.json"
+ODDS_PATH = DATA_DIR / "odds.json"
+UNDERSTAT_PATH = DATA_DIR / "understat_xg.json"
 
 
 def _write_json(name: str, payload: object) -> None:
@@ -38,13 +41,27 @@ def run() -> None:
     # loop's API-call count stays at 2 (bootstrap + fixtures) regardless.
     player_priors = priors.load_player_priors()
     coefficients = json.loads(COEFFICIENTS_PATH.read_text()) if COEFFICIENTS_PATH.exists() else None
+    team_strength = json.loads(TEAM_STRENGTH_PATH.read_text()) if TEAM_STRENGTH_PATH.exists() else None
+    odds = json.loads(ODDS_PATH.read_text()) if ODDS_PATH.exists() else None
+    understat = json.loads(UNDERSTAT_PATH.read_text()) if UNDERSTAT_PATH.exists() else None
 
     print(
         f"Building expected-points model... "
         f"({len(player_priors)} player priors, "
-        f"{'calibrated' if coefficients else 'default'} coefficients)"
+        f"{'calibrated' if coefficients else 'default'} coefficients, "
+        f"{'loaded' if team_strength else 'no'} team-strength data, "
+        f"{odds['fixtures_matched'] if odds else 0} odds-priced fixtures, "
+        f"{len(understat['players']) if understat else 0} understat-matched players)"
     )
-    players = model.build_player_ev(bootstrap, fixtures, priors=player_priors, coefficients=coefficients)
+    players = model.build_player_ev(
+        bootstrap,
+        fixtures,
+        priors=player_priors,
+        coefficients=coefficients,
+        team_strength=team_strength,
+        odds=odds,
+        understat=understat,
+    )
     players_by_id = {p.id: p for p in players}
 
     generated_at = datetime.now(timezone.utc).isoformat()
@@ -71,6 +88,14 @@ def run() -> None:
         "player_priors_loaded": len(player_priors),
         "coefficients_loaded": coefficients is not None,
         "coefficients_generated_at": coefficients.get("generated_at") if coefficients else None,
+        "team_strength_loaded": team_strength is not None,
+        "team_strength_generated_at": team_strength.get("generated_at") if team_strength else None,
+        "odds_loaded": odds is not None,
+        "odds_generated_at": odds.get("generated_at") if odds else None,
+        "odds_fixtures_matched": odds.get("fixtures_matched") if odds else 0,
+        "understat_loaded": understat is not None,
+        "understat_generated_at": understat.get("generated_at") if understat else None,
+        "understat_players_matched": len(understat["players"]) if understat else 0,
     }
 
     teams = [

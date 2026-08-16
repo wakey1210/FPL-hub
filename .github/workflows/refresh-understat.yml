@@ -1,0 +1,55 @@
+name: Refresh Understat xG split
+
+on:
+  schedule:
+    # Weekly, alongside refresh-priors.yml - this corrects the multi-season
+    # prior with last season's penalty/xG split (a fixed, slow-changing
+    # number), but the player-matching itself benefits from a regular
+    # refresh as squads change (new signings, departures).
+    - cron: '0 5 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-fpl-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install engine dependencies
+        run: pip install -r requirements.txt
+
+      - name: Refresh Understat xG split
+        run: python -m engine.understat
+
+      - name: Commit updated Understat data
+        id: commit
+        run: |
+          git config user.name "fpl-hub-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/understat_xg.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Refresh Understat xG split ($(date -u +'%Y-%m-%d'))"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger Pages redeploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy-pages.yml --ref main

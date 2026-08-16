@@ -40,8 +40,12 @@ Everything runs free on GitHub:
   (~587 API calls first run, incremental after), so it stays on its own
   schedule.
 - **`calibrate.yml`** refits the model's FDR/defensive-contribution
-  constants against historical data - manual only, meant to be re-run once a
-  season closes out, not on any automatic cadence.
+  constants and team-strength ratings against historical data - manual only,
+  meant to be re-run once a season closes out, not on any automatic cadence.
+- **`refresh-odds.yml`** and **`refresh-understat.yml`** refresh betting-odds
+  and Understat data respectively, each on their own weekly/twice-weekly
+  schedule, kept off the 3-hourly hot loop so a missing secret or an outage
+  in either never blocks it.
 - **GitHub Pages** (`.github/workflows/deploy-pages.yml`) rebuilds and
   redeploys the static PWA whenever `/app` or `/data` changes.
 
@@ -148,6 +152,64 @@ underlying rate is undercut by a low `p_60_plus` - the concrete case this
 exists to catch. See `engine/model.py`'s `_expected_minutes_profile` and
 `engine/priors.py`'s `weighted_starts_share`/`avg_minutes_per_start` fields.
 
+### Four more accuracy improvements
+
+Prompted by looking at what commercial/academic FPL prediction tools use
+beyond FPL's own data:
+
+1. **Set-piece taker boost.** Bootstrap already exposes `penalties_order`,
+   `direct_freekicks_order` and `corners_and_indirect_freekicks_order`
+   (1 = primary designated taker, 2 = backup) but nothing read them until
+   now. A designated taker who's just inherited the role (new signing,
+   teammate transferred/injured) won't show it in their volume-weighted
+   blended rate until enough current-season deadball chances accumulate, so
+   `engine/model.py`'s `_set_piece_boost` adds a small, hand-picked, additive
+   (not multiplicative) xG/xA/90 correction for that role - surfaced in
+   "why" whenever it applies.
+2. **Betting-odds integration**, since commercial tools' real edge over
+   public models is market-driven expected-minutes/goal-involvement signal,
+   not attacking-quality modelling (public models already compete there).
+   `engine/odds.py` fetches EPL match odds from
+   [The Odds API](https://the-odds-api.com) (free tier, weekly/twice-weekly),
+   devigs the 1X2 and over/under markets (normalization-method devig),
+   solves for each side's Poisson goal rate, and derives a clean-sheet
+   probability and expected goals for/against per fixture - replacing the
+   FDR-table lookup entirely for any fixture a market has actually priced,
+   falling back to FDR otherwise (missing key, API outage, blank/postponed
+   fixture, or beyond the bookmaker's posting horizon). Requires an
+   `ODDS_API_KEY` GitHub Actions **secret** (a real credential, unlike the
+   plain `FPL_TEAM_ID` repository variable).
+3. **Understat penalty/xG split.** FPL's own `expected_goals_per_90` is a
+   single aggregate that bakes in penalties with no way to tell a player
+   whose rate is inflated by spot-kicks from one generating it in open play.
+   `engine/understat.py` pulls Understat's own league-wide season `xG`/`npxG`
+   aggregates (no shot-level parsing needed - the split is already computed)
+   for the most recently *completed* season, matches players to FPL by
+   normalized name + team (accepting only high-confidence matches; a
+   committed `engine/understat_manual_map.json` patches the inevitable
+   exceptions), and strips the penalty share out of `prior.per90` - not the
+   current-season rate, which already reflects a player's actual role once
+   real gameweeks accumulate - whenever they no longer hold a penalty order.
+   Understat's own `robots.txt` disallows all automated access; this is a
+   knowingly-accepted, low-volume (weekly), non-commercial risk, mitigated by
+   reusing the maintained `understatapi` package rather than a hand-rolled
+   scraper.
+4. **Team-level historical strength**, an alternative to FPL's own FDR for
+   newly-promoted teams, who FPL has little current-season info to rate
+   early on. `engine/calibration/team_strength.py` reuses the historical
+   seasons already cached for `fit_coefficients.py` to compute each team's
+   recency-weighted goals-for/against per game (home/away split) - a
+   deliberately simple weighted average, not Elo, since Elo needs
+   hyperparameters this project has no data to justify and produces a less
+   interpretable number. A promoted team (absent from the most recent cached
+   season) gets a 25th-percentile fallback rather than a guess. This only
+   ever *replaces* FPL's own FDR for that specific promoted opponent's
+   fixtures - established teams keep FPL's FDR untouched, since the
+   calibrated `FDR_*` tables above were fitted against FPL's own raw FDR
+   values - and adds a small fixed uncertainty bump so the lower-confidence
+   read is visibly flagged. Lives in `engine/calibration/` on the same
+   rare/manual, human-reviewed refit cadence as `fit_coefficients.py`.
+
 ## Squad optimisation
 
 `engine/optimise.py` uses [PuLP](https://coin-or.github.io/pulp/) with the
@@ -208,6 +270,9 @@ pip install -r requirements.txt
 python -m engine.priors                       # writes data/player_priors.json (~3 min first run)
 python -m engine.calibration.fetch_historical  # downloads historical seasons (~20MB, cached)
 python -m engine.calibration.fit_coefficients  # writes engine/calibration/coefficients.json
+python -m engine.calibration.team_strength     # writes engine/calibration/team_strength.json
+ODDS_API_KEY=... python -m engine.odds         # writes data/odds.json (skips gracefully if unset)
+python -m engine.understat                     # writes data/understat_xg.json
 python -m engine.pipeline                      # writes the rest of /data/*.json
 
 cd app
@@ -227,5 +292,9 @@ npm run dev                      # app reads /data via a symlink in app/public
 - [x] Prediction-accuracy tracking (logged RMSE/MAE vs. actual results, once gameweeks are scored)
 - [x] Fixture-adjust the current-season rate blended into stabilization
 - [x] Pitch/List view toggle - next-GW points on the pitch, multi-GW total in the list
+- [x] Set-piece taker boost from `penalties_order`/`direct_freekicks_order`/`corners_and_indirect_freekicks_order`
+- [x] Betting-odds integration (The Odds API) - devig + Poisson clean-sheet/xG, replacing FDR per-fixture where priced
+- [x] Understat penalty/xG split correcting the multi-season prior for players who've lost/gained set-piece duty
+- [x] Team-level historical strength model - replaces FPL's FDR for newly-promoted opponents only
 - Skipped by choice: FPL account token auth for pre-deadline squad sync - too fragile (manual OIDC
   token extraction, periodic re-pasting) for what it'd add on top of public team-ID tracking

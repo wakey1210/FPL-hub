@@ -1,0 +1,267 @@
+{
+  "generated_at": "2026-08-16T12:55:52.432360+00:00",
+  "source_seasons": [
+    "2022-23",
+    "2023-24",
+    "2024-25",
+    "2025-26"
+  ],
+  "promoted_teams": [
+    "Coventry City",
+    "Hull City",
+    "Ipswich Town"
+  ],
+  "league_avg": {
+    "attack_rate_home": 1.475,
+    "defense_rate_home": 1.476,
+    "attack_rate_away": 1.278,
+    "defense_rate_away": 1.685
+  },
+  "teams": {
+    "Arsenal": {
+      "attack_strength_home": 1.434,
+      "defense_strength_home": 0.493,
+      "attack_strength_away": 1.38,
+      "defense_strength_away": 0.495,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 5
+    },
+    "Aston Villa": {
+      "attack_strength_home": 1.261,
+      "defense_strength_home": 0.797,
+      "attack_strength_away": 1.016,
+      "defense_strength_away": 0.916,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 4
+    },
+    "Bournemouth": {
+      "attack_strength_home": 0.952,
+      "defense_strength_home": 0.713,
+      "attack_strength_away": 1.263,
+      "defense_strength_away": 1.046,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 4
+    },
+    "Brentford": {
+      "attack_strength_home": 1.237,
+      "defense_strength_home": 0.993,
+      "attack_strength_away": 0.996,
+      "defense_strength_away": 0.875,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 3
+    },
+    "Brighton": {
+      "attack_strength_home": 1.071,
+      "defense_strength_home": 0.826,
+      "attack_strength_away": 1.119,
+      "defense_strength_away": 0.932,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 3
+    },
+    "Chelsea": {
+      "attack_strength_home": 1.142,
+      "defense_strength_home": 0.814,
+      "attack_strength_away": 1.284,
+      "defense_strength_away": 0.875,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 5
+    },
+    "Coventry City": {
+      "attack_strength_home": 0.827,
+      "defense_strength_home": 0.797,
+      "attack_strength_away": 0.857,
+      "defense_strength_away": 0.875,
+      "confidence": "promoted_fallback",
+      "seasons_used": [],
+      "fdr_equivalent": 1
+    },
+    "Crystal Palace": {
+      "attack_strength_home": 0.845,
+      "defense_strength_home": 0.874,
+      "attack_strength_away": 0.961,
+      "defense_strength_away": 0.864,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 2
+    },
+    "Everton": {
+      "attack_strength_home": 0.904,
+      "defense_strength_home": 0.862,
+      "attack_strength_away": 0.776,
+      "defense_strength_away": 0.75,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 2
+    },
+    "Fulham": {
+      "attack_strength_home": 1.041,
+      "defense_strength_home": 0.856,
+      "attack_strength_away": 0.886,
+      "defense_strength_away": 0.927,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 2
+    },
+    "Hull City": {
+      "attack_strength_home": 0.827,
+      "defense_strength_home": 0.797,
+      "attack_strength_away": 0.857,
+      "defense_strength_away": 0.875,
+      "confidence": "promoted_fallback",
+      "seasons_used": [],
+      "fdr_equivalent": 1
+    },
+    "Ipswich Town": {
+      "attack_strength_home": 0.827,
+      "defense_strength_home": 0.797,
+      "attack_strength_away": 0.857,
+      "defense_strength_away": 0.875,
+      "confidence": "promoted_fallback",
+      "seasons_used": [],
+      "fdr_equivalent": 2
+    },
+    "Leeds": {
+      "attack_strength_home": 0.992,
+      "defense_strength_home": 0.977,
+      "attack_strength_away": 0.857,
+      "defense_strength_away": 1.168,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2022-23"
+      ],
+      "fdr_equivalent": 1
+    },
+    "Liverpool": {
+      "attack_strength_home": 1.398,
+      "defense_strength_home": 0.648,
+      "attack_strength_away": 1.456,
+      "defense_strength_away": 0.901,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 5
+    },
+    "Man City": {
+      "attack_strength_home": 1.618,
+      "defense_strength_home": 0.618,
+      "attack_strength_away": 1.366,
+      "defense_strength_away": 0.64,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 5
+    },
+    "Man Utd": {
+      "attack_strength_home": 1.154,
+      "defense_strength_home": 0.927,
+      "attack_strength_away": 1.085,
+      "defense_strength_away": 0.833,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 4
+    },
+    "Newcastle": {
+      "attack_strength_home": 1.41,
+      "defense_strength_home": 0.904,
+      "attack_strength_away": 0.982,
+      "defense_strength_away": 0.88,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 4
+    },
+    "Nott'm Forest": {
+      "attack_strength_home": 0.827,
+      "defense_strength_home": 0.779,
+      "attack_strength_away": 1.167,
+      "defense_strength_away": 0.942,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 3
+    },
+    "Spurs": {
+      "attack_strength_home": 1.035,
+      "defense_strength_home": 1.13,
+      "attack_strength_away": 1.181,
+      "defense_strength_away": 0.895,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26",
+        "2024-25",
+        "2023-24"
+      ],
+      "fdr_equivalent": 3
+    },
+    "Sunderland": {
+      "attack_strength_home": 0.892,
+      "defense_strength_home": 0.713,
+      "attack_strength_away": 0.7,
+      "defense_strength_away": 0.875,
+      "confidence": "historical",
+      "seasons_used": [
+        "2025-26"
+      ],
+      "fdr_equivalent": 1
+    }
+  }
+}

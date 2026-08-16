@@ -98,12 +98,16 @@ def season_started(bootstrap: dict) -> bool:
     return any(t["played"] > 0 for t in bootstrap["teams"])
 
 
+UNDERSTAT_PENS_SHARE_THRESHOLD = 0.15  # below this, not worth correcting for
+
+
 def _blended_rate(
     stat: str,
     element: dict,
     prior: PlayerPrior | None,
     season_started: bool,
     attack_mult_table: dict[int, float] | None = None,
+    understat_split: dict | None = None,
 ) -> float:
     """Adaptive blend of this-season-so-far and multi-season-prior per-90
     rates for one stat (see engine.stabilize). Pre-season, current_minutes
@@ -123,6 +127,18 @@ def _blended_rate(
     the *upcoming* fixtures being forecast (see the fixture loop below) - so
     opponent strength is accounted for once on the way in, once on the way
     out, never both for the same fixture.
+
+    When `understat_split` is given (only for "expected_goals", and only
+    when the player currently has no penalty/backup-penalty order - i.e. they
+    don't hold the role right now), it strips out the share of *last
+    season's* xG (engine.understat's `pens_share_of_xg`, from Understat's own
+    xG/npxG season aggregates) that came from penalties before it enters the
+    prior side of the blend - `prior.per90` is a multi-season baseline
+    weighted mostly toward last season, so it can otherwise still carry
+    penalty output the player has no current claim to reproduce. Never
+    applied to `current_rate`: FPL's own current-season xG already reflects
+    the player's actual current role directly once real gameweeks
+    accumulate, so this only ever corrects the *prior* component.
     """
     bootstrap_key, prior_key = RATE_FIELD_MAP[stat]
     current_rate = element.get(bootstrap_key) or 0.0
@@ -133,6 +149,15 @@ def _blended_rate(
         current_rate = current_rate / attack_mult_table[nearest_fdr]
 
     prior_rate = prior.per90.get(prior_key, 0.0) if prior else current_rate
+
+    if (
+        stat == "expected_goals"
+        and understat_split
+        and element.get("penalties_order") not in (1, 2)
+        and understat_split.get("pens_share_of_xg", 0.0) >= UNDERSTAT_PENS_SHARE_THRESHOLD
+    ):
+        prior_rate *= 1 - understat_split["pens_share_of_xg"]
+
     return stabilize.blend_rate(stat, current_rate, current_minutes, prior_rate)
 
 
@@ -221,6 +246,39 @@ def _expected_minutes_profile(
     return MinutesProfile(
         p_appearance_base, p_60_plus_base, expected_minutes_if_appears, label, f"Expected to start ({label})"
     )
+
+
+SET_PIECE_PENALTY_XG_BOOST = 0.08  # hand-picked: ~0.76 conversion x ~0.1 penalties/game
+SET_PIECE_BACKUP_PENALTY_XG_BOOST = 0.02
+SET_PIECE_FREEKICK_XG_BOOST = 0.02
+SET_PIECE_CORNER_XA_BOOST = 0.02
+
+
+def _set_piece_boost(element: dict) -> tuple[float, float]:
+    """Small additive (not multiplicative) xG90/xA90 corrections for
+    designated set-piece duty (`penalties_order`/`direct_freekicks_order`/
+    `corners_and_indirect_freekicks_order` - 1=primary taker, 2=backup, None=
+    not on the list). Additive, not a multiplier, because these correct for a
+    role the volume-weighted blended rate may not yet fully reflect (a new
+    signing or a teammate's injury/transfer handing over set-piece duty mid-
+    season) rather than re-scaling an already-correct rate. Hand-picked
+    defaults, same status as FINISH_RATE/HOME_CS_BONUS above - a candidate for
+    later tuning against engine/accuracy.py's logged error, not a calibrated
+    fit (there's no historical "recently inherited duty" label to fit against).
+    """
+    xg_boost = xa_boost = 0.0
+    pens = element.get("penalties_order")
+    fks = element.get("direct_freekicks_order")
+    corners = element.get("corners_and_indirect_freekicks_order")
+    if pens == 1:
+        xg_boost += SET_PIECE_PENALTY_XG_BOOST
+    elif pens == 2:
+        xg_boost += SET_PIECE_BACKUP_PENALTY_XG_BOOST
+    if fks == 1:
+        xg_boost += SET_PIECE_FREEKICK_XG_BOOST
+    if corners == 1:
+        xa_boost += SET_PIECE_CORNER_XA_BOOST
+    return xg_boost, xa_boost
 
 
 def _dc_probability(rate: float, position_id: int, damping: float) -> float:
@@ -322,8 +380,28 @@ def build_player_ev(
     forecast_gws: int = FORECAST_GAMEWEEKS,
     priors: dict[int, PlayerPrior] | None = None,
     coefficients: dict | None = None,
+    team_strength: dict | None = None,
+    odds: dict | None = None,
+    understat: dict | None = None,
 ) -> list[PlayerEV]:
     teams_by_id = {t["id"]: t for t in bootstrap["teams"]}
+    # Only used to override FPL's own FDR for newly-promoted opponents (see
+    # the fixture loop below) - established teams keep FPL's FDR untouched,
+    # since engine/calibration/fit_coefficients.py's FDR_* tables were
+    # calibrated against FPL's own raw FDR values, not this alternative scale.
+    team_strength_by_id = (
+        {t["id"]: team_strength["teams"].get(t["name"]) for t in bootstrap["teams"]} if team_strength else {}
+    )
+    # Per-fixture betting-odds-derived numbers (engine/odds.py), keyed by FPL
+    # fixture id as a string (JSON object keys). Only present for fixtures a
+    # market has actually priced - absent for blank/postponed fixtures, a
+    # missing API key, or when engine/odds.py hasn't run yet.
+    odds_by_fixture = odds.get("fixtures", {}) if odds else {}
+    # Per-player last-completed-season penalty/xG split (engine/understat.py),
+    # keyed by FPL id as a string (JSON object keys) - only present for
+    # confidently name+team-matched players with enough matches last season
+    # to trust the split (see MIN_MATCHES_FOR_SPLIT in engine/understat.py).
+    understat_by_id = understat.get("players", {}) if understat else {}
     scoring = bootstrap["game_config"]["scoring"]
     events = bootstrap["events"]
     season_started_flag = season_started(bootstrap)
@@ -357,8 +435,14 @@ def build_player_ev(
         )
 
         mp = _expected_minutes_profile(e, prior, team["played"], season_started_flag)
-        xg90 = _blended_rate("expected_goals", e, prior, season_started_flag, attack_mult_table)
+        understat_split = understat_by_id.get(str(e["id"]))
+        xg90 = _blended_rate(
+            "expected_goals", e, prior, season_started_flag, attack_mult_table, understat_split
+        )
         xa90 = _blended_rate("expected_assists", e, prior, season_started_flag, attack_mult_table)
+        set_piece_xg_boost, set_piece_xa_boost = _set_piece_boost(e)
+        xg90 += set_piece_xg_boost
+        xa90 += set_piece_xa_boost
         xgi90 = xg90 + xa90
         dc90 = _blended_rate("defensive_contribution", e, prior, season_started_flag)
         saves90 = _blended_rate("saves", e, prior, season_started_flag)
@@ -375,15 +459,41 @@ def build_player_ev(
 
         team_fixtures = fixtures_by_team.get(team["id"], [])
         fixture_evs: list[FixtureEV] = []
+        faces_promoted_team = False
         for fx in sorted(team_fixtures, key=lambda f: f["event"]):
             is_home = fx["team_h"] == team["id"]
             fdr = fx["team_h_difficulty"] if is_home else fx["team_a_difficulty"]
             opp_id = fx["team_a"] if is_home else fx["team_h"]
             opponent = teams_by_id[opp_id]
 
+            opp_strength = team_strength_by_id.get(opp_id)
+            if opp_strength and opp_strength["confidence"] == "promoted_fallback":
+                # FPL's own FDR is least trustworthy exactly here (little/no
+                # current-season info on a newly-promoted side) - swap in our
+                # own historically-derived equivalent for this fixture only,
+                # a single-value replacement of which FDR source is trusted,
+                # not a second multiplier stacked on top of the original.
+                fdr = opp_strength["fdr_equivalent"]
+                faces_promoted_team = True
+
             attack_mult = attack_mult_table[fdr]
             cs_prob = cs_prob_table[fdr] + (HOME_CS_BONUS if is_home else 0.0)
             expected_conceded = expected_conceded_table[fdr]
+
+            # Betting odds are the most responsive opponent-strength signal
+            # available (move daily with team news/injuries, unlike FPL's
+            # fixed 1-5 FDR or our own pre-season team-strength number) - when
+            # a market has priced this fixture, its derived numbers replace
+            # the FDR-table lookups above entirely for this fixture; anything
+            # without a priced market (no key configured, API down, blank/
+            # postponed fixture, beyond the bookmaker's posting horizon) falls
+            # straight through to the FDR-table values, unchanged.
+            odds_row = odds_by_fixture.get(str(fx["id"]))
+            if odds_row:
+                side = "home" if is_home else "away"
+                attack_mult = odds_row[f"attack_mult_{side}"]
+                cs_prob = odds_row[f"clean_sheet_prob_{side}"] + (HOME_CS_BONUS if is_home else 0.0)
+                expected_conceded = odds_row[f"expected_conceded_{side}"]
 
             # Anything reachable off the bench scales on p_appearance; anything
             # needing a genuine long appearance (defensive contribution, clean
@@ -428,6 +538,12 @@ def build_player_ev(
         # player's point sources actually depend on reaching.
         confidence_gap = 1 - mp.p_60_plus
         uncertainty = round(total_ev * (0.15 + 0.35 * confidence_gap) + 0.3, 2)
+        if faces_promoted_team:
+            # A promoted opponent's fdr_equivalent leans on a bottom-quartile
+            # fallback, not real data for that specific team - flag the lower
+            # confidence visibly rather than presenting it at the same
+            # precision as an established opponent.
+            uncertainty = round(uncertainty + 0.3, 2)
 
         # Capped-upside caveat: good rate, but rarely reaches the 60' threshold
         # that unlocks defensive/clean-sheet/bonus points - the concrete case
@@ -448,6 +564,14 @@ def build_player_ev(
             )
         elif xgi90 > 0:
             why.append(f"Underlying output: {xgi90:.2f} combined xG+xA per 90 minutes")
+        if e.get("penalties_order") == 1:
+            why.append(f"Primary penalty taker (+{SET_PIECE_PENALTY_XG_BOOST:.2f} xG/90)")
+        elif e.get("penalties_order") == 2:
+            why.append(f"Backup penalty taker (+{SET_PIECE_BACKUP_PENALTY_XG_BOOST:.2f} xG/90)")
+        elif e.get("direct_freekicks_order") == 1:
+            why.append(f"Primary free-kick taker (+{SET_PIECE_FREEKICK_XG_BOOST:.2f} xG/90)")
+        elif e.get("corners_and_indirect_freekicks_order") == 1:
+            why.append(f"Primary corner taker (+{SET_PIECE_CORNER_XA_BOOST:.2f} xA/90)")
         if fixture_evs:
             fixture_desc = "favourable" if avg_fdr <= 2.4 else "tough" if avg_fdr >= 3.6 else "average"
             why.append(
