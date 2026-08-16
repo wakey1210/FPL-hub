@@ -188,6 +188,7 @@ def run() -> None:
                 free_transfers=free_transfers,
                 chips_used=team_data["chips_used"],
                 current_event=plan_start_event,
+                season_started=model.season_started(bootstrap),
             )
             transfer_plan_out = {
                 "available": True,

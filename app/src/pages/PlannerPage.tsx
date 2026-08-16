@@ -9,6 +9,7 @@ import { ChipsUsedEditor } from '../components/ChipsUsedEditor'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
 import { useDeclaredTeam } from '../lib/useDeclaredTeam'
 import { planTransfers } from '../lib/transferPlanner'
+import { riskWindowsForGw } from '../lib/dgwBgwRisk'
 import type { TeamTicker } from '../types/ticker'
 import type { PlanStep, TransferPlan } from '../types/transferPlan'
 import type { Meta, PlayerEV } from '../types/fpl'
@@ -36,7 +37,16 @@ export function PlannerPage() {
     if (squad.length === 0) return []
     const bank = remainingBank(plan.stagedTransfers)
     const freeTransfers = remainingFreeTransfers(plan.stagedTransfers)
-    return planTransfers(squad, players.data, bank, freeTransfers, declared.chipsUsed, currentEvent).map((s) => ({
+    return planTransfers(
+      squad,
+      players.data,
+      bank,
+      freeTransfers,
+      declared.chipsUsed,
+      currentEvent,
+      5,
+      meta.data?.season_started ?? true
+    ).map((s) => ({
       event: s.event,
       transfers_out: s.transfersOut,
       transfers_in: s.transfersIn,
@@ -58,6 +68,7 @@ export function PlannerPage() {
     plan.stagedTransfers,
     remainingBank,
     remainingFreeTransfers,
+    meta.data?.season_started,
   ])
 
   if (ticker.loading) return <Layout title="Planner"><LoadingState /></Layout>
@@ -133,16 +144,23 @@ export function PlannerPage() {
 
       <p className="text-xs text-white/50 mb-3">
         Fixture difficulty ticker, easiest run first. Use this to time transfers, wildcards and chips -
-        the Ben Crellin sheet replacement.
+        the Ben Crellin sheet replacement. Green "2x" cells are confirmed double gameweeks, "BLANK"
+        cells are confirmed blanks - both detected directly from already-fetched fixtures, not forecast.
       </p>
       <div className="overflow-x-auto -mx-4 px-4">
         <table className="w-full text-sm border-separate border-spacing-y-1.5 min-w-[420px]">
           <thead>
             <tr className="text-[11px] text-white/40">
               <th className="text-left font-medium pr-2">Team</th>
-              {gwLabels.map((gw) => (
-                <th key={gw} className="font-medium px-0.5">GW{gw}</th>
-              ))}
+              {gwLabels.map((gw) => {
+                const risk = riskWindowsForGw(gw)
+                return (
+                  <th key={gw} className="font-medium px-0.5" title={risk.map((r) => r.label).join(' · ')}>
+                    GW{gw}
+                    {risk.length > 0 && <span className="text-amber-400">*</span>}
+                  </th>
+                )
+              })}
               <th className="font-medium pl-2">Avg</th>
             </tr>
           </thead>
@@ -151,17 +169,37 @@ export function PlannerPage() {
               <tr key={team.team_short} className="bg-[#1e1e2a]">
                 <td className="rounded-l-lg pl-2 py-1.5 font-semibold text-xs whitespace-nowrap">
                   {team.team_short}
+                  {team.unscheduled_count > 0 && (
+                    <span
+                      className="ml-1 text-amber-400"
+                      title={`${team.unscheduled_count} fixture(s) postponed, pending reschedule`}
+                    >
+                      !
+                    </span>
+                  )}
                 </td>
                 {gwLabels.map((gw) => {
-                  const fx = team.fixtures.find((f) => f.event === gw)
+                  const fxs = team.fixtures.filter((f) => f.event === gw)
+                  const isDouble = team.double_events.includes(gw)
+                  const isBlank = team.blank_events.includes(gw)
                   return (
                     <td key={gw} className="px-0.5 py-1.5 text-center">
-                      {fx ? (
-                        <span
-                          className={`inline-block w-full min-w-[38px] rounded text-[10px] font-bold py-1 ${fdrClasses(fx.fdr)}`}
-                        >
-                          {fx.is_home ? fx.opponent_short : fx.opponent_short.toLowerCase()}
+                      {isBlank ? (
+                        <span className="inline-block w-full min-w-[38px] rounded text-[9px] font-bold py-1 bg-white/10 text-white/50">
+                          BLANK
                         </span>
+                      ) : fxs.length > 0 ? (
+                        <div className="flex flex-col gap-0.5">
+                          {fxs.map((fx, i) => (
+                            <span
+                              key={i}
+                              className={`inline-block w-full min-w-[38px] rounded text-[10px] font-bold py-1 ${fdrClasses(fx.fdr)}`}
+                            >
+                              {fx.is_home ? fx.opponent_short : fx.opponent_short.toLowerCase()}
+                            </span>
+                          ))}
+                          {isDouble && <span className="text-[8px] text-[#00ff87] font-bold">2x</span>}
+                        </div>
                       ) : (
                         <span className="text-white/20 text-[10px]">-</span>
                       )}
@@ -176,7 +214,11 @@ export function PlannerPage() {
           </tbody>
         </table>
       </div>
-      <p className="text-[10px] text-white/30 mt-3">Uppercase = home fixture, lowercase = away.</p>
+      <p className="text-[10px] text-white/30 mt-3">
+        Uppercase = home fixture, lowercase = away. <span className="text-amber-400">*</span> = a
+        gameweek where double/blank gameweeks have historically landed in recent seasons (base-rate
+        context only, not a forecast of which club is affected - hover for detail).
+      </p>
       {plan.stagedTransfers.length > 0 && <div className="h-28" />}
       <StagedTransfersCart
         staged={plan.stagedTransfers}

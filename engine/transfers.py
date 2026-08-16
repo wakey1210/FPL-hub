@@ -85,3 +85,44 @@ def suggest_transfers(
 
     suggestions.sort(key=lambda s: -s.net_gain)
     return suggestions[:top_n]
+
+
+def suggest_multiple_transfers(
+    squad: list[PlayerEV],
+    all_players: list[PlayerEV],
+    bank: int,
+    max_transfers: int,
+    top_n_per_step: int = 1,
+) -> list[TransferSuggestion]:
+    """Greedily chains up to `max_transfers` individually net-positive swaps -
+    not a full combinatorial search across which N swaps to make together,
+    which would be opaque and cut against this project's transparent-
+    heuristic ethos (see engine/planner.py's own docstring). Each step
+    re-runs `suggest_transfers` against the already-partially-updated
+    squad/bank: a player just swapped out is no longer in `working_squad` so
+    can't be swapped out again, and a player just swapped in is now in
+    `working_squad` so `suggest_transfers`' own squad-membership filter
+    naturally excludes them from being suggested again - no extra
+    bookkeeping needed for either case. Stops the moment no further
+    net-positive swap exists, even if `max_transfers` hasn't been reached.
+    """
+    if max_transfers <= 0:
+        return []
+
+    working_squad = list(squad)
+    working_bank = bank
+    batch: list[TransferSuggestion] = []
+
+    for _ in range(max_transfers):
+        candidates = suggest_transfers(
+            working_squad, all_players, working_bank, free_transfers=1, top_n=top_n_per_step
+        )
+        if not candidates or candidates[0].ev_delta <= 0:
+            break
+        best = candidates[0]
+        batch.append(best)
+        in_player = next(p for p in all_players if p.id == best.in_id)
+        working_squad = [p for p in working_squad if p.id != best.out_id] + [in_player]
+        working_bank -= best.cost_delta
+
+    return batch

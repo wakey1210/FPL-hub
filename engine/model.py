@@ -354,13 +354,28 @@ def build_fixture_ticker(
 ) -> list[dict]:
     """Per-team FDR ticker for the Planner tab: one row per club with its next
     `forecast_gws` fixtures, independent of any individual player.
+
+    Also surfaces double/blank gameweeks - genuinely just grouping already-
+    fetched fixtures by team + event, not a forecast: a double gameweek
+    already falls out naturally as two rows sharing one `event`, and a blank
+    is just an upcoming event with zero rows for that team. The only actual
+    fix needed was that a postponed fixture not yet re-slotted into a new
+    gameweek has `event: None` in the live API and was previously silently
+    dropped by the `fx["event"] not in upcoming_set` filter below - it's
+    counted separately now (`unscheduled_count`) instead of vanishing.
     """
     teams_by_id = {t["id"]: t for t in bootstrap["teams"]}
     events = bootstrap["events"]
-    upcoming_set = set(sorted(e["id"] for e in events if not e["finished"])[:forecast_gws])
+    upcoming_events = sorted(e["id"] for e in events if not e["finished"])[:forecast_gws]
+    upcoming_set = set(upcoming_events)
 
     fixtures_by_team: dict[int, list[dict]] = {}
+    unscheduled_by_team: dict[int, int] = {}
     for fx in fixtures:
+        if fx["event"] is None:
+            unscheduled_by_team[fx["team_h"]] = unscheduled_by_team.get(fx["team_h"], 0) + 1
+            unscheduled_by_team[fx["team_a"]] = unscheduled_by_team.get(fx["team_a"], 0) + 1
+            continue
         if fx["event"] not in upcoming_set:
             continue
         fixtures_by_team.setdefault(fx["team_h"], []).append(fx)
@@ -370,6 +385,7 @@ def build_fixture_ticker(
     for team_id, team in teams_by_id.items():
         team_fixtures = sorted(fixtures_by_team.get(team_id, []), key=lambda f: f["event"])
         rows = []
+        events_seen: dict[int, int] = {}
         for fx in team_fixtures:
             is_home = fx["team_h"] == team_id
             fdr = fx["team_h_difficulty"] if is_home else fx["team_a_difficulty"]
@@ -382,13 +398,19 @@ def build_fixture_ticker(
                     "fdr": fdr,
                 }
             )
+            events_seen[fx["event"]] = events_seen.get(fx["event"], 0) + 1
         avg_fdr = sum(r["fdr"] for r in rows) / len(rows) if rows else None
+        double_events = sorted(ev for ev, count in events_seen.items() if count >= 2)
+        blank_events = sorted(ev for ev in upcoming_events if ev not in events_seen)
         ticker.append(
             {
                 "team_short": team["short_name"],
                 "team_name": team["name"],
                 "fixtures": rows,
                 "avg_fdr": round(avg_fdr, 2) if avg_fdr is not None else None,
+                "double_events": double_events,
+                "blank_events": blank_events,
+                "unscheduled_count": unscheduled_by_team.get(team_id, 0),
             }
         )
     ticker.sort(key=lambda t: (t["avg_fdr"] is None, t["avg_fdr"] if t["avg_fdr"] is not None else 0))

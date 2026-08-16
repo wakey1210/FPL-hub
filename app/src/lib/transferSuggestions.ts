@@ -69,3 +69,39 @@ export function suggestTransfers(
   suggestions.sort((a, b) => b.netGain - a.netGain)
   return suggestions.slice(0, topN)
 }
+
+/** Mirrors engine/transfers.py's suggest_multiple_transfers exactly -
+ * greedily chains up to `maxTransfers` individually net-positive swaps, not
+ * a full combinatorial search across which N swaps to make together (see
+ * the Python docstring for why). Each step re-runs `suggestTransfers`
+ * against the already-partially-updated squad/bank: a player just swapped
+ * out is no longer in `workingSquad` so can't be swapped out again, and a
+ * player just swapped in is now in `workingSquad` so `suggestTransfers`'s
+ * own squad-membership filter naturally excludes them from being suggested
+ * again - no extra bookkeeping needed for either case. Stops the moment no
+ * further net-positive swap exists, even if `maxTransfers` hasn't been reached. */
+export function suggestMultipleTransfers(
+  squad: PlayerEV[],
+  allPlayers: PlayerEV[],
+  bank: number,
+  maxTransfers: number,
+  topNPerStep = 1
+): TransferSuggestionResult[] {
+  if (maxTransfers <= 0) return []
+
+  let workingSquad = [...squad]
+  let workingBank = bank
+  const batch: TransferSuggestionResult[] = []
+
+  for (let i = 0; i < maxTransfers; i++) {
+    const candidates = suggestTransfers(workingSquad, allPlayers, workingBank, 1, topNPerStep)
+    if (candidates.length === 0 || candidates[0].evDelta <= 0) break
+    const best = candidates[0]
+    batch.push(best)
+    const inPlayer = allPlayers.find((p) => p.id === best.inId)!
+    workingSquad = workingSquad.filter((p) => p.id !== best.outId).concat(inPlayer)
+    workingBank -= best.costDelta
+  }
+
+  return batch
+}
