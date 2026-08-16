@@ -92,20 +92,31 @@ export interface OptimisedLineup {
   viceCaptainId: number
 }
 
-/** Picks the best-EV valid starting XI from a fixed 15-man squad (no budget
- * involved, just formation counts) - exact, not heuristic: GKP always
- * contributes exactly 1 (pick the better of the 2 owned), then every valid
- * (DEF, MID, FWD) count combination summing to 10 is enumerated (at most a
- * few dozen), and the combination with the highest total EV wins. */
+/** Next gameweek's points, not the multi-gameweek total - matches PitchView:
+ * picking a lineup/captain is a decision about the upcoming deadline, so
+ * that's the number "highest possible scoring gameweek" actually means.
+ * The 6-week total is for transfer decisions (TransfersPage/PlanStepCard),
+ * not this. */
+function nextGwPoints(player: PlayerEV): number {
+  return player.fixtures[0]?.points ?? 0
+}
+
+/** Picks the valid starting XI (from a fixed 15-man squad - no budget
+ * involved, just formation counts) that maximises next-gameweek points -
+ * exact, not heuristic: GKP always contributes exactly 1 (pick the better
+ * of the 2 owned), then every valid (DEF, MID, FWD) count combination
+ * summing to 10 is enumerated (at most a few dozen), and the combination
+ * with the highest next-GW total wins. Captain/vice are the two highest
+ * next-GW scorers among the chosen XI. */
 export function optimiseStartingXI(squad: PlayerEV[]): OptimisedLineup {
   const byPosition: Record<Position, PlayerEV[]> = { GKP: [], DEF: [], MID: [], FWD: [] }
   for (const p of squad) byPosition[p.position].push(p)
   for (const pos of Object.keys(byPosition) as Position[]) {
-    byPosition[pos].sort((a, b) => b.total_ev - a.total_ev)
+    byPosition[pos].sort((a, b) => nextGwPoints(b) - nextGwPoints(a))
   }
 
   const topN = (pos: Position, n: number) => byPosition[pos].slice(0, n)
-  const sumEv = (players: PlayerEV[]) => players.reduce((s, p) => s + p.total_ev, 0)
+  const sumPoints = (players: PlayerEV[]) => players.reduce((s, p) => s + nextGwPoints(p), 0)
 
   const gk = topN('GKP', 1)
   const [defMin, defMax] = PLAY_MIN_MAX.DEF
@@ -118,7 +129,7 @@ export function optimiseStartingXI(squad: PlayerEV[]): OptimisedLineup {
       for (let fwd = fwdMin; fwd <= fwdMax; fwd++) {
         if (def + mid + fwd !== STARTING_XI_SIZE - 1) continue
         if (def > byPosition.DEF.length || mid > byPosition.MID.length || fwd > byPosition.FWD.length) continue
-        const total = sumEv(topN('DEF', def)) + sumEv(topN('MID', mid)) + sumEv(topN('FWD', fwd))
+        const total = sumPoints(topN('DEF', def)) + sumPoints(topN('MID', mid)) + sumPoints(topN('FWD', fwd))
         if (!best || total > best.total) best = { def, mid, fwd, total }
       }
     }
@@ -132,9 +143,12 @@ export function optimiseStartingXI(squad: PlayerEV[]): OptimisedLineup {
     ...topN('FWD', best.fwd),
   ]
   const startingIds = startingPlayers.map((p) => p.id)
-  const benchIds = squad.filter((p) => !startingIds.includes(p.id)).map((p) => p.id)
+  const benchIds = squad
+    .filter((p) => !startingIds.includes(p.id))
+    .sort((a, b) => nextGwPoints(b) - nextGwPoints(a))
+    .map((p) => p.id)
 
-  const byScore = [...startingPlayers].sort((a, b) => b.total_ev - a.total_ev)
+  const byScore = [...startingPlayers].sort((a, b) => nextGwPoints(b) - nextGwPoints(a))
   return {
     startingIds,
     benchIds,
