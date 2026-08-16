@@ -33,7 +33,7 @@
           "attack_mult": 0.969,
           "cs_prob": 0.191,
           "expected_conceded": 1.653,
-          "ml_points": 4.27
+          "ml_points": 3.55
         },
         {
           "event": 2,
@@ -44,7 +44,7 @@
           "attack_mult": 0.88,
           "cs_prob": 0.192,
           "expected_conceded": 1.5,
-          "ml_points": 4.1
+          "ml_points": 3.47
         },
         {
           "event": 3,
@@ -55,7 +55,7 @@
           "attack_mult": 1.24,
           "cs_prob": 0.485,
           "expected_conceded": 0.6,
-          "ml_points": 6.38
+          "ml_points": 5.8
         },
         {
           "event": 4,
@@ -66,7 +66,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.291,
           "expected_conceded": 1.213,
-          "ml_points": 5.53
+          "ml_points": 4.04
         },
         {
           "event": 5,
@@ -77,7 +77,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.261,
           "expected_conceded": 1.213,
-          "ml_points": 5.18
+          "ml_points": 3.84
         },
         {
           "event": 6,
@@ -88,7 +88,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.291,
           "expected_conceded": 1.213,
-          "ml_points": 5.53
+          "ml_points": 4.04
         }
       ],
       "xg90": 0.516,
@@ -96,12 +96,12 @@
       "dc90": 2.3316,
       "saves90": 0.0,
       "dc_prob": 0.0583,
-      "ml_ev": 30.99,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 24.74,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
-        "expected goals per 90",
-        "chance of a long appearance"
+        "clean-sheet probability",
+        "expected goals per 90"
       ]
     },
     {
@@ -134,7 +134,7 @@
           "attack_mult": 1.058,
           "cs_prob": 0.267,
           "expected_conceded": 1.441,
-          "ml_points": 3.66
+          "ml_points": 3.86
         },
         {
           "event": 2,
@@ -145,7 +145,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.245,
           "expected_conceded": 1.192,
-          "ml_points": 3.83
+          "ml_points": 3.8
         },
         {
           "event": 3,
@@ -156,7 +156,7 @@
           "attack_mult": 1.146,
           "cs_prob": 0.338,
           "expected_conceded": 0.972,
-          "ml_points": 4.18
+          "ml_points": 4.49
         },
         {
           "event": 4,
@@ -167,7 +167,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.245,
           "expected_conceded": 1.192,
-          "ml_points": 3.83
+          "ml_points": 3.8
         },
         {
           "event": 5,
@@ -178,7 +178,7 @@
           "attack_mult": 0.854,
           "cs_prob": 0.193,
           "expected_conceded": 1.563,
-          "ml_points": 3.46
+          "ml_points": 3.34
         },
         {
           "event": 6,
@@ -189,7 +189,7 @@
           "attack_mult": 0.854,
           "cs_prob": 0.163,
           "expected_conceded": 1.563,
-          "ml_points": 3.17
+          "ml_points": 2.98
         }
       ],
       "xg90": 0.3938,
@@ -197,12 +197,12 @@
       "dc90": 6.2748,
       "saves90": 0.0,
       "dc_prob": 0.1569,
-      "ml_ev": 22.13,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 22.27,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "expected goals per 90",
         "price",
-        "clean-sheet probability"
+        "expected assists per 90"
       ]
     },
     {
@@ -235,7 +235,7 @@
           "attack_mult": 1.058,
           "cs_prob": 0.267,
           "expected_conceded": 1.441,
-          "ml_points": 3.36
+          "ml_points": 2.73
         },
         {
           "event": 2,
@@ -246,7 +246,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.261,
           "expected_conceded": 1.213,
-          "ml_points": 2.95
+          "ml_points": 2.44
         },
         {
           "event": 3,
@@ -257,7 +257,7 @@
           "attack_mult": 1.12,
           "cs_prob": 0.341,
           "expected_conceded": 0.976,
-          "ml_points": 4.4
+          "ml_points": 4.27
         },
         {
           "event": 4,
@@ -268,7 +268,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.261,
           "expected_conceded": 1.213,
-          "ml_points": 2.95
+          "ml_points": 2.44
         },
         {
           "event": 5,
@@ -279,7 +279,7 @@
           "attack_mult": 0.88,
           "cs_prob": 0.192,
           "expected_conceded": 1.5,
-          "ml_points": 2.99
+          "ml_points": 2.02
         },
         {
           "event": 6,
@@ -290,7 +290,7 @@
           "attack_mult": 0.88,
           "cs_prob": 0.162,
           "expected_conceded": 1.5,
-          "ml_points": 2.5
+          "ml_points": 1.62
         }
       ],
       "xg90": 0.6449,
@@ -298,12 +298,12 @@
       "dc90": 5.8684,
       "saves90": 0.0,
       "dc_prob": 0.1467,
-      "ml_ev": 19.15,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 15.52,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
         "clean-sheet probability",
-        "defensive contribution rate"
+        "expected minutes when playing"
       ]
     },
     {
@@ -347,7 +347,7 @@
           "attack_mult": 0.85,
           "cs_prob": 0.15,
           "expected_conceded": 1.821,
-          "ml_points": 2.01
+          "ml_points": 2.07
         },
         {
           "event": 3,
@@ -358,7 +358,7 @@
           "attack_mult": 1.1,
           "cs_prob": 0.338,
           "expected_conceded": 1.153,
-          "ml_points": 2.74
+          "ml_points": 2.85
         },
         {
           "event": 4,
@@ -369,7 +369,7 @@
           "attack_mult": 1.25,
           "cs_prob": 0.426,
           "expected_conceded": 0.757,
-          "ml_points": 3.52
+          "ml_points": 3.62
         },
         {
           "event": 5,
@@ -380,7 +380,7 @@
           "attack_mult": 0.85,
           "cs_prob": 0.18,
           "expected_conceded": 1.821,
-          "ml_points": 2.07
+          "ml_points": 2.14
         },
         {
           "event": 6,
@@ -391,7 +391,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.238,
           "expected_conceded": 1.449,
-          "ml_points": 2.37
+          "ml_points": 2.47
         }
       ],
       "xg90": 0.0,
@@ -399,12 +399,12 @@
       "dc90": 0.0,
       "saves90": 2.7295,
       "dc_prob": 0.0,
-      "ml_ev": 15.29,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 15.73,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
         "goalkeeper position",
-        "clean-sheet probability"
+        "fixture difficulty"
       ]
     },
     {
@@ -437,7 +437,7 @@
           "attack_mult": 1.14,
           "cs_prob": 0.275,
           "expected_conceded": 1.406,
-          "ml_points": 2.31
+          "ml_points": 2.5
         },
         {
           "event": 2,
@@ -448,7 +448,7 @@
           "attack_mult": 0.734,
           "cs_prob": 0.139,
           "expected_conceded": 1.727,
-          "ml_points": 1.56
+          "ml_points": 1.62
         },
         {
           "event": 3,
@@ -459,7 +459,7 @@
           "attack_mult": 1.327,
           "cs_prob": 0.329,
           "expected_conceded": 1.078,
-          "ml_points": 2.71
+          "ml_points": 2.87
         },
         {
           "event": 4,
@@ -470,7 +470,7 @@
           "attack_mult": 1.413,
           "cs_prob": 0.434,
           "expected_conceded": 0.729,
-          "ml_points": 3.9
+          "ml_points": 4.12
         },
         {
           "event": 5,
@@ -481,7 +481,7 @@
           "attack_mult": 0.734,
           "cs_prob": 0.169,
           "expected_conceded": 1.727,
-          "ml_points": 1.58
+          "ml_points": 1.6
         },
         {
           "event": 6,
@@ -492,7 +492,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.231,
           "expected_conceded": 1.364,
-          "ml_points": 2.26
+          "ml_points": 2.2
         }
       ],
       "xg90": 0.0592,
@@ -500,8 +500,8 @@
       "dc90": 4.8882,
       "saves90": 0.0,
       "dc_prob": 0.176,
-      "ml_ev": 14.32,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 14.91,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
         "clean-sheet probability",
@@ -538,7 +538,7 @@
           "attack_mult": 1.204,
           "cs_prob": 0.273,
           "expected_conceded": 1.298,
-          "ml_points": 4.19
+          "ml_points": 5.15
         },
         {
           "event": 2,
@@ -549,7 +549,7 @@
           "attack_mult": 1.146,
           "cs_prob": 0.338,
           "expected_conceded": 0.972,
-          "ml_points": 4.67
+          "ml_points": 5.57
         },
         {
           "event": 3,
@@ -560,7 +560,7 @@
           "attack_mult": 0.708,
           "cs_prob": 0.091,
           "expected_conceded": 1.956,
-          "ml_points": 4.08
+          "ml_points": 4.23
         },
         {
           "event": 4,
@@ -571,7 +571,7 @@
           "attack_mult": 1.292,
           "cs_prob": 0.472,
           "expected_conceded": 0.612,
-          "ml_points": 5.22
+          "ml_points": 5.51
         },
         {
           "event": 5,
@@ -582,7 +582,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.245,
           "expected_conceded": 1.192,
-          "ml_points": 3.85
+          "ml_points": 4.58
         },
         {
           "event": 6,
@@ -593,7 +593,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.275,
           "expected_conceded": 1.192,
-          "ml_points": 4.1
+          "ml_points": 4.9
         }
       ],
       "xg90": 0.58,
@@ -601,12 +601,12 @@
       "dc90": 4.5227,
       "saves90": 0.0,
       "dc_prob": 0.1131,
-      "ml_ev": 26.11,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 29.94,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
         "expected assists per 90",
-        "clean-sheet probability"
+        "expected goals per 90"
       ]
     },
     {
@@ -639,7 +639,7 @@
           "attack_mult": 1.204,
           "cs_prob": 0.273,
           "expected_conceded": 1.298,
-          "ml_points": 4.1
+          "ml_points": 3.47
         },
         {
           "event": 2,
@@ -650,7 +650,7 @@
           "attack_mult": 1.12,
           "cs_prob": 0.341,
           "expected_conceded": 0.976,
-          "ml_points": 4.27
+          "ml_points": 3.81
         },
         {
           "event": 3,
@@ -661,7 +661,7 @@
           "attack_mult": 0.76,
           "cs_prob": 0.118,
           "expected_conceded": 1.815,
-          "ml_points": 3.35
+          "ml_points": 2.47
         },
         {
           "event": 4,
@@ -672,7 +672,7 @@
           "attack_mult": 1.24,
           "cs_prob": 0.515,
           "expected_conceded": 0.6,
-          "ml_points": 4.86
+          "ml_points": 4.15
         },
         {
           "event": 5,
@@ -683,7 +683,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.261,
           "expected_conceded": 1.213,
-          "ml_points": 3.98
+          "ml_points": 3.47
         },
         {
           "event": 6,
@@ -694,7 +694,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.291,
           "expected_conceded": 1.213,
-          "ml_points": 3.95
+          "ml_points": 3.59
         }
       ],
       "xg90": 0.5158,
@@ -702,12 +702,12 @@
       "dc90": 2.2373,
       "saves90": 0.0,
       "dc_prob": 0.0559,
-      "ml_ev": 24.51,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 20.96,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
         "expected goals per 90",
-        "clean-sheet probability"
+        "fixture difficulty"
       ]
     },
     {
@@ -740,7 +740,7 @@
           "attack_mult": 1.067,
           "cs_prob": 0.36,
           "expected_conceded": 1.108,
-          "ml_points": 3.25
+          "ml_points": 3.23
         },
         {
           "event": 2,
@@ -751,7 +751,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.238,
           "expected_conceded": 1.449,
-          "ml_points": 3.09
+          "ml_points": 3.22
         },
         {
           "event": 3,
@@ -762,7 +762,7 @@
           "attack_mult": 0.85,
           "cs_prob": 0.18,
           "expected_conceded": 1.821,
-          "ml_points": 2.82
+          "ml_points": 2.91
         },
         {
           "event": 4,
@@ -773,7 +773,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.238,
           "expected_conceded": 1.449,
-          "ml_points": 3.09
+          "ml_points": 3.22
         },
         {
           "event": 5,
@@ -784,7 +784,7 @@
           "attack_mult": 1.1,
           "cs_prob": 0.338,
           "expected_conceded": 1.153,
-          "ml_points": 3.42
+          "ml_points": 3.5
         },
         {
           "event": 6,
@@ -795,7 +795,7 @@
           "attack_mult": 1.25,
           "cs_prob": 0.426,
           "expected_conceded": 0.757,
-          "ml_points": 4.01
+          "ml_points": 4.12
         }
       ],
       "xg90": 0.0,
@@ -803,12 +803,12 @@
       "dc90": 0.0,
       "saves90": 2.9167,
       "dc_prob": 0.0,
-      "ml_ev": 19.68,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 20.2,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "goalkeeper position",
-        "clean-sheet probability",
-        "fixture difficulty"
+        "fixture difficulty",
+        "clean-sheet probability"
       ]
     },
     {
@@ -841,7 +841,7 @@
           "attack_mult": 1.067,
           "cs_prob": 0.36,
           "expected_conceded": 1.108,
-          "ml_points": 2.76
+          "ml_points": 2.71
         },
         {
           "event": 2,
@@ -852,7 +852,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.231,
           "expected_conceded": 1.364,
-          "ml_points": 3.18
+          "ml_points": 2.64
         },
         {
           "event": 3,
@@ -863,7 +863,7 @@
           "attack_mult": 0.734,
           "cs_prob": 0.169,
           "expected_conceded": 1.727,
-          "ml_points": 2.12
+          "ml_points": 2.13
         },
         {
           "event": 4,
@@ -874,7 +874,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.231,
           "expected_conceded": 1.364,
-          "ml_points": 3.18
+          "ml_points": 2.64
         },
         {
           "event": 5,
@@ -885,7 +885,7 @@
           "attack_mult": 1.327,
           "cs_prob": 0.329,
           "expected_conceded": 1.078,
-          "ml_points": 3.25
+          "ml_points": 3.1
         },
         {
           "event": 6,
@@ -896,7 +896,7 @@
           "attack_mult": 1.413,
           "cs_prob": 0.434,
           "expected_conceded": 0.729,
-          "ml_points": 3.8
+          "ml_points": 3.99
         }
       ],
       "xg90": 0.0597,
@@ -904,12 +904,12 @@
       "dc90": 8.6008,
       "saves90": 0.0,
       "dc_prob": 0.3096,
-      "ml_ev": 18.29,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 17.21,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "chance of a long appearance",
         "price",
-        "expected goals per 90"
+        "fixture difficulty"
       ]
     },
     {
@@ -942,7 +942,7 @@
           "attack_mult": 1.067,
           "cs_prob": 0.36,
           "expected_conceded": 1.108,
-          "ml_points": 3.11
+          "ml_points": 3.14
         },
         {
           "event": 2,
@@ -953,7 +953,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.245,
           "expected_conceded": 1.192,
-          "ml_points": 3.32
+          "ml_points": 3.17
         },
         {
           "event": 3,
@@ -964,7 +964,7 @@
           "attack_mult": 0.854,
           "cs_prob": 0.193,
           "expected_conceded": 1.563,
-          "ml_points": 2.94
+          "ml_points": 2.91
         },
         {
           "event": 4,
@@ -975,7 +975,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.245,
           "expected_conceded": 1.192,
-          "ml_points": 3.32
+          "ml_points": 3.17
         },
         {
           "event": 5,
@@ -986,7 +986,7 @@
           "attack_mult": 1.146,
           "cs_prob": 0.338,
           "expected_conceded": 0.972,
-          "ml_points": 3.57
+          "ml_points": 3.51
         },
         {
           "event": 6,
@@ -997,7 +997,7 @@
           "attack_mult": 1.292,
           "cs_prob": 0.442,
           "expected_conceded": 0.612,
-          "ml_points": 3.9
+          "ml_points": 3.82
         }
       ],
       "xg90": 0.3017,
@@ -1005,12 +1005,12 @@
       "dc90": 9.4058,
       "saves90": 0.0,
       "dc_prob": 0.2351,
-      "ml_ev": 20.16,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 19.72,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "expected goals per 90",
-        "price",
-        "defensive contribution rate"
+        "fixture difficulty",
+        "clean-sheet probability"
       ]
     },
     {
@@ -1043,7 +1043,7 @@
           "attack_mult": 1.591,
           "cs_prob": 0.562,
           "expected_conceded": 0.576,
-          "ml_points": 9.45
+          "ml_points": 8.68
         },
         {
           "event": 2,
@@ -1054,7 +1054,7 @@
           "attack_mult": 1.146,
           "cs_prob": 0.338,
           "expected_conceded": 0.972,
-          "ml_points": 10.99
+          "ml_points": 8.32
         },
         {
           "event": 3,
@@ -1065,7 +1065,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.245,
           "expected_conceded": 1.192,
-          "ml_points": 8.84
+          "ml_points": 7.01
         },
         {
           "event": 4,
@@ -1076,7 +1076,7 @@
           "attack_mult": 0.854,
           "cs_prob": 0.193,
           "expected_conceded": 1.563,
-          "ml_points": 10.66
+          "ml_points": 7.78
         },
         {
           "event": 5,
@@ -1087,7 +1087,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.245,
           "expected_conceded": 1.192,
-          "ml_points": 8.84
+          "ml_points": 7.01
         },
         {
           "event": 6,
@@ -1098,7 +1098,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.275,
           "expected_conceded": 1.192,
-          "ml_points": 10.72
+          "ml_points": 8.86
         }
       ],
       "xg90": 0.4039,
@@ -1106,8 +1106,8 @@
       "dc90": 7.7457,
       "saves90": 0.0,
       "dc_prob": 0.1936,
-      "ml_ev": 59.5,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 47.66,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
         "chance of a long appearance",
@@ -1144,7 +1144,7 @@
           "attack_mult": 1.591,
           "cs_prob": 0.562,
           "expected_conceded": 0.576,
-          "ml_points": 5.34
+          "ml_points": 5.97
         },
         {
           "event": 2,
@@ -1155,7 +1155,7 @@
           "attack_mult": 1.146,
           "cs_prob": 0.338,
           "expected_conceded": 0.972,
-          "ml_points": 5.01
+          "ml_points": 5.44
         },
         {
           "event": 3,
@@ -1166,7 +1166,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.245,
           "expected_conceded": 1.192,
-          "ml_points": 3.9
+          "ml_points": 4.07
         },
         {
           "event": 4,
@@ -1177,7 +1177,7 @@
           "attack_mult": 0.854,
           "cs_prob": 0.193,
           "expected_conceded": 1.563,
-          "ml_points": 4.18
+          "ml_points": 3.82
         },
         {
           "event": 5,
@@ -1188,7 +1188,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.245,
           "expected_conceded": 1.192,
-          "ml_points": 3.9
+          "ml_points": 4.07
         },
         {
           "event": 6,
@@ -1199,7 +1199,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.275,
           "expected_conceded": 1.192,
-          "ml_points": 4.3
+          "ml_points": 4.38
         }
       ],
       "xg90": 0.4027,
@@ -1207,11 +1207,11 @@
       "dc90": 5.2148,
       "saves90": 0.0,
       "dc_prob": 0.1304,
-      "ml_ev": 26.63,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 27.75,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
-        "expected assists per 90",
+        "expected goals per 90",
         "clean-sheet probability"
       ]
     },
@@ -1245,7 +1245,7 @@
           "attack_mult": 0.721,
           "cs_prob": 0.215,
           "expected_conceded": 1.689,
-          "ml_points": 2.35
+          "ml_points": 2.33
         },
         {
           "event": 2,
@@ -1256,7 +1256,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.231,
           "expected_conceded": 1.364,
-          "ml_points": 2.64
+          "ml_points": 2.57
         },
         {
           "event": 3,
@@ -1267,7 +1267,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.261,
           "expected_conceded": 1.364,
-          "ml_points": 2.44
+          "ml_points": 2.7
         },
         {
           "event": 4,
@@ -1278,7 +1278,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.231,
           "expected_conceded": 1.364,
-          "ml_points": 2.64
+          "ml_points": 2.57
         },
         {
           "event": 5,
@@ -1289,7 +1289,7 @@
           "attack_mult": 1.413,
           "cs_prob": 0.464,
           "expected_conceded": 0.729,
-          "ml_points": 3.64
+          "ml_points": 4.03
         },
         {
           "event": 6,
@@ -1300,7 +1300,7 @@
           "attack_mult": 1.413,
           "cs_prob": 0.434,
           "expected_conceded": 0.729,
-          "ml_points": 3.7
+          "ml_points": 4.05
         }
       ],
       "xg90": 0.1458,
@@ -1308,12 +1308,12 @@
       "dc90": 8.8694,
       "saves90": 0.0,
       "dc_prob": 0.3193,
-      "ml_ev": 17.41,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 18.25,
+      "ml_uncertainty": 3.11,
       "ml_why": [
-        "clean-sheet probability",
         "fixture difficulty",
-        "price"
+        "clean-sheet probability",
+        "expected assists per 90"
       ]
     },
     {
@@ -1346,7 +1346,7 @@
           "attack_mult": 1.026,
           "cs_prob": 0.351,
           "expected_conceded": 1.137,
-          "ml_points": 3.05
+          "ml_points": 3.11
         },
         {
           "event": 2,
@@ -1357,7 +1357,7 @@
           "attack_mult": 0.734,
           "cs_prob": 0.139,
           "expected_conceded": 1.727,
-          "ml_points": 2.15
+          "ml_points": 2.02
         },
         {
           "event": 3,
@@ -1368,7 +1368,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.261,
           "expected_conceded": 1.364,
-          "ml_points": 2.49
+          "ml_points": 2.51
         },
         {
           "event": 4,
@@ -1379,7 +1379,7 @@
           "attack_mult": 0.734,
           "cs_prob": 0.139,
           "expected_conceded": 1.727,
-          "ml_points": 2.15
+          "ml_points": 2.02
         },
         {
           "event": 5,
@@ -1390,7 +1390,7 @@
           "attack_mult": 1.413,
           "cs_prob": 0.464,
           "expected_conceded": 0.729,
-          "ml_points": 3.7
+          "ml_points": 3.79
         },
         {
           "event": 6,
@@ -1401,7 +1401,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.231,
           "expected_conceded": 1.364,
-          "ml_points": 2.61
+          "ml_points": 2.35
         }
       ],
       "xg90": 0.0622,
@@ -1409,8 +1409,8 @@
       "dc90": 6.8151,
       "saves90": 0.0,
       "dc_prob": 0.2453,
-      "ml_ev": 16.15,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 15.8,
+      "ml_uncertainty": 3.11,
       "ml_why": [
         "clean-sheet probability",
         "fixture difficulty",
@@ -1423,7 +1423,7 @@
       "team_short": "TOT",
       "position": "DEF",
       "now_cost": 55,
-      "selected_by_percent": 23.2,
+      "selected_by_percent": 23.1,
       "status": "a",
       "news": "",
       "expected_minutes_ratio": 0.92,
@@ -1447,7 +1447,7 @@
           "attack_mult": 0.994,
           "cs_prob": 0.216,
           "expected_conceded": 1.534,
-          "ml_points": 3.08
+          "ml_points": 2.91
         },
         {
           "event": 2,
@@ -1458,7 +1458,7 @@
           "attack_mult": 1.327,
           "cs_prob": 0.329,
           "expected_conceded": 1.078,
-          "ml_points": 3.85
+          "ml_points": 3.83
         },
         {
           "event": 3,
@@ -1469,7 +1469,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.231,
           "expected_conceded": 1.364,
-          "ml_points": 3.14
+          "ml_points": 2.84
         },
         {
           "event": 4,
@@ -1480,7 +1480,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.261,
           "expected_conceded": 1.364,
-          "ml_points": 3.36
+          "ml_points": 3.23
         },
         {
           "event": 5,
@@ -1491,7 +1491,7 @@
           "attack_mult": 1.0,
           "cs_prob": 0.261,
           "expected_conceded": 1.364,
-          "ml_points": 3.36
+          "ml_points": 3.23
         },
         {
           "event": 6,
@@ -1502,7 +1502,7 @@
           "attack_mult": 0.734,
           "cs_prob": 0.139,
           "expected_conceded": 1.727,
-          "ml_points": 2.34
+          "ml_points": 2.13
         }
       ],
       "xg90": 0.0703,
@@ -1510,12 +1510,12 @@
       "dc90": 5.6004,
       "saves90": 0.0,
       "dc_prob": 0.2016,
-      "ml_ev": 19.13,
-      "ml_uncertainty": 3.1,
+      "ml_ev": 18.17,
+      "ml_uncertainty": 3.11,
       "ml_why": [
-        "expected goals per 90",
+        "clean-sheet probability",
         "expected assists per 90",
-        "clean-sheet probability"
+        "price"
       ]
     }
   ],
