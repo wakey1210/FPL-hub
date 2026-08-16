@@ -2,15 +2,19 @@ import { useJsonData } from '../lib/data'
 import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { countdownParts, formatDeadline, formatPrice } from '../lib/format'
 import type { Meta, SquadRecommendation } from '../types/fpl'
+import type { MyTeam } from '../types/myTeam'
 
 export function StatusPage() {
   const meta = useJsonData<Meta>('meta.json')
   const squad = useJsonData<SquadRecommendation>('squad_recommendation.json')
+  const myTeam = useJsonData<MyTeam>('my_team.json')
 
   if (meta.loading || squad.loading) return <Layout title="FPL Hub"><LoadingState /></Layout>
   if (meta.error || !meta.data) return <Layout title="FPL Hub"><ErrorState message={meta.error ?? 'no data'} /></Layout>
 
   const countdown = countdownParts(meta.data.next_deadline)
+  const team = myTeam.data
+  const hasLiveTeam = team?.configured && team.has_squad
 
   return (
     <Layout title="FPL Hub">
@@ -35,7 +39,42 @@ export function StatusPage() {
           )}
         </div>
 
-        {squad.data && (
+        {team?.configured && (
+          <div className="rounded-2xl bg-[#1e1e2a] p-5">
+            <p className="text-sm text-white/60 mb-2">{team.team_name}</p>
+            {hasLiveTeam ? (
+              <div className="flex justify-between">
+                <div>
+                  <p className="text-2xl font-bold">{team.summary?.overall_points ?? '-'}</p>
+                  <p className="text-[11px] text-white/50">
+                    overall rank {team.summary?.overall_rank?.toLocaleString() ?? '-'}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="text-2xl font-bold text-[#00ff87]">
+                    {team.summary?.free_transfers_estimate}
+                  </p>
+                  <p className="text-[11px] text-white/50">
+                    free transfer{team.summary?.free_transfers_estimate === 1 ? '' : 's'} ·{' '}
+                    {formatPrice(team.summary?.bank ?? 0)} bank
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <p className="text-sm text-white/70">
+                No squad picked yet for this season - see the recommended squad in Pick Team.
+              </p>
+            )}
+            {team.recent_seasons && team.recent_seasons.length > 0 && (
+              <p className="text-[11px] text-white/40 mt-3">
+                Last season: {team.recent_seasons[team.recent_seasons.length - 1].total_points} pts ·
+                top {team.recent_seasons[team.recent_seasons.length - 1].rank_percentage}%
+              </p>
+            )}
+          </div>
+        )}
+
+        {!hasLiveTeam && squad.data && (
           <div className="rounded-2xl bg-[#1e1e2a] p-5">
             <p className="text-sm text-white/60 mb-2">Recommended initial squad</p>
             <div className="flex justify-between">

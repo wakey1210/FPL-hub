@@ -2,21 +2,34 @@ import { useJsonData } from '../lib/data'
 import { useLocalStorage } from '../lib/useLocalStorage'
 import { Layout } from '../components/Layout'
 import type { Meta } from '../types/fpl'
+import type { MyTeam } from '../types/myTeam'
 
 export function MorePage() {
   const meta = useJsonData<Meta>('meta.json')
+  const myTeam = useJsonData<MyTeam>('my_team.json')
   const [teamId, setTeamId] = useLocalStorage('fpl_team_id')
 
   return (
     <Layout title="More">
       <div className="space-y-4">
         <div className="rounded-2xl bg-[#1e1e2a] p-5">
-          <h2 className="text-sm font-semibold mb-2">Your FPL team ID</h2>
-          <p className="text-xs text-white/50 mb-3">
-            Your public FPL team ID (find it in the URL when viewing "Points" on the official site,
-            e.g. fantasy.premierleague.com/entry/<b>1234567</b>/event/1). No password needed - transfers,
-            chips, bank and picks are all public with just this ID.
-          </p>
+          <h2 className="text-sm font-semibold mb-2">Your FPL team</h2>
+          {myTeam.data?.configured ? (
+            <p className="text-sm text-white/70">
+              Live tracking is set up for <span className="text-white font-medium">{myTeam.data.team_name}</span>{' '}
+              (ID {myTeam.data.team_id}) - transfers, chips, bank and picks refresh automatically every 3 hours.
+            </p>
+          ) : (
+            <p className="text-xs text-white/50">
+              Live tracking isn't configured yet. It's set up once, as a repository variable in
+              GitHub Actions (not from this app), since the FPL API can only be called from the
+              server side.
+            </p>
+          )}
+
+          <label className="block text-xs text-white/50 mt-4 mb-1">
+            Bookmark a team ID for the official site link:
+          </label>
           <input
             value={teamId}
             onChange={(e) => setTeamId(e.target.value.replace(/\D/g, ''))}
@@ -31,13 +44,9 @@ export function MorePage() {
               target="_blank"
               rel="noreferrer"
             >
-              View your team on the official site ↗
+              View on the official site ↗
             </a>
           )}
-          <p className="text-[11px] text-amber-300/80 mt-3">
-            Live team tracking (transfers made, chips used, rank history) is on the roadmap - v1 focuses
-            on the initial squad and transfer suggestions.
-          </p>
         </div>
 
         <div className="rounded-2xl bg-[#1e1e2a] p-5 text-sm text-white/70">

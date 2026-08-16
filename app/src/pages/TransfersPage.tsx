@@ -3,12 +3,15 @@ import { useJsonData } from '../lib/data'
 import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { PlayerRow } from '../components/PlayerRow'
 import { PlayerDetailSheet } from '../components/PlayerDetailSheet'
+import { TransferSuggestionCard } from '../components/TransferSuggestionCard'
 import type { PlayerEV, Position } from '../types/fpl'
+import type { TransferSuggestions } from '../types/transferSuggestions'
 
 const POSITIONS: (Position | 'ALL')[] = ['ALL', 'GKP', 'DEF', 'MID', 'FWD']
 
 export function TransfersPage() {
   const players = useJsonData<PlayerEV[]>('players.json')
+  const suggestions = useJsonData<TransferSuggestions>('transfer_suggestions.json')
   const [query, setQuery] = useState('')
   const [position, setPosition] = useState<Position | 'ALL'>('ALL')
   const [selected, setSelected] = useState<PlayerEV | null>(null)
@@ -25,8 +28,26 @@ export function TransfersPage() {
   if (players.loading) return <Layout title="Transfers"><LoadingState /></Layout>
   if (players.error || !players.data) return <Layout title="Transfers"><ErrorState message={players.error ?? 'no data'} /></Layout>
 
+  const hasSuggestions = suggestions.data?.available && (suggestions.data.suggestions?.length ?? 0) > 0
+
   return (
     <Layout title="Transfers">
+      {hasSuggestions && (
+        <div className="mb-4">
+          <div className="flex items-baseline justify-between mb-2">
+            <p className="text-sm font-semibold">Suggested transfers</p>
+            <p className="text-[11px] text-white/40">
+              {suggestions.data!.free_transfers} FT available
+            </p>
+          </div>
+          <div className="space-y-2">
+            {suggestions.data!.suggestions!.map((s) => (
+              <TransferSuggestionCard key={`${s.out_id}-${s.in_id}`} s={s} />
+            ))}
+          </div>
+        </div>
+      )}
+
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}

@@ -7,11 +7,12 @@ the repo doesn't grow unbounded as GitHub Actions runs this on a schedule.
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from engine import fetch, model, optimise
+from engine import fetch, model, my_team, optimise, transfers
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
@@ -76,11 +77,56 @@ def run() -> None:
         "vice_captain_id": xi_result.vice_captain_id,
     }
 
+    team_id_raw = os.environ.get("FPL_TEAM_ID")
+    meta["team_configured"] = bool(team_id_raw)
+
+    my_team_out: dict = {"configured": False}
+    transfer_suggestions_out: dict = {"available": False, "reason": "No team configured"}
+
+    if team_id_raw:
+        print(f"Fetching manager data for team {team_id_raw}...")
+        team_data = my_team.build_my_team(int(team_id_raw))
+        my_team_out = {"configured": True, **team_data}
+
+        if team_data["has_squad"]:
+            print("Building transfer suggestions...")
+            current_squad = [
+                players_by_id[pick["element"]]
+                for pick in team_data["picks"]
+                if pick["element"] in players_by_id
+            ]
+            suggestions = transfers.suggest_transfers(
+                squad=current_squad,
+                all_players=players,
+                bank=team_data["summary"]["bank"] or 0,
+                free_transfers=team_data["summary"]["free_transfers_estimate"],
+            )
+            transfer_suggestions_out = {
+                "available": True,
+                "free_transfers": team_data["summary"]["free_transfers_estimate"],
+                "bank": team_data["summary"]["bank"],
+                "suggestions": [
+                    {
+                        **asdict(s),
+                        "out": asdict(players_by_id[s.out_id]),
+                        "in": asdict(players_by_id[s.in_id]),
+                    }
+                    for s in suggestions
+                ],
+            }
+        else:
+            transfer_suggestions_out = {
+                "available": False,
+                "reason": "No squad picked yet for this season",
+            }
+
     _write_json("meta.json", meta)
     _write_json("teams.json", teams)
     _write_json("players.json", players_out)
     _write_json("fixtures.json", fixture_ticker)
     _write_json("squad_recommendation.json", squad_out)
+    _write_json("my_team.json", my_team_out)
+    _write_json("transfer_suggestions.json", transfer_suggestions_out)
     print("Pipeline complete.")
 
 
