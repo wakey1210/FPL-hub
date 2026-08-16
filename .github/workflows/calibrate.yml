@@ -1,0 +1,59 @@
+name: Refit calibration coefficients
+
+# Manual only, no schedule - this should be re-run once a season has closed
+# out and you want to include it, not on any automatic cadence. Always check
+# the printed old-vs-new coefficient diff and holdout RMSE in the run log
+# before trusting the result; see engine/calibration/fit_coefficients.py.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-fpl-data
+  cancel-in-progress: false
+
+jobs:
+  calibrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install engine dependencies
+        run: pip install -r requirements.txt
+
+      - name: Download historical data
+        run: python -m engine.calibration.fetch_historical
+
+      - name: Fit coefficients
+        run: python -m engine.calibration.fit_coefficients
+
+      - name: Commit updated coefficients
+        id: commit
+        run: |
+          git config user.name "fpl-hub-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add engine/calibration/coefficients.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Refit calibration coefficients ($(date -u +'%Y-%m-%d'))"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger a full pipeline re-run
+        # The new coefficients need the EV model recomputed, not just a
+        # static-site rebuild - pipeline.yml itself triggers deploy-pages.yml
+        # once it's done, so this cascades correctly.
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pipeline.yml --ref main

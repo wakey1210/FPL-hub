@@ -12,9 +12,10 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from engine import fetch, model, my_team, optimise, transfers
+from engine import fetch, model, my_team, optimise, priors, transfers
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+COEFFICIENTS_PATH = Path(__file__).resolve().parent / "calibration" / "coefficients.json"
 
 
 def _write_json(name: str, payload: object) -> None:
@@ -33,8 +34,17 @@ def run() -> None:
     next_event = next((e for e in events if e["is_next"]), None)
     current_event = next((e for e in events if e["is_current"]), None)
 
-    print("Building expected-points model...")
-    players = model.build_player_ev(bootstrap, fixtures)
+    # Both of these are cheap local file reads - no HTTP calls - so the hot
+    # loop's API-call count stays at 2 (bootstrap + fixtures) regardless.
+    player_priors = priors.load_player_priors()
+    coefficients = json.loads(COEFFICIENTS_PATH.read_text()) if COEFFICIENTS_PATH.exists() else None
+
+    print(
+        f"Building expected-points model... "
+        f"({len(player_priors)} player priors, "
+        f"{'calibrated' if coefficients else 'default'} coefficients)"
+    )
+    players = model.build_player_ev(bootstrap, fixtures, priors=player_priors, coefficients=coefficients)
     players_by_id = {p.id: p for p in players}
 
     print("Optimising initial squad...")
@@ -50,6 +60,9 @@ def run() -> None:
         "next_gameweek": next_event["id"] if next_event else None,
         "next_deadline": next_event["deadline_time"] if next_event else None,
         "model_version": "v1-heuristic",
+        "player_priors_loaded": len(player_priors),
+        "coefficients_loaded": coefficients is not None,
+        "coefficients_generated_at": coefficients.get("generated_at") if coefficients else None,
     }
 
     teams = [

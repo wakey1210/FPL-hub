@@ -31,7 +31,16 @@ gameweek-by-gameweek error will be tracked in-app once the season starts.
 Everything runs free on GitHub:
 - **GitHub Actions** (`.github/workflows/pipeline.yml`) fetches data and
   recomputes predictions every 3 hours (or on demand via
-  `workflow_dispatch`), committing the results to `/data`.
+  `workflow_dispatch`), committing the results to `/data`. If a
+  `FPL_TEAM_ID` repository variable is set, it also tracks that manager's
+  squad/transfers/chips/bank and generates transfer suggestions.
+- **`refresh-priors.yml`** rebuilds each player's multi-season prior
+  (`data/player_priors.json`) weekly - much heavier than the 3-hourly loop
+  (~587 API calls first run, incremental after), so it stays on its own
+  schedule.
+- **`calibrate.yml`** refits the model's FDR/defensive-contribution
+  constants against historical data - manual only, meant to be re-run once a
+  season closes out, not on any automatic cadence.
 - **GitHub Pages** (`.github/workflows/deploy-pages.yml`) rebuilds and
   redeploys the static PWA whenever `/app` or `/data` changes.
 
@@ -63,6 +72,46 @@ in-season as its real error is logged and compared against public benchmarks
 ~1.2-2.0 RMSE per player-gameweek for public-data models, which is the
 target range).
 
+### Historical calibration and adaptive blending
+
+Rather than leaning on a single (possibly noisy, thin) season, three things
+draw on multiple past seasons:
+
+1. **`engine/priors.py`** blends each player's own last up-to-3 completed
+   seasons (via the FPL API's `element-summary/{id}/history_past`) into a
+   recency-and-minutes-weighted personal baseline - a season under 450
+   minutes (~5 matches) is dropped as too thin to trust. Cached to
+   `data/player_priors.json`, refreshed weekly.
+2. **`engine/calibration/fit_coefficients.py`** fits the model's FDR/clean-
+   sheet/defensive-contribution constants to several seasons of real
+   per-gameweek outcomes (via the community-maintained
+   [vaastav/Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League)
+   dataset) instead of hand-picking them - a small, published ridge
+   regression per position, not a black box, with its own R², holdout RMSE
+   and sample size logged alongside every fitted number in
+   `engine/calibration/coefficients.json`. A position whose fit has too
+   little real signal (defenders' points come mostly from clean sheets, not
+   xG/xA, for instance) gets its fitted curve blended back toward the
+   original hand-picked default proportional to its R², rather than shipped
+   at face value. Re-run manually once a season closes out (`calibrate.yml`)
+   - never on a schedule, so a bad refit can't silently replace a working one
+   without a human seeing the diff first.
+3. **`engine/stabilize.py`** blends each stat's this-season-so-far rate with
+   its multi-season prior via an empirical-Bayes-style shrinkage: each stat
+   has a "stabilization point" (in minutes of current-season data) at which
+   it's weighted equally with the prior - defensive actions stabilize in
+   ~2 matches, chance creation takes ~5. This is what lets the model react
+   quickly to an emerging breakout player within a handful of gameweeks,
+   while settling onto season-to-date form (not last-week's "hot streak" or
+   one soft fixture) by mid-season. Pre-season, current-season minutes are
+   zero, so this correctly resolves to exactly the multi-season prior.
+
+Known limitation: the current-season rate blended in isn't yet adjusted for
+the difficulty of opponents already faced this season (only the calibrated
+FDR tables applied to *upcoming* fixtures are) - full per-gameweek-with-FDR
+history for every player would add ~587 more calls to what's otherwise a
+deliberately cheap, 2-call hot loop. Flagged as a fast-follow.
+
 ## Squad optimisation
 
 `engine/optimise.py` uses [PuLP](https://coin-or.github.io/pulp/) with the
@@ -75,7 +124,11 @@ captain and vice-captain from within it.
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python -m engine.pipeline        # writes /data/*.json
+
+python -m engine.priors                       # writes data/player_priors.json (~3 min first run)
+python -m engine.calibration.fetch_historical  # downloads historical seasons (~20MB, cached)
+python -m engine.calibration.fit_coefficients  # writes engine/calibration/coefficients.json
+python -m engine.pipeline                      # writes the rest of /data/*.json
 
 cd app
 npm install
@@ -85,8 +138,10 @@ npm run dev                      # app reads /data via a symlink in app/public
 ## Roadmap
 
 - [x] Initial-squad picker (EV model + optimiser + pitch-view PWA)
-- [ ] Team-ID tracking: transfers made, chips used, bank, rank history
-- [ ] Transfer suggestion engine (multi-gameweek, factoring in hits/chips)
+- [x] Team-ID tracking: transfers made, chips used, bank, rank history
+- [x] Transfer suggestion engine (single-swap, factoring in hits/free transfers)
+- [x] Multi-season historical priors + calibrated FDR/DC constants + adaptive in-season blending
 - [ ] Prediction-accuracy page (logged RMSE/MAE vs. actual results)
-- [ ] Expected-minutes refinement using in-season rolling data
+- [ ] Multi-gameweek transfer/chip planning (currently single-swap only)
+- [ ] Fixture-adjust the current-season rate blended into stabilization (see "known limitation" above)
 - [ ] Optional: FPL account token auth for pre-deadline squad sync

@@ -3,6 +3,9 @@
 __pycache__/
 *.pyc
 
+# Historical data cache for calibration - large, static, re-downloadable
+engine/calibration/cache/
+
 # Node / Vite
 app/node_modules/
 app/dist/

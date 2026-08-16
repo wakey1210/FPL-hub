@@ -1,0 +1,59 @@
+name: Refresh player priors
+
+on:
+  schedule:
+    # Weekly - this is season-aggregate history that only changes once a
+    # season ends, so there's no need for anything more frequent. The first
+    # run does a full ~587-call backfill (~3 minutes); after that it's
+    # incremental (engine/priors.py only re-fetches players missing from the
+    # cached data/player_priors.json), so weekly runs are quick.
+    - cron: '0 4 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  # Shares a group with pipeline.yml/calibrate.yml so pushes to `main` queue
+  # sequentially instead of racing each other, rather than just avoiding
+  # self-overlap.
+  group: refresh-fpl-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install engine dependencies
+        run: pip install -r requirements.txt
+
+      - name: Refresh player priors
+        run: python -m engine.priors
+
+      - name: Commit updated priors
+        id: commit
+        run: |
+          git config user.name "fpl-hub-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/player_priors.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Refresh player priors ($(date -u +'%Y-%m-%d'))"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Trigger Pages redeploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy-pages.yml --ref main
