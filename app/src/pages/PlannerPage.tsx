@@ -1,19 +1,87 @@
 import { useJsonData } from '../lib/data'
 import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { fdrClasses } from '../lib/format'
+import { PlanStepCard } from '../components/PlanStepCard'
+import { StagedTransfersCart } from '../components/StagedTransfersCart'
+import { ChipStrategyWidget } from '../components/ChipStrategyWidget'
+import { usePlannedChanges } from '../lib/usePlannedChanges'
 import type { TeamTicker } from '../types/ticker'
+import type { TransferPlan } from '../types/transferPlan'
+import type { Meta } from '../types/fpl'
+import type { MyTeam } from '../types/myTeam'
 
 export function PlannerPage() {
   const ticker = useJsonData<TeamTicker[]>('fixtures.json')
+  const transferPlan = useJsonData<TransferPlan>('transfer_plan.json')
+  const meta = useJsonData<Meta>('meta.json')
+  const myTeam = useJsonData<MyTeam>('my_team.json')
+  const { plan, addStagedTransfer, removeStagedTransfer, clearStagedTransfers } = usePlannedChanges()
 
   if (ticker.loading) return <Layout title="Planner"><LoadingState /></Layout>
   if (ticker.error || !ticker.data) return <Layout title="Planner"><ErrorState message={ticker.error ?? 'no data'} /></Layout>
 
   const gwCount = Math.max(...ticker.data.map((t) => t.fixtures.length), 0)
   const gwLabels = Array.from({ length: gwCount }, (_, i) => i + 1)
+  const hasPlan = transferPlan.data?.available && (transferPlan.data.steps?.length ?? 0) > 0
+
+  const isStaged = (outId: number, inId: number) =>
+    plan.stagedTransfers.some((t) => t.outId === outId && t.inId === inId)
+
+  const recommendedByChip: Record<string, number> = {}
+  if (hasPlan) {
+    for (const step of transferPlan.data!.steps!) {
+      if (step.chip_played) recommendedByChip[step.chip_played] = step.event
+    }
+  }
+  const currentEvent = meta.data?.next_gameweek ?? meta.data?.current_gameweek ?? null
 
   return (
     <Layout title="Planner">
+      {myTeam.data?.configured && (
+        <ChipStrategyWidget
+          chipsUsed={myTeam.data.chips_used ?? []}
+          currentEvent={currentEvent}
+          recommendedByChip={recommendedByChip}
+        />
+      )}
+      {hasPlan ? (
+        <div className="mb-5">
+          <p className="text-sm font-semibold mb-1">
+            Your 5-week plan (GW{transferPlan.data!.horizon_start}–{transferPlan.data!.horizon_end})
+          </p>
+          <p className="text-[11px] text-white/40 mb-2">
+            Suggested transfers and chip timing, factoring in your bank, free transfers and hit costs.
+          </p>
+          <div className="space-y-2">
+            {transferPlan.data!.steps!.map((step) => (
+              <PlanStepCard
+                key={step.event}
+                step={step}
+                added={step.out[0] ? isStaged(step.out[0].id, step.in[0].id) : false}
+                onAdd={
+                  step.out[0]
+                    ? () =>
+                        addStagedTransfer({
+                          outId: step.out[0].id,
+                          inId: step.in[0].id,
+                          outName: step.out[0].web_name,
+                          inName: step.in[0].web_name,
+                          hitCost: step.hit_cost,
+                        })
+                    : undefined
+                }
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="mb-5 rounded-xl bg-[#1e1e2a] p-4">
+          <p className="text-sm text-white/60">
+            {transferPlan.data?.reason ?? 'No 5-week plan available yet.'}
+          </p>
+        </div>
+      )}
+
       <p className="text-xs text-white/50 mb-3">
         Fixture difficulty ticker, easiest run first. Use this to time transfers, wildcards and chips -
         the Ben Crellin sheet replacement.
@@ -60,6 +128,12 @@ export function PlannerPage() {
         </table>
       </div>
       <p className="text-[10px] text-white/30 mt-3">Uppercase = home fixture, lowercase = away.</p>
+      {plan.stagedTransfers.length > 0 && <div className="h-28" />}
+      <StagedTransfersCart
+        staged={plan.stagedTransfers}
+        onRemove={removeStagedTransfer}
+        onClear={clearStagedTransfers}
+      />
     </Layout>
   )
 }

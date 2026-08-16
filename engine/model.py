@@ -83,7 +83,10 @@ class PlayerEV:
     selected_by_percent: float
     status: str
     news: str
-    expected_minutes_ratio: float
+    expected_minutes_ratio: float  # == p_appearance; kept for compatibility with existing consumers
+    p_appearance: float
+    p_60_plus: float
+    expected_minutes_if_appears: float
     total_ev: float
     uncertainty: float
     why: list[str] = field(default_factory=list)
@@ -111,21 +114,56 @@ def _blended_rate(stat: str, element: dict, prior: PlayerPrior | None, season_st
     return stabilize.blend_rate(stat, current_rate, current_minutes, prior_rate)
 
 
-def _expected_minutes_ratio(
-    element: dict, prior: PlayerPrior | None, season_started: bool
-) -> tuple[float, str]:
-    """Probability-weighted fraction of a full match a player is expected to
-    play, plus the human-readable reason. The tier thresholds/probabilities
-    below are unchanged from v1; what's new is that they're now applied to
-    an adaptively blended minutes share (this-season-so-far vs. multi-season
-    prior, see `_blended_rate`) instead of a single prior season, and any
-    explicit availability signal FPL itself publishes (status flag /
-    chance_of_playing_next_round) is still applied on top as before.
+# P(still on the pitch at 60') given they started - covers early substitution,
+# injury, and red-card risk. Not position/player-specific in v1; a fast-follow
+# could fit this from real data the way engine/calibration does for other constants.
+FINISH_RATE = 0.85
+DEFAULT_MINUTES_IF_APPEARS = 75.0  # used only when no prior/current data exists at all
+
+
+@dataclass
+class MinutesProfile:
+    p_appearance: float  # chance of any minutes this match
+    p_60_plus: float  # chance of reaching the long-play/clean-sheet/DC threshold
+    expected_minutes_if_appears: float  # ~90 for a nailed starter, ~15-25 for an impact sub
+    label: str
+    reason: str
+
+
+def _expected_minutes_profile(
+    element: dict, prior: PlayerPrior | None, team_played: int, season_started: bool
+) -> MinutesProfile:
+    """Splits "expected minutes" into two separate probabilities instead of
+    one flat ratio, because total minutes played is not the same signal as
+    "genuinely first-choice": a player who starts 5 of 7 matches and plays to
+    ~75 minutes each time has a completely different point ceiling from one
+    who racks up similar total minutes via repeated 15-20 minute sub cameos,
+    even if their per-90 attacking rate looks identical. `p_appearance` feeds
+    anything available to a substitute (attacking returns, saves, bonus);
+    `p_60_plus` gates anything that needs a genuine long appearance (defensive
+    contribution, clean sheets, the long-play portion of appearance points) -
+    see `build_player_ev` for exactly how these are applied.
     """
     current_minutes = (element.get("minutes") or 0) if season_started else 0
-    current_share = min(current_minutes / FULL_SEASON_MINUTES, 1.0)
-    prior_share = prior.weighted_minutes_share if prior else current_share
-    minutes_share = stabilize.blend_rate("start_rate", current_share, current_minutes, prior_share)
+    current_starts = (element.get("starts") or 0) if season_started else 0
+
+    current_minutes_share = min(current_minutes / FULL_SEASON_MINUTES, 1.0)
+    prior_minutes_share = prior.weighted_minutes_share if prior else current_minutes_share
+    minutes_share = stabilize.blend_rate(
+        "minutes_share", current_minutes_share, current_minutes, prior_minutes_share
+    )
+
+    current_starts_share = min(current_starts / team_played, 1.0) if team_played else 0.0
+    prior_starts_share = prior.weighted_starts_share if prior else current_starts_share
+    starts_share = stabilize.blend_rate("starts", current_starts_share, current_minutes, prior_starts_share)
+
+    if prior and prior.avg_minutes_per_start:
+        # Capped at 95: extra-time cup/playoff matches in a small starts sample
+        # (e.g. 5 starts including one 120-minute replay) can otherwise skew
+        # this well above what's realistic for a normal league match.
+        expected_minutes_if_appears = min(prior.avg_minutes_per_start, 95.0)
+    else:
+        expected_minutes_if_appears = DEFAULT_MINUTES_IF_APPEARS
 
     using_prior = prior is not None and (not season_started or current_minutes == 0)
     basis = "recent form" if season_started and current_minutes > 0 else (
@@ -133,26 +171,34 @@ def _expected_minutes_ratio(
     )
 
     if minutes_share >= 0.70:
-        prob, label = 0.92, f"a regular starter based on {basis}"
+        p_appearance_base, label = 0.92, f"a regular starter based on {basis}"
     elif minutes_share >= 0.40:
-        prob, label = 0.65, f"a rotation risk based on {basis}"
+        p_appearance_base, label = 0.65, f"a rotation risk based on {basis}"
     elif minutes_share >= 0.10:
-        prob, label = 0.30, f"a fringe player based on {basis}"
+        p_appearance_base, label = 0.30, f"a fringe player based on {basis}"
     else:
-        prob, label = 0.15, "unproven / very little senior game time"
+        p_appearance_base, label = 0.15, "unproven / very little senior game time"
+
+    p_60_plus_base = min(starts_share * FINISH_RATE, p_appearance_base)
 
     status = element["status"]
     cop = element["chance_of_playing_next_round"]
-    if status == "a" and cop is None:
-        return prob, f"Expected to start ({label})"
     if cop is not None:
         availability = cop / 100.0
-        ratio = min(prob, availability) if availability < 1.0 else prob
+        scale = min(1.0, availability / p_appearance_base) if p_appearance_base > 0 else 0.0
+        p_appearance = min(p_appearance_base, availability)
+        p_60_plus = p_60_plus_base * scale
         reason = element["news"] or f"{int(availability * 100)}% chance of playing"
-        return ratio, f"Availability flagged: {reason}"
+        return MinutesProfile(
+            p_appearance, p_60_plus, expected_minutes_if_appears, label, f"Availability flagged: {reason}"
+        )
     if status in ("i", "s", "u"):
-        return 0.02, element["news"] or "Currently unavailable"
-    return prob, f"Expected to start ({label})"
+        return MinutesProfile(
+            0.02, 0.01, expected_minutes_if_appears, "unavailable", element["news"] or "Currently unavailable"
+        )
+    return MinutesProfile(
+        p_appearance_base, p_60_plus_base, expected_minutes_if_appears, label, f"Expected to start ({label})"
+    )
 
 
 def _dc_probability(rate: float, position_id: int, damping: float) -> float:
@@ -288,7 +334,7 @@ def build_player_ev(
             position, coefficients
         )
 
-        xmins_ratio, minutes_reason = _expected_minutes_ratio(e, prior, season_started_flag)
+        mp = _expected_minutes_profile(e, prior, team["played"], season_started_flag)
         xg90 = _blended_rate("expected_goals", e, prior, season_started_flag)
         xa90 = _blended_rate("expected_assists", e, prior, season_started_flag)
         xgi90 = xg90 + xa90
@@ -317,13 +363,19 @@ def build_player_ev(
             cs_prob = cs_prob_table[fdr] + (HOME_CS_BONUS if is_home else 0.0)
             expected_conceded = expected_conceded_table[fdr]
 
-            appearance_pts = xmins_ratio * long_play + (1 - xmins_ratio) * 0.3 * short_play
-            attacking_pts = (goal_pts * xg90 + assist_pts * xa90) * attack_mult * xmins_ratio
-            defensive_pts = dc_prob * dc_pts * xmins_ratio
-            clean_sheet_pts = cs_prob * cs_pts * xmins_ratio
-            conceded_penalty = expected_conceded * conceded_pts_per_goal * xmins_ratio
-            save_pts = saves90 * save_pts_per_save * xmins_ratio
-            bonus_pts = bonus_est * xmins_ratio
+            # Anything reachable off the bench scales on p_appearance; anything
+            # needing a genuine long appearance (defensive contribution, clean
+            # sheets, the long-play portion of appearance points) scales on the
+            # stricter p_60_plus - this is what stops a great per-90 rate from a
+            # cameo-only player inflating their defensive/clean-sheet/bonus upside
+            # the way a single flat ratio used to.
+            appearance_pts = mp.p_appearance * short_play + mp.p_60_plus * (long_play - short_play)
+            attacking_pts = (goal_pts * xg90 + assist_pts * xa90) * attack_mult * mp.p_appearance
+            defensive_pts = dc_prob * dc_pts * mp.p_60_plus
+            clean_sheet_pts = cs_prob * cs_pts * mp.p_60_plus
+            conceded_penalty = expected_conceded * conceded_pts_per_goal * mp.p_appearance
+            save_pts = saves90 * save_pts_per_save * mp.p_appearance
+            bonus_pts = bonus_est * mp.p_appearance
 
             fixture_total = (
                 appearance_pts
@@ -349,12 +401,30 @@ def build_player_ev(
             sum(f.fdr for f in fixture_evs) / len(fixture_evs) if fixture_evs else 3.0
         )
 
-        # Uncertainty widens for low-minutes-confidence and blank-fixture players.
-        confidence_gap = 1 - xmins_ratio
+        # Uncertainty widens for low chance-of-a-long-appearance and blank-fixture
+        # players - p_60_plus is the stricter signal, since that's what most of a
+        # player's point sources actually depend on reaching.
+        confidence_gap = 1 - mp.p_60_plus
         uncertainty = round(total_ev * (0.15 + 0.35 * confidence_gap) + 0.3, 2)
 
+        # Capped-upside caveat: good rate, but rarely reaches the 60' threshold
+        # that unlocks defensive/clean-sheet/bonus points - the concrete case
+        # this playing-time model exists to catch (a super-sub with flashy
+        # per-90 stats isn't the same prospect as a nailed starter with a
+        # lower rate).
+        capped_upside = xgi90 >= 0.4 and mp.p_60_plus < 0.35 and mp.p_appearance >= 0.3
+
+        minutes_reason = mp.reason
+        if mp.p_appearance > 0.05:
+            minutes_reason = f"{mp.reason} (~{mp.expected_minutes_if_appears:.0f} min when playing)"
+
         why: list[str] = [minutes_reason]
-        if xgi90 > 0:
+        if capped_upside:
+            why.append(
+                f"Capped upside: {xgi90:.2f} xGI/90 is strong, but rarely reaching 60' limits "
+                "defensive/clean-sheet/bonus points"
+            )
+        elif xgi90 > 0:
             why.append(f"Underlying output: {xgi90:.2f} combined xG+xA per 90 minutes")
         if fixture_evs:
             fixture_desc = "favourable" if avg_fdr <= 2.4 else "tough" if avg_fdr >= 3.6 else "average"
@@ -377,7 +447,10 @@ def build_player_ev(
                 selected_by_percent=float(e["selected_by_percent"]),
                 status=e["status"],
                 news=e["news"],
-                expected_minutes_ratio=round(xmins_ratio, 2),
+                expected_minutes_ratio=round(mp.p_appearance, 2),
+                p_appearance=round(mp.p_appearance, 2),
+                p_60_plus=round(mp.p_60_plus, 2),
+                expected_minutes_if_appears=round(mp.expected_minutes_if_appears, 1),
                 total_ev=round(total_ev, 2),
                 uncertainty=uncertainty,
                 why=why[:3],

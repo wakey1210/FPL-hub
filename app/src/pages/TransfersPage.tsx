@@ -4,6 +4,8 @@ import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { PlayerRow } from '../components/PlayerRow'
 import { PlayerDetailSheet } from '../components/PlayerDetailSheet'
 import { TransferSuggestionCard } from '../components/TransferSuggestionCard'
+import { StagedTransfersCart } from '../components/StagedTransfersCart'
+import { usePlannedChanges } from '../lib/usePlannedChanges'
 import type { PlayerEV, Position } from '../types/fpl'
 import type { TransferSuggestions } from '../types/transferSuggestions'
 
@@ -15,6 +17,7 @@ export function TransfersPage() {
   const [query, setQuery] = useState('')
   const [position, setPosition] = useState<Position | 'ALL'>('ALL')
   const [selected, setSelected] = useState<PlayerEV | null>(null)
+  const { plan, addStagedTransfer, removeStagedTransfer, clearStagedTransfers } = usePlannedChanges()
 
   const filtered = useMemo(() => {
     if (!players.data) return []
@@ -29,6 +32,8 @@ export function TransfersPage() {
   if (players.error || !players.data) return <Layout title="Transfers"><ErrorState message={players.error ?? 'no data'} /></Layout>
 
   const hasSuggestions = suggestions.data?.available && (suggestions.data.suggestions?.length ?? 0) > 0
+  const isStaged = (outId: number, inId: number) =>
+    plan.stagedTransfers.some((t) => t.outId === outId && t.inId === inId)
 
   return (
     <Layout title="Transfers">
@@ -42,7 +47,20 @@ export function TransfersPage() {
           </div>
           <div className="space-y-2">
             {suggestions.data!.suggestions!.map((s) => (
-              <TransferSuggestionCard key={`${s.out_id}-${s.in_id}`} s={s} />
+              <TransferSuggestionCard
+                key={`${s.out_id}-${s.in_id}`}
+                s={s}
+                added={isStaged(s.out_id, s.in_id)}
+                onAdd={() =>
+                  addStagedTransfer({
+                    outId: s.out_id,
+                    inId: s.in_id,
+                    outName: s.out.web_name,
+                    inName: s.in.web_name,
+                    hitCost: s.uses_hit ? 4 : 0,
+                  })
+                }
+              />
             ))}
           </div>
         </div>
@@ -59,7 +77,7 @@ export function TransfersPage() {
           <button
             key={pos}
             onClick={() => setPosition(pos)}
-            className={`px-3 py-1 rounded-full text-xs font-semibold ${
+            className={`min-h-[36px] px-3 py-1 rounded-full text-xs font-semibold transition-colors ${
               position === pos ? 'bg-[#00ff87] text-black' : 'bg-[#1e1e2a] text-white/60'
             }`}
           >
@@ -73,7 +91,13 @@ export function TransfersPage() {
           <PlayerRow key={p.id} player={p} onClick={() => setSelected(p)} />
         ))}
       </div>
+      {plan.stagedTransfers.length > 0 && <div className="h-28" />}
       <PlayerDetailSheet player={selected} onClose={() => setSelected(null)} />
+      <StagedTransfersCart
+        staged={plan.stagedTransfers}
+        onRemove={removeStagedTransfer}
+        onClear={clearStagedTransfers}
+      />
     </Layout>
   )
 }

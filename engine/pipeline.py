@@ -12,7 +12,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from engine import fetch, model, my_team, optimise, priors, transfers
+from engine import fetch, model, my_team, optimise, planner, priors, transfers
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 COEFFICIENTS_PATH = Path(__file__).resolve().parent / "calibration" / "coefficients.json"
@@ -95,6 +95,7 @@ def run() -> None:
 
     my_team_out: dict = {"configured": False}
     transfer_suggestions_out: dict = {"available": False, "reason": "No team configured"}
+    transfer_plan_out: dict = {"available": False, "reason": "No team configured"}
 
     if team_id_raw:
         print(f"Fetching manager data for team {team_id_raw}...")
@@ -108,16 +109,16 @@ def run() -> None:
                 for pick in team_data["picks"]
                 if pick["element"] in players_by_id
             ]
+            bank = team_data["summary"]["bank"] or 0
+            free_transfers = team_data["summary"]["free_transfers_estimate"]
+
             suggestions = transfers.suggest_transfers(
-                squad=current_squad,
-                all_players=players,
-                bank=team_data["summary"]["bank"] or 0,
-                free_transfers=team_data["summary"]["free_transfers_estimate"],
+                squad=current_squad, all_players=players, bank=bank, free_transfers=free_transfers
             )
             transfer_suggestions_out = {
                 "available": True,
-                "free_transfers": team_data["summary"]["free_transfers_estimate"],
-                "bank": team_data["summary"]["bank"],
+                "free_transfers": free_transfers,
+                "bank": bank,
                 "suggestions": [
                     {
                         **asdict(s),
@@ -127,8 +128,36 @@ def run() -> None:
                     for s in suggestions
                 ],
             }
+
+            print("Building 5-week transfer/chip plan...")
+            plan_start_event = next_event["id"] if next_event else 1
+            plan_steps = planner.plan_transfers(
+                squad=current_squad,
+                all_players=players,
+                bank=bank,
+                free_transfers=free_transfers,
+                chips_used=team_data["chips_used"],
+                current_event=plan_start_event,
+            )
+            transfer_plan_out = {
+                "available": True,
+                "horizon_start": plan_start_event,
+                "horizon_end": plan_start_event + len(plan_steps) - 1,
+                "steps": [
+                    {
+                        **asdict(s),
+                        "out": [asdict(players_by_id[i]) for i in s.transfers_out],
+                        "in": [asdict(players_by_id[i]) for i in s.transfers_in],
+                    }
+                    for s in plan_steps
+                ],
+            }
         else:
             transfer_suggestions_out = {
+                "available": False,
+                "reason": "No squad picked yet for this season",
+            }
+            transfer_plan_out = {
                 "available": False,
                 "reason": "No squad picked yet for this season",
             }
@@ -140,6 +169,7 @@ def run() -> None:
     _write_json("squad_recommendation.json", squad_out)
     _write_json("my_team.json", my_team_out)
     _write_json("transfer_suggestions.json", transfer_suggestions_out)
+    _write_json("transfer_plan.json", transfer_plan_out)
     print("Pipeline complete.")
 
 

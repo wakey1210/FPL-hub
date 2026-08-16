@@ -30,7 +30,8 @@ STAT_STABILIZATION_MINUTES: dict[str, float] = {
     "defensive_contribution": 180,  # ~2 matches - happens almost every game a player starts
     "expected_goals": 300,  # ~3.3 matches
     "expected_assists": 450,  # ~5 matches - creativity is noisier than shot-taking
-    "start_rate": 360,  # ~4 matches
+    "minutes_share": 360,  # ~4 matches - overall minutes share (starters + impact subs alike)
+    "starts": 270,  # ~3 matches - starting-XI selection is manager-driven, noisier than defensive actions but not as slow as attacking output
     "saves": 630,  # ~7 matches
 }
 

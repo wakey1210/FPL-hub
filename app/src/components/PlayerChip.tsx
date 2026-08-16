@@ -14,7 +14,7 @@ export function PlayerChip({ player, badge, onClick }: Props) {
   return (
     <button
       onClick={onClick}
-      className="flex flex-col items-center gap-0.5 w-14 shrink-0 text-center"
+      className="flex flex-col items-center gap-0.5 w-14 shrink-0 text-center transition-transform active:scale-95"
     >
       <div className="relative">
         <div

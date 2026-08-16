@@ -14,7 +14,13 @@ function MiniChip({ label, teamShort }: { label: string; teamShort: string }) {
   )
 }
 
-export function TransferSuggestionCard({ s }: { s: TransferSuggestion }) {
+interface Props {
+  s: TransferSuggestion
+  onAdd?: () => void
+  added?: boolean
+}
+
+export function TransferSuggestionCard({ s, onAdd, added }: Props) {
   return (
     <div className="rounded-xl bg-[#1e1e2a] p-3">
       <div className="flex items-center justify-between gap-2">
@@ -35,6 +41,17 @@ export function TransferSuggestionCard({ s }: { s: TransferSuggestion }) {
       </div>
       {s.uses_hit && (
         <p className="text-[11px] text-amber-300 mt-2">Uses a -4 hit (no free transfer left)</p>
+      )}
+      {onAdd && (
+        <button
+          onClick={onAdd}
+          disabled={added}
+          className={`w-full mt-3 min-h-[44px] rounded-lg text-sm font-semibold transition-colors active:opacity-80 ${
+            added ? 'bg-white/10 text-white/50' : 'bg-[#00ff87] text-black'
+          }`}
+        >
+          {added ? 'Added to plan' : 'Add to plan'}
+        </button>
       )}
     </div>
   )

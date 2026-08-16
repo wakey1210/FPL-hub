@@ -36,8 +36,10 @@ RATE_FIELDS = [
     "expected_goal_involvements",
     "defensive_contribution",
     "saves",
+    "starts",
 ]
 FULL_SEASON_MINUTES = 38 * 90
+FULL_SEASON_MATCHES = 38
 
 
 @dataclass
@@ -47,17 +49,25 @@ class PlayerPrior:
     seasons_used: list[str] = field(default_factory=list)
     seasons_excluded: list[str] = field(default_factory=list)
     weighted_minutes_share: float = 0.0
+    weighted_starts_share: float = 0.0
+    avg_minutes_per_start: float = 0.0
     per90: dict[str, float] = field(default_factory=dict)
     total_weight_minutes: float = 0.0
 
 
-def _blend_seasons(seasons: list[dict]) -> tuple[list[str], list[str], float, dict[str, float], float]:
+def _blend_seasons(
+    seasons: list[dict],
+) -> tuple[list[str], list[str], float, float, float, dict[str, float], float]:
     """`seasons` is history_past ordered most-recent-first, already capped to
-    the last 3. Returns (used, excluded, weighted_minutes_share, per90, total_weight_minutes).
+    the last 3. Returns (used, excluded, weighted_minutes_share,
+    weighted_starts_share, avg_minutes_per_start, per90, total_weight_minutes).
     """
     used, excluded = [], []
     weight_minutes_sum = 0.0
-    weighted_share_sum = 0.0
+    weighted_minutes_share_sum = 0.0
+    weighted_starts_share_sum = 0.0
+    minutes_per_start_weight_sum = 0.0
+    minutes_per_start_numerator = 0.0
     rate_numerators = {f: 0.0 for f in RATE_FIELDS}
 
     for season, weight in zip(seasons, SEASON_WEIGHTS):
@@ -67,19 +77,41 @@ def _blend_seasons(seasons: list[dict]) -> tuple[list[str], list[str], float, di
             continue
         used.append(season["season_name"])
         weight_minutes_sum += weight * minutes
-        weighted_share_sum += weight * min(minutes / FULL_SEASON_MINUTES, 1.0)
+        weighted_minutes_share_sum += weight * min(minutes / FULL_SEASON_MINUTES, 1.0)
+        starts = int(season.get("starts") or 0)
+        weighted_starts_share_sum += weight * min(starts / FULL_SEASON_MATCHES, 1.0)
+        if starts > 0:
+            # How long they typically lasted once actually starting - a nailed
+            # starter should land near 85-90, a player who gets hooked early
+            # or is often withdrawn on 60-70 minutes will land lower.
+            minutes_per_start_weight_sum += weight * starts
+            minutes_per_start_numerator += weight * starts * (minutes / starts)
         for f in RATE_FIELDS:
             # FPL's API returns some of these as strings (e.g. "25.50") and
             # others as ints/floats - coerce defensively either way.
             rate_numerators[f] += weight * float(season.get(f) or 0.0)
 
     if weight_minutes_sum == 0:
-        return used, excluded, 0.0, {f: 0.0 for f in RATE_FIELDS}, 0.0
+        return used, excluded, 0.0, 0.0, 0.0, {f: 0.0 for f in RATE_FIELDS}, 0.0
 
     per90 = {f: round(90 * rate_numerators[f] / weight_minutes_sum, 4) for f in RATE_FIELDS}
     total_weight = sum(w for s, w in zip(seasons, SEASON_WEIGHTS) if s["season_name"] in used)
-    weighted_minutes_share = round(weighted_share_sum / total_weight, 4) if total_weight else 0.0
-    return used, excluded, weighted_minutes_share, per90, weight_minutes_sum
+    weighted_minutes_share = round(weighted_minutes_share_sum / total_weight, 4) if total_weight else 0.0
+    weighted_starts_share = round(weighted_starts_share_sum / total_weight, 4) if total_weight else 0.0
+    avg_minutes_per_start = (
+        round(minutes_per_start_numerator / minutes_per_start_weight_sum, 1)
+        if minutes_per_start_weight_sum
+        else 0.0
+    )
+    return (
+        used,
+        excluded,
+        weighted_minutes_share,
+        weighted_starts_share,
+        avg_minutes_per_start,
+        per90,
+        weight_minutes_sum,
+    )
 
 
 def build_player_priors(
@@ -102,13 +134,23 @@ def build_player_priors(
             print(f"  warning: failed to fetch {player_id}: {exc}")
             continue
         recent_seasons = list(reversed(summary.get("history_past", [])))[:3]
-        used, excluded, minutes_share, per90, weight_minutes = _blend_seasons(recent_seasons)
+        (
+            used,
+            excluded,
+            minutes_share,
+            starts_share,
+            avg_minutes_per_start,
+            per90,
+            weight_minutes,
+        ) = _blend_seasons(recent_seasons)
         priors[player_id] = PlayerPrior(
             id=player_id,
             web_name=element_names.get(player_id, ""),
             seasons_used=used,
             seasons_excluded=excluded,
             weighted_minutes_share=minutes_share,
+            weighted_starts_share=starts_share,
+            avg_minutes_per_start=avg_minutes_per_start,
             per90=per90,
             total_weight_minutes=weight_minutes,
         )

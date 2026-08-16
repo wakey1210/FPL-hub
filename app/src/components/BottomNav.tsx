@@ -18,7 +18,7 @@ export function BottomNav() {
               to={tab.to}
               end={tab.end}
               className={({ isActive }) =>
-                `flex flex-col items-center gap-0.5 py-2 text-xs font-medium ${
+                `flex flex-col items-center gap-0.5 py-2 min-h-[44px] text-xs font-medium transition-colors ${
                   isActive ? 'text-[#00ff87]' : 'text-white/60'
                 }`
               }

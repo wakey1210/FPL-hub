@@ -18,6 +18,9 @@ export interface PlayerEV {
   status: string
   news: string
   expected_minutes_ratio: number
+  p_appearance: number
+  p_60_plus: number
+  expected_minutes_if_appears: number
   total_ev: number
   uncertainty: number
   why: string[]

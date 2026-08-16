@@ -112,12 +112,57 @@ FDR tables applied to *upcoming* fixtures are) - full per-gameweek-with-FDR
 history for every player would add ~587 more calls to what's otherwise a
 deliberately cheap, 2-call hot loop. Flagged as a fast-follow.
 
+### Playing time: appearance vs. a genuine long appearance
+
+Total minutes isn't the same signal as "genuinely first-choice" - a player
+who starts 5 of 7 matches at ~75 minutes each has a completely different
+point ceiling from one who racks up similar total minutes via repeated
+15-20 minute substitute cameos, even with an identical per-90 rate. Every
+player's minutes are split into two probabilities instead of one flat ratio:
+`p_appearance` (any minutes at all - feeds attacking returns, saves, bonus,
+anything reachable off the bench) and `p_60_plus` (reaching the long-play
+threshold - gates defensive contribution, clean sheets, and the long-play
+share of appearance points, since those need a genuine extended appearance).
+A "capped upside" caveat surfaces in a player's "why" whenever a strong
+underlying rate is undercut by a low `p_60_plus` - the concrete case this
+exists to catch. See `engine/model.py`'s `_expected_minutes_profile` and
+`engine/priors.py`'s `weighted_starts_share`/`avg_minutes_per_start` fields.
+
 ## Squad optimisation
 
 `engine/optimise.py` uses [PuLP](https://coin-or.github.io/pulp/) with the
 free, open-source CBC solver to pick the highest-EV 15-man squad within
 budget, position and per-club constraints, then the best starting XI,
 captain and vice-captain from within it.
+
+## Five-week transfer and chip planner
+
+`engine/planner.py` looks 5 gameweeks ahead rather than just the next one -
+a greedy week-by-week simulation (not a joint solver: chip timing is a
+handful of rare, discrete decisions, better handled as explicit rule checks
+than MILP variables) that reuses `engine/transfers.py`'s single-swap search
+as its per-week building block, re-evaluating each candidate's *remaining*-
+horizon EV as the plan progresses. Whether a transfer is worth a -4 hit
+depends on a decaying "bank premium" (a hit needs to clear more than the
+flat 4-point cost early in the horizon, when saving the transfer for a
+still-unknown future swap has real option value) - stated as an actual
+number in the plan's rationale text, never hidden. Verified against the
+live 26/27 chip rules: Wildcard/Free Hit playable from GW2, Bench Boost/
+Triple Captain from GW1, both halves splitting at GW19/20, with chip
+*availability* derived by diffing already-used chips against those windows
+(FPL doesn't publish "chips remaining" on any public endpoint). Writes
+`data/transfer_plan.json`, consumed by the Planner tab's week-by-week cards
+and a persistent chip-strategy status widget.
+
+## The app is a planner, not a remote control
+
+FPL's login flow is broken for scripts (see the API research above), so
+this app can never submit a transfer or lineup change to FPL directly.
+"Making a change" in Pick Team or Transfers means staging a plan - swapping
+starters/bench, reassigning captain, queuing transfers - stored locally in
+the browser, with a persistent reminder to apply it on the official site
+before your deadline. This is a deliberate scope boundary, not a missing
+feature.
 
 ## Running locally
 
@@ -141,7 +186,9 @@ npm run dev                      # app reads /data via a symlink in app/public
 - [x] Team-ID tracking: transfers made, chips used, bank, rank history
 - [x] Transfer suggestion engine (single-swap, factoring in hits/free transfers)
 - [x] Multi-season historical priors + calibrated FDR/DC constants + adaptive in-season blending
+- [x] Playing-time overhaul: starts-based `p_appearance`/`p_60_plus` split, not one flat ratio
+- [x] Five-week transfer/chip planner with verified chip-window rules
+- [x] Interactive Pick Team (swap XI/bench, captain) and Transfers/Planner staging cart
 - [ ] Prediction-accuracy page (logged RMSE/MAE vs. actual results)
-- [ ] Multi-gameweek transfer/chip planning (currently single-swap only)
 - [ ] Fixture-adjust the current-season rate blended into stabilization (see "known limitation" above)
 - [ ] Optional: FPL account token auth for pre-deadline squad sync
