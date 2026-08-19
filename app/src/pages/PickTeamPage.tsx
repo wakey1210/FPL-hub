@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useJsonData } from '../lib/data'
 import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { PitchView } from '../components/PitchView'
-import { SquadListView } from '../components/SquadListView'
+import { PlayerFixtureTable } from '../components/PlayerFixtureTable'
 import { PlayerDetailSheet, type SheetAction } from '../components/PlayerDetailSheet'
 import { ConfirmSquadModal } from '../components/ConfirmSquadModal'
 import { ReplacementPicker } from '../components/ReplacementPicker'
@@ -121,6 +121,7 @@ export function PickTeamPage() {
   }
 
   const hasOverrides = !!override
+  const squadById = new Map(view.squad.map((p) => [p.id, p]))
 
   const handleSelectPlayer = (player: PlayerEV) => {
     if (swapAnchor) {
@@ -233,6 +234,7 @@ export function PickTeamPage() {
     ? bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, viewEvent)
     : { bank: 0, freeTransfers: 0 }
   const stagedThisWeek = plan.stagedTransfers.filter((t) => t.event === viewEvent)
+  const teamValue = view.squad.reduce((sum, p) => sum + p.now_cost, 0) + bankAtView
 
   return (
     <Layout title="Pick Team">
@@ -245,7 +247,7 @@ export function PickTeamPage() {
       {isConfirmed && (
         <div className="flex items-center justify-between mb-2">
           <button
-            onClick={() => setViewEventOverride(Math.max(minEvent, viewEvent - 1))}
+            onClick={() => setViewEventOverride((prev) => Math.max(minEvent, (prev ?? minEvent) - 1))}
             disabled={viewEvent <= minEvent}
             aria-label="Previous gameweek"
             className="min-h-[36px] min-w-[36px] rounded-lg bg-white/10 text-white disabled:opacity-30 transition-colors active:bg-white/20"
@@ -255,13 +257,14 @@ export function PickTeamPage() {
           <div className="text-center">
             <p className="text-sm font-semibold">Gameweek {viewEvent}</p>
             <p className="text-[10px] text-white/40">
-              {formatPrice(bankAtView)} bank · {freeTransfersAtView} free transfer{freeTransfersAtView === 1 ? '' : 's'}
+              {formatPrice(teamValue)} value · {formatPrice(bankAtView)} bank ·{' '}
+              {freeTransfersAtView} free transfer{freeTransfersAtView === 1 ? '' : 's'}
               {stagedThisWeek.length > 0 &&
                 ` · ${stagedThisWeek.length} staged${stagedThisWeek.some((t) => t.hitCost > 0) ? ' (hit)' : ''}`}
             </p>
           </div>
           <button
-            onClick={() => setViewEventOverride(Math.min(maxEvent, viewEvent + 1))}
+            onClick={() => setViewEventOverride((prev) => Math.min(maxEvent, (prev ?? minEvent) + 1))}
             disabled={viewEvent >= maxEvent}
             aria-label="Next gameweek"
             className="min-h-[36px] min-w-[36px] rounded-lg bg-white/10 text-white disabled:opacity-30 transition-colors active:bg-white/20"
@@ -353,16 +356,17 @@ export function PickTeamPage() {
           pointsForPlayer={isConfirmed ? pointsAtEvent(viewEvent) : undefined}
         />
       ) : (
-        <SquadListView
-          squad={view.squad}
-          startingIds={view.startingIds}
-          benchIds={view.benchIds}
-          captainId={view.captainId}
-          viceCaptainId={view.viceCaptainId}
+        <PlayerFixtureTable
+          rows={[...view.startingIds, ...view.benchIds].map((id) => {
+            const player = squadById.get(id)!
+            const badge = id === view.captainId ? ('C' as const) : id === view.viceCaptainId ? ('VC' as const) : undefined
+            return { player, badge }
+          })}
+          fromEvent={viewEvent}
           onSelectPlayer={handleSelectPlayer}
           highlightId={swapAnchor?.id ?? null}
-          pointsForPlayer={isConfirmed ? pointsAtEvent(viewEvent) : undefined}
-          pointsLabel={isConfirmed ? `GW${viewEvent}` : undefined}
+          dividerBeforeIndex={view.startingIds.length}
+          dividerLabel="Bench"
         />
       )}
       <PlayerDetailSheet
@@ -375,6 +379,7 @@ export function PickTeamPage() {
           outPlayer={transferOutTarget}
           allPlayers={allPlayers.data}
           excludeIds={view.squad.map((p) => p.id)}
+          budget={bankAtView + transferOutTarget.now_cost}
           onPick={handlePickReplacement}
           onClose={() => setTransferOutTarget(null)}
         />
