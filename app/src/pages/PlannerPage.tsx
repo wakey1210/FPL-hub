@@ -9,6 +9,7 @@ import { ChipsUsedEditor } from '../components/ChipsUsedEditor'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
 import { useDeclaredTeam } from '../lib/useDeclaredTeam'
 import { planTransfers } from '../lib/transferPlanner'
+import { squadAtEvent, bankAndFreeTransfersAtEvent } from '../lib/squadTimeline'
 import { riskWindowsForGw } from '../lib/dgwBgwRisk'
 import type { TeamTicker } from '../types/ticker'
 import type { PlanStep, TransferPlan } from '../types/transferPlan'
@@ -22,28 +23,33 @@ export function PlannerPage() {
   const myTeam = useJsonData<MyTeam>('my_team.json')
   const players = useJsonData<PlayerEV[]>('players.json')
   const { plan, addStagedTransfer, removeStagedTransfer, clearStagedTransfers } = usePlannedChanges()
-  const { declared, setChipUsed, remainingBank, remainingFreeTransfers } = useDeclaredTeam()
+  const { declared, setChipUsed } = useDeclaredTeam()
 
   const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
   const currentEvent = meta.data?.next_gameweek ?? meta.data?.current_gameweek ?? null
 
   // Client-side rolling 5-week/chip plan from a declared squad - recomputes
   // whenever players.json refreshes, the staged-transfers cart changes, or
-  // chips-used is updated, off the same 3-hourly hot loop.
+  // chips-used is updated, off the same 3-hourly hot loop. Picks up from
+  // wherever the user's own manually-staged transfers (from Pick Team's
+  // per-gameweek editor) leave off, rather than contradicting them - the
+  // algorithm's own horizon starts the gameweek after the last one the user
+  // has already manually decided.
   const declaredSteps = useMemo((): PlanStep[] => {
     if (hasLiveTeam || !declared.squadIds || !players.data || currentEvent === null) return []
     const byId = new Map(players.data.map((p) => [p.id, p]))
-    const squad = declared.squadIds.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p)
+    const lastStagedEvent = plan.stagedTransfers.reduce((max, t) => Math.max(max, t.event), currentEvent - 1)
+    const planStartEvent = Math.max(currentEvent, lastStagedEvent + 1)
+    const squad = squadAtEvent(declared.squadIds, players.data, plan.stagedTransfers, planStartEvent - 1)
     if (squad.length === 0) return []
-    const bank = remainingBank(plan.stagedTransfers)
-    const freeTransfers = remainingFreeTransfers(plan.stagedTransfers)
+    const { bank, freeTransfers } = bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, planStartEvent - 1)
     return planTransfers(
       squad,
       players.data,
       bank,
       freeTransfers,
       declared.chipsUsed,
-      currentEvent,
+      planStartEvent,
       5,
       meta.data?.season_started ?? true
     ).map((s) => ({
@@ -59,17 +65,7 @@ export function PlannerPage() {
       out: s.transfersOut.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p),
       in: s.transfersIn.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p),
     }))
-  }, [
-    hasLiveTeam,
-    declared.squadIds,
-    declared.chipsUsed,
-    players.data,
-    currentEvent,
-    plan.stagedTransfers,
-    remainingBank,
-    remainingFreeTransfers,
-    meta.data?.season_started,
-  ])
+  }, [hasLiveTeam, declared, players.data, currentEvent, plan.stagedTransfers, meta.data?.season_started])
 
   if (ticker.loading) return <Layout title="Planner"><LoadingState /></Layout>
   if (ticker.error || !ticker.data) return <Layout title="Planner"><ErrorState message={ticker.error ?? 'no data'} /></Layout>
@@ -125,6 +121,7 @@ export function PlannerPage() {
                           inName: step.in[0].web_name,
                           hitCost: step.hit_cost,
                           costDelta: step.in[0].now_cost - step.out[0].now_cost,
+                          event: step.event,
                         })
                     : undefined
                 }
@@ -222,7 +219,12 @@ export function PlannerPage() {
       {plan.stagedTransfers.length > 0 && <div className="h-28" />}
       <StagedTransfersCart
         staged={plan.stagedTransfers}
-        onRemove={removeStagedTransfer}
+        onRemove={(i) =>
+          removeStagedTransfer(
+            i,
+            (event) => bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, event - 1).freeTransfers
+          )
+        }
         onClear={clearStagedTransfers}
       />
     </Layout>

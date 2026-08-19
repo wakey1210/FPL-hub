@@ -8,7 +8,8 @@ import { StagedTransfersCart } from '../components/StagedTransfersCart'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
 import { useDeclaredTeam } from '../lib/useDeclaredTeam'
 import { suggestTransfers } from '../lib/transferSuggestions'
-import type { PlayerEV, Position } from '../types/fpl'
+import { squadAtEvent, bankAndFreeTransfersAtEvent } from '../lib/squadTimeline'
+import type { PlayerEV, Position, Meta } from '../types/fpl'
 import type { MyTeam } from '../types/myTeam'
 import type { TransferSuggestion, TransferSuggestions } from '../types/transferSuggestions'
 
@@ -18,25 +19,28 @@ export function TransfersPage() {
   const players = useJsonData<PlayerEV[]>('players.json')
   const suggestions = useJsonData<TransferSuggestions>('transfer_suggestions.json')
   const myTeam = useJsonData<MyTeam>('my_team.json')
+  const meta = useJsonData<Meta>('meta.json')
   const [query, setQuery] = useState('')
   const [position, setPosition] = useState<Position | 'ALL'>('ALL')
   const [selected, setSelected] = useState<PlayerEV | null>(null)
   const { plan, addStagedTransfer, removeStagedTransfer, clearStagedTransfers } = usePlannedChanges()
-  const { declared, remainingBank, remainingFreeTransfers } = useDeclaredTeam()
+  const { declared } = useDeclaredTeam()
 
   const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
+  const currentEvent = meta.data?.next_gameweek ?? meta.data?.current_gameweek ?? null
 
   // Client-side rolling suggestions from a declared (not live-synced) squad -
   // recomputes automatically whenever players.json refreshes or the staged-
   // transfers cart changes, off the same 3-hourly hot loop that already
-  // refreshes players.json, no extra polling needed.
+  // refreshes players.json, no extra polling needed. The squad/bank/free
+  // transfers used here already fold in everything staged up to and
+  // including the next gameweek, so a suggestion never contradicts a
+  // transfer already staged from Pick Team or an earlier suggestion.
   const declaredSuggestions = useMemo((): TransferSuggestion[] => {
-    if (hasLiveTeam || !declared.squadIds || !players.data) return []
-    const byId = new Map(players.data.map((p) => [p.id, p]))
-    const squad = declared.squadIds.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p)
+    if (hasLiveTeam || !declared.squadIds || !players.data || currentEvent === null) return []
+    const squad = squadAtEvent(declared.squadIds, players.data, plan.stagedTransfers, currentEvent)
     if (squad.length === 0) return []
-    const bank = remainingBank(plan.stagedTransfers)
-    const freeTransfers = remainingFreeTransfers(plan.stagedTransfers)
+    const { bank, freeTransfers } = bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, currentEvent)
     return suggestTransfers(squad, players.data, bank, freeTransfers).map((s) => ({
       out_id: s.outId,
       in_id: s.inId,
@@ -48,7 +52,7 @@ export function TransfersPage() {
       out: s.out,
       in: s.in,
     }))
-  }, [hasLiveTeam, declared.squadIds, players.data, plan.stagedTransfers, remainingBank, remainingFreeTransfers])
+  }, [hasLiveTeam, declared, players.data, plan.stagedTransfers, currentEvent])
 
   const filtered = useMemo(() => {
     if (!players.data) return []
@@ -97,6 +101,7 @@ export function TransfersPage() {
                     inName: s.in.web_name,
                     hitCost: s.uses_hit ? 4 : 0,
                     costDelta: s.cost_delta,
+                    event: currentEvent ?? 0,
                   })
                 }
               />
@@ -143,7 +148,12 @@ export function TransfersPage() {
       <PlayerDetailSheet player={selected} onClose={() => setSelected(null)} />
       <StagedTransfersCart
         staged={plan.stagedTransfers}
-        onRemove={removeStagedTransfer}
+        onRemove={(i) =>
+          removeStagedTransfer(
+            i,
+            (event) => bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, event - 1).freeTransfers
+          )
+        }
         onClear={clearStagedTransfers}
       />
     </Layout>

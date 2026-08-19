@@ -10,6 +10,11 @@ interface Props {
   viceCaptainId: number
   onSelectPlayer?: (player: PlayerEV) => void
   highlightId?: number | null
+  /** Points shown in the left-hand column - defaults to next gameweek's. A
+   * caller viewing a different gameweek (Pick Team's GW navigation) passes
+   * squadTimeline.ts's `pointsAtEvent` plus a matching `pointsLabel`. */
+  pointsForPlayer?: (player: PlayerEV) => number
+  pointsLabel?: string
 }
 
 /** Table alternative to the pitch graphic - the shirt view can't fit a
@@ -24,6 +29,8 @@ export function SquadListView({
   viceCaptainId,
   onSelectPlayer,
   highlightId,
+  pointsForPlayer = (p) => p.fixtures[0]?.points ?? 0,
+  pointsLabel = 'next GW',
 }: Props) {
   const byId = new Map(squad.map((p) => [p.id, p]))
   const starting = startingIds.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p)
@@ -53,8 +60,8 @@ export function SquadListView({
         </p>
       </div>
       <div className="text-right shrink-0 w-12">
-        <p className="text-sm font-bold text-[#00ff87]">{(p.fixtures[0]?.points ?? 0).toFixed(1)}</p>
-        <p className="text-[9px] text-white/40">next GW</p>
+        <p className="text-sm font-bold text-[#00ff87]">{pointsForPlayer(p).toFixed(1)}</p>
+        <p className="text-[9px] text-white/40">{pointsLabel}</p>
       </div>
       <div className="text-right shrink-0 w-14">
         <p className="text-sm font-semibold text-white/80">{p.total_ev.toFixed(1)}</p>

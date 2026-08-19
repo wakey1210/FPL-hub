@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { ChipName, DeclaredTeam } from '../types/declaredTeam'
 import { EMPTY_DECLARED_TEAM } from '../types/declaredTeam'
-import type { StagedTransfer } from '../types/plannedChanges'
 
 const STORAGE_KEY = 'fpl_declared_team'
 
@@ -48,15 +47,5 @@ export function useDeclaredTeam() {
     }))
   }, [])
 
-  const remainingBank = useCallback(
-    (staged: StagedTransfer[]) => declared.bank - staged.reduce((sum, t) => sum + t.costDelta, 0),
-    [declared.bank]
-  )
-
-  const remainingFreeTransfers = useCallback(
-    (staged: StagedTransfer[]) => Math.max(0, declared.freeTransfers - staged.length),
-    [declared.freeTransfers]
-  )
-
-  return { declared, confirmSquad, clearDeclaredTeam, setChipUsed, remainingBank, remainingFreeTransfers }
+  return { declared, confirmSquad, clearDeclaredTeam, setChipUsed }
 }

@@ -6,13 +6,16 @@ interface Props {
   onClear: () => void
 }
 
-/** Persistent cart bar for transfers staged from suggestions/the planner -
- * this app can't submit transfers to FPL directly (no working login), so
- * "staging" means building a plan to go make on the official site. */
+/** Persistent cart bar for transfers staged from suggestions/the planner/Pick
+ * Team - this app can't submit transfers to FPL directly (no working login),
+ * so "staging" means building a plan to go make on the official site.
+ * Grouped by the gameweek each transfer takes effect from, since Pick Team's
+ * GW navigation means that's no longer always "now". */
 export function StagedTransfersCart({ staged, onRemove, onClear }: Props) {
   if (staged.length === 0) return null
 
   const totalHit = staged.reduce((sum, t) => sum + t.hitCost, 0)
+  const events = [...new Set(staged.map((t) => t.event))].sort((a, b) => a - b)
 
   return (
     <div className="fixed bottom-[64px] inset-x-0 z-20 bg-[#1e1e2a] border-t border-white/10 px-4 py-3">
@@ -29,23 +32,31 @@ export function StagedTransfersCart({ staged, onRemove, onClear }: Props) {
             Clear
           </button>
         </div>
-        <div className="space-y-1 max-h-24 overflow-y-auto">
-          {staged.map((t, i) => (
-            <div key={`${t.outId}-${t.inId}`} className="flex items-center justify-between text-xs text-white/70">
-              <span>
-                OUT {t.outName} → IN {t.inName}
-              </span>
-              <button
-                onClick={() => onRemove(i)}
-                aria-label={`Remove ${t.outName} to ${t.inName} transfer`}
-                className="text-white/40 px-2 min-h-[36px] transition-colors active:text-white"
-              >
-                ×
-              </button>
+        <div className="space-y-1.5 max-h-28 overflow-y-auto">
+          {events.map((event) => (
+            <div key={event}>
+              <p className="text-[10px] uppercase tracking-wide text-white/40 mb-0.5">GW{event}</p>
+              {staged.map((t, i) =>
+                t.event === event ? (
+                  <div key={`${t.outId}-${t.inId}`} className="flex items-center justify-between text-xs text-white/70">
+                    <span>
+                      OUT {t.outName} → IN {t.inName}
+                      {t.hitCost > 0 && <span className="text-rose-400"> (-{t.hitCost})</span>}
+                    </span>
+                    <button
+                      onClick={() => onRemove(i)}
+                      aria-label={`Remove ${t.outName} to ${t.inName} transfer`}
+                      className="text-white/40 px-2 min-h-[36px] transition-colors active:text-white"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ) : null
+              )}
             </div>
           ))}
         </div>
-        <p className="text-[10px] text-white/40 mt-1">Apply these on the official FPL app before your deadline.</p>
+        <p className="text-[10px] text-white/40 mt-1">Apply these on the official FPL app before each deadline.</p>
       </div>
     </div>
   )

@@ -9,13 +9,15 @@ interface Props {
   viceCaptainId: number
   onSelectPlayer?: (player: PlayerEV) => void
   highlightId?: number | null
+  /** Points shown on each card - defaults to next gameweek's, since that's
+   * the decision being made when picking your XI/captain "now". A caller
+   * viewing a different gameweek (Pick Team's GW navigation) passes
+   * squadTimeline.ts's `pointsAtEvent` instead. */
+  pointsForPlayer?: (player: PlayerEV) => number
 }
 
 const ROW_ORDER: Position[] = ['GKP', 'DEF', 'MID', 'FWD']
 
-/** Next gameweek's points, not the multi-gameweek total - when picking your
- * XI/captain, what happens THIS week is what matters; the combined total is
- * more useful for transfer decisions (see TransfersPage/PlanStepCard). */
 function nextGwPoints(player: PlayerEV): number {
   return player.fixtures[0]?.points ?? 0
 }
@@ -28,6 +30,7 @@ export function PitchView({
   viceCaptainId,
   onSelectPlayer,
   highlightId,
+  pointsForPlayer = nextGwPoints,
 }: Props) {
   const byId = new Map(squad.map((p) => [p.id, p]))
   const starting = startingIds.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p)
@@ -48,7 +51,7 @@ export function PitchView({
                   <PlayerChip
                     key={p.id}
                     player={p}
-                    points={nextGwPoints(p)}
+                    points={pointsForPlayer(p)}
                     badge={badgeFor(p.id)}
                     onClick={() => onSelectPlayer?.(p)}
                     highlighted={p.id === highlightId}
@@ -67,7 +70,7 @@ export function PitchView({
             <PlayerChip
               key={p.id}
               player={p}
-              points={nextGwPoints(p)}
+              points={pointsForPlayer(p)}
               onClick={() => onSelectPlayer?.(p)}
               highlighted={p.id === highlightId}
             />

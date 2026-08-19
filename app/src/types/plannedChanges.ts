@@ -5,20 +5,22 @@ export interface StagedTransfer {
   inName: string
   hitCost: number
   costDelta: number // tenths of £m; positive = the swap costs more money
+  event: number // the gameweek this transfer takes effect from
+}
+
+export interface LineupOverride {
+  startingIds: number[]
+  benchIds: number[]
+  captainId: number
+  viceCaptainId: number
 }
 
 export interface PlannedChanges {
-  startingIds: number[] | null
-  benchIds: number[] | null
-  captainId: number | null
-  viceCaptainId: number | null
+  lineupOverrides: Record<number, LineupOverride> // keyed by gameweek event
   stagedTransfers: StagedTransfer[]
 }
 
 export const EMPTY_PLAN: PlannedChanges = {
-  startingIds: null,
-  benchIds: null,
-  captainId: null,
-  viceCaptainId: null,
+  lineupOverrides: {},
   stagedTransfers: [],
 }
