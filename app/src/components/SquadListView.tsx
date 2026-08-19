@@ -41,7 +41,7 @@ export function SquadListView({
       key={p.id}
       onClick={() => onSelectPlayer?.(p)}
       className={`w-full flex items-center gap-2 py-2 px-3 text-left transition-colors active:bg-white/10 min-h-[44px] ${
-        p.id === highlightId ? 'bg-[#00ff87]/10' : ''
+        p.id === highlightId ? 'bg-primary/10' : ''
       }`}
     >
       <span className="w-1.5 self-stretch rounded-full shrink-0" style={{ backgroundColor: teamColor(p.team_short) }} />
@@ -49,10 +49,10 @@ export function SquadListView({
         <p className="text-sm font-semibold truncate flex items-center gap-1.5">
           {p.web_name}
           {p.id === captainId && (
-            <span className="text-[9px] font-bold bg-yellow-400 text-black rounded-full w-4 h-4 flex items-center justify-center">C</span>
+            <span className="text-[9px] font-bold bg-warning text-warning-foreground rounded-full w-4 h-4 flex items-center justify-center">C</span>
           )}
           {p.id === viceCaptainId && (
-            <span className="text-[9px] font-bold bg-slate-200 text-slate-800 rounded-full w-4 h-4 flex items-center justify-center">VC</span>
+            <span className="text-[9px] font-bold bg-carbone-200 text-carbone-900 rounded-full w-4 h-4 flex items-center justify-center">VC</span>
           )}
         </p>
         <p className="text-[10px] text-white/40">
@@ -60,7 +60,7 @@ export function SquadListView({
         </p>
       </div>
       <div className="text-right shrink-0 w-12">
-        <p className="text-sm font-bold text-[#00ff87]">{pointsForPlayer(p).toFixed(1)}</p>
+        <p className="text-sm font-bold text-primary">{pointsForPlayer(p).toFixed(1)}</p>
         <p className="text-[9px] text-white/40">{pointsLabel}</p>
       </div>
       <div className="text-right shrink-0 w-14">
@@ -71,7 +71,7 @@ export function SquadListView({
   )
 
   return (
-    <div className="rounded-2xl bg-[#1e1e2a] overflow-hidden divide-y divide-white/5">
+    <div className="rounded-2xl bg-surface overflow-hidden divide-y divide-white/5">
       <p className="text-[11px] uppercase tracking-wide text-white/50 px-3 pt-2 pb-1">Starting XI</p>
       {starting.map(row)}
       <p className="text-[11px] uppercase tracking-wide text-white/50 px-3 pt-2 pb-1">Bench</p>

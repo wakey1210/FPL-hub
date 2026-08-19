@@ -22,14 +22,14 @@ interface Props {
 
 export function TransferSuggestionCard({ s, onAdd, added }: Props) {
   return (
-    <div className="rounded-xl bg-[#1e1e2a] p-3">
+    <div className="rounded-xl bg-surface p-3">
       <div className="flex items-center justify-between gap-2">
         <div className="space-y-1.5">
           <MiniChip label={`OUT  ${s.out.web_name}`} teamShort={s.out.team_short} />
           <MiniChip label={`IN  ${s.in.web_name}`} teamShort={s.in.team_short} />
         </div>
         <div className="text-right shrink-0">
-          <p className={`text-lg font-bold ${s.net_gain > 0 ? 'text-[#00ff87]' : 'text-rose-400'}`}>
+          <p className={`text-lg font-bold ${s.net_gain > 0 ? 'text-success' : 'text-danger'}`}>
             {s.net_gain > 0 ? '+' : ''}
             {s.net_gain.toFixed(1)}
           </p>
@@ -49,14 +49,14 @@ export function TransferSuggestionCard({ s, onAdd, added }: Props) {
         </ul>
       )}
       {s.uses_hit && (
-        <p className="text-[11px] text-amber-300 mt-2">Uses a -4 hit (no free transfer left)</p>
+        <p className="text-[11px] text-warning mt-2">Uses a -4 hit (no free transfer left)</p>
       )}
       {onAdd && (
         <button
           onClick={onAdd}
           disabled={added}
           className={`w-full mt-3 min-h-[44px] rounded-lg text-sm font-semibold transition-colors active:opacity-80 ${
-            added ? 'bg-white/10 text-white/50' : 'bg-[#00ff87] text-black'
+            added ? 'bg-white/10 text-white/50' : 'bg-primary text-primary-foreground'
           }`}
         >
           {added ? 'Added to plan' : 'Add to plan'}

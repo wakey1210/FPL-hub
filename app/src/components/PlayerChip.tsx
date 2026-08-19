@@ -25,7 +25,7 @@ export function PlayerChip({ player, points, badge, onClick, highlighted }: Prop
       <div className="relative">
         <div
           className={`w-9 h-9 rounded-md shadow-md flex items-center justify-center text-white text-[9px] font-bold ${
-            highlighted ? 'ring-2 ring-[#00ff87] ring-offset-2 ring-offset-emerald-700' : ''
+            highlighted ? 'ring-2 ring-primary ring-offset-2 ring-offset-emerald-700' : ''
           }`}
           style={{ backgroundColor: teamColor(player.team_short) }}
         >
@@ -34,14 +34,14 @@ export function PlayerChip({ player, points, badge, onClick, highlighted }: Prop
         {badge && (
           <span
             className={`absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center ${
-              badge === 'C' ? 'bg-yellow-400 text-black' : 'bg-slate-200 text-slate-800'
+              badge === 'C' ? 'bg-warning text-warning-foreground' : 'bg-carbone-200 text-carbone-900'
             }`}
           >
             {badge}
           </span>
         )}
         {player.status !== 'a' && (
-          <span className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-rose-600 border border-white" />
+          <span className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-danger border border-white" />
         )}
       </div>
       <span className="text-[10px] font-semibold text-white leading-tight truncate w-full">

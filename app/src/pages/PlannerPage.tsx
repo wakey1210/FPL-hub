@@ -130,7 +130,7 @@ export function PlannerPage() {
           </div>
         </div>
       ) : (
-        <div className="mb-5 rounded-xl bg-[#1e1e2a] p-4">
+        <div className="mb-5 rounded-xl bg-surface p-4">
           <p className="text-sm text-white/60">
             {hasLiveTeam
               ? transferPlan.data?.reason ?? 'No 5-week plan available yet.'
@@ -154,7 +154,7 @@ export function PlannerPage() {
                 return (
                   <th key={gw} className="font-medium px-0.5" title={risk.map((r) => r.label).join(' · ')}>
                     GW{gw}
-                    {risk.length > 0 && <span className="text-amber-400">*</span>}
+                    {risk.length > 0 && <span className="text-warning">*</span>}
                   </th>
                 )
               })}
@@ -163,12 +163,12 @@ export function PlannerPage() {
           </thead>
           <tbody>
             {ticker.data.map((team) => (
-              <tr key={team.team_short} className="bg-[#1e1e2a]">
+              <tr key={team.team_short} className="bg-surface">
                 <td className="rounded-l-lg pl-2 py-1.5 font-semibold text-xs whitespace-nowrap">
                   {team.team_short}
                   {team.unscheduled_count > 0 && (
                     <span
-                      className="ml-1 text-amber-400"
+                      className="ml-1 text-warning"
                       title={`${team.unscheduled_count} fixture(s) postponed, pending reschedule`}
                     >
                       !
@@ -195,7 +195,7 @@ export function PlannerPage() {
                               {fx.is_home ? fx.opponent_short : fx.opponent_short.toLowerCase()}
                             </span>
                           ))}
-                          {isDouble && <span className="text-[8px] text-[#00ff87] font-bold">2x</span>}
+                          {isDouble && <span className="text-[8px] text-success font-bold">2x</span>}
                         </div>
                       ) : (
                         <span className="text-white/20 text-[10px]">-</span>
@@ -212,7 +212,7 @@ export function PlannerPage() {
         </table>
       </div>
       <p className="text-[10px] text-white/30 mt-3">
-        Uppercase = home fixture, lowercase = away. <span className="text-amber-400">*</span> = a
+        Uppercase = home fixture, lowercase = away. <span className="text-warning">*</span> = a
         gameweek where double/blank gameweeks have historically landed in recent seasons (base-rate
         context only, not a forecast of which club is affected - hover for detail).
       </p>

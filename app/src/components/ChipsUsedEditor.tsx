@@ -13,7 +13,7 @@ interface Props {
  * not just when the squad is first confirmed. */
 export function ChipsUsedEditor({ chipsUsed, onToggle }: Props) {
   return (
-    <div className="rounded-xl bg-[#1e1e2a] p-3 mb-5">
+    <div className="rounded-xl bg-surface p-3 mb-5">
       <p className="text-sm font-semibold mb-1">Chips used</p>
       <p className="text-[11px] text-white/40 mb-2">
         Tick off chips you've already played on the official app, so the plan below knows what's left.
@@ -28,7 +28,7 @@ export function ChipsUsedEditor({ chipsUsed, onToggle }: Props) {
                 onClick={() => onToggle(name as ChipName, start, !used)}
                 className={`rounded-lg px-3 py-2 text-left transition-colors ${
                   used
-                    ? 'bg-[#00ff87]/15 text-[#00ff87] border border-[#00ff87]/40'
+                    ? 'bg-primary/15 text-primary border border-primary/40'
                     : 'bg-white/10 text-white/60'
                 }`}
               >

@@ -272,7 +272,7 @@ export function PickTeamPage() {
       )}
 
       {swapAnchor ? (
-        <div className="flex items-center justify-between mb-3 rounded-xl bg-[#00ff87]/10 border border-[#00ff87]/40 px-3 py-2">
+        <div className="flex items-center justify-between mb-3 rounded-xl bg-primary/10 border border-primary/40 px-3 py-2">
           <p className="text-[11px] text-white/80">
             Choose a player to swap with <span className="font-semibold text-white">{swapAnchor.web_name}</span>.
           </p>
@@ -287,7 +287,7 @@ export function PickTeamPage() {
         <div className="flex items-center justify-between gap-2 mb-3">
           <button
             onClick={handleOptimise}
-            className="flex-1 min-h-[44px] px-3 rounded-xl bg-[#00ff87] text-black text-sm font-semibold transition-colors active:opacity-80"
+            className="flex-1 min-h-[44px] px-3 rounded-xl bg-primary text-primary-foreground text-sm font-semibold transition-colors active:opacity-80"
           >
             Optimise lineup
           </button>
@@ -311,12 +311,12 @@ export function PickTeamPage() {
       )}
 
       {swapError && (
-        <div className="flex items-start justify-between gap-2 mb-3 rounded-xl bg-rose-950/40 border border-rose-500/40 px-3 py-2">
-          <p className="text-[11px] text-rose-200">{swapError}</p>
+        <div className="flex items-start justify-between gap-2 mb-3 rounded-xl bg-danger/10 border border-danger/40 px-3 py-2">
+          <p className="text-[11px] text-danger">{swapError}</p>
           <button
             onClick={() => setSwapError(null)}
             aria-label="Dismiss"
-            className="shrink-0 text-rose-300 px-1 min-h-[36px] min-w-[36px]"
+            className="shrink-0 text-danger px-1 min-h-[36px] min-w-[36px]"
           >
             ×
           </button>
@@ -327,13 +327,13 @@ export function PickTeamPage() {
         Changes are a plan to apply on the official FPL app, not a live change.
       </p>
 
-      <div className="flex gap-1 mb-3 bg-[#1e1e2a] rounded-xl p-1 w-fit">
+      <div className="flex gap-1 mb-3 bg-surface rounded-xl p-1 w-fit">
         {(['pitch', 'list'] as const).map((mode) => (
           <button
             key={mode}
             onClick={() => setViewMode(mode)}
             className={`min-h-[36px] px-4 rounded-lg text-xs font-semibold capitalize transition-colors ${
-              viewMode === mode ? 'bg-[#00ff87] text-black' : 'text-white/60'
+              viewMode === mode ? 'bg-primary text-primary-foreground' : 'text-white/60'
             }`}
           >
             {mode}

@@ -23,7 +23,7 @@ export function PlayerDetailSheet({ player, onClose, actions }: Props) {
   return (
     <div className="fixed inset-0 z-30 flex items-end bg-black/50" onClick={onClose}>
       <div
-        className="w-full bg-[#1e1e2a] rounded-t-2xl p-5 pb-8 max-h-[85vh] overflow-y-auto"
+        className="w-full bg-surface rounded-t-2xl p-5 pb-8 max-h-[85vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-start mb-3">
@@ -52,7 +52,7 @@ export function PlayerDetailSheet({ player, onClose, actions }: Props) {
                 className={`min-h-[44px] px-4 rounded-xl text-sm font-semibold transition-colors active:opacity-80 ${
                   a.variant === 'secondary'
                     ? 'bg-white/10 text-white'
-                    : 'bg-[#00ff87] text-black'
+                    : 'bg-primary text-primary-foreground'
                 }`}
               >
                 {a.label}
@@ -63,7 +63,7 @@ export function PlayerDetailSheet({ player, onClose, actions }: Props) {
 
         <div className="flex gap-2 mb-4">
           <div className="flex-1 bg-white/5 rounded-lg p-3 text-center">
-            <p className="text-2xl font-bold text-[#00ff87]">{player.total_ev.toFixed(1)}</p>
+            <p className="text-2xl font-bold text-primary">{player.total_ev.toFixed(1)}</p>
             <p className="text-[11px] text-white/50">EV next {player.fixtures.length} GWs (±{player.uncertainty.toFixed(1)})</p>
           </div>
           <div className="flex-1 bg-white/5 rounded-lg p-3 text-center">
@@ -80,14 +80,14 @@ export function PlayerDetailSheet({ player, onClose, actions }: Props) {
         </p>
 
         {player.news && (
-          <p className="text-sm text-amber-300 bg-amber-950/40 rounded-lg p-2 mb-4">{player.news}</p>
+          <p className="text-sm text-warning bg-warning/10 rounded-lg p-2 mb-4">{player.news}</p>
         )}
 
         <h3 className="text-sm font-semibold text-white/80 mb-2">Why this rating</h3>
         <ul className="space-y-1.5 mb-4">
           {player.why.map((reason, i) => (
             <li key={i} className="text-sm text-white/80 flex gap-2">
-              <span className="text-[#00ff87]">●</span>
+              <span className="text-primary">●</span>
               {reason}
             </li>
           ))}

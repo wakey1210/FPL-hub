@@ -19,8 +19,8 @@ export function StatusPage() {
   return (
     <Layout title="FPL Hub">
       <div className="space-y-4">
-        <div className="rounded-2xl bg-gradient-to-br from-[#37003c] to-[#5c0c66] p-5">
-          <p className="text-xs uppercase tracking-wide text-[#00ff87] font-semibold">
+        <div className="rounded-2xl bg-gradient-to-br from-ocra-700 via-ocra-900 to-carbone-950 p-5">
+          <p className="text-xs uppercase tracking-wide text-ocra-200 font-semibold">
             {meta.data.season_started ? `Gameweek ${meta.data.current_gameweek}` : 'Pre-season'}
           </p>
           <p className="text-sm text-white/70 mt-1">
@@ -40,7 +40,7 @@ export function StatusPage() {
         </div>
 
         {team?.configured && (
-          <div className="rounded-2xl bg-[#1e1e2a] p-5">
+          <div className="rounded-2xl bg-surface p-5">
             <p className="text-sm text-white/60 mb-2">{team.team_name}</p>
             {hasLiveTeam ? (
               <div className="flex justify-between">
@@ -51,7 +51,7 @@ export function StatusPage() {
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-[#00ff87]">
+                  <p className="text-2xl font-bold text-primary">
                     {team.summary?.free_transfers_estimate}
                   </p>
                   <p className="text-[11px] text-white/50">
@@ -75,7 +75,7 @@ export function StatusPage() {
         )}
 
         {!hasLiveTeam && squad.data && (
-          <div className="rounded-2xl bg-[#1e1e2a] p-5">
+          <div className="rounded-2xl bg-surface p-5">
             <p className="text-sm text-white/60 mb-2">Recommended initial squad</p>
             <div className="flex justify-between">
               <div>
@@ -83,14 +83,14 @@ export function StatusPage() {
                 <p className="text-[11px] text-white/50">of £100.0m budget</p>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-bold text-[#00ff87]">{squad.data.total_ev.toFixed(0)}</p>
+                <p className="text-2xl font-bold text-primary">{squad.data.total_ev.toFixed(0)}</p>
                 <p className="text-[11px] text-white/50">projected pts, next {squad.data.squad[0]?.fixtures.length ?? 6} GWs</p>
               </div>
             </div>
           </div>
         )}
 
-        <div className="rounded-2xl bg-[#1e1e2a] p-5 text-sm text-white/70">
+        <div className="rounded-2xl bg-surface p-5 text-sm text-white/70">
           <p className="font-semibold text-white mb-1">About this model</p>
           <p>
             Predictions are a transparent v1 heuristic (model {meta.data.model_version}) built from public

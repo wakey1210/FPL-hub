@@ -111,7 +111,7 @@ export function TransfersPage() {
       ) : (
         !hasLiveTeam &&
         !declared.squadIds && (
-          <div className="mb-4 rounded-xl bg-[#1e1e2a] p-4">
+          <div className="mb-4 rounded-xl bg-surface p-4">
             <p className="text-sm text-white/60">
               Confirm your squad on the Pick Team tab to see transfer suggestions.
             </p>
@@ -123,7 +123,7 @@ export function TransfersPage() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search player..."
-        className="w-full rounded-xl bg-[#1e1e2a] px-3 py-2 text-sm mb-3 placeholder:text-white/30 outline-none"
+        className="w-full rounded-xl bg-surface px-3 py-2 text-sm mb-3 placeholder:text-white/30 outline-none"
       />
       <div className="flex gap-2 mb-3">
         {POSITIONS.map((pos) => (
@@ -131,7 +131,7 @@ export function TransfersPage() {
             key={pos}
             onClick={() => setPosition(pos)}
             className={`min-h-[36px] px-3 py-1 rounded-full text-xs font-semibold transition-colors ${
-              position === pos ? 'bg-[#00ff87] text-black' : 'bg-[#1e1e2a] text-white/60'
+              position === pos ? 'bg-primary text-primary-foreground' : 'bg-surface text-white/60'
             }`}
           >
             {pos}
