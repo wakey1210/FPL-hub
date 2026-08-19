@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import type { PlayerEV } from '../types/fpl'
 import { formatPrice, fdrClasses } from '../lib/format'
 import { teamColor } from '../lib/teamColors'
@@ -57,7 +58,7 @@ export function PlayerFixtureTable({
             const total = rowFixtures.reduce((sum, f) => sum + f.points, 0)
             const isHighlighted = player.id === highlightId
             return (
-              <>
+              <Fragment key={player.id}>
                 {dividerBeforeIndex === i && (
                   <tr key={`divider-${player.id}`}>
                     <td colSpan={columns + 2} className="pt-2 pb-1 text-[10px] uppercase tracking-wide text-white/40">
@@ -120,7 +121,7 @@ export function PlayerFixtureTable({
                     {total.toFixed(1)}
                   </td>
                 </tr>
-              </>
+              </Fragment>
             )
           })}
         </tbody>
