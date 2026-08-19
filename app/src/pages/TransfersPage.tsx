@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useJsonData } from '../lib/data'
 import { Layout, LoadingState, ErrorState } from '../components/Layout'
-import { PlayerRow } from '../components/PlayerRow'
+import { PlayerFixtureTable } from '../components/PlayerFixtureTable'
 import { PlayerDetailSheet } from '../components/PlayerDetailSheet'
 import { TransferSuggestionCard } from '../components/TransferSuggestionCard'
 import { StagedTransfersCart } from '../components/StagedTransfersCart'
@@ -139,11 +139,11 @@ export function TransfersPage() {
         ))}
       </div>
       <p className="text-[11px] text-white/40 mb-2">Sorted by projected points, next {players.data[0]?.fixtures.length ?? 6} GWs</p>
-      <div className="space-y-1.5">
-        {filtered.map((p) => (
-          <PlayerRow key={p.id} player={p} onClick={() => setSelected(p)} />
-        ))}
-      </div>
+      <PlayerFixtureTable
+        rows={filtered.map((player) => ({ player }))}
+        fromEvent={currentEvent ?? 1}
+        onSelectPlayer={setSelected}
+      />
       {plan.stagedTransfers.length > 0 && <div className="h-28" />}
       <PlayerDetailSheet player={selected} onClose={() => setSelected(null)} />
       <StagedTransfersCart

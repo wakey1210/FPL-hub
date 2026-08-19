@@ -1,11 +1,18 @@
 import { useMemo, useState } from 'react'
 import type { PlayerEV } from '../types/fpl'
 import { PlayerRow } from './PlayerRow'
+import { formatPrice } from '../lib/format'
 
 interface Props {
   outPlayer: PlayerEV
   allPlayers: PlayerEV[]
   excludeIds: number[]
+  /** Max spend for the incoming player, tenths of £m - the bank remaining
+   * before this transfer plus the outgoing player's own price, matching
+   * real FPL's rule that selling a player frees up their price towards the
+   * replacement. Players over this are excluded outright, not just flagged -
+   * there's no separate "confirm batch" step in this app to gate instead. */
+  budget: number
   onPick: (player: PlayerEV) => void
   onClose: () => void
 }
@@ -14,7 +21,7 @@ interface Props {
  * action - same search/sort pattern as TransfersPage.tsx's browse list
  * (reusing PlayerRow), just scoped to one position and excluding anyone
  * already in the squad being viewed, matching FFH's "in your team" exclusion. */
-export function ReplacementPicker({ outPlayer, allPlayers, excludeIds, onPick, onClose }: Props) {
+export function ReplacementPicker({ outPlayer, allPlayers, excludeIds, budget, onPick, onClose }: Props) {
   const [query, setQuery] = useState('')
   const excluded = useMemo(() => new Set(excludeIds), [excludeIds])
 
@@ -22,10 +29,11 @@ export function ReplacementPicker({ outPlayer, allPlayers, excludeIds, onPick, o
     return allPlayers
       .filter((p) => p.position === outPlayer.position)
       .filter((p) => p.id === outPlayer.id || !excluded.has(p.id))
+      .filter((p) => p.now_cost <= budget)
       .filter((p) => p.web_name.toLowerCase().includes(query.toLowerCase()))
       .sort((a, b) => b.total_ev - a.total_ev)
       .slice(0, 100)
-  }, [allPlayers, outPlayer, excluded, query])
+  }, [allPlayers, outPlayer, excluded, budget, query])
 
   return (
     <div className="fixed inset-0 z-40 flex items-end bg-black/50" onClick={onClose}>
@@ -36,7 +44,9 @@ export function ReplacementPicker({ outPlayer, allPlayers, excludeIds, onPick, o
         <div className="flex justify-between items-start mb-3 shrink-0">
           <div>
             <h2 className="text-lg font-bold text-white">Replace {outPlayer.web_name}</h2>
-            <p className="text-sm text-white/60">{outPlayer.position}</p>
+            <p className="text-sm text-white/60">
+              {outPlayer.position} · {formatPrice(budget)} available
+            </p>
           </div>
           <button
             onClick={onClose}
@@ -57,7 +67,9 @@ export function ReplacementPicker({ outPlayer, allPlayers, excludeIds, onPick, o
             <PlayerRow key={p.id} player={p} onClick={() => onPick(p)} />
           ))}
           {options.length === 0 && (
-            <p className="text-sm text-white/40 text-center py-6">No players match.</p>
+            <p className="text-sm text-white/40 text-center py-6">
+              No affordable {outPlayer.position} found within {formatPrice(budget)}.
+            </p>
           )}
         </div>
       </div>
