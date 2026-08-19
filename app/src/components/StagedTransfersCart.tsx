@@ -18,12 +18,12 @@ export function StagedTransfersCart({ staged, onRemove, onClear }: Props) {
   const events = [...new Set(staged.map((t) => t.event))].sort((a, b) => a - b)
 
   return (
-    <div className="fixed bottom-[64px] inset-x-0 z-20 bg-[#1e1e2a] border-t border-white/10 px-4 py-3">
+    <div className="fixed bottom-[64px] inset-x-0 z-20 bg-surface border-t border-white/10 px-4 py-3">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-2">
           <p className="text-sm font-semibold">
             {staged.length} transfer{staged.length === 1 ? '' : 's'} staged
-            {totalHit > 0 && <span className="text-rose-400"> · -{totalHit} hit</span>}
+            {totalHit > 0 && <span className="text-danger"> · -{totalHit} hit</span>}
           </p>
           <button
             onClick={onClear}
@@ -41,7 +41,7 @@ export function StagedTransfersCart({ staged, onRemove, onClear }: Props) {
                   <div key={`${t.outId}-${t.inId}`} className="flex items-center justify-between text-xs text-white/70">
                     <span>
                       OUT {t.outName} → IN {t.inName}
-                      {t.hitCost > 0 && <span className="text-rose-400"> (-{t.hitCost})</span>}
+                      {t.hitCost > 0 && <span className="text-danger"> (-{t.hitCost})</span>}
                     </span>
                     <button
                       onClick={() => onRemove(i)}

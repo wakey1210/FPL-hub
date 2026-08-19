@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import type { PlayerEV } from '../types/fpl'
 import { formatPrice, fdrClasses } from '../lib/format'
 import { teamColor } from '../lib/teamColors'
@@ -41,7 +42,7 @@ export function PlayerFixtureTable({
       <table className="border-separate border-spacing-y-1 w-full">
         <thead>
           <tr className="text-[10px] text-white/40">
-            <th className="sticky left-0 z-10 bg-[#111117] text-left font-medium pb-1 pr-2 min-w-[132px]">Player</th>
+            <th className="sticky left-0 z-10 bg-background text-left font-medium pb-1 pr-2 min-w-[132px]">Player</th>
             {gwLabels.map((gw) => (
               <th key={gw} className="font-medium pb-1 px-1 min-w-[46px]">
                 GW{gw}
@@ -57,7 +58,7 @@ export function PlayerFixtureTable({
             const total = rowFixtures.reduce((sum, f) => sum + f.points, 0)
             const isHighlighted = player.id === highlightId
             return (
-              <>
+              <Fragment key={player.id}>
                 {dividerBeforeIndex === i && (
                   <tr key={`divider-${player.id}`}>
                     <td colSpan={columns + 2} className="pt-2 pb-1 text-[10px] uppercase tracking-wide text-white/40">
@@ -68,10 +69,10 @@ export function PlayerFixtureTable({
                 <tr
                   key={player.id}
                   onClick={() => onSelectPlayer?.(player)}
-                  className={`text-xs cursor-pointer ${isHighlighted ? 'bg-[#00ff87]/10' : ''}`}
+                  className={`text-xs cursor-pointer ${isHighlighted ? 'bg-primary/10' : ''}`}
                 >
                   <td
-                    className={`sticky left-0 z-10 py-1.5 pr-2 ${isHighlighted ? 'bg-[#1a2a22]' : 'bg-[#1e1e2a]'} rounded-l-lg`}
+                    className={`sticky left-0 z-10 py-1.5 pr-2 ${isHighlighted ? 'bg-primary/10' : 'bg-surface'} rounded-l-lg`}
                   >
                     <div className="flex items-center gap-2">
                       <span
@@ -84,7 +85,7 @@ export function PlayerFixtureTable({
                           {badge && (
                             <span
                               className={`text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center shrink-0 ${
-                                badge === 'C' ? 'bg-yellow-400 text-black' : 'bg-slate-200 text-slate-800'
+                                badge === 'C' ? 'bg-warning text-warning-foreground' : 'bg-carbone-200 text-carbone-900'
                               }`}
                             >
                               {badge}
@@ -100,7 +101,7 @@ export function PlayerFixtureTable({
                   {gwLabels.map((gw) => {
                     const fx = player.fixtures.find((f) => f.event === gw)
                     return (
-                      <td key={gw} className={`text-center py-1.5 px-1 ${isHighlighted ? 'bg-[#1a2a22]' : 'bg-[#1e1e2a]'}`}>
+                      <td key={gw} className={`text-center py-1.5 px-1 ${isHighlighted ? 'bg-primary/10' : 'bg-surface'}`}>
                         {fx ? (
                           <div className="flex flex-col items-center gap-0.5">
                             <span className={`inline-block w-full min-w-[36px] rounded text-[9px] font-bold py-0.5 ${fdrClasses(fx.fdr)}`}>
@@ -115,12 +116,12 @@ export function PlayerFixtureTable({
                     )
                   })}
                   <td
-                    className={`text-right py-1.5 pl-2 pr-2 font-semibold text-[#00ff87] rounded-r-lg ${isHighlighted ? 'bg-[#1a2a22]' : 'bg-[#1e1e2a]'}`}
+                    className={`text-right py-1.5 pl-2 pr-2 font-semibold text-primary rounded-r-lg ${isHighlighted ? 'bg-primary/10' : 'bg-surface'}`}
                   >
                     {total.toFixed(1)}
                   </td>
                 </tr>
-              </>
+              </Fragment>
             )
           })}
         </tbody>

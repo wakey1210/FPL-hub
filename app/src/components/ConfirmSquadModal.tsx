@@ -25,7 +25,7 @@ export function ConfirmSquadModal({ squadSize, defaultBank, onConfirm, onClose }
   return (
     <div className="fixed inset-0 z-30 flex items-end bg-black/50" onClick={onClose}>
       <div
-        className="w-full bg-[#1e1e2a] rounded-t-2xl p-5 pb-8"
+        className="w-full bg-surface rounded-t-2xl p-5 pb-8"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-lg font-bold text-white mb-1">Confirm my squad</h2>
@@ -52,7 +52,7 @@ export function ConfirmSquadModal({ squadSize, defaultBank, onConfirm, onClose }
               key={n}
               onClick={() => setFreeTransfers(n)}
               className={`min-h-[40px] flex-1 rounded-lg text-sm font-semibold transition-colors ${
-                freeTransfers === n ? 'bg-[#00ff87] text-black' : 'bg-white/10 text-white/60'
+                freeTransfers === n ? 'bg-primary text-primary-foreground' : 'bg-white/10 text-white/60'
               }`}
             >
               {n}
@@ -62,7 +62,7 @@ export function ConfirmSquadModal({ squadSize, defaultBank, onConfirm, onClose }
 
         <button
           onClick={handleConfirm}
-          className="w-full min-h-[44px] rounded-xl bg-[#00ff87] text-black text-sm font-semibold transition-colors active:opacity-80"
+          className="w-full min-h-[44px] rounded-xl bg-primary text-primary-foreground text-sm font-semibold transition-colors active:opacity-80"
         >
           Confirm squad ({squadSize} players)
         </button>

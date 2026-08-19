@@ -38,7 +38,7 @@ export function ReplacementPicker({ outPlayer, allPlayers, excludeIds, budget, o
   return (
     <div className="fixed inset-0 z-40 flex items-end bg-black/50" onClick={onClose}>
       <div
-        className="w-full bg-[#1e1e2a] rounded-t-2xl p-5 pb-8 max-h-[85vh] flex flex-col"
+        className="w-full bg-surface rounded-t-2xl p-5 pb-8 max-h-[85vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-start mb-3 shrink-0">

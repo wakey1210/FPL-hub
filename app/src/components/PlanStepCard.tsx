@@ -18,11 +18,11 @@ export function PlanStepCard({ step, onAdd, added }: Props) {
   const hasTransfer = step.out.length > 0 && step.in.length > 0
 
   return (
-    <div className="rounded-xl bg-[#1e1e2a] p-3">
+    <div className="rounded-xl bg-surface p-3">
       <div className="flex items-center justify-between mb-1.5">
         <p className="text-xs font-bold text-white/70">GW{step.event}</p>
         {step.chip_played && (
-          <span className="text-[10px] font-bold bg-[#00ff87] text-black px-2 py-0.5 rounded-full">
+          <span className="text-[10px] font-bold bg-primary text-primary-foreground px-2 py-0.5 rounded-full">
             {CHIP_LABELS[step.chip_played] ?? step.chip_played}
           </span>
         )}
@@ -49,10 +49,10 @@ export function PlanStepCard({ step, onAdd, added }: Props) {
       <p className="text-[11px] text-white/50 mb-2">{step.rationale}</p>
 
       <div className="flex items-center justify-between">
-        <p className={`text-sm font-bold ${step.projected_gain > 0 ? 'text-[#00ff87]' : 'text-white/40'}`}>
+        <p className={`text-sm font-bold ${step.projected_gain > 0 ? 'text-success' : 'text-white/40'}`}>
           {step.projected_gain > 0 ? '+' : ''}
           {step.projected_gain.toFixed(1)} pts
-          {step.hit_cost > 0 && <span className="text-rose-400"> (-{step.hit_cost} hit)</span>}
+          {step.hit_cost > 0 && <span className="text-danger"> (-{step.hit_cost} hit)</span>}
         </p>
         <p className="text-[11px] text-white/40">
           {step.free_transfers_after} FT · £{(step.bank_after / 10).toFixed(1)}m bank
@@ -64,7 +64,7 @@ export function PlanStepCard({ step, onAdd, added }: Props) {
           onClick={onAdd}
           disabled={added}
           className={`w-full mt-2 min-h-[44px] rounded-lg text-sm font-semibold transition-colors active:opacity-80 ${
-            added ? 'bg-white/10 text-white/50' : 'bg-[#00ff87] text-black'
+            added ? 'bg-white/10 text-white/50' : 'bg-primary text-primary-foreground'
           }`}
         >
           {added ? 'Added to plan' : 'Add to plan'}

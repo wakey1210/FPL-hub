@@ -10,7 +10,7 @@ const TABS = [
 
 export function BottomNav() {
   return (
-    <nav className="fixed bottom-0 inset-x-0 z-20 bg-[#37003c] border-t border-white/10 pb-[env(safe-area-inset-bottom)]">
+    <nav className="fixed bottom-0 inset-x-0 z-20 bg-header border-t border-white/10 pb-[env(safe-area-inset-bottom)]">
       <ul className="flex justify-around">
         {TABS.map((tab) => (
           <li key={tab.to} className="flex-1">
@@ -19,7 +19,7 @@ export function BottomNav() {
               end={tab.end}
               className={({ isActive }) =>
                 `flex flex-col items-center gap-0.5 py-2 min-h-[44px] text-xs font-medium transition-colors ${
-                  isActive ? 'text-[#00ff87]' : 'text-white/60'
+                  isActive ? 'text-primary' : 'text-white/60'
                 }`
               }
             >

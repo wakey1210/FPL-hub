@@ -1,5 +1,48 @@
 @import 'tailwindcss';
 
+@theme {
+  /* Carbone Blu — mineral dark navy, base surfaces */
+  --color-carbone-950: #0b0f14;
+  --color-carbone-900: #11161c;
+  --color-carbone-800: #171f27;
+  --color-carbone-700: #202b36;
+  --color-carbone-600: #2e3b47;
+  --color-carbone-500: #46586a;
+  --color-carbone-400: #6b7e90;
+  --color-carbone-300: #98a8b6;
+  --color-carbone-200: #c3cdd5;
+  --color-carbone-100: #e4e8eb;
+
+  /* Ocra Minerale — burnt amber, brand + accent */
+  --color-ocra-950: #2a1b0c;
+  --color-ocra-900: #402a10;
+  --color-ocra-800: #5c3b15;
+  --color-ocra-700: #7d4f1a;
+  --color-ocra-600: #a3671f;
+  --color-ocra-500: #c17f2e;
+  --color-ocra-400: #d69a4c;
+  --color-ocra-300: #e3b676;
+  --color-ocra-200: #eed3a8;
+  --color-ocra-100: #f6e7d2;
+  --color-ocra-50: #fbf2e5;
+
+  /* Semantic roles */
+  --color-background: var(--color-carbone-950);
+  --color-header: var(--color-carbone-900);
+  --color-surface: var(--color-carbone-800);
+  --color-surface-raised: var(--color-carbone-700);
+
+  --color-primary: var(--color-ocra-500);
+  --color-primary-foreground: var(--color-ocra-950);
+
+  --color-success: #4e9b6b;
+  --color-success-foreground: #eaf6ee;
+  --color-danger: #e06456;
+  --color-danger-foreground: #2a1210;
+  --color-warning: #d9a62e;
+  --color-warning-foreground: #241a06;
+}
+
 :root {
   color-scheme: dark;
 }
@@ -9,7 +52,7 @@ body,
 #root {
   margin: 0;
   min-height: 100svh;
-  background: #111117;
+  background: var(--color-background);
 }
 
 body {

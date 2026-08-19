@@ -15,7 +15,7 @@ export function MorePage() {
   return (
     <Layout title="More">
       <div className="space-y-4">
-        <div className="rounded-2xl bg-[#1e1e2a] p-5">
+        <div className="rounded-2xl bg-surface p-5">
           <h2 className="text-sm font-semibold mb-2">Your FPL team</h2>
           {myTeam.data?.configured ? (
             <p className="text-sm text-white/70">
@@ -38,11 +38,11 @@ export function MorePage() {
             onChange={(e) => setTeamId(e.target.value.replace(/\D/g, ''))}
             placeholder="e.g. 1234567"
             inputMode="numeric"
-            className="w-full rounded-xl bg-[#2a2a38] px-3 py-2 text-sm outline-none placeholder:text-white/30"
+            className="w-full rounded-xl bg-surface-raised px-3 py-2 text-sm outline-none placeholder:text-white/30"
           />
           {teamId && (
             <a
-              className="inline-block mt-2 text-xs text-[#00ff87] underline"
+              className="inline-block mt-2 text-xs text-primary underline"
               href={`https://fantasy.premierleague.com/entry/${teamId}/history`}
               target="_blank"
               rel="noreferrer"
@@ -52,12 +52,12 @@ export function MorePage() {
           )}
         </div>
 
-        <div className="rounded-2xl bg-[#1e1e2a] p-5 text-sm text-white/70">
+        <div className="rounded-2xl bg-surface p-5 text-sm text-white/70">
           <h2 className="text-sm font-semibold text-white mb-2">Prediction accuracy</h2>
           {accuracy.data ? <AccuracySummary data={accuracy.data} /> : <p className="text-xs">…</p>}
         </div>
 
-        <div className="rounded-2xl bg-[#1e1e2a] p-5 text-sm text-white/70">
+        <div className="rounded-2xl bg-surface p-5 text-sm text-white/70">
           <h2 className="text-sm font-semibold text-white mb-2">Model &amp; data</h2>
           <ul className="space-y-1 text-xs">
             <li>Model version: {meta.data?.model_version ?? '…'}</li>
@@ -74,7 +74,7 @@ export function MorePage() {
           </ul>
         </div>
 
-        <div className="rounded-2xl bg-[#1e1e2a] p-5 text-xs text-white/40">
+        <div className="rounded-2xl bg-surface p-5 text-xs text-white/40">
           <a
             href="https://github.com/wakey1210/FPL-hub"
             target="_blank"

@@ -27,7 +27,7 @@ export function AccuracySummary({ data }: { data: AccuracySummaryData }) {
             <div key={gw.event} className="bg-white/5 rounded-lg px-3 py-2">
               <div className="flex items-center justify-between text-xs">
                 <span className="font-semibold">GW{gw.event}</span>
-                <span className={inRange ? 'text-[#00ff87]' : 'text-amber-300'}>
+                <span className={inRange ? 'text-success' : 'text-warning'}>
                   RMSE {gw.rmse.toFixed(2)} · MAE {gw.mae.toFixed(2)}
                 </span>
                 <span className="text-white/40">n={gw.n}</span>
