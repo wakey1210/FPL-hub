@@ -1,12 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useJsonData } from '../lib/data'
 import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { PitchView } from '../components/PitchView'
 import { PlayerFixtureTable } from '../components/PlayerFixtureTable'
 import { PlayerDetailSheet, type SheetAction } from '../components/PlayerDetailSheet'
 import { ConfirmSquadModal } from '../components/ConfirmSquadModal'
-import { ReplacementPicker } from '../components/ReplacementPicker'
-import { StagedTransfersCart } from '../components/StagedTransfersCart'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
 import { useDeclaredTeam } from '../lib/useDeclaredTeam'
 import { optimiseStartingXI } from '../lib/formation'
@@ -16,6 +15,8 @@ import type { Meta, PlayerEV, SquadRecommendation } from '../types/fpl'
 import type { MyTeam } from '../types/myTeam'
 
 export function PickTeamPage() {
+  const navigate = useNavigate()
+  const [searchParams, setSearchParams] = useSearchParams()
   const squadRec = useJsonData<SquadRecommendation>('squad_recommendation.json')
   const myTeam = useJsonData<MyTeam>('my_team.json')
   const allPlayers = useJsonData<PlayerEV[]>('players.json')
@@ -25,8 +26,6 @@ export function PickTeamPage() {
   const [swapError, setSwapError] = useState<string | null>(null)
   const [viewMode, setViewMode] = useState<'pitch' | 'list'>('pitch')
   const [showConfirmModal, setShowConfirmModal] = useState(false)
-  const [transferOutTarget, setTransferOutTarget] = useState<PlayerEV | null>(null)
-  const [viewEventOverride, setViewEventOverride] = useState<number | null>(null)
   const {
     plan,
     trySwap,
@@ -35,8 +34,6 @@ export function PickTeamPage() {
     setViceCaptain,
     resetLineup,
     clearAllLineupOverrides,
-    addStagedTransfer,
-    removeStagedTransfer,
     clearStagedTransfers,
   } = usePlannedChanges()
   const { declared, confirmSquad, clearDeclaredTeam } = useDeclaredTeam()
@@ -76,13 +73,18 @@ export function PickTeamPage() {
   const isConfirmed = !hasLiveTeam && !!declared.squadIds
 
   // Gameweek navigation bounds match players.json's own forecast horizon -
-  // can't show a week with no fixture-EV data.
+  // can't show a week with no fixture-EV data. Kept in the URL (?gw=) rather
+  // than local state so navigating to Add Player/Confirm Transfers and back
+  // doesn't lose which gameweek was being viewed.
   const horizon = allPlayers.data?.[0]?.fixtures.length ?? 6
   const minEvent = declared.lastConfirmedEvent ?? currentEvent ?? 1
   const maxEvent = minEvent + horizon - 1
+  const gwParam = Number(searchParams.get('gw'))
   const viewEvent = isConfirmed
-    ? Math.min(Math.max(viewEventOverride ?? minEvent, minEvent), maxEvent)
+    ? Math.min(Math.max(gwParam || minEvent, minEvent), maxEvent)
     : myTeam.data?.picks_event ?? currentEvent ?? 0
+
+  const setViewEvent = (event: number) => setSearchParams({ gw: String(event) }, { replace: true })
 
   const squadAtView =
     isConfirmed && allPlayers.data
@@ -160,32 +162,12 @@ export function PickTeamPage() {
         },
       },
     ]
-    if (view.captainId !== player.id) {
-      actions.push({
-        label: 'Make captain',
-        onClick: () => {
-          setCaptain(viewEvent, player.id, view.captainId, view.viceCaptainId, view.startingIds, view.benchIds)
-          setSelected(null)
-        },
-        variant: 'secondary',
-      })
-    }
-    if (view.viceCaptainId !== player.id) {
-      actions.push({
-        label: 'Make vice-captain',
-        onClick: () => {
-          setViceCaptain(viewEvent, player.id, view.captainId, view.viceCaptainId, view.startingIds, view.benchIds)
-          setSelected(null)
-        },
-        variant: 'secondary',
-      })
-    }
     if (isConfirmed) {
       actions.push({
-        label: 'Transfer out',
+        label: 'Transfer',
         onClick: () => {
           setSelected(null)
-          setTransferOutTarget(player)
+          navigate('/add-player', { state: { outPlayerId: player.id, event: viewEvent } })
         },
         variant: 'secondary',
       })
@@ -210,24 +192,8 @@ export function PickTeamPage() {
     confirmSquad(view.squad.map((p) => p.id), bank, freeTransfers, event)
     clearAllLineupOverrides()
     clearStagedTransfers()
-    setViewEventOverride(null)
+    setSearchParams({}, { replace: true })
     setShowConfirmModal(false)
-  }
-
-  const handlePickReplacement = (inPlayer: PlayerEV) => {
-    if (!transferOutTarget || !allPlayers.data) return
-    const { freeTransfers } = bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, viewEvent - 1)
-    const usedSoFarThisWeek = plan.stagedTransfers.filter((t) => t.event === viewEvent).length
-    addStagedTransfer({
-      outId: transferOutTarget.id,
-      inId: inPlayer.id,
-      outName: transferOutTarget.web_name,
-      inName: inPlayer.web_name,
-      hitCost: usedSoFarThisWeek >= freeTransfers ? 4 : 0,
-      costDelta: inPlayer.now_cost - transferOutTarget.now_cost,
-      event: viewEvent,
-    })
-    setTransferOutTarget(null)
   }
 
   const { bank: bankAtView, freeTransfers: freeTransfersAtView } = isConfirmed
@@ -235,19 +201,24 @@ export function PickTeamPage() {
     : { bank: 0, freeTransfers: 0 }
   const stagedThisWeek = plan.stagedTransfers.filter((t) => t.event === viewEvent)
   const teamValue = view.squad.reduce((sum, p) => sum + p.now_cost, 0) + bankAtView
+  const confirmSquadDefaults = isConfirmed
+    ? bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, minEvent)
+    : { bank: 0, freeTransfers: 1 }
 
   return (
     <Layout title="Pick Team">
       <p className="text-xs text-white/50 mb-2">
         {liveView
           ? `Your actual squad from GW${myTeam.data?.picks_event}.`
-          : "AI-recommended squad, ahead of your first deadline. Once you've picked a squad, this will track your actual picks."}
+          : isConfirmed
+            ? "Based on your declared squad - will switch to your live FPL team once synced."
+            : "AI-recommended squad, ahead of your first deadline. Confirm your squad below to unlock gameweek-by-gameweek transfers."}
       </p>
 
       {isConfirmed && (
         <div className="flex items-center justify-between mb-2">
           <button
-            onClick={() => setViewEventOverride((prev) => Math.max(minEvent, (prev ?? minEvent) - 1))}
+            onClick={() => setViewEvent(Math.max(minEvent, viewEvent - 1))}
             disabled={viewEvent <= minEvent}
             aria-label="Previous gameweek"
             className="min-h-[36px] min-w-[36px] rounded-lg bg-white/10 text-white disabled:opacity-30 transition-colors active:bg-white/20"
@@ -259,12 +230,10 @@ export function PickTeamPage() {
             <p className="text-[10px] text-white/40">
               {formatPrice(teamValue)} value · {formatPrice(bankAtView)} bank ·{' '}
               {freeTransfersAtView} free transfer{freeTransfersAtView === 1 ? '' : 's'}
-              {stagedThisWeek.length > 0 &&
-                ` · ${stagedThisWeek.length} staged${stagedThisWeek.some((t) => t.hitCost > 0) ? ' (hit)' : ''}`}
             </p>
           </div>
           <button
-            onClick={() => setViewEventOverride((prev) => Math.min(maxEvent, (prev ?? minEvent) + 1))}
+            onClick={() => setViewEvent(Math.min(maxEvent, viewEvent + 1))}
             disabled={viewEvent >= maxEvent}
             aria-label="Next gameweek"
             className="min-h-[36px] min-w-[36px] rounded-lg bg-white/10 text-white disabled:opacity-30 transition-colors active:bg-white/20"
@@ -272,6 +241,19 @@ export function PickTeamPage() {
             ›
           </button>
         </div>
+      )}
+
+      {isConfirmed && stagedThisWeek.length > 0 && (
+        <button
+          onClick={() => navigate(`/confirm-transfers?gw=${viewEvent}`)}
+          className="w-full flex items-center justify-between mb-3 rounded-xl bg-primary/10 border border-primary/40 px-3 py-2.5 text-left transition-colors active:bg-primary/20"
+        >
+          <span className="text-sm font-semibold text-white">
+            Review {stagedThisWeek.length} transfer{stagedThisWeek.length === 1 ? '' : 's'} for GW{viewEvent}
+            {stagedThisWeek.some((t) => t.hitCost > 0) && <span className="text-danger"> (hit)</span>}
+          </span>
+          <span className="text-primary text-lg">→</span>
+        </button>
       )}
 
       {swapAnchor ? (
@@ -373,36 +355,31 @@ export function PickTeamPage() {
         player={selected}
         onClose={() => setSelected(null)}
         actions={selected ? actionsFor(selected) : []}
+        captainState={
+          selected
+            ? {
+                isCaptain: view.captainId === selected.id,
+                isViceCaptain: view.viceCaptainId === selected.id,
+                onToggleCaptain: () => {
+                  setCaptain(viewEvent, selected.id, view.captainId, view.viceCaptainId, view.startingIds, view.benchIds)
+                  setSelected(null)
+                },
+                onToggleVice: () => {
+                  setViceCaptain(viewEvent, selected.id, view.captainId, view.viceCaptainId, view.startingIds, view.benchIds)
+                  setSelected(null)
+                },
+              }
+            : undefined
+        }
       />
-      {transferOutTarget && allPlayers.data && (
-        <ReplacementPicker
-          outPlayer={transferOutTarget}
-          allPlayers={allPlayers.data}
-          excludeIds={view.squad.map((p) => p.id)}
-          budget={bankAtView + transferOutTarget.now_cost}
-          onPick={handlePickReplacement}
-          onClose={() => setTransferOutTarget(null)}
-        />
-      )}
       {showConfirmModal && (
         <ConfirmSquadModal
           squadSize={view.squad.length}
-          defaultBank={0}
+          defaultBank={confirmSquadDefaults.bank}
+          defaultFreeTransfers={confirmSquadDefaults.freeTransfers}
+          alreadyConfirmed={isConfirmed}
           onConfirm={handleConfirmSquad}
           onClose={() => setShowConfirmModal(false)}
-        />
-      )}
-      {isConfirmed && plan.stagedTransfers.length > 0 && <div className="h-28" />}
-      {isConfirmed && (
-        <StagedTransfersCart
-          staged={plan.stagedTransfers}
-          onRemove={(i) =>
-            removeStagedTransfer(
-              i,
-              (event) => bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, event - 1).freeTransfers
-            )
-          }
-          onClear={clearStagedTransfers}
         />
       )}
     </Layout>

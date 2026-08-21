@@ -38,7 +38,7 @@ export function MorePage() {
             onChange={(e) => setTeamId(e.target.value.replace(/\D/g, ''))}
             placeholder="e.g. 1234567"
             inputMode="numeric"
-            className="w-full rounded-xl bg-surface-raised px-3 py-2 text-sm outline-none placeholder:text-white/30"
+            className="w-full rounded-xl bg-surface-raised px-3 py-2 text-base outline-none placeholder:text-white/30"
           />
           {teamId && (
             <a

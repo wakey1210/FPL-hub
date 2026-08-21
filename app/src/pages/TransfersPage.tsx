@@ -123,7 +123,7 @@ export function TransfersPage() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search player..."
-        className="w-full rounded-xl bg-surface px-3 py-2 text-sm mb-3 placeholder:text-white/30 outline-none"
+        className="w-full rounded-xl bg-surface px-3 py-2 text-base mb-3 placeholder:text-white/30 outline-none"
       />
       <div className="flex gap-2 mb-3">
         {POSITIONS.map((pos) => (

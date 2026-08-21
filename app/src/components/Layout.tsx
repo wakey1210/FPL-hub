@@ -1,14 +1,35 @@
 import type { ReactNode } from 'react'
 import { BottomNav } from './BottomNav'
 
-export function Layout({ title, children }: { title: string; children: ReactNode }) {
+interface Props {
+  title: string
+  children: ReactNode
+  /** Renders a back arrow before the title instead of the bottom tab bar -
+   * for focused full-screen flows (Add Player, Confirm Transfers) that
+   * shouldn't feel like just another tab. */
+  onBack?: () => void
+  showNav?: boolean
+}
+
+export function Layout({ title, children, onBack, showNav = true }: Props) {
   return (
     <div className="min-h-screen bg-background text-white">
       <header className="sticky top-0 z-10 bg-header px-4 pt-[env(safe-area-inset-top)] pb-3">
-        <h1 className="text-lg font-bold pt-2">{title}</h1>
+        <div className="flex items-center gap-2 pt-2">
+          {onBack && (
+            <button
+              onClick={onBack}
+              aria-label="Back"
+              className="text-white text-xl leading-none min-w-[36px] min-h-[36px] -ml-1.5 rounded-full transition-colors active:bg-white/10"
+            >
+              ‹
+            </button>
+          )}
+          <h1 className="text-lg font-bold">{title}</h1>
+        </div>
       </header>
-      <main className="px-4 py-4 pb-24 max-w-2xl mx-auto">{children}</main>
-      <BottomNav />
+      <main className={`px-4 py-4 max-w-2xl mx-auto ${showNav ? 'pb-24' : 'pb-6'}`}>{children}</main>
+      {showNav && <BottomNav />}
     </div>
   )
 }
