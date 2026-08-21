@@ -1,7 +1,7 @@
 {
   "budget_tenths": 1000,
   "total_cost": 1000,
-  "total_ev": 367.13,
+  "total_ev": 367.67,
   "squad": [
     {
       "id": 55,
@@ -16,8 +16,8 @@
       "p_appearance": 0.92,
       "p_60_plus": 0.74,
       "expected_minutes_if_appears": 85.4,
-      "total_ev": 25.81,
-      "uncertainty": 6.69,
+      "total_ev": 25.75,
+      "uncertainty": 6.67,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~85 min when playing)",
         "Underlying output: 0.58 combined xG+xA per 90 minutes",
@@ -29,10 +29,10 @@
           "opponent_short": "BHA",
           "is_home": false,
           "fdr": 3,
-          "points": 4.17,
-          "attack_mult": 0.949,
+          "points": 4.11,
+          "attack_mult": 0.918,
           "cs_prob": 0.19,
-          "expected_conceded": 1.661,
+          "expected_conceded": 1.662,
           "ml_points": 3.55
         },
         {
@@ -105,107 +105,6 @@
       ]
     },
     {
-      "id": 94,
-      "web_name": "Schade",
-      "team_short": "BRE",
-      "position": "MID",
-      "now_cost": 60,
-      "selected_by_percent": 3.5,
-      "status": "a",
-      "news": "",
-      "expected_minutes_ratio": 0.92,
-      "p_appearance": 0.92,
-      "p_60_plus": 0.66,
-      "expected_minutes_if_appears": 86.4,
-      "total_ev": 24.91,
-      "uncertainty": 6.84,
-      "why": [
-        "Expected to start (a regular starter based on multi-season history) (~86 min when playing)",
-        "Underlying output: 0.46 combined xG+xA per 90 minutes",
-        "Consistently productive across the last 2 seasons"
-      ],
-      "fixtures": [
-        {
-          "event": 1,
-          "opponent_short": "TOT",
-          "is_home": true,
-          "fdr": 3,
-          "points": 4.34,
-          "attack_mult": 1.069,
-          "cs_prob": 0.272,
-          "expected_conceded": 1.421,
-          "ml_points": 3.86
-        },
-        {
-          "event": 2,
-          "opponent_short": "LEE",
-          "is_home": false,
-          "fdr": 3,
-          "points": 4.18,
-          "attack_mult": 1.0,
-          "cs_prob": 0.245,
-          "expected_conceded": 1.192,
-          "ml_points": 3.8
-        },
-        {
-          "event": 3,
-          "opponent_short": "SUN",
-          "is_home": true,
-          "fdr": 2,
-          "points": 4.53,
-          "attack_mult": 1.146,
-          "cs_prob": 0.338,
-          "expected_conceded": 0.972,
-          "ml_points": 4.49
-        },
-        {
-          "event": 4,
-          "opponent_short": "BOU",
-          "is_home": false,
-          "fdr": 3,
-          "points": 4.18,
-          "attack_mult": 1.0,
-          "cs_prob": 0.245,
-          "expected_conceded": 1.192,
-          "ml_points": 3.8
-        },
-        {
-          "event": 5,
-          "opponent_short": "CHE",
-          "is_home": true,
-          "fdr": 4,
-          "points": 3.85,
-          "attack_mult": 0.854,
-          "cs_prob": 0.193,
-          "expected_conceded": 1.563,
-          "ml_points": 3.34
-        },
-        {
-          "event": 6,
-          "opponent_short": "AVL",
-          "is_home": false,
-          "fdr": 4,
-          "points": 3.83,
-          "attack_mult": 0.854,
-          "cs_prob": 0.163,
-          "expected_conceded": 1.563,
-          "ml_points": 2.98
-        }
-      ],
-      "xg90": 0.3938,
-      "xa90": 0.0679,
-      "dc90": 6.2748,
-      "saves90": 0.0,
-      "dc_prob": 0.1569,
-      "ml_ev": 22.27,
-      "ml_uncertainty": 3.11,
-      "ml_why": [
-        "expected goals per 90",
-        "price",
-        "expected assists per 90"
-      ]
-    },
-    {
       "id": 106,
       "web_name": "Thiago",
       "team_short": "BRE",
@@ -218,8 +117,8 @@
       "p_appearance": 0.92,
       "p_60_plus": 0.83,
       "expected_minutes_if_appears": 88.7,
-      "total_ev": 29.64,
-      "uncertainty": 6.53,
+      "total_ev": 29.66,
+      "uncertainty": 6.54,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~89 min when playing)",
         "Underlying output: 0.70 combined xG+xA per 90 minutes",
@@ -231,10 +130,10 @@
           "opponent_short": "TOT",
           "is_home": true,
           "fdr": 3,
-          "points": 5.14,
-          "attack_mult": 1.069,
-          "cs_prob": 0.272,
-          "expected_conceded": 1.421,
+          "points": 5.16,
+          "attack_mult": 1.077,
+          "cs_prob": 0.263,
+          "expected_conceded": 1.455,
           "ml_points": 2.73
         },
         {
@@ -312,15 +211,15 @@
       "team_short": "BHA",
       "position": "GKP",
       "now_cost": 45,
-      "selected_by_percent": 20.6,
+      "selected_by_percent": 20.7,
       "status": "a",
       "news": "",
       "expected_minutes_ratio": 0.92,
       "p_appearance": 0.92,
       "p_60_plus": 0.77,
       "expected_minutes_if_appears": 90.0,
-      "total_ev": 19.08,
-      "uncertainty": 4.99,
+      "total_ev": 19.14,
+      "uncertainty": 5.0,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~90 min when playing)",
         "Underlying output: 0.00 combined xG+xA per 90 minutes",
@@ -332,10 +231,10 @@
           "opponent_short": "AVL",
           "is_home": true,
           "fdr": 3,
-          "points": 3.23,
+          "points": 3.29,
           "attack_mult": 1.146,
-          "cs_prob": 0.283,
-          "expected_conceded": 1.375,
+          "cs_prob": 0.294,
+          "expected_conceded": 1.331,
           "ml_points": 2.58
         },
         {
@@ -420,8 +319,8 @@
       "p_appearance": 0.92,
       "p_60_plus": 0.76,
       "expected_minutes_if_appears": 92.1,
-      "total_ev": 17.96,
-      "uncertainty": 4.8,
+      "total_ev": 18.02,
+      "uncertainty": 4.81,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~92 min when playing)",
         "Underlying output: 0.15 combined xG+xA per 90 minutes",
@@ -433,10 +332,10 @@
           "opponent_short": "AVL",
           "is_home": true,
           "fdr": 3,
-          "points": 3.08,
+          "points": 3.14,
           "attack_mult": 1.146,
-          "cs_prob": 0.283,
-          "expected_conceded": 1.375,
+          "cs_prob": 0.294,
+          "expected_conceded": 1.331,
           "ml_points": 2.5
         },
         {
@@ -521,8 +420,8 @@
       "p_appearance": 0.92,
       "p_60_plus": 0.64,
       "expected_minutes_if_appears": 85.9,
-      "total_ev": 33.5,
-      "uncertainty": 9.69,
+      "total_ev": 33.68,
+      "uncertainty": 9.74,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~86 min when playing)",
         "Underlying output: 0.79 combined xG+xA per 90 minutes",
@@ -534,11 +433,11 @@
           "opponent_short": "FUL",
           "is_home": false,
           "fdr": 3,
-          "points": 6.16,
-          "attack_mult": 1.242,
-          "cs_prob": 0.29,
-          "expected_conceded": 1.238,
-          "ml_points": 5.15
+          "points": 6.34,
+          "attack_mult": 1.294,
+          "cs_prob": 0.307,
+          "expected_conceded": 1.182,
+          "ml_points": 4.98
         },
         {
           "event": 2,
@@ -601,12 +500,113 @@
       "dc90": 4.5227,
       "saves90": 0.0,
       "dc_prob": 0.1131,
-      "ml_ev": 29.94,
+      "ml_ev": 29.77,
       "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
         "expected assists per 90",
         "expected goals per 90"
+      ]
+    },
+    {
+      "id": 155,
+      "web_name": "Enzo",
+      "team_short": "CHE",
+      "position": "MID",
+      "now_cost": 70,
+      "selected_by_percent": 5.1,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "p_appearance": 0.92,
+      "p_60_plus": 0.73,
+      "expected_minutes_if_appears": 89.4,
+      "total_ev": 27.31,
+      "uncertainty": 7.22,
+      "why": [
+        "Expected to start (a regular starter based on multi-season history) (~89 min when playing)",
+        "Underlying output: 0.48 combined xG+xA per 90 minutes",
+        "Consistently productive across the last 3 seasons"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "FUL",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.98,
+          "attack_mult": 1.294,
+          "cs_prob": 0.307,
+          "expected_conceded": 1.182,
+          "ml_points": 4.13
+        },
+        {
+          "event": 2,
+          "opponent_short": "BHA",
+          "is_home": true,
+          "fdr": 2,
+          "points": 4.72,
+          "attack_mult": 1.146,
+          "cs_prob": 0.338,
+          "expected_conceded": 0.972,
+          "ml_points": 4.63
+        },
+        {
+          "event": 3,
+          "opponent_short": "ARS",
+          "is_home": false,
+          "fdr": 5,
+          "points": 3.73,
+          "attack_mult": 0.708,
+          "cs_prob": 0.091,
+          "expected_conceded": 1.956,
+          "ml_points": 2.8
+        },
+        {
+          "event": 4,
+          "opponent_short": "HUL",
+          "is_home": true,
+          "fdr": 1,
+          "points": 5.09,
+          "attack_mult": 1.292,
+          "cs_prob": 0.472,
+          "expected_conceded": 0.612,
+          "ml_points": 5.9
+        },
+        {
+          "event": 5,
+          "opponent_short": "BRE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 4.38,
+          "attack_mult": 1.0,
+          "cs_prob": 0.245,
+          "expected_conceded": 1.192,
+          "ml_points": 3.65
+        },
+        {
+          "event": 6,
+          "opponent_short": "BOU",
+          "is_home": true,
+          "fdr": 3,
+          "points": 4.41,
+          "attack_mult": 1.0,
+          "cs_prob": 0.275,
+          "expected_conceded": 1.192,
+          "ml_points": 4.01
+        }
+      ],
+      "xg90": 0.2882,
+      "xa90": 0.195,
+      "dc90": 6.4728,
+      "saves90": 0.0,
+      "dc_prob": 0.1618,
+      "ml_ev": 25.12,
+      "ml_uncertainty": 3.11,
+      "ml_why": [
+        "price",
+        "expected goals per 90",
+        "expected assists per 90"
       ]
     },
     {
@@ -622,8 +622,8 @@
       "p_appearance": 0.92,
       "p_60_plus": 0.65,
       "expected_minutes_if_appears": 83.2,
-      "total_ev": 23.85,
-      "uncertainty": 6.99,
+      "total_ev": 23.96,
+      "uncertainty": 7.02,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~83 min when playing)",
         "Underlying output: 0.60 combined xG+xA per 90 minutes",
@@ -635,11 +635,11 @@
           "opponent_short": "FUL",
           "is_home": false,
           "fdr": 3,
-          "points": 4.36,
-          "attack_mult": 1.242,
-          "cs_prob": 0.29,
-          "expected_conceded": 1.238,
-          "ml_points": 3.47
+          "points": 4.47,
+          "attack_mult": 1.294,
+          "cs_prob": 0.307,
+          "expected_conceded": 1.182,
+          "ml_points": 3.49
         },
         {
           "event": 2,
@@ -702,12 +702,113 @@
       "dc90": 2.2373,
       "saves90": 0.0,
       "dc_prob": 0.0559,
-      "ml_ev": 20.96,
+      "ml_ev": 20.98,
       "ml_uncertainty": 3.11,
       "ml_why": [
         "price",
         "expected goals per 90",
         "fixture difficulty"
+      ]
+    },
+    {
+      "id": 204,
+      "web_name": "Mitchell",
+      "team_short": "CRY",
+      "position": "DEF",
+      "now_cost": 45,
+      "selected_by_percent": 6.5,
+      "status": "a",
+      "news": "",
+      "expected_minutes_ratio": 0.92,
+      "p_appearance": 0.92,
+      "p_60_plus": 0.82,
+      "expected_minutes_if_appears": 87.4,
+      "total_ev": 17.15,
+      "uncertainty": 4.17,
+      "why": [
+        "Expected to start (a regular starter based on multi-season history) (~87 min when playing)",
+        "Underlying output: 0.12 combined xG+xA per 90 minutes",
+        "Consistently productive across the last 3 seasons"
+      ],
+      "fixtures": [
+        {
+          "event": 1,
+          "opponent_short": "EVE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 2.61,
+          "attack_mult": 0.764,
+          "cs_prob": 0.212,
+          "expected_conceded": 1.549,
+          "ml_points": 2.43
+        },
+        {
+          "event": 2,
+          "opponent_short": "MCI",
+          "is_home": true,
+          "fdr": 4,
+          "points": 2.38,
+          "attack_mult": 0.734,
+          "cs_prob": 0.169,
+          "expected_conceded": 1.727,
+          "ml_points": 1.96
+        },
+        {
+          "event": 3,
+          "opponent_short": "FUL",
+          "is_home": false,
+          "fdr": 3,
+          "points": 2.87,
+          "attack_mult": 1.0,
+          "cs_prob": 0.231,
+          "expected_conceded": 1.364,
+          "ml_points": 2.46
+        },
+        {
+          "event": 4,
+          "opponent_short": "IPS",
+          "is_home": true,
+          "fdr": 2,
+          "points": 3.46,
+          "attack_mult": 1.327,
+          "cs_prob": 0.329,
+          "expected_conceded": 1.078,
+          "ml_points": 3.26
+        },
+        {
+          "event": 5,
+          "opponent_short": "LEE",
+          "is_home": false,
+          "fdr": 3,
+          "points": 2.87,
+          "attack_mult": 1.0,
+          "cs_prob": 0.231,
+          "expected_conceded": 1.364,
+          "ml_points": 2.46
+        },
+        {
+          "event": 6,
+          "opponent_short": "NFO",
+          "is_home": true,
+          "fdr": 3,
+          "points": 2.96,
+          "attack_mult": 1.0,
+          "cs_prob": 0.261,
+          "expected_conceded": 1.364,
+          "ml_points": 2.8
+        }
+      ],
+      "xg90": 0.0407,
+      "xa90": 0.0814,
+      "dc90": 5.496,
+      "saves90": 0.0,
+      "dc_prob": 0.1979,
+      "ml_ev": 15.37,
+      "ml_uncertainty": 3.11,
+      "ml_why": [
+        "clean-sheet probability",
+        "price",
+        "chance of a long appearance"
       ]
     },
     {
@@ -723,8 +824,8 @@
       "p_appearance": 0.92,
       "p_60_plus": 0.85,
       "expected_minutes_if_appears": 90.0,
-      "total_ev": 19.97,
-      "uncertainty": 4.64,
+      "total_ev": 19.98,
+      "uncertainty": 4.65,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~90 min when playing)",
         "Underlying output: 0.01 combined xG+xA per 90 minutes",
@@ -736,10 +837,10 @@
           "opponent_short": "CRY",
           "is_home": true,
           "fdr": 3,
-          "points": 3.62,
-          "attack_mult": 1.066,
-          "cs_prob": 0.358,
-          "expected_conceded": 1.114,
+          "points": 3.63,
+          "attack_mult": 1.068,
+          "cs_prob": 0.36,
+          "expected_conceded": 1.108,
           "ml_points": 3.23
         },
         {
@@ -817,14 +918,14 @@
       "team_short": "EVE",
       "position": "DEF",
       "now_cost": 60,
-      "selected_by_percent": 9.1,
+      "selected_by_percent": 9.0,
       "status": "a",
       "news": "",
       "expected_minutes_ratio": 0.92,
       "p_appearance": 0.92,
       "p_60_plus": 0.8,
       "expected_minutes_if_appears": 89.6,
-      "total_ev": 21.61,
+      "total_ev": 21.62,
       "uncertainty": 5.21,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~90 min when playing)",
@@ -837,10 +938,10 @@
           "opponent_short": "CRY",
           "is_home": true,
           "fdr": 3,
-          "points": 3.85,
-          "attack_mult": 1.066,
-          "cs_prob": 0.358,
-          "expected_conceded": 1.114,
+          "points": 3.86,
+          "attack_mult": 1.068,
+          "cs_prob": 0.36,
+          "expected_conceded": 1.108,
           "ml_points": 2.71
         },
         {
@@ -939,9 +1040,9 @@
           "is_home": true,
           "fdr": 3,
           "points": 4.21,
-          "attack_mult": 1.066,
-          "cs_prob": 0.358,
-          "expected_conceded": 1.114,
+          "attack_mult": 1.068,
+          "cs_prob": 0.36,
+          "expected_conceded": 1.108,
           "ml_points": 3.14
         },
         {
@@ -1019,15 +1120,15 @@
       "team_short": "MUN",
       "position": "MID",
       "now_cost": 120,
-      "selected_by_percent": 50.8,
+      "selected_by_percent": 50.9,
       "status": "a",
       "news": "",
       "expected_minutes_ratio": 0.92,
       "p_appearance": 0.92,
       "p_60_plus": 0.78,
       "expected_minutes_if_appears": 87.4,
-      "total_ev": 34.54,
-      "uncertainty": 8.29,
+      "total_ev": 34.61,
+      "uncertainty": 8.3,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~87 min when playing)",
         "Underlying output: 0.73 combined xG+xA per 90 minutes",
@@ -1039,10 +1140,10 @@
           "opponent_short": "HUL",
           "is_home": false,
           "fdr": 1,
-          "points": 7.37,
-          "attack_mult": 1.613,
-          "cs_prob": 0.569,
-          "expected_conceded": 0.564,
+          "points": 7.44,
+          "attack_mult": 1.642,
+          "cs_prob": 0.555,
+          "expected_conceded": 0.589,
           "ml_points": 8.68
         },
         {
@@ -1120,15 +1221,15 @@
       "team_short": "MUN",
       "position": "MID",
       "now_cost": 80,
-      "selected_by_percent": 35.8,
+      "selected_by_percent": 36.1,
       "status": "a",
       "news": "",
       "expected_minutes_ratio": 0.92,
       "p_appearance": 0.92,
       "p_60_plus": 0.71,
       "expected_minutes_if_appears": 87.0,
-      "total_ev": 31.11,
-      "uncertainty": 8.27,
+      "total_ev": 31.17,
+      "uncertainty": 8.29,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~87 min when playing)",
         "Underlying output: 0.61 combined xG+xA per 90 minutes",
@@ -1140,10 +1241,10 @@
           "opponent_short": "HUL",
           "is_home": false,
           "fdr": 1,
-          "points": 6.61,
-          "attack_mult": 1.613,
-          "cs_prob": 0.569,
-          "expected_conceded": 0.564,
+          "points": 6.67,
+          "attack_mult": 1.642,
+          "cs_prob": 0.555,
+          "expected_conceded": 0.589,
           "ml_points": 5.97
         },
         {
@@ -1228,8 +1329,8 @@
       "p_appearance": 0.92,
       "p_60_plus": 0.74,
       "expected_minutes_if_appears": 89.8,
-      "total_ev": 21.93,
-      "uncertainty": 5.9,
+      "total_ev": 21.91,
+      "uncertainty": 5.89,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~90 min when playing)",
         "Underlying output: 0.18 combined xG+xA per 90 minutes",
@@ -1241,10 +1342,10 @@
           "opponent_short": "LIV",
           "is_home": true,
           "fdr": 4,
-          "points": 2.73,
-          "attack_mult": 0.993,
-          "cs_prob": 0.154,
-          "expected_conceded": 2.088,
+          "points": 2.71,
+          "attack_mult": 0.979,
+          "cs_prob": 0.153,
+          "expected_conceded": 2.095,
           "ml_points": 2.29
         },
         {
@@ -1329,8 +1430,8 @@
       "p_appearance": 0.92,
       "p_60_plus": 0.68,
       "expected_minutes_if_appears": 90.2,
-      "total_ev": 18.72,
-      "uncertainty": 5.4,
+      "total_ev": 18.74,
+      "uncertainty": 5.41,
       "why": [
         "Expected to start (a regular starter based on multi-season history) (~90 min when playing)",
         "Underlying output: 0.17 combined xG+xA per 90 minutes",
@@ -1342,10 +1443,10 @@
           "opponent_short": "LEE",
           "is_home": true,
           "fdr": 2,
-          "points": 3.43,
-          "attack_mult": 1.022,
-          "cs_prob": 0.338,
-          "expected_conceded": 1.177,
+          "points": 3.45,
+          "attack_mult": 1.006,
+          "cs_prob": 0.346,
+          "expected_conceded": 1.151,
           "ml_points": 3.11
         },
         {
@@ -1416,126 +1517,25 @@
         "fixture difficulty",
         "price"
       ]
-    },
-    {
-      "id": 499,
-      "web_name": "Pedro Porro",
-      "team_short": "TOT",
-      "position": "DEF",
-      "now_cost": 55,
-      "selected_by_percent": 22.6,
-      "status": "a",
-      "news": "",
-      "expected_minutes_ratio": 0.92,
-      "p_appearance": 0.92,
-      "p_60_plus": 0.7,
-      "expected_minutes_if_appears": 89.2,
-      "total_ev": 19.53,
-      "uncertainty": 5.21,
-      "why": [
-        "Expected to start (a regular starter based on multi-season history) (~89 min when playing)",
-        "Underlying output: 0.25 combined xG+xA per 90 minutes",
-        "Consistently productive across the last 3 seasons"
-      ],
-      "fixtures": [
-        {
-          "event": 1,
-          "opponent_short": "BRE",
-          "is_home": false,
-          "fdr": 3,
-          "points": 3.09,
-          "attack_mult": 0.98,
-          "cs_prob": 0.212,
-          "expected_conceded": 1.55,
-          "ml_points": 2.91
-        },
-        {
-          "event": 2,
-          "opponent_short": "NEW",
-          "is_home": true,
-          "fdr": 2,
-          "points": 3.94,
-          "attack_mult": 1.327,
-          "cs_prob": 0.329,
-          "expected_conceded": 1.078,
-          "ml_points": 3.83
-        },
-        {
-          "event": 3,
-          "opponent_short": "NFO",
-          "is_home": false,
-          "fdr": 3,
-          "points": 3.25,
-          "attack_mult": 1.0,
-          "cs_prob": 0.231,
-          "expected_conceded": 1.364,
-          "ml_points": 2.84
-        },
-        {
-          "event": 4,
-          "opponent_short": "EVE",
-          "is_home": true,
-          "fdr": 3,
-          "points": 3.33,
-          "attack_mult": 1.0,
-          "cs_prob": 0.261,
-          "expected_conceded": 1.364,
-          "ml_points": 3.23
-        },
-        {
-          "event": 5,
-          "opponent_short": "AVL",
-          "is_home": true,
-          "fdr": 3,
-          "points": 3.33,
-          "attack_mult": 1.0,
-          "cs_prob": 0.261,
-          "expected_conceded": 1.364,
-          "ml_points": 3.23
-        },
-        {
-          "event": 6,
-          "opponent_short": "MUN",
-          "is_home": false,
-          "fdr": 4,
-          "points": 2.59,
-          "attack_mult": 0.734,
-          "cs_prob": 0.139,
-          "expected_conceded": 1.727,
-          "ml_points": 2.13
-        }
-      ],
-      "xg90": 0.0703,
-      "xa90": 0.1749,
-      "dc90": 5.6004,
-      "saves90": 0.0,
-      "dc_prob": 0.2016,
-      "ml_ev": 18.17,
-      "ml_uncertainty": 3.11,
-      "ml_why": [
-        "clean-sheet probability",
-        "expected assists per 90",
-        "price"
-      ]
     }
   ],
   "starting_ids": [
     55,
-    94,
     106,
     154,
+    155,
     226,
     229,
     237,
     426,
     427,
     445,
-    499
+    469
   ],
   "bench_ids": [
     166,
-    469,
     113,
+    204,
     109
   ],
   "captain_id": 426,
