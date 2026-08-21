@@ -3,20 +3,163 @@
   "team_id": 4809304,
   "manager_name": "Chris Wake",
   "team_name": "Wake XI",
-  "has_squad": false,
-  "picks_event": null,
-  "picks": null,
+  "has_squad": true,
+  "picks_event": 1,
+  "picks": [
+    {
+      "element": 1,
+      "position": 1,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 1
+    },
+    {
+      "element": 4,
+      "position": 2,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 2
+    },
+    {
+      "element": 418,
+      "position": 3,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 2
+    },
+    {
+      "element": 8,
+      "position": 4,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 2
+    },
+    {
+      "element": 229,
+      "position": 5,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 2
+    },
+    {
+      "element": 397,
+      "position": 6,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 3
+    },
+    {
+      "element": 426,
+      "position": 7,
+      "multiplier": 2,
+      "is_captain": true,
+      "is_vice_captain": false,
+      "element_type": 3
+    },
+    {
+      "element": 427,
+      "position": 8,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true,
+      "element_type": 3
+    },
+    {
+      "element": 368,
+      "position": 9,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 3
+    },
+    {
+      "element": 237,
+      "position": 10,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 3
+    },
+    {
+      "element": 165,
+      "position": 11,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 4
+    },
+    {
+      "element": 496,
+      "position": 12,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 1
+    },
+    {
+      "element": 527,
+      "position": 13,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 4
+    },
+    {
+      "element": 346,
+      "position": 14,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 4
+    },
+    {
+      "element": 539,
+      "position": 15,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 2
+    }
+  ],
   "summary": {
-    "overall_points": null,
-    "overall_rank": null,
-    "gameweek_points": null,
-    "bank": null,
-    "team_value": null,
-    "free_transfers_estimate": 1
+    "overall_points": 0,
+    "overall_rank": 1,
+    "gameweek_points": 0,
+    "bank": 0,
+    "team_value": 1000,
+    "free_transfers_estimate": 2
   },
-  "chips_used": [],
+  "chips_used": [
+    {
+      "name": "bboost",
+      "time": "2026-08-21T14:51:48.893202Z",
+      "event": 1
+    }
+  ],
   "transfers_made_this_season": 0,
-  "gw_history": [],
+  "gw_history": [
+    {
+      "event": 1,
+      "points": 0,
+      "total_points": 0,
+      "rank": null,
+      "rank_sort": null,
+      "overall_rank": null,
+      "percentile_rank": null,
+      "overall_rank_percentage": null,
+      "bank": 0,
+      "value": 1000,
+      "event_transfers": 0,
+      "event_transfers_cost": 0,
+      "points_on_bench": 0
+    }
+  ],
   "recent_seasons": [
     {
       "season_name": "2021/22",
