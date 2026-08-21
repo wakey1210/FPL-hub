@@ -48,6 +48,25 @@ export function PickTeamPage() {
     if (hasLiveTeam) clearDeclaredTeam()
   }, [hasLiveTeam, clearDeclaredTeam])
 
+  // The AI-recommended squad is already a fully-formed pick - making the
+  // user manually "confirm" it before gameweek navigation/transfers unlock
+  // is an unnecessary extra step. Auto-declares it the first time there's no
+  // declared squad yet and no live team synced; "Confirm my squad" remains
+  // available afterward as the explicit "start over" action. Uses the
+  // recommendation's own leftover budget (budget_tenths - total_cost)
+  // instead of assuming it spent exactly £100.0m, since a corrected
+  // optimiser run - or, once the season's underway, real price movement -
+  // won't always spend the full budget exactly.
+  useEffect(() => {
+    if (hasLiveTeam || declared.squadIds || !squadRec.data) return
+    confirmSquad(
+      squadRec.data.squad.map((p) => p.id),
+      squadRec.data.budget_tenths - squadRec.data.total_cost,
+      1,
+      currentEvent
+    )
+  }, [hasLiveTeam, declared.squadIds, squadRec.data, currentEvent, confirmSquad])
+
   const liveView = useMemo(() => {
     if (!hasLiveTeam || !allPlayers.data) return null
     const byId = new Map(allPlayers.data.map((p) => [p.id, p]))

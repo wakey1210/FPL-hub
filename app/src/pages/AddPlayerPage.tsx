@@ -18,8 +18,11 @@ interface NavState {
  * on Pick Team - a real page instead of a fixed-position bottom sheet
  * (ReplacementPicker's old role) so the search input and list behave like a
  * normal page under an iOS keyboard instead of fighting a percentage-height
- * sheet for space. Position-locked and budget-filtered, same rules
- * ReplacementPicker had. */
+ * sheet for space. Position-locked, but not budget-filtered - a genuinely
+ * common plan ("sell an expensive player, then use the freed cash plus a
+ * cheaper sale elsewhere") needs picking the expensive replacement before
+ * the funds to cover it exist yet. Budget is only enforced when the whole
+ * batch is reviewed on ConfirmTransfersPage. */
 export function AddPlayerPage() {
   const navigate = useNavigate()
   const location = useLocation()
@@ -53,7 +56,6 @@ export function AddPlayerPage() {
   const options = players.data
     .filter((p) => p.position === outPlayer.position)
     .filter((p) => !excluded.has(p.id))
-    .filter((p) => p.now_cost <= budget)
     .filter((p) => p.web_name.toLowerCase().includes(query.toLowerCase()))
     .sort((a, b) => b.total_ev - a.total_ev)
     .slice(0, 100)
@@ -80,7 +82,9 @@ export function AddPlayerPage() {
         <p className="text-base font-semibold">
           {outPlayer.web_name} · {outPlayer.position}
         </p>
-        <p className="text-sm text-primary font-semibold mt-1">{formatPrice(budget)} available</p>
+        <p className={`text-sm font-semibold mt-1 ${budget < 0 ? 'text-danger' : 'text-primary'}`}>
+          Budget: {formatPrice(budget)}
+        </p>
       </div>
       <input
         value={query}
@@ -94,9 +98,7 @@ export function AddPlayerPage() {
           <PlayerRow key={p.id} player={p} onClick={() => handlePick(p)} />
         ))}
         {options.length === 0 && (
-          <p className="text-sm text-white/40 text-center py-6">
-            No affordable {outPlayer.position} found within {formatPrice(budget)}.
-          </p>
+          <p className="text-sm text-white/40 text-center py-6">No {outPlayer.position} match.</p>
         )}
       </div>
     </Layout>

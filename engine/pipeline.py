@@ -89,8 +89,6 @@ def run() -> None:
 
     print("Optimising initial squad...")
     squad_result = optimise.select_squad(players)
-    squad_players = [players_by_id[i] for i in squad_result.squad_ids]
-    xi_result = optimise.select_starting_xi(squad_players)
 
     meta = {
         "generated_at": generated_at,
@@ -134,10 +132,10 @@ def run() -> None:
         "total_cost": squad_result.total_cost,
         "total_ev": squad_result.total_ev,
         "squad": [asdict(players_by_id[i]) for i in squad_result.squad_ids],
-        "starting_ids": xi_result.starting_ids,
-        "bench_ids": xi_result.bench_ids,
-        "captain_id": xi_result.captain_id,
-        "vice_captain_id": xi_result.vice_captain_id,
+        "starting_ids": squad_result.starting_ids,
+        "bench_ids": squad_result.bench_ids,
+        "captain_id": squad_result.captain_id,
+        "vice_captain_id": squad_result.vice_captain_id,
     }
 
     team_id_raw = os.environ.get("FPL_TEAM_ID")

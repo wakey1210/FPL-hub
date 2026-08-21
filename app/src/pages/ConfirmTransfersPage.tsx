@@ -30,6 +30,10 @@ export function ConfirmTransfersPage() {
   const freeUsed = Math.min(entries.length, freeBefore)
   const additionalUsed = Math.max(0, entries.length - freeBefore)
   const totalHit = entries.reduce((sum, { t }) => sum + t.hitCost, 0)
+  // Transfers can be picked in any order (AddPlayerPage doesn't gate on
+  // affordability, since a later sale might fund an earlier purchase) - the
+  // only point the whole batch's budget is actually checked is here.
+  const overBudget = bankAfter < 0
 
   return (
     <Layout title="Confirm Transfers" onBack={backToPickTeam} showNav={false}>
@@ -92,9 +96,18 @@ export function ConfirmTransfersPage() {
         )}
         <div className="flex justify-between text-sm text-white/70 py-1">
           <span>Left in the bank</span>
-          <span className="text-white">{formatPrice(bankAfter)}</span>
+          <span className={overBudget ? 'text-danger font-semibold' : 'text-white'}>{formatPrice(bankAfter)}</span>
         </div>
       </div>
+
+      {overBudget && (
+        <div className="rounded-xl bg-danger/10 border border-danger/40 px-4 py-3 mb-4">
+          <p className="text-sm text-danger">
+            This would put you {formatPrice(-bankAfter)} over budget - remove a transfer or add a
+            cheaper one before confirming.
+          </p>
+        </div>
+      )}
 
       <div className="flex gap-2">
         <button
@@ -105,7 +118,8 @@ export function ConfirmTransfersPage() {
         </button>
         <button
           onClick={backToPickTeam}
-          className="flex-1 min-h-[44px] rounded-xl bg-primary text-primary-foreground text-sm font-semibold transition-colors active:opacity-80"
+          disabled={overBudget}
+          className="flex-1 min-h-[44px] rounded-xl bg-primary text-primary-foreground text-sm font-semibold transition-colors active:opacity-80 disabled:opacity-30"
         >
           Confirm
         </button>
