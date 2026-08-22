@@ -1,8 +1,30 @@
 import type { PlayerEV } from '../types/fpl'
 import type { DeclaredTeam } from '../types/declaredTeam'
 import type { LineupOverride, StagedTransfer } from '../types/plannedChanges'
+import type { MyTeam } from '../types/myTeam'
 
 const MAX_FREE_TRANSFERS = 5
+
+/** A live-synced manager's real squad/bank/free-transfers, reshaped to the
+ * same `DeclaredTeam` fields `squadAtEvent`/`bankAndFreeTransfersAtEvent`
+ * already expect - lets AddPlayerPage/ConfirmTransfersPage/PickTeamPage
+ * reuse the exact same event-by-event rollover logic for a live team
+ * instead of forking a second copy of it. `lastConfirmedEvent` is
+ * `picks_event` (the manager's last-passed deadline): that's the gameweek
+ * `bank`/`free_transfers_estimate` are actually known-accurate as of, same
+ * role `lastConfirmedEvent` plays for a declared squad's own confirm-time
+ * snapshot. `chipsUsed` is intentionally left empty - no current caller of
+ * this needs chip state from the live path (PlannerPage reads
+ * `chips_used` from `myTeam.json` directly for that). */
+export function liveTeamAsDeclared(myTeam: MyTeam): DeclaredTeam {
+  return {
+    squadIds: (myTeam.picks ?? []).map((p) => p.element),
+    bank: myTeam.summary?.bank ?? 0,
+    freeTransfers: myTeam.summary?.free_transfers_estimate ?? 1,
+    chipsUsed: [],
+    lastConfirmedEvent: myTeam.picks_event ?? null,
+  }
+}
 
 /** The 15-man squad as of a given gameweek - the base declared squad with
  * every staged transfer tagged `event <= targetEvent` folded on, in staging

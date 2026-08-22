@@ -9,7 +9,7 @@ import { ChipsUsedEditor } from '../components/ChipsUsedEditor'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
 import { useDeclaredTeam } from '../lib/useDeclaredTeam'
 import { planTransfers } from '../lib/transferPlanner'
-import { squadAtEvent, bankAndFreeTransfersAtEvent } from '../lib/squadTimeline'
+import { squadAtEvent, bankAndFreeTransfersAtEvent, liveTeamAsDeclared } from '../lib/squadTimeline'
 import { riskWindowsForGw } from '../lib/dgwBgwRisk'
 import type { TeamTicker } from '../types/ticker'
 import type { PlanStep, TransferPlan } from '../types/transferPlan'
@@ -26,6 +26,7 @@ export function PlannerPage() {
   const { declared, setChipUsed } = useDeclaredTeam()
 
   const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
+  const effectiveTeam = hasLiveTeam ? liveTeamAsDeclared(myTeam.data!) : declared
   const currentEvent = meta.data?.next_gameweek ?? meta.data?.current_gameweek ?? null
 
   // Client-side rolling 5-week/chip plan from a declared squad - recomputes
@@ -222,7 +223,7 @@ export function PlannerPage() {
         onRemove={(i) =>
           removeStagedTransfer(
             i,
-            (event) => bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, event - 1).freeTransfers
+            (event) => bankAndFreeTransfersAtEvent(effectiveTeam, plan.stagedTransfers, event - 1).freeTransfers
           )
         }
         onClear={clearStagedTransfers}

@@ -8,7 +8,7 @@ import { StagedTransfersCart } from '../components/StagedTransfersCart'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
 import { useDeclaredTeam } from '../lib/useDeclaredTeam'
 import { suggestTransfers } from '../lib/transferSuggestions'
-import { squadAtEvent, bankAndFreeTransfersAtEvent } from '../lib/squadTimeline'
+import { squadAtEvent, bankAndFreeTransfersAtEvent, liveTeamAsDeclared } from '../lib/squadTimeline'
 import type { PlayerEV, Position, Meta } from '../types/fpl'
 import type { MyTeam } from '../types/myTeam'
 import type { TransferSuggestion, TransferSuggestions } from '../types/transferSuggestions'
@@ -27,6 +27,7 @@ export function TransfersPage() {
   const { declared } = useDeclaredTeam()
 
   const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
+  const effectiveTeam = hasLiveTeam ? liveTeamAsDeclared(myTeam.data!) : declared
   const currentEvent = meta.data?.next_gameweek ?? meta.data?.current_gameweek ?? null
 
   // Client-side rolling suggestions from a declared (not live-synced) squad -
@@ -151,7 +152,7 @@ export function TransfersPage() {
         onRemove={(i) =>
           removeStagedTransfer(
             i,
-            (event) => bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, event - 1).freeTransfers
+            (event) => bankAndFreeTransfersAtEvent(effectiveTeam, plan.stagedTransfers, event - 1).freeTransfers
           )
         }
         onClear={clearStagedTransfers}
