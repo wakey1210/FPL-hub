@@ -145,7 +145,7 @@ export function TransfersPage() {
         onSelectPlayer={setSelected}
       />
       {plan.stagedTransfers.length > 0 && <div className="h-28" />}
-      <PlayerDetailSheet player={selected} onClose={() => setSelected(null)} />
+      <PlayerDetailSheet key={selected?.id ?? 'closed'} player={selected} onClose={() => setSelected(null)} />
       <StagedTransfersCart
         staged={plan.stagedTransfers}
         onRemove={(i) =>

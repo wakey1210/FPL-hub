@@ -123,6 +123,7 @@ def run() -> None:
     teams = [
         {
             "id": t["id"],
+            "code": t["code"],
             "name": t["name"],
             "short_name": t["short_name"],
             "strength_overall_home": t["strength_overall_home"],

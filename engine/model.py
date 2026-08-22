@@ -140,6 +140,16 @@ class PlayerEV:
     cost_change_start: int = 0
     transfers_in_event: int = 0
     transfers_out_event: int = 0
+    # Imagery keys (distinct from `id`/`team_short`) plus season-actuals for
+    # the "season stats" sheet tab - see Plan B in the redesign plan. `code`
+    # is the FPL-stable player-photo key; `team_code` the team-badge key.
+    code: int = 0
+    team_code: int = 0
+    clean_sheets: int = 0
+    goals_conceded: int = 0
+    saves: int = 0
+    starts: int = 0
+    expected_goals_conceded: float = 0.0
 
 
 def season_started(bootstrap: dict) -> bool:
@@ -694,6 +704,13 @@ def build_player_ev(
                 cost_change_start=e["cost_change_start"],
                 transfers_in_event=e["transfers_in_event"],
                 transfers_out_event=e["transfers_out_event"],
+                code=e["code"],
+                team_code=team["code"],
+                clean_sheets=e.get("clean_sheets") or 0,
+                goals_conceded=e.get("goals_conceded") or 0,
+                saves=e.get("saves") or 0,
+                starts=e.get("starts") or 0,
+                expected_goals_conceded=float(e.get("expected_goals_conceded") or 0.0),
             )
         )
 

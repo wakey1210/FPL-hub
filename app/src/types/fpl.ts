@@ -6,6 +6,10 @@ export interface FixtureEV {
   is_home: boolean
   fdr: number
   points: number
+  attack_mult: number
+  cs_prob: number
+  expected_conceded: number
+  ml_points: number
 }
 
 export interface PlayerEV {
@@ -31,10 +35,28 @@ export interface PlayerEV {
   cost_change_start: number
   transfers_in_event: number
   transfers_out_event: number
+  xg90: number
+  xa90: number
+  dc90: number
+  saves90: number
+  dc_prob: number
+  ml_ev: number
+  ml_uncertainty: number
+  ml_why: string[]
+  // Imagery keys (distinct from `id`/`team_short`) plus season-actuals for
+  // the "season stats" sheet tab.
+  code: number
+  team_code: number
+  clean_sheets: number
+  goals_conceded: number
+  saves: number
+  starts: number
+  expected_goals_conceded: number
 }
 
 export interface Team {
   id: number
+  code: number
   name: string
   short_name: string
   strength_overall_home: number
