@@ -371,6 +371,7 @@ export function PickTeamPage() {
         />
       )}
       <PlayerDetailSheet
+        key={selected?.id ?? 'closed'}
         player={selected}
         onClose={() => setSelected(null)}
         actions={selected ? actionsFor(selected) : []}
