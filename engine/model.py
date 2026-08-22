@@ -128,6 +128,18 @@ class PlayerEV:
     ml_ev: float = 0.0
     ml_uncertainty: float = 0.0
     ml_why: list[str] = field(default_factory=list)
+    # Raw FPL price-momentum fields (bootstrap `elements`) actually consumed
+    # downstream - never derived/smoothed here, just passed straight through
+    # so engine/price_history.py's bucket heuristic and the sell-price
+    # reconstruction in engine/transfers.py have the real numbers to work
+    # from. See engine/fetch.py's get_bootstrap() docstring. (FPL's raw
+    # bootstrap also has cost_change_event_fall/cost_change_start_fall/
+    # value_form/value_season - deliberately not carried here, since nothing
+    # consumes them; add them back if/when a real consumer needs them.)
+    cost_change_event: int = 0
+    cost_change_start: int = 0
+    transfers_in_event: int = 0
+    transfers_out_event: int = 0
 
 
 def season_started(bootstrap: dict) -> bool:
@@ -678,6 +690,10 @@ def build_player_ev(
                 dc90=round(dc90, 4),
                 saves90=round(saves90, 4),
                 dc_prob=round(dc_prob, 4),
+                cost_change_event=e["cost_change_event"],
+                cost_change_start=e["cost_change_start"],
+                transfers_in_event=e["transfers_in_event"],
+                transfers_out_event=e["transfers_out_event"],
             )
         )
 

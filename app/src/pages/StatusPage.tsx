@@ -58,6 +58,9 @@ export function StatusPage() {
                     free transfer{team.summary?.free_transfers_estimate === 1 ? '' : 's'} ·{' '}
                     {formatPrice(team.summary?.bank ?? 0)} bank
                   </p>
+                  <p className="text-[11px] text-white/50">
+                    {formatPrice(team.summary?.team_value ?? 0)} squad value
+                  </p>
                 </div>
               </div>
             ) : (

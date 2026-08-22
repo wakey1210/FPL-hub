@@ -155,6 +155,7 @@ def _simulate_transfers(
     remaining_chips: dict[str, list[tuple[int, int]]] | None = None,
     wildcard_used: bool = False,
     force_rebuild_first_week: bool = False,
+    sell_prices: dict[int, int] | None = None,
 ) -> tuple[list[PlanStep], list[PlayerEV]]:
     """Week-by-week transfer decisions. Bench Boost / Triple Captain are
     layered on afterwards in `plan_transfers` (they don't change the squad
@@ -211,7 +212,11 @@ def _simulate_transfers(
         else:
             # Free batch: as many net-positive swaps as free transfers allow.
             free_batch = suggest_multiple_transfers(
-                adjusted_squad, adjusted_pool, current_bank, max_transfers=min(current_ft, MAX_FREE_BATCH_PER_WEEK)
+                adjusted_squad,
+                adjusted_pool,
+                current_bank,
+                max_transfers=min(current_ft, MAX_FREE_BATCH_PER_WEEK),
+                sell_prices=sell_prices,
             )
             this_week_value = round(sum(s.ev_delta for s in free_batch), 2)
 
@@ -231,7 +236,11 @@ def _simulate_transfers(
                 next_squad = [replace(p, total_ev=_remaining_ev(p, next_event)) for p in current_squad]
                 next_pool = [replace(p, total_ev=_remaining_ev(p, next_event)) for p in all_players]
                 banked_batch = suggest_multiple_transfers(
-                    next_squad, next_pool, current_bank, max_transfers=min(banked_ft, MAX_FREE_BATCH_PER_WEEK)
+                    next_squad,
+                    next_pool,
+                    current_bank,
+                    max_transfers=min(banked_ft, MAX_FREE_BATCH_PER_WEEK),
+                    sell_prices=sell_prices,
                 )
                 banked_value = round(sum(s.ev_delta for s in banked_batch), 2)
 
@@ -261,7 +270,12 @@ def _simulate_transfers(
                 post_batch_squad = [replace(p, total_ev=_remaining_ev(p, event)) for p in current_squad]
                 post_batch_pool = [p for p in adjusted_pool if p.id not in {s.id for s in current_squad}]
                 hit_candidates = suggest_transfers(
-                    post_batch_squad, post_batch_pool, current_bank, free_transfers=1, top_n=1
+                    post_batch_squad,
+                    post_batch_pool,
+                    current_bank,
+                    free_transfers=1,
+                    top_n=1,
+                    sell_prices=sell_prices,
                 )
                 hit_best = hit_candidates[0] if hit_candidates else None
                 hit_in_id = None
@@ -382,12 +396,19 @@ def plan_transfers(
     current_event: int,
     horizon: int = 5,
     season_started: bool = True,
+    sell_prices: dict[int, int] | None = None,
 ) -> list[PlanStep]:
     """`season_started=False` treats the very first simulated week as a free,
     unconditional full-squad rebuild - real FPL lets you rebuild as many
     times as you like before your first-ever deadline, at zero hit cost and
     with no effect on free_transfers, distinct from a genuine Wildcard (which
     consumes a chip token and is gated by `WILDCARD_MIN_GAIN`).
+
+    `sell_prices` (see `engine.transfers.compute_sell_prices`) should be the
+    same map passed to the single-swap suggestions for this manager, so the
+    Planner and Transfers pages agree on how much budget a sale actually
+    frees up - falls back to `now_cost` per-player (via `suggest_transfers`)
+    when omitted, e.g. for the client-side declared-squad mirror.
     """
     horizon_events = list(range(current_event, current_event + horizon))
     remaining_chips = _chip_windows_remaining(chips_used)
@@ -399,6 +420,7 @@ def plan_transfers(
         horizon_events,
         remaining_chips=remaining_chips,
         force_rebuild_first_week=not season_started,
+        sell_prices=sell_prices,
     )
     _apply_chip_calls(steps, squad, all_players, chips_used)
     return steps

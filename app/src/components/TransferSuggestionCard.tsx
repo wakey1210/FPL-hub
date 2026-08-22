@@ -27,6 +27,9 @@ export function TransferSuggestionCard({ s, onAdd, added }: Props) {
         <div className="space-y-1.5">
           <MiniChip label={`OUT  ${s.out.web_name}`} teamShort={s.out.team_short} />
           <MiniChip label={`IN  ${s.in.web_name}`} teamShort={s.in.team_short} />
+          {s.out_sell_price != null && s.out_sell_price !== s.out.now_cost && (
+            <p className="text-[10px] text-white/40 pl-4">sells for {formatPrice(s.out_sell_price)}</p>
+          )}
         </div>
         <div className="text-right shrink-0">
           <p className={`text-lg font-bold ${s.net_gain > 0 ? 'text-success' : 'text-danger'}`}>

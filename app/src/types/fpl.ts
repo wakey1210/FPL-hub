@@ -25,6 +25,12 @@ export interface PlayerEV {
   uncertainty: number
   why: string[]
   fixtures: FixtureEV[]
+  // Raw FPL price-momentum fields (see engine/model.py) - used by the
+  // price-changes page's risk bucketing, never blended into total_ev.
+  cost_change_event: number
+  cost_change_start: number
+  transfers_in_event: number
+  transfers_out_event: number
 }
 
 export interface Team {

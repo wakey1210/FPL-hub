@@ -14,10 +14,10 @@ whatever it says.
 """
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 from engine import fetch
+from engine.jsonlog import load_log, write_log
 from engine.model import PlayerEV
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -25,14 +25,11 @@ LOG_PATH = DATA_DIR / "accuracy_log.json"
 
 
 def _load_log() -> dict:
-    if not LOG_PATH.exists():
-        return {"gameweeks": {}}
-    return json.loads(LOG_PATH.read_text())
+    return load_log(LOG_PATH, {"gameweeks": {}})
 
 
 def _write_log(log: dict) -> None:
-    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
-    LOG_PATH.write_text(json.dumps(log, indent=2))
+    write_log(LOG_PATH, log)
 
 
 def record_predictions(players: list[PlayerEV], event: int, generated_at: str) -> None:

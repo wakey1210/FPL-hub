@@ -12,7 +12,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from engine import accuracy, fetch, model, my_team, optimise, planner, priors, transfers
+from engine import accuracy, fetch, model, my_team, optimise, planner, price_history, priors, transfers
 from engine.ml import predict as ml_predict
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -87,6 +87,13 @@ def run() -> None:
         and accuracy.ml_currently_better()
     )
 
+    print("Recording daily price history and price-move risk...")
+    now_utc = datetime.now(timezone.utc)
+    price_history.record_prices(players, now_utc)
+    price_moves_out = price_history.build_price_moves(
+        players, generated_at, bootstrap["total_players"], now_utc
+    )
+
     print("Optimising initial squad...")
     squad_result = optimise.select_squad(players)
 
@@ -159,9 +166,16 @@ def run() -> None:
             ]
             bank = team_data["summary"]["bank"] or 0
             free_transfers = team_data["summary"]["free_transfers_estimate"]
+            sell_prices = transfers.compute_sell_prices(
+                team_data["picks"], team_data["transfers"], players_by_id
+            )
 
             suggestions = transfers.suggest_transfers(
-                squad=current_squad, all_players=players, bank=bank, free_transfers=free_transfers
+                squad=current_squad,
+                all_players=players,
+                bank=bank,
+                free_transfers=free_transfers,
+                sell_prices=sell_prices,
             )
             transfer_suggestions_out = {
                 "available": True,
@@ -187,6 +201,7 @@ def run() -> None:
                 chips_used=team_data["chips_used"],
                 current_event=plan_start_event,
                 season_started=model.season_started(bootstrap),
+                sell_prices=sell_prices,
             )
             transfer_plan_out = {
                 "available": True,
@@ -220,6 +235,7 @@ def run() -> None:
     _write_json("transfer_suggestions.json", transfer_suggestions_out)
     _write_json("transfer_plan.json", transfer_plan_out)
     _write_json("accuracy_summary.json", accuracy_out)
+    _write_json("price_moves.json", price_moves_out)
     print("Pipeline complete.")
 
 

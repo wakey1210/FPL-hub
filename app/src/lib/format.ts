@@ -18,6 +18,25 @@ export function fdrClasses(fdr: number): string {
   }
 }
 
+/** Price-risk bucket (engine/price_history.py's price_risk_bucket) -> colour
+ * classes, same green/amber/red pattern as fdrClasses. Rising/falling are
+ * the actionable buckets (a price move looks imminent); watch is a lighter
+ * heads-up; stable and "already moved today" get a neutral treatment. */
+export function priceRiskClasses(bucket: string): string {
+  switch (bucket) {
+    case 'rising':
+      return 'bg-emerald-500 text-white'
+    case 'falling':
+      return 'bg-rose-700 text-white'
+    case 'watch':
+      return 'bg-amber-400 text-amber-950'
+    case 'already moved today':
+      return 'bg-slate-300 text-slate-900'
+    default:
+      return 'bg-slate-300 text-slate-900'
+  }
+}
+
 export function formatDeadline(iso: string | null): string {
   if (!iso) return 'TBC'
   return new Date(iso).toLocaleString(undefined, {

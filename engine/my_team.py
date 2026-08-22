@@ -76,6 +76,7 @@ def build_my_team(team_id: int) -> dict:
         },
         "chips_used": chips,
         "transfers_made_this_season": len(transfers),
+        "transfers": transfers,
         "gw_history": current_history,
         "recent_seasons": history["past"][-5:],
     }
