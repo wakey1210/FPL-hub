@@ -5,9 +5,10 @@ import { Layout, LoadingState, ErrorState } from '../components/Layout'
 import { PlayerRow } from '../components/PlayerRow'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
 import { useDeclaredTeam } from '../lib/useDeclaredTeam'
-import { squadAtEvent, bankAndFreeTransfersAtEvent } from '../lib/squadTimeline'
+import { squadAtEvent, bankAndFreeTransfersAtEvent, liveTeamAsDeclared } from '../lib/squadTimeline'
 import { formatPrice } from '../lib/format'
 import type { PlayerEV } from '../types/fpl'
+import type { MyTeam } from '../types/myTeam'
 
 interface NavState {
   outPlayerId: number
@@ -28,17 +29,28 @@ export function AddPlayerPage() {
   const location = useLocation()
   const state = location.state as NavState | null
   const players = useJsonData<PlayerEV[]>('players.json')
+  const myTeam = useJsonData<MyTeam>('my_team.json')
   const { plan, addStagedTransfer } = usePlannedChanges()
   const { declared } = useDeclaredTeam()
   const [query, setQuery] = useState('')
 
   const backToPickTeam = () => navigate(state ? `/pick-team?gw=${state.event}` : '/pick-team')
 
-  if (players.loading) return <Layout title="Add Player" onBack={backToPickTeam} showNav={false}><LoadingState /></Layout>
+  if (players.loading || myTeam.loading) return <Layout title="Add Player" onBack={backToPickTeam} showNav={false}><LoadingState /></Layout>
   if (players.error || !players.data) {
     return <Layout title="Add Player" onBack={backToPickTeam} showNav={false}><ErrorState message={players.error ?? 'no data'} /></Layout>
   }
-  if (!state || !declared.squadIds) {
+
+  // Same live-vs-declared source PickTeamPage uses - a live-synced manager
+  // never has a `declared` squad (cleared once sync happens), so without
+  // this their real squad/bank/free-transfers just wouldn't exist here,
+  // reads/excludes would silently do nothing, and budget/hit-cost math
+  // would run against permanently-empty defaults instead of their actual
+  // numbers.
+  const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
+  const effectiveTeam = hasLiveTeam ? liveTeamAsDeclared(myTeam.data!) : declared
+
+  if (!state || !effectiveTeam.squadIds) {
     return <Layout title="Add Player" onBack={backToPickTeam} showNav={false}><ErrorState message="No player selected to replace." /></Layout>
   }
 
@@ -48,8 +60,8 @@ export function AddPlayerPage() {
     return <Layout title="Add Player" onBack={backToPickTeam} showNav={false}><ErrorState message="Player not found." /></Layout>
   }
 
-  const squadAtView = squadAtEvent(declared.squadIds, players.data, plan.stagedTransfers, event)
-  const { bank } = bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, event)
+  const squadAtView = squadAtEvent(effectiveTeam.squadIds, players.data, plan.stagedTransfers, event)
+  const { bank } = bankAndFreeTransfersAtEvent(effectiveTeam, plan.stagedTransfers, event)
   const budget = bank + outPlayer.now_cost
   const excluded = new Set(squadAtView.map((p) => p.id))
 
@@ -61,7 +73,7 @@ export function AddPlayerPage() {
     .slice(0, 100)
 
   const handlePick = (inPlayer: PlayerEV) => {
-    const { freeTransfers } = bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, event - 1)
+    const { freeTransfers } = bankAndFreeTransfersAtEvent(effectiveTeam, plan.stagedTransfers, event - 1)
     const usedSoFarThisWeek = plan.stagedTransfers.filter((t) => t.event === event).length
     addStagedTransfer({
       outId: outPlayer.id,

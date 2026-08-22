@@ -99,9 +99,22 @@ export function PickTeamPage() {
   const minEvent = declared.lastConfirmedEvent ?? currentEvent ?? 1
   const maxEvent = minEvent + horizon - 1
   const gwParam = Number(searchParams.get('gw'))
+  // Live-synced mode has no gameweek nav (see the isConfirmed-gated arrows
+  // below), but still needs to default to whichever gameweek the user can
+  // actually still act on. `picks_event` is the manager's last-PASSED
+  // deadline - i.e. the gameweek currently being played, already locked -
+  // so defaulting there when a next deadline is upcoming left live-synced
+  // users unable to plan/transfer for it at all from this page (they'd be
+  // staring at a frozen, un-actionable squad for the entire time a gameweek
+  // is in play). `currentEvent` (next_gameweek, falling back to
+  // current_gameweek only once there's no next one left in the season)
+  // takes priority instead - the live squad itself is unchanged either way
+  // until a transfer is actually staged, so this just re-labels "your real
+  // squad" as "the starting point for your next transfer", not a different
+  // squad.
   const viewEvent = isConfirmed
     ? Math.min(Math.max(gwParam || minEvent, minEvent), maxEvent)
-    : myTeam.data?.picks_event ?? currentEvent ?? 0
+    : currentEvent ?? myTeam.data?.picks_event ?? 0
 
   const setViewEvent = (event: number) => setSearchParams({ gw: String(event) }, { replace: true })
 
@@ -181,7 +194,14 @@ export function PickTeamPage() {
         },
       },
     ]
-    if (isConfirmed) {
+    // Live-synced users need this too, not just the declared/"confirmed"
+    // path - AddPlayerPage/ConfirmTransfersPage already work off whatever
+    // event/staged-transfers state they're given regardless of which mode
+    // built the squad, so gating this on `isConfirmed` only was withholding
+    // a working feature from the primary (real-team) user during exactly
+    // the window they're most likely to want it: a gameweek in play, with
+    // `viewEvent` now the upcoming one they can still act on.
+    if (isConfirmed || hasLiveTeam) {
       actions.push({
         label: 'Transfer',
         onClick: () => {
@@ -228,7 +248,9 @@ export function PickTeamPage() {
     <Layout title="Pick Team">
       <p className="text-xs text-white/50 mb-2">
         {liveView
-          ? `Your actual squad from GW${myTeam.data?.picks_event}.`
+          ? viewEvent === myTeam.data?.picks_event
+            ? `Your actual squad from GW${myTeam.data?.picks_event}.`
+            : `Your real squad, ready for GW${viewEvent} transfers.`
           : isConfirmed
             ? "Based on your declared squad - will switch to your live FPL team once synced."
             : "AI-recommended squad, ahead of your first deadline. Confirm your squad below to unlock gameweek-by-gameweek transfers."}
@@ -262,7 +284,7 @@ export function PickTeamPage() {
         </div>
       )}
 
-      {isConfirmed && stagedThisWeek.length > 0 && (
+      {(isConfirmed || hasLiveTeam) && stagedThisWeek.length > 0 && (
         <button
           onClick={() => navigate(`/confirm-transfers?gw=${viewEvent}`)}
           className="w-full flex items-center justify-between mb-3 rounded-xl bg-primary/10 border border-primary/40 px-3 py-2.5 text-left transition-colors active:bg-primary/20"

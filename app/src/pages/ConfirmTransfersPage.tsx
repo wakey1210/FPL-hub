@@ -1,9 +1,11 @@
 import { useSearchParams, useNavigate } from 'react-router-dom'
-import { Layout } from '../components/Layout'
+import { Layout, LoadingState } from '../components/Layout'
+import { useJsonData } from '../lib/data'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
 import { useDeclaredTeam } from '../lib/useDeclaredTeam'
-import { bankAndFreeTransfersAtEvent } from '../lib/squadTimeline'
+import { bankAndFreeTransfersAtEvent, liveTeamAsDeclared } from '../lib/squadTimeline'
 import { formatPrice } from '../lib/format'
+import type { MyTeam } from '../types/myTeam'
 
 /** Dedicated full-screen review for a gameweek's batch of manually-staged
  * transfers - replaces the small fixed-height StagedTransfersCart for Pick
@@ -18,15 +20,25 @@ export function ConfirmTransfersPage() {
   const event = Number(searchParams.get('gw'))
   const { plan, removeStagedTransfer } = usePlannedChanges()
   const { declared } = useDeclaredTeam()
+  const myTeam = useJsonData<MyTeam>('my_team.json')
 
   const backToPickTeam = () => navigate(`/pick-team?gw=${event}`)
+
+  if (myTeam.loading) return <Layout title="Confirm Transfers" onBack={backToPickTeam} showNav={false}><LoadingState /></Layout>
+
+  // Same live-vs-declared source as AddPlayerPage/PickTeamPage - a live
+  // team's own bank/free-transfers, not the (empty, once synced) declared
+  // state, is what this batch's budget/hit-cost math needs to be checked
+  // against.
+  const hasLiveTeam = myTeam.data?.configured && myTeam.data.has_squad && myTeam.data.picks
+  const effectiveTeam = hasLiveTeam ? liveTeamAsDeclared(myTeam.data!) : declared
 
   const entries = plan.stagedTransfers
     .map((t, i) => ({ t, i }))
     .filter(({ t }) => t.event === event)
 
-  const { freeTransfers: freeBefore } = bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, event - 1)
-  const { bank: bankAfter } = bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, event)
+  const { freeTransfers: freeBefore } = bankAndFreeTransfersAtEvent(effectiveTeam, plan.stagedTransfers, event - 1)
+  const { bank: bankAfter } = bankAndFreeTransfersAtEvent(effectiveTeam, plan.stagedTransfers, event)
   const freeUsed = Math.min(entries.length, freeBefore)
   const additionalUsed = Math.max(0, entries.length - freeBefore)
   const totalHit = entries.reduce((sum, { t }) => sum + t.hitCost, 0)
@@ -67,7 +79,7 @@ export function ConfirmTransfersPage() {
                   <span />
                 )}
                 <button
-                  onClick={() => removeStagedTransfer(i, (ev) => bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, ev - 1).freeTransfers)}
+                  onClick={() => removeStagedTransfer(i, (ev) => bankAndFreeTransfersAtEvent(effectiveTeam, plan.stagedTransfers, ev - 1).freeTransfers)}
                   className="text-xs text-white/50 underline min-h-[36px] px-2 transition-colors active:text-white"
                 >
                   Remove
