@@ -1,6 +1,6 @@
 import type { PlayerEV } from '../types/fpl'
 import { formatPrice } from '../lib/format'
-import { teamColor } from '../lib/teamColors'
+import { TeamBadge } from './TeamBadge'
 
 export function PlayerRow({ player, onClick }: { player: PlayerEV; onClick: () => void }) {
   return (
@@ -8,10 +8,7 @@ export function PlayerRow({ player, onClick }: { player: PlayerEV; onClick: () =
       onClick={onClick}
       className="w-full flex items-center gap-3 py-2.5 px-3 rounded-xl bg-surface active:bg-surface-raised"
     >
-      <span
-        className="w-2 self-stretch rounded-full shrink-0"
-        style={{ backgroundColor: teamColor(player.team_short) }}
-      />
+      <TeamBadge code={player.team_code} shortName={player.team_short} size={28} />
       <div className="flex-1 text-left min-w-0">
         <p className="text-sm font-semibold truncate">{player.web_name}</p>
         <p className="text-[11px] text-white/50">

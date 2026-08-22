@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import type { PlayerEV } from '../types/fpl'
 import { formatPrice, fdrClasses } from '../lib/format'
-import { teamColor } from '../lib/teamColors'
+import { TeamBadge } from './TeamBadge'
 
 export interface FixtureTableRow {
   player: PlayerEV
@@ -75,10 +75,7 @@ export function PlayerFixtureTable({
                     className={`sticky left-0 z-10 py-1.5 pr-2 ${isHighlighted ? 'bg-primary/10' : 'bg-surface'} rounded-l-lg`}
                   >
                     <div className="flex items-center gap-2">
-                      <span
-                        className="w-1.5 self-stretch rounded-full shrink-0"
-                        style={{ backgroundColor: teamColor(player.team_short) }}
-                      />
+                      <TeamBadge code={player.team_code} shortName={player.team_short} size={18} />
                       <div className="min-w-0">
                         <p className="font-semibold truncate flex items-center gap-1.5">
                           {player.web_name}

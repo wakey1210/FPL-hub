@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import type { PlayerEV } from '../types/fpl'
-import { formatPrice, fdrClasses } from '../lib/format'
 import { BottomSheet } from './BottomSheet'
+import { PlayerSheetHeader } from './player-sheet/PlayerSheetHeader'
+import { PlayerStatRow } from './player-sheet/PlayerStatRow'
+import { WhyAndFixturesTab } from './player-sheet/WhyAndFixturesTab'
+import { SeasonStatsTab } from './player-sheet/SeasonStatsTab'
 
 export interface SheetAction {
   label: string
@@ -22,33 +26,40 @@ interface Props {
   captainState?: CaptainState
 }
 
+type Tab = 'fixtures' | 'season'
+
+const TABS: { id: Tab; label: string }[] = [
+  { id: 'fixtures', label: 'Fixtures & rating' },
+  { id: 'season', label: 'Season stats' },
+]
+
 /** Bottom sheet with the transparent "why" behind a player's EV - the
  * anti-black-box feature that differentiates this from FFH's AI picker.
  * `actions` renders clear, tappable CTAs (Substitute, Transfer, ...);
  * `captainState`, when provided, renders always-visible Captain/Vice-captain
  * checkboxes above them, matching the official app's pattern instead of two
- * buttons that disappear once toggled. */
+ * buttons that disappear once toggled.
+ *
+ * This is the orchestrator: it owns tab state and composes the header/stat
+ * row/tab-content pieces under components/player-sheet/. The "why" bullets
+ * and fixture list (WhyAndFixturesTab) stay the default tab and are never
+ * buried below the new photo header or season-stats tab - see that
+ * component's own comment for why that matters.
+ *
+ * Callers MUST render this with `key={player?.id ?? 'closed'}` (see
+ * PickTeamPage/TransfersPage) - without it, React keeps the same component
+ * instance mounted across different players (the parent always renders this
+ * unconditionally), so `tab` state here and the `failed` image-fallback
+ * state in the nested PlayerAvatar/TeamBadge would otherwise leak from one
+ * player's sheet into the next player's. */
 export function PlayerDetailSheet({ player, onClose, actions, captainState }: Props) {
+  const [tab, setTab] = useState<Tab>('fixtures')
+
   if (!player) return null
 
   return (
     <BottomSheet onClose={onClose}>
-      <div className="flex justify-between items-start mb-3">
-        <div>
-          <h2 className="text-lg font-bold text-white">{player.web_name}</h2>
-          <p className="text-sm text-white/60">
-            {player.position} · {player.team_short} · {formatPrice(player.now_cost)} ·{' '}
-            {player.selected_by_percent.toFixed(1)}% owned
-          </p>
-        </div>
-        <button
-          onClick={onClose}
-          aria-label="Close"
-          className="text-white/60 text-2xl leading-none px-2 min-w-[44px] min-h-[44px] transition-colors active:text-white"
-        >
-          ×
-        </button>
-      </div>
+      <PlayerSheetHeader player={player} onClose={onClose} />
 
       {captainState && (
         <div className="flex gap-4 mb-3">
@@ -91,54 +102,27 @@ export function PlayerDetailSheet({ player, onClose, actions, captainState }: Pr
         </div>
       )}
 
-      <div className="flex gap-2 mb-4">
-        <div className="flex-1 bg-white/5 rounded-lg p-3 text-center">
-          <p className="text-2xl font-bold text-primary">{player.total_ev.toFixed(1)}</p>
-          <p className="text-[11px] text-white/50">EV next {player.fixtures.length} GWs (±{player.uncertainty.toFixed(1)})</p>
-        </div>
-        <div className="flex-1 bg-white/5 rounded-lg p-3 text-center">
-          <p className="text-2xl font-bold text-white">{Math.round(player.p_appearance * 100)}%</p>
-          <p className="text-[11px] text-white/50">Chance of playing</p>
-        </div>
-        <div className="flex-1 bg-white/5 rounded-lg p-3 text-center">
-          <p className="text-2xl font-bold text-white">{Math.round(player.p_60_plus * 100)}%</p>
-          <p className="text-[11px] text-white/50">Chance of 60'+</p>
-        </div>
-      </div>
-      <p className="text-[11px] text-white/40 -mt-2 mb-4">
-        ~{player.expected_minutes_if_appears.toFixed(0)} minutes when they do play
-      </p>
+      <PlayerStatRow player={player} />
 
       {player.news && (
         <p className="text-sm text-warning bg-warning/10 rounded-lg p-2 mb-4">{player.news}</p>
       )}
 
-      <h3 className="text-sm font-semibold text-white/80 mb-2">Why this rating</h3>
-      <ul className="space-y-1.5 mb-4">
-        {player.why.map((reason, i) => (
-          <li key={i} className="text-sm text-white/80 flex gap-2">
-            <span className="text-primary">●</span>
-            {reason}
-          </li>
-        ))}
-      </ul>
-
-      <h3 className="text-sm font-semibold text-white/80 mb-2">Fixture-by-fixture</h3>
-      <div className="space-y-1.5">
-        {player.fixtures.map((f) => (
-          <div key={f.event} className="flex items-center justify-between text-sm">
-            <span className="text-white/70">
-              GW{f.event} · {f.is_home ? 'vs' : '@'} {f.opponent_short}
-            </span>
-            <div className="flex items-center gap-2">
-              <span className={`w-6 h-5 rounded text-[10px] font-bold flex items-center justify-center ${fdrClasses(f.fdr)}`}>
-                {f.fdr}
-              </span>
-              <span className="text-white font-medium w-10 text-right">{f.points.toFixed(1)}</span>
-            </div>
-          </div>
+      <div className="flex gap-1 mb-4 bg-white/5 rounded-lg p-1">
+        {TABS.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setTab(t.id)}
+            className={`flex-1 min-h-[36px] rounded-md text-xs font-semibold transition-colors ${
+              tab === t.id ? 'bg-primary text-primary-foreground' : 'text-white/60'
+            }`}
+          >
+            {t.label}
+          </button>
         ))}
       </div>
+
+      {tab === 'fixtures' ? <WhyAndFixturesTab player={player} /> : <SeasonStatsTab player={player} />}
     </BottomSheet>
   )
 }

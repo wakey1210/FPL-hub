@@ -128,6 +128,17 @@ class PlayerEV:
     ml_ev: float = 0.0
     ml_uncertainty: float = 0.0
     ml_why: list[str] = field(default_factory=list)
+    # Imagery keys (distinct from `id`/`team_short`) plus season-actuals for
+    # the "season stats" sheet tab - see Plan B in the redesign plan. `code`
+    # is the FPL-stable player-photo key; `team_code` the team-badge key.
+    code: int = 0
+    team_code: int = 0
+    clean_sheets: int = 0
+    goals_conceded: int = 0
+    saves: int = 0
+    starts: int = 0
+    expected_goals_conceded: float = 0.0
+    cost_change_event: int = 0
 
 
 def season_started(bootstrap: dict) -> bool:
@@ -678,6 +689,14 @@ def build_player_ev(
                 dc90=round(dc90, 4),
                 saves90=round(saves90, 4),
                 dc_prob=round(dc_prob, 4),
+                code=e["code"],
+                team_code=team["code"],
+                clean_sheets=e.get("clean_sheets") or 0,
+                goals_conceded=e.get("goals_conceded") or 0,
+                saves=e.get("saves") or 0,
+                starts=e.get("starts") or 0,
+                expected_goals_conceded=float(e.get("expected_goals_conceded") or 0.0),
+                cost_change_event=e.get("cost_change_event") or 0,
             )
         )
 
