@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom'
 import { useJsonData } from '../lib/data'
 import { useLocalStorage } from '../lib/useLocalStorage'
 import { Layout } from '../components/Layout'
 import { AccuracySummary } from '../components/AccuracySummary'
+import { SquadValueTrend } from '../components/SquadValueTrend'
 import type { Meta } from '../types/fpl'
 import type { MyTeam } from '../types/myTeam'
 import type { AccuracySummary as AccuracySummaryData } from '../types/accuracy'
@@ -56,6 +58,24 @@ export function MorePage() {
           <h2 className="text-sm font-semibold text-white mb-2">Prediction accuracy</h2>
           {accuracy.data ? <AccuracySummary data={accuracy.data} /> : <p className="text-xs">…</p>}
         </div>
+
+        {myTeam.data?.configured && myTeam.data.gw_history && (
+          <div className="rounded-2xl bg-surface p-5 text-sm text-white/70">
+            <h2 className="text-sm font-semibold text-white mb-2">Squad value</h2>
+            <SquadValueTrend history={myTeam.data.gw_history} />
+          </div>
+        )}
+
+        <Link
+          to="/price-changes"
+          className="block rounded-2xl bg-surface p-5 text-sm transition-colors active:bg-surface-raised"
+        >
+          <h2 className="text-sm font-semibold text-white mb-1">Price changes</h2>
+          <p className="text-xs text-white/60">
+            Today's risers/fallers and a watchlist of players whose transfer momentum suggests a move
+            tonight.
+          </p>
+        </Link>
 
         <div className="rounded-2xl bg-surface p-5 text-sm text-white/70">
           <h2 className="text-sm font-semibold text-white mb-2">Model &amp; data</h2>

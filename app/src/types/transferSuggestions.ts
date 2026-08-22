@@ -10,6 +10,10 @@ export interface TransferSuggestion {
   rationale: string[]
   out: PlayerEV
   in: PlayerEV
+  // Real sell price for `out` (engine/transfers.py's compute_sell_prices) -
+  // optional since the client-side declared-squad mirror in
+  // lib/transferSuggestions.ts has no transfer history to compute it from.
+  out_sell_price?: number
 }
 
 export interface TransferSuggestions {

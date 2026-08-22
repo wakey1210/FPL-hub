@@ -6,6 +6,7 @@ import { PlannerPage } from './pages/PlannerPage'
 import { MorePage } from './pages/MorePage'
 import { AddPlayerPage } from './pages/AddPlayerPage'
 import { ConfirmTransfersPage } from './pages/ConfirmTransfersPage'
+import { PriceChangesPage } from './pages/PriceChangesPage'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/more" element={<MorePage />} />
         <Route path="/add-player" element={<AddPlayerPage />} />
         <Route path="/confirm-transfers" element={<ConfirmTransfersPage />} />
+        <Route path="/price-changes" element={<PriceChangesPage />} />
       </Routes>
     </BrowserRouter>
   )
