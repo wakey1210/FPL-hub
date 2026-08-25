@@ -58,12 +58,6 @@ CONSISTENCY_NEUTRAL_CV = 0.35
 CONSISTENCY_ADJ_SCALE = 0.5
 CONSISTENCY_ADJ_CLAMP = 0.15
 
-# A full historical season is 38 games; used to turn total minutes into a
-# "how nailed-on were they" share, whether that's this-season-so-far minutes
-# once real gameweeks exist, or the multi-season prior's blended share before
-# they do.
-FULL_SEASON_MINUTES = 38 * 90
-
 FORECAST_GAMEWEEKS = 6
 
 # stabilize.py stat name -> (bootstrap current-season per-90 field, priors.py per90 key)
@@ -315,16 +309,35 @@ def _expected_minutes_profile(
     """
     current_minutes = (element.get("minutes") or 0) if season_started else 0
     current_starts = (element.get("starts") or 0) if season_started else 0
+    games_played = team_played if season_started else 0
 
-    current_minutes_share = min(current_minutes / FULL_SEASON_MINUTES, 1.0)
+    # Selection stats (will this player play at all) stabilize against team
+    # games played, not the player's own minutes - see
+    # stabilize.blend_weight_by_games for why keying this on minutes is
+    # circular for exactly the players most worth catching (an unselected-
+    # but-fit player has zero minutes by construction, so minutes-based
+    # stabilization could never react to a real, ongoing squad omission).
+    #
+    # current_minutes_share is normalized against minutes actually
+    # *available* so far this season (games_played * 90), not a fixed
+    # 38-game season - engine/historical/bootstrap.py already found and
+    # documented this exact distortion: dividing by a full season
+    # structurally deflates even a nailed starter until most of the season
+    # has been played (a striker who's started every game so far would
+    # otherwise show ~3% "minutes share" after 1 game out of 38), which
+    # then drags the blended figure down together with the prior instead of
+    # reinforcing it. That fix was only ever applied to the historical
+    # backtest harness - porting it here for the same reason.
+    available_minutes = games_played * 90
+    current_minutes_share = min(current_minutes / available_minutes, 1.0) if available_minutes else 0.0
     prior_minutes_share = prior.weighted_minutes_share if prior else current_minutes_share
-    minutes_share = stabilize.blend_rate(
-        "minutes_share", current_minutes_share, current_minutes, prior_minutes_share
+    minutes_share = stabilize.blend_rate_by_games(
+        "minutes_share", current_minutes_share, games_played, prior_minutes_share
     )
 
     current_starts_share = min(current_starts / team_played, 1.0) if team_played else 0.0
     prior_starts_share = prior.weighted_starts_share if prior else current_starts_share
-    starts_share = stabilize.blend_rate("starts", current_starts_share, current_minutes, prior_starts_share)
+    starts_share = stabilize.blend_rate_by_games("starts", current_starts_share, games_played, prior_starts_share)
 
     if prior and prior.avg_minutes_per_start:
         # Capped at 95: extra-time cup/playoff matches in a small starts sample
