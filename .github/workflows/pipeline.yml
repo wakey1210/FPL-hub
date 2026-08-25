@@ -2,10 +2,18 @@ name: Refresh FPL data
 
 on:
   schedule:
-    # Every 3 hours. The FPL API has no published rate limit and community
-    # tooling reports it tolerates far heavier use, so a fixed cadence is
-    # simpler and just as fresh near deadlines as a special-cased schedule.
+    # Baseline: every 3 hours, covering everything outside the matchday
+    # windows below (overnight, midweek daytime, off-season).
     - cron: '0 */3 * * *'
+    # FPL has no webhook for "a fixture just finished", so this is a bounded
+    # poll standing in for one: every 15 minutes across the windows PL
+    # fixtures actually kick off in (UTC), so a finished match is picked up
+    # (and, per the no-op commit step below, only actually committed/
+    # redeployed) within 15 minutes rather than waiting up to 3 hours.
+    # Fri-Mon covers the weekend program plus Friday-night and Monday-Night
+    # Football; Tue-Thu covers rearranged/cup-adjacent midweek fixtures.
+    - cron: '*/15 10-22 * * 5,6,0,1'
+    - cron: '*/15 17-22 * * 2,3,4'
   workflow_dispatch: {}
 
 permissions:

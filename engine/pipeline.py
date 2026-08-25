@@ -99,7 +99,7 @@ def run() -> None:
 
     meta = {
         "generated_at": generated_at,
-        "season_started": model.season_started(bootstrap),
+        "season_started": model.season_started(fixtures),
         "forecast_gameweeks": model.FORECAST_GAMEWEEKS,
         "current_gameweek": current_event["id"] if current_event else None,
         "next_gameweek": next_event["id"] if next_event else None,
@@ -201,7 +201,7 @@ def run() -> None:
                 free_transfers=free_transfers,
                 chips_used=team_data["chips_used"],
                 current_event=plan_start_event,
-                season_started=model.season_started(bootstrap),
+                season_started=model.season_started(fixtures),
                 sell_prices=sell_prices,
             )
             transfer_plan_out = {
