@@ -1,5 +1,5 @@
 import type { PlayerEV } from '../types/fpl'
-import { teamColor } from '../lib/teamColors'
+import { TeamBadge } from './TeamBadge'
 
 interface Props {
   player: PlayerEV
@@ -9,11 +9,12 @@ interface Props {
   highlighted?: boolean
 }
 
-/** A single "shirt" tile used in the pitch view: club-coloured jersey, name,
- * price and EV, with an optional captain/vice-captain badge - mirrors the
- * official app's Pick Team screen. `points` is passed in explicitly (rather
- * than read off `player` directly) so callers can choose next-gameweek vs.
- * multi-gameweek total depending on context - see PitchView. */
+/** A single "shirt" tile used in the pitch view: real club badge (TeamBadge,
+ * same one used in the Transfers player list), name, price and EV, with an
+ * optional captain/vice-captain marker - mirrors the official app's Pick
+ * Team screen. `points` is passed in explicitly (rather than read off
+ * `player` directly) so callers can choose next-gameweek vs. multi-gameweek
+ * total depending on context - see PitchView. */
 export function PlayerChip({ player, points, badge, onClick, highlighted }: Props) {
   return (
     <button
@@ -24,12 +25,11 @@ export function PlayerChip({ player, points, badge, onClick, highlighted }: Prop
     >
       <div className="relative">
         <div
-          className={`w-9 h-9 rounded-md shadow-md flex items-center justify-center text-white text-[9px] font-bold ${
+          className={`w-9 h-9 rounded-md shadow-md bg-white flex items-center justify-center ${
             highlighted ? 'ring-2 ring-primary ring-offset-2 ring-offset-emerald-700' : ''
           }`}
-          style={{ backgroundColor: teamColor(player.team_short) }}
         >
-          {player.team_short}
+          <TeamBadge code={player.team_code} shortName={player.team_short} size={30} />
         </div>
         {badge && (
           <span
