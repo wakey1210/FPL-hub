@@ -152,9 +152,51 @@ class PlayerEV:
     expected_goals_conceded: float = 0.0
 
 
-def season_started(bootstrap: dict) -> bool:
-    """True once real 2026/27 fixtures have been played."""
-    return any(t["played"] > 0 for t in bootstrap["teams"])
+def season_started(fixtures: list[dict]) -> bool:
+    """True once any real 2026/27 fixture has actually been played.
+
+    Uses each fixture's own `finished_provisional` flag, which flips within
+    minutes of full-time, rather than FPL's `teams[].played` count or
+    `events[].finished`/`data_checked` - those don't flip until bonus points
+    are officially reconciled, roughly a day after a gameweek's last match.
+    Player-level stats (minutes, goals, assists, bps) already update live
+    from Opta throughout a match, well before that reconciliation, so gating
+    on the slower signal means the model ignores a live gameweek's data for
+    a day it doesn't need to.
+    """
+    return any(fx.get("finished_provisional") for fx in fixtures)
+
+
+def _provisionally_finished_event_ids(fixtures: list[dict]) -> set[int]:
+    """Event ids whose fixtures have all actually been played (see
+    `season_started`), for excluding an already-played gameweek from the
+    forward forecast window - `events[].finished` alone lags by ~a day and
+    would otherwise still forecast a gameweek that's already happened.
+    """
+    by_event: dict[int, list[dict]] = {}
+    for fx in fixtures:
+        if fx.get("event") is None:
+            continue
+        by_event.setdefault(fx["event"], []).append(fx)
+    return {
+        event_id
+        for event_id, fxs in by_event.items()
+        if fxs and all(fx.get("finished_provisional") for fx in fxs)
+    }
+
+
+def _team_played_provisional(fixtures: list[dict]) -> dict[int, int]:
+    """Per-team count of this-season fixtures actually played, from the
+    same live `finished_provisional` signal as `season_started` - a
+    same-day-accurate replacement for FPL's own `teams[].played`.
+    """
+    counts: dict[int, int] = {}
+    for fx in fixtures:
+        if not fx.get("finished_provisional"):
+            continue
+        counts[fx["team_h"]] = counts.get(fx["team_h"], 0) + 1
+        counts[fx["team_a"]] = counts.get(fx["team_a"], 0) + 1
+    return counts
 
 
 UNDERSTAT_PENS_SHARE_THRESHOLD = 0.15  # below this, not worth correcting for
@@ -388,7 +430,8 @@ def build_fixture_ticker(
     """
     teams_by_id = {t["id"]: t for t in bootstrap["teams"]}
     events = bootstrap["events"]
-    upcoming_events = sorted(e["id"] for e in events if not e["finished"])[:forecast_gws]
+    played_event_ids = _provisionally_finished_event_ids(fixtures)
+    upcoming_events = sorted(e["id"] for e in events if e["id"] not in played_event_ids)[:forecast_gws]
     upcoming_set = set(upcoming_events)
 
     fixtures_by_team: dict[int, list[dict]] = {}
@@ -485,9 +528,11 @@ def build_player_ev(
     understat_by_id = understat.get("players", {}) if understat else {}
     scoring = bootstrap["game_config"]["scoring"]
     events = bootstrap["events"]
-    season_started_flag = season_started(bootstrap)
+    season_started_flag = season_started(fixtures)
+    team_played_provisional = _team_played_provisional(fixtures)
+    played_event_ids = _provisionally_finished_event_ids(fixtures)
     upcoming_events = sorted(
-        e["id"] for e in events if not e["finished"]
+        e["id"] for e in events if e["id"] not in played_event_ids
     )[:forecast_gws]
     upcoming_set = set(upcoming_events)
 
@@ -515,7 +560,9 @@ def build_player_ev(
             position, coefficients
         )
 
-        mp = _expected_minutes_profile(e, prior, team["played"], season_started_flag)
+        mp = _expected_minutes_profile(
+            e, prior, team_played_provisional.get(team["id"], 0), season_started_flag
+        )
         understat_split = understat_by_id.get(str(e["id"]))
         xg90 = _blended_rate(
             "expected_goals", e, prior, season_started_flag, attack_mult_table, understat_split

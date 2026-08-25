@@ -250,15 +250,20 @@ def main() -> None:
     element_ids = [e["id"] for e in bootstrap["elements"] if not e.get("removed")]
     element_names = {e["id"]: e["web_name"] for e in bootstrap["elements"]}
 
+    fixtures_list = fetch.get_fixtures()
+
     # current_season_avg_fdr needs refreshing every week once real gameweeks
     # exist (unlike the historical seasons blend, which is static once
     # fetched) - so once the season's started, this is always a full refetch,
     # not incremental. Pre-season this doesn't cost anything extra: there's
     # no `history` yet for any player, so the field is just None either way.
-    season_started = any(t["played"] > 0 for t in bootstrap["teams"])
+    # Uses finished_provisional (flips within minutes of full-time), not
+    # teams[].played, which lags official bonus-point reconciliation by
+    # roughly a day - see engine.model.season_started.
+    season_started = any(fx.get("finished_provisional") for fx in fixtures_list)
     force = "--force" in sys.argv or season_started
 
-    fixtures_by_id = {fx["id"]: fx for fx in fetch.get_fixtures()}
+    fixtures_by_id = {fx["id"]: fx for fx in fixtures_list}
 
     existing_raw = {}
     if CACHE_PATH.exists() and not force:

@@ -31,10 +31,14 @@ scored gameweek onward.
 
 Everything runs free on GitHub:
 - **GitHub Actions** (`.github/workflows/pipeline.yml`) fetches data and
-  recomputes predictions every 3 hours (or on demand via
-  `workflow_dispatch`), committing the results to `/data`. If a
-  `FPL_TEAM_ID` repository variable is set, it also tracks that manager's
-  squad/transfers/chips/bank and generates transfer suggestions.
+  recomputes predictions every 3 hours as a baseline, or on demand via
+  `workflow_dispatch`, committing the results to `/data`. FPL has no webhook
+  for "a fixture just finished", so an additional 15-minute poll runs across
+  the windows Premier League fixtures actually kick off in (Fri-Mon all day,
+  Tue-Thu evenings, UTC) - each run only actually commits (and redeploys
+  Pages) if `/data` genuinely changed, so this stays cheap the rest of the
+  time. If a `FPL_TEAM_ID` repository variable is set, it also tracks that
+  manager's squad/transfers/chips/bank and generates transfer suggestions.
 - **`refresh-priors.yml`** rebuilds each player's multi-season prior
   (`data/player_priors.json`) weekly - much heavier than the 3-hourly loop
   (~587 API calls first run, incremental after), so it stays on its own
