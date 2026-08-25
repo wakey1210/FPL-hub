@@ -77,6 +77,17 @@ export function MorePage() {
           </p>
         </Link>
 
+        <Link
+          to="/model-changes"
+          className="block rounded-2xl bg-surface p-5 text-sm transition-colors active:bg-surface-raised"
+        >
+          <h2 className="text-sm font-semibold text-white mb-1">Model changes</h2>
+          <p className="text-xs text-white/60">
+            The biggest predicted-EV movers since the last data refresh, with each player's own
+            reasons why.
+          </p>
+        </Link>
+
         <div className="rounded-2xl bg-surface p-5 text-sm text-white/70">
           <h2 className="text-sm font-semibold text-white mb-2">Model &amp; data</h2>
           <ul className="space-y-1 text-xs">
@@ -84,11 +95,21 @@ export function MorePage() {
             <li>Data last refreshed: {meta.data ? new Date(meta.data.generated_at).toLocaleString() : '…'}</li>
             <li>Source: official FPL API (public endpoints only)</li>
             {meta.data?.ml_model_loaded && (
-              <li>
+              <li className={meta.data.ml_status?.eligible ? 'text-success' : undefined}>
                 Experimental ML model (XGBoost, retrained weekly):{' '}
-                {meta.data.ml_eligible
-                  ? 'currently outperforming the heuristic - see Prediction accuracy above'
-                  : 'tracked for comparison, not yet beating the heuristic consistently enough to be trusted'}
+                {meta.data.ml_status ? (
+                  <>
+                    beaten the heuristic {meta.data.ml_status.current_streak} of the last{' '}
+                    {meta.data.ml_status.comparable_gameweeks} gameweek
+                    {meta.data.ml_status.comparable_gameweeks === 1 ? '' : 's'} scored (needs{' '}
+                    {meta.data.ml_status.required_gameweeks} in a row to be trusted) -{' '}
+                    {meta.data.ml_status.eligible ? 'currently trusted, see Prediction accuracy above' : 'not yet trusted'}
+                  </>
+                ) : meta.data.ml_eligible ? (
+                  'currently outperforming the heuristic - see Prediction accuracy above'
+                ) : (
+                  'tracked for comparison, not yet beating the heuristic consistently enough to be trusted'
+                )}
               </li>
             )}
           </ul>

@@ -73,6 +73,12 @@ export interface Meta {
   model_version: string
   ml_model_loaded?: boolean
   ml_eligible?: boolean
+  ml_status?: {
+    comparable_gameweeks: number
+    required_gameweeks: number
+    current_streak: number
+    eligible: boolean
+  }
 }
 
 export interface SquadRecommendation {

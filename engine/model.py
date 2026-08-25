@@ -161,11 +161,14 @@ def season_started(fixtures: list[dict]) -> bool:
     return any(fx.get("finished_provisional") for fx in fixtures)
 
 
-def _provisionally_finished_event_ids(fixtures: list[dict]) -> set[int]:
+def provisionally_finished_event_ids(fixtures: list[dict]) -> set[int]:
     """Event ids whose fixtures have all actually been played (see
     `season_started`), for excluding an already-played gameweek from the
     forward forecast window - `events[].finished` alone lags by ~a day and
     would otherwise still forecast a gameweek that's already happened.
+    Also used by `engine.accuracy` to decide when a gameweek is actually
+    ready to be scored, for the same reason - not module-private since a
+    second module now depends on it.
     """
     by_event: dict[int, list[dict]] = {}
     for fx in fixtures:
@@ -464,7 +467,7 @@ def build_fixture_ticker(
     """
     teams_by_id = {t["id"]: t for t in bootstrap["teams"]}
     events = bootstrap["events"]
-    played_event_ids = _provisionally_finished_event_ids(fixtures)
+    played_event_ids = provisionally_finished_event_ids(fixtures)
     upcoming_events = sorted(e["id"] for e in events if e["id"] not in played_event_ids)[:forecast_gws]
     upcoming_set = set(upcoming_events)
 
@@ -564,7 +567,7 @@ def build_player_ev(
     events = bootstrap["events"]
     season_started_flag = season_started(fixtures)
     team_played_provisional = _team_played_provisional(fixtures)
-    played_event_ids = _provisionally_finished_event_ids(fixtures)
+    played_event_ids = provisionally_finished_event_ids(fixtures)
     upcoming_events = sorted(
         e["id"] for e in events if e["id"] not in played_event_ids
     )[:forecast_gws]
