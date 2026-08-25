@@ -51,9 +51,6 @@ export function TransferSuggestionCard({ s, onAdd, added }: Props) {
           ))}
         </ul>
       )}
-      {s.uses_hit && (
-        <p className="text-[11px] text-warning mt-2">Uses a -4 hit (no free transfer left)</p>
-      )}
       {onAdd && (
         <button
           onClick={onAdd}

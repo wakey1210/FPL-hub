@@ -29,15 +29,27 @@ export function PlanStepCard({ step, onAdd, added }: Props) {
       </div>
 
       {hasTransfer ? (
-        <div className="space-y-1 mb-2">
+        <div className="space-y-2 mb-2">
           {step.out.map((outP, i) => {
             const inP = step.in[i]
+            const swapWhy = step.swap_rationale[i]
             return (
-              <div key={outP.id} className="flex items-center gap-2 text-sm">
-                <span className="w-2 h-6 rounded-full shrink-0" style={{ backgroundColor: teamColor(outP.team_short) }} />
-                <span>
-                  OUT {outP.web_name} → IN {inP?.web_name}
-                </span>
+              <div key={outP.id} className="space-y-0.5">
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="w-2 h-6 rounded-full shrink-0" style={{ backgroundColor: teamColor(outP.team_short) }} />
+                  <span>
+                    OUT {outP.web_name} → IN {inP?.web_name}
+                  </span>
+                </div>
+                {swapWhy && swapWhy.length > 0 && (
+                  <ul className="pl-4 space-y-0.5">
+                    {swapWhy.map((line, j) => (
+                      <li key={j} className="text-[11px] text-white/60 leading-snug">
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             )
           })}
@@ -46,7 +58,9 @@ export function PlanStepCard({ step, onAdd, added }: Props) {
         <p className="text-sm text-white/50 mb-2">No transfer this week</p>
       )}
 
-      <p className="text-[11px] text-white/50 mb-2">{step.rationale}</p>
+      {(!hasTransfer || step.swap_rationale.length === 0) && (
+        <p className="text-[11px] text-white/50 mb-2">{step.rationale}</p>
+      )}
 
       <div className="flex items-center justify-between">
         <p className={`text-sm font-bold ${step.projected_gain > 0 ? 'text-success' : 'text-white/40'}`}>

@@ -262,6 +262,27 @@ def _blended_rate(
     return stabilize.blend_rate(stat, current_rate, current_minutes, prior_rate)
 
 
+def _defensive_components_per90(element: dict, season_started: bool) -> tuple[float, float, float]:
+    """Raw per-90 rates for the three counting stats behind FPL's own
+    defensive-contribution points (tackles + clearances/blocks/interceptions
+    + recoveries) - literal season-to-date counts bootstrap `elements`
+    already exposes, kept separate from the single blended `dc90` composite
+    so a player's "why" can name the actual actions behind the number
+    instead of one abstract rate (this project's stated preference for
+    transparent, literal stats over black-box composites). Same pre-season
+    guard as `_blended_rate`: bootstrap's counts are last season's completed
+    totals until GW1 actually happens, not "this season" data.
+    """
+    minutes = (element.get("minutes") or 0) if season_started else 0
+    if minutes == 0:
+        return 0.0, 0.0, 0.0
+    per90 = 90.0 / minutes
+    tackles90 = (element.get("tackles") or 0) * per90
+    cbi90 = (element.get("clearances_blocks_interceptions") or 0) * per90
+    recoveries90 = (element.get("recoveries") or 0) * per90
+    return tackles90, cbi90, recoveries90
+
+
 # P(still on the pitch at 60') given they started - covers early substitution,
 # injury, and red-card risk. Not position/player-specific in v1; a fast-follow
 # could fit this from real data the way engine/calibration does for other constants.
@@ -574,6 +595,7 @@ def build_player_ev(
         xgi90 = xg90 + xa90
         dc90 = _blended_rate("defensive_contribution", e, prior, season_started_flag)
         saves90 = _blended_rate("saves", e, prior, season_started_flag)
+        tackles90, cbi90, recoveries90 = _defensive_components_per90(e, season_started_flag)
         dc_prob = _dc_probability(dc90, position_id, dc_damping)
         bonus_est = _bonus_estimate(e, position_counts)
 
@@ -663,6 +685,7 @@ def build_player_ev(
         avg_fdr = (
             sum(f.fdr for f in fixture_evs) / len(fixture_evs) if fixture_evs else 3.0
         )
+        avg_cs_prob = sum(f.cs_prob for f in fixture_evs) / len(fixture_evs) if fixture_evs else 0.0
 
         # Uncertainty widens for low chance-of-a-long-appearance and blank-fixture
         # players - p_60_plus is the stricter signal, since that's what most of a
@@ -699,8 +722,32 @@ def build_player_ev(
                 f"Capped upside: {xgi90:.2f} xGI/90 is strong, but rarely reaching 60' limits "
                 "defensive/clean-sheet/bonus points"
             )
-        elif xgi90 > 0:
-            why.append(f"Underlying output: {xgi90:.2f} combined xG+xA per 90 minutes")
+        elif position_id == 1:  # GKP - saves/clean-sheets, never combined xG+xA (always ~0)
+            if saves90 > 0.5:
+                why.append(f"{saves90:.1f} saves per 90 minutes")
+            if fixture_evs:
+                why.append(f"{avg_cs_prob * 100:.0f}% average clean-sheet chance over the next {len(fixture_evs)} GWs")
+        elif position_id == 2:  # DEF - clean sheets and defensive actions lead, not xGI
+            if fixture_evs:
+                why.append(f"{avg_cs_prob * 100:.0f}% average clean-sheet chance over the next {len(fixture_evs)} GWs")
+            # Gated on the literal this-season components, not the blended
+            # dc90 composite - dc90 can still lean on the multi-season prior
+            # early on and read >0 while these raw counts are genuinely 0.
+            if tackles90 + cbi90 + recoveries90 > 0.5:
+                why.append(
+                    f"Defensive output: {tackles90:.1f} tackles + {cbi90:.1f} blocks/clearances/interceptions "
+                    f"+ {recoveries90:.1f} recoveries per 90"
+                )
+            elif xgi90 >= 0.2:  # only worth naming for a genuinely attacking full-back/wing-back
+                why.append(f"Attacking threat: {xgi90:.2f} combined xG+xA per 90 minutes")
+        else:  # MID/FWD - xG/xA is the primary signal, DC is a secondary one worth naming when real
+            if xgi90 > 0:
+                why.append(f"Underlying output: {xgi90:.2f} combined xG+xA per 90 minutes")
+            if tackles90 + cbi90 + recoveries90 > 0.5:
+                why.append(
+                    f"Also contributes defensively: {tackles90:.1f} tackles + {cbi90:.1f} blocks/clearances/"
+                    f"interceptions + {recoveries90:.1f} recoveries per 90"
+                )
         if prior and prior.consistency is not None and prior.consistency < 0.2:
             why.append(f"Consistently productive across the last {len(prior.seasons_used)} seasons")
         elif prior and prior.consistency is not None and prior.consistency > 0.6:
@@ -721,7 +768,9 @@ def build_player_ev(
             )
         else:
             why.append("No fixtures in the forecast window (blank gameweeks)")
-        if position_id in (2, 3, 4) and dc_prob > 0.3:
+        if position_id in (3, 4) and dc_prob > 0.3:
+            # DEF already gets its own literal defensive-output line above;
+            # this is MID/FWD-only so it doesn't duplicate that.
             why.append("Good chance of a defensive-contribution bonus (2pts)")
 
         results.append(

@@ -10,6 +10,10 @@ export interface PlanStep {
   free_transfers_after: number
   bank_after: number
   rationale: string
+  // One rationale list per swap, index-parallel with transfers_out/
+  // transfers_in/out/in - only populated for the free-transfer-batch case
+  // (see engine/planner.py's PlanStep for the full explanation).
+  swap_rationale: string[][]
   out: PlayerEV[]
   in: PlayerEV[]
 }

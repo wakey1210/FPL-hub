@@ -4,8 +4,10 @@ v1 is a greedy single-transfer suggester, not a full multi-gameweek
 optimiser (a proper LP-based transfer planner across several gameweeks is on
 the roadmap). For each player in the current squad, it finds the best
 same-position replacement affordable within budget, and ranks all such swaps
-by net EV gain - the EV delta minus a 4-point hit if it would cost a paid
-transfer.
+by EV gain. A paid transfer (a "-4 hit") is never suggested - it's always a
+real-money bet against genuine uncertainty in a heuristic model, so with no
+free transfer available `suggest_transfers` returns nothing rather than a
+swap that would cost one.
 
 Sell price is computed exactly via `compute_sell_prices` (below), using each
 squad member's real purchase price - either the most recent `element_in_cost`
@@ -31,8 +33,8 @@ class TransferSuggestion:
     in_id: int
     ev_delta: float
     cost_delta: int  # tenths of £m; positive = the swap costs more money
-    net_gain: float  # ev_delta, minus a hit cost if it would use a paid transfer
-    uses_hit: bool
+    net_gain: float  # always equal to ev_delta - a hit is never suggested, see module docstring
+    uses_hit: bool  # always False - kept for frontend/serialization compatibility
     # Why this specific swap - the incoming player's own top "why" factors
     # (underlying stats, fixture difficulty, etc. - whatever build_player_ev
     # already computed for them) plus one line quantifying the edge over the
@@ -98,6 +100,12 @@ def suggest_transfers(
             continue
         by_position.setdefault(p.position, []).append(p)
 
+    # A hit is never worth suggesting (see HIT_COST's docstring note below) -
+    # with no free transfer available, every swap here would need one, so
+    # there's nothing left to suggest until a free transfer is available.
+    if free_transfers < 1:
+        return []
+
     suggestions: list[TransferSuggestion] = []
     for out_player in squad:
         out_sell_price = (sell_prices or {}).get(out_player.id, out_player.now_cost)
@@ -112,8 +120,6 @@ def suggest_transfers(
             continue
 
         ev_delta = round(best.total_ev - out_player.total_ev, 2)
-        uses_hit = free_transfers < 1
-        net_gain = round(ev_delta - (HIT_COST if uses_hit else 0), 2)
         rationale = list(best.why[:2]) + [
             f"+{ev_delta:.1f} EV over {out_player.web_name} across the next {FORECAST_GAMEWEEKS} gameweeks"
         ]
@@ -123,8 +129,8 @@ def suggest_transfers(
                 in_id=best.id,
                 ev_delta=ev_delta,
                 cost_delta=best.now_cost - out_sell_price,
-                net_gain=net_gain,
-                uses_hit=uses_hit,
+                net_gain=ev_delta,  # a free transfer, by the guard above - never a hit
+                uses_hit=False,
                 rationale=rationale,
                 out_sell_price=out_sell_price,
             )
