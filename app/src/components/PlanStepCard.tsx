@@ -16,6 +16,16 @@ interface Props {
 
 export function PlanStepCard({ step, onAdd, added }: Props) {
   const hasTransfer = step.out.length > 0 && step.in.length > 0
+  // Defaults with `?? []` even though the TS type marks this non-optional:
+  // the frontend deploy and the data-refresh pipeline run on independent
+  // schedules (deploy-pages.yml fires on every push to main, data refreshes
+  // separately via pipeline.yml), so there's a real window right after
+  // shipping a new PlanStep field where the live site's code expects it but
+  // the currently-deployed transfer_plan.json snapshot predates it - same
+  // class of bug as SeasonStatsTab's earlier stale-players.json crash, and
+  // this app still has no error boundary, so an undefined field here blanks
+  // the whole Planner tab.
+  const swapRationale = step.swap_rationale ?? []
 
   return (
     <div className="rounded-xl bg-surface p-3">
@@ -32,7 +42,7 @@ export function PlanStepCard({ step, onAdd, added }: Props) {
         <div className="space-y-2 mb-2">
           {step.out.map((outP, i) => {
             const inP = step.in[i]
-            const swapWhy = step.swap_rationale[i]
+            const swapWhy = swapRationale[i]
             return (
               <div key={outP.id} className="space-y-0.5">
                 <div className="flex items-center gap-2 text-sm">
@@ -58,7 +68,7 @@ export function PlanStepCard({ step, onAdd, added }: Props) {
         <p className="text-sm text-white/50 mb-2">No transfer this week</p>
       )}
 
-      {(!hasTransfer || step.swap_rationale.length === 0) && (
+      {(!hasTransfer || swapRationale.length === 0) && (
         <p className="text-[11px] text-white/50 mb-2">{step.rationale}</p>
       )}
 
