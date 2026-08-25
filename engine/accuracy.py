@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from engine import fetch
+from engine import fetch, model
 from engine.jsonlog import load_log, write_log
 from engine.model import PlayerEV
 
@@ -73,15 +73,21 @@ def record_predictions(players: list[PlayerEV], event: int, generated_at: str) -
     _write_log(log)
 
 
-def score_finished_gameweeks(bootstrap: dict) -> None:
+def score_finished_gameweeks(fixtures: list[dict]) -> None:
     """Fetches actual results for any gameweek that's finished but not yet
     scored, and computes RMSE/MAE (player-gameweek granularity, matching how
     the OpenFPL benchmark quoted in the README is reported) against the
     prediction that was on record for it.
+
+    Uses `model.provisionally_finished_event_ids` (each fixture's own
+    `finished_provisional` flag) rather than FPL's `events[].finished`,
+    which doesn't flip until bonus points are officially reconciled -
+    typically a day or more after a gameweek's last match, well after real
+    per-player results are already available via `event/{id}/live/`.
     """
     log = _load_log()
     changed = False
-    finished_events = {e["id"] for e in bootstrap["events"] if e["finished"]}
+    finished_events = model.provisionally_finished_event_ids(fixtures)
 
     for entry in log["gameweeks"].values():
         event = entry["event"]
@@ -150,3 +156,25 @@ def ml_currently_better() -> bool:
         return False
     recent = comparable[:CONSECUTIVE_GWS_REQUIRED]  # summary() is already most-recent-first
     return all(gw["ml_rmse"] < gw["rmse"] for gw in recent)
+
+
+def ml_form() -> dict:
+    """Richer, always-computable status for the app's "how's the ML model
+    doing" display - `ml_currently_better()` alone only ever says yes/no
+    against a fixed 4-gameweek window; `current_streak` instead gives an
+    ongoing form count (consecutive wins ending at the most recent scored
+    gameweek), so the app can show how close it is to flipping either way,
+    not just the current binary state.
+    """
+    comparable = [gw for gw in summary() if gw.get("ml_rmse") is not None]
+    streak = 0
+    for gw in comparable:  # most-recent-first
+        if gw["ml_rmse"] >= gw["rmse"]:
+            break
+        streak += 1
+    return {
+        "comparable_gameweeks": len(comparable),
+        "required_gameweeks": CONSECUTIVE_GWS_REQUIRED,
+        "current_streak": streak,
+        "eligible": ml_currently_better(),
+    }

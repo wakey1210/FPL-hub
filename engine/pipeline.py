@@ -12,7 +12,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from engine import accuracy, fetch, model, my_team, optimise, planner, price_history, priors, transfers
+from engine import accuracy, fetch, model, model_changes, my_team, optimise, planner, price_history, priors, transfers
 from engine.ml import predict as ml_predict
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -71,11 +71,16 @@ def run() -> None:
 
     generated_at = datetime.now(timezone.utc).isoformat()
 
+    # Must run before data/players.json is overwritten below (line ~232) -
+    # this diffs against whatever's still on disk from the previous run.
+    model_changes_out = model_changes.build_model_changes(players, generated_at)
+
     print("Tracking prediction accuracy...")
     if next_event:
         accuracy.record_predictions(players, next_event["id"], generated_at)
-    accuracy.score_finished_gameweeks(bootstrap)
+    accuracy.score_finished_gameweeks(fixtures)
     accuracy_out = accuracy.summary()
+    ml_status = accuracy.ml_form()
     # Always computed/logged above regardless - only gates whether the app
     # actually surfaces ml_ev/ml_why, never whether it's tracked. Also
     # requires a handful of real gameweeks to have been played first (too
@@ -118,6 +123,7 @@ def run() -> None:
         "understat_players_matched": len(understat["players"]) if understat else 0,
         "ml_model_loaded": ml_predict.model_available(),
         "ml_eligible": ml_eligible,
+        "ml_status": ml_status,
     }
 
     teams = [
@@ -237,6 +243,7 @@ def run() -> None:
     _write_json("transfer_plan.json", transfer_plan_out)
     _write_json("accuracy_summary.json", accuracy_out)
     _write_json("price_moves.json", price_moves_out)
+    _write_json("model_changes.json", model_changes_out)
     print("Pipeline complete.")
 
 
