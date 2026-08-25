@@ -25,11 +25,11 @@ export function PlayerChip({ player, points, badge, onClick, highlighted }: Prop
     >
       <div className="relative">
         <div
-          className={`w-9 h-9 rounded-full shadow-md flex items-center justify-center ${
+          className={`w-9 h-9 rounded-md shadow-md bg-white flex items-center justify-center ${
             highlighted ? 'ring-2 ring-primary ring-offset-2 ring-offset-emerald-700' : ''
           }`}
         >
-          <TeamBadge code={player.team_code} shortName={player.team_short} size={36} />
+          <TeamBadge code={player.team_code} shortName={player.team_short} size={30} />
         </div>
         {badge && (
           <span
