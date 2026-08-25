@@ -59,14 +59,23 @@ def blend_rate(stat: str, current_rate: float, current_minutes: float, prior_rat
 
 
 # Team games played at which a *selection* stat (will this player play at
-# all, not how well) is weighted equally with the historical prior. Kept
-# deliberately close to STAT_STABILIZATION_MINUTES's old minutes-based
-# figures for these two stats (360/90=4, 270/90=3), just re-expressed in
-# games - the reasoning for the stabilization *speed* hasn't changed, only
-# what quantity it's measured against (see blend_weight_by_games).
+# all, not how well) is weighted equally with the historical prior.
+#
+# Deliberately fast - 1 game, not the 3-4 a *rate* stat needs (see
+# STAT_STABILIZATION_MINUTES). A rate genuinely is noisy at small samples
+# (a shot taken or not is partly luck), so it's right to lean on the prior
+# for a few matches. Selection isn't the same kind of noisy: a fit,
+# unsuspended player registering zero involvement is a fairly clear signal
+# on its own, and critically, minutes gate *everything else* - a brilliant
+# underlying rate is worth exactly zero points if the player doesn't set
+# foot on the pitch, so under-reacting here is far costlier than
+# over-reacting. Weighting current data equally with the prior after just
+# one missed game (and >50% after two) means a nailed player's rating falls
+# hard the moment they're dropped, and recovers just as fast the moment
+# they start again - deliberately symmetric, not just a one-way penalty.
 STAT_STABILIZATION_GAMES: dict[str, float] = {
-    "minutes_share": 4,
-    "starts": 3,
+    "minutes_share": 1,
+    "starts": 1,
 }
 
 
