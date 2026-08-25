@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T11:07:06.429963+00:00",
+  "generated_at": "2026-08-25T11:50:50.855035+00:00",
   "season_started": true,
   "forecast_gameweeks": 6,
   "current_gameweek": 1,
@@ -19,5 +19,11 @@
   "understat_players_matched": 298,
   "ml_model_loaded": true,
   "ml_eligible": false,
+  "ml_status": {
+    "comparable_gameweeks": 1,
+    "required_gameweeks": 4,
+    "current_streak": 0,
+    "eligible": false
+  },
   "team_configured": true
 }
