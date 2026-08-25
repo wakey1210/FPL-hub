@@ -9,7 +9,13 @@ import { ConfirmSquadModal } from '../components/ConfirmSquadModal'
 import { usePlannedChanges } from '../lib/usePlannedChanges'
 import { useDeclaredTeam } from '../lib/useDeclaredTeam'
 import { optimiseStartingXI } from '../lib/formation'
-import { squadAtEvent, bankAndFreeTransfersAtEvent, isOverrideValidForSquad, pointsAtEvent } from '../lib/squadTimeline'
+import {
+  squadAtEvent,
+  bankAndFreeTransfersAtEvent,
+  isOverrideValidForSquad,
+  pointsAtEvent,
+  liveTeamAsDeclared,
+} from '../lib/squadTimeline'
 import { formatPrice } from '../lib/format'
 import type { Meta, PlayerEV, SquadRecommendation } from '../types/fpl'
 import type { MyTeam } from '../types/myTeam'
@@ -85,66 +91,77 @@ export function PickTeamPage() {
   const loading = squadRec.loading || myTeam.loading || (hasLiveTeam && allPlayers.loading)
   if (loading) return <Layout title="Pick Team"><LoadingState /></Layout>
 
-  // "Confirmed" = a declared, not-live-synced squad - the only mode with a
-  // real gameweek timeline (transfers rolling forward, bank/FT changing week
-  // to week). Before confirming, or once a live team ID has synced, Pick
-  // Team behaves exactly as it always has: a single "now" view.
+  // "Confirmed" = a declared, not-live-synced squad. `canPlanAhead` is the
+  // broader "does this view have a real gameweek timeline at all" check -
+  // true for a declared squad AND for a live-synced one, which gets its
+  // timeline from its own real bank/free-transfers/picks via
+  // `liveTeamAsDeclared` instead of client-only declared-team state.
   const isConfirmed = !hasLiveTeam && !!declared.squadIds
+  const liveDeclared = hasLiveTeam && myTeam.data ? liveTeamAsDeclared(myTeam.data) : null
+  const timeline = declared.squadIds ? declared : liveDeclared
+  const canPlanAhead = isConfirmed || hasLiveTeam
 
   // Gameweek navigation bounds match players.json's own forecast horizon -
   // can't show a week with no fixture-EV data. Kept in the URL (?gw=) rather
   // than local state so navigating to Add Player/Confirm Transfers and back
   // doesn't lose which gameweek was being viewed.
   const horizon = allPlayers.data?.[0]?.fixtures.length ?? 6
-  const minEvent = declared.lastConfirmedEvent ?? currentEvent ?? 1
+  const minEvent = timeline?.lastConfirmedEvent ?? currentEvent ?? 1
   const maxEvent = minEvent + horizon - 1
   const gwParam = Number(searchParams.get('gw'))
-  // Live-synced mode has no gameweek nav (see the isConfirmed-gated arrows
-  // below), but still needs to default to whichever gameweek the user can
-  // actually still act on. `picks_event` is the manager's last-PASSED
-  // deadline - i.e. the gameweek currently being played, already locked -
-  // so defaulting there when a next deadline is upcoming left live-synced
-  // users unable to plan/transfer for it at all from this page (they'd be
-  // staring at a frozen, un-actionable squad for the entire time a gameweek
-  // is in play). `currentEvent` (next_gameweek, falling back to
-  // current_gameweek only once there's no next one left in the season)
-  // takes priority instead - the live squad itself is unchanged either way
-  // until a transfer is actually staged, so this just re-labels "your real
-  // squad" as "the starting point for your next transfer", not a different
-  // squad.
-  const viewEvent = isConfirmed
-    ? Math.min(Math.max(gwParam || minEvent, minEvent), maxEvent)
+  // A live-synced user should still default to whichever gameweek they can
+  // actually still act on, not their last-locked one: `picks_event` (the
+  // manager's last-PASSED deadline, i.e. `minEvent` for a live team) is
+  // already being played, so defaulting there left live-synced users unable
+  // to plan/transfer for the upcoming gameweek at all. `currentEvent`
+  // (next_gameweek, falling back to current_gameweek only once there's no
+  // next one left in the season) takes priority for that default instead -
+  // the live squad itself is unchanged either way until a transfer is
+  // actually staged. A declared (not-live) squad has no such distinction -
+  // `minEvent` (its own confirm-time event) is already the right default.
+  const defaultEvent = hasLiveTeam ? currentEvent ?? minEvent : minEvent
+  const viewEvent = canPlanAhead
+    ? Math.min(Math.max(gwParam || defaultEvent, minEvent), maxEvent)
     : currentEvent ?? myTeam.data?.picks_event ?? 0
 
   const setViewEvent = (event: number) => setSearchParams({ gw: String(event) }, { replace: true })
 
   const squadAtView =
-    isConfirmed && allPlayers.data
-      ? squadAtEvent(declared.squadIds!, allPlayers.data, plan.stagedTransfers, viewEvent)
+    canPlanAhead && timeline?.squadIds && allPlayers.data
+      ? squadAtEvent(timeline.squadIds, allPlayers.data, plan.stagedTransfers, viewEvent)
       : null
 
+  // A live team's *actual, locked* picks/captain/bench only apply to the
+  // exact gameweek they were set for - once viewing ahead to a future,
+  // still-plannable gameweek, the computed `squadAtView` (base squad +
+  // staged transfers) is the right source instead, same as a declared squad.
+  const showLockedLiveView = hasLiveTeam && viewEvent === myTeam.data?.picks_event
+
   const baseView =
-    liveView ??
-    (squadAtView
-      ? { squad: squadAtView, startingIds: null, benchIds: null, captainId: null, viceCaptainId: null }
-      : squadRec.data
-        ? {
-            squad: squadRec.data.squad,
-            startingIds: squadRec.data.starting_ids as number[] | null,
-            benchIds: squadRec.data.bench_ids as number[] | null,
-            captainId: squadRec.data.captain_id as number | null,
-            viceCaptainId: squadRec.data.vice_captain_id as number | null,
-          }
-        : null)
+    showLockedLiveView && liveView
+      ? liveView
+      : squadAtView
+        ? { squad: squadAtView, startingIds: null, benchIds: null, captainId: null, viceCaptainId: null }
+        : squadRec.data
+          ? {
+              squad: squadRec.data.squad,
+              startingIds: squadRec.data.starting_ids as number[] | null,
+              benchIds: squadRec.data.bench_ids as number[] | null,
+              captainId: squadRec.data.captain_id as number | null,
+              viceCaptainId: squadRec.data.vice_captain_id as number | null,
+            }
+          : null
 
   if (!baseView) return <Layout title="Pick Team"><ErrorState message={squadRec.error ?? 'no data'} /></Layout>
 
   const override = plan.lineupOverrides[viewEvent]
   const validOverride = override && isOverrideValidForSquad(override, baseView.squad) ? override : null
-  // Only the confirmed/GW-navigable mode falls back to an auto-optimised
-  // pick per viewed gameweek - the live/unconfirmed defaults (real official
-  // picks, or the server-recommended squad) are authoritative on their own.
-  const autoLineup = isConfirmed ? optimiseStartingXI(baseView.squad, pointsAtEvent(viewEvent)) : null
+  // Only the computed-squad case (a declared squad, or a live one viewed
+  // ahead of its locked gameweek) falls back to an auto-optimised pick per
+  // viewed gameweek - a real locked lineup or the server-recommended squad
+  // already supplies its own startingIds and is authoritative on its own.
+  const usingAutoLineup = baseView.startingIds === null
+  const autoLineup = usingAutoLineup ? optimiseStartingXI(baseView.squad, pointsAtEvent(viewEvent)) : null
 
   const view = {
     squad: baseView.squad,
@@ -215,7 +232,7 @@ export function PickTeamPage() {
   }
 
   const handleOptimise = () => {
-    if (isConfirmed) {
+    if (usingAutoLineup) {
       // The auto-optimised pick already IS the no-override fallback for this
       // mode, so "optimise" and "clear this week's override" are the same
       // action here.
@@ -235,8 +252,8 @@ export function PickTeamPage() {
     setShowConfirmModal(false)
   }
 
-  const { bank: bankAtView, freeTransfers: freeTransfersAtView } = isConfirmed
-    ? bankAndFreeTransfersAtEvent(declared, plan.stagedTransfers, viewEvent)
+  const { bank: bankAtView, freeTransfers: freeTransfersAtView } = canPlanAhead && timeline
+    ? bankAndFreeTransfersAtEvent(timeline, plan.stagedTransfers, viewEvent)
     : { bank: 0, freeTransfers: 0 }
   const stagedThisWeek = plan.stagedTransfers.filter((t) => t.event === viewEvent)
   const teamValue = view.squad.reduce((sum, p) => sum + p.now_cost, 0) + bankAtView
@@ -256,7 +273,7 @@ export function PickTeamPage() {
             : "AI-recommended squad, ahead of your first deadline. Confirm your squad below to unlock gameweek-by-gameweek transfers."}
       </p>
 
-      {isConfirmed && (
+      {canPlanAhead && (
         <div className="flex items-center justify-between mb-2">
           <button
             onClick={() => setViewEvent(Math.max(minEvent, viewEvent - 1))}
@@ -376,7 +393,7 @@ export function PickTeamPage() {
           viceCaptainId={view.viceCaptainId}
           onSelectPlayer={handleSelectPlayer}
           highlightId={swapAnchor?.id ?? null}
-          pointsForPlayer={isConfirmed ? pointsAtEvent(viewEvent) : undefined}
+          pointsForPlayer={canPlanAhead ? pointsAtEvent(viewEvent) : undefined}
         />
       ) : (
         <PlayerFixtureTable

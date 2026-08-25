@@ -4,7 +4,10 @@ import type { PlayerEV, Position } from '../types/fpl'
 // ported to run client-side against a locally-declared squad (which
 // engine/transfers.py can't see, since it only runs server-side in the
 // pipeline). See engine/transfers.py for the authoritative version; this
-// must stay in sync with it.
+// must stay in sync with it. A paid transfer ("-4 hit") is never suggested -
+// it's always a real-money bet against genuine uncertainty in a heuristic
+// model, so with no free transfer available, suggestTransfers returns
+// nothing rather than a swap that would cost one.
 export const HIT_COST = 4
 const FORECAST_GAMEWEEKS = 6 // mirrors engine/model.py's FORECAST_GAMEWEEKS
 
@@ -29,6 +32,11 @@ export function suggestTransfers(
   freeTransfers: number,
   topN = 5
 ): TransferSuggestionResult[] {
+  // A hit is never worth suggesting (see the module comment) - with no free
+  // transfer available, every swap here would need one, so there's nothing
+  // left to suggest until a free transfer is available.
+  if (freeTransfers < 1) return []
+
   const squadIds = new Set(squad.map((p) => p.id))
   const byPosition: Partial<Record<Position, PlayerEV[]>> = {}
   for (const p of allPlayers) {
@@ -47,8 +55,6 @@ export function suggestTransfers(
     if (!best || best.total_ev <= outPlayer.total_ev) continue
 
     const evDelta = Math.round((best.total_ev - outPlayer.total_ev) * 100) / 100
-    const usesHit = freeTransfers < 1
-    const netGain = Math.round((evDelta - (usesHit ? HIT_COST : 0)) * 100) / 100
     const rationale = [
       ...best.why.slice(0, 2),
       `+${evDelta.toFixed(1)} EV over ${outPlayer.web_name} across the next ${FORECAST_GAMEWEEKS} gameweeks`,
@@ -58,8 +64,8 @@ export function suggestTransfers(
       inId: best.id,
       evDelta,
       costDelta: best.now_cost - outPlayer.now_cost,
-      netGain,
-      usesHit,
+      netGain: evDelta, // a free transfer, by the guard above - never a hit
+      usesHit: false,
       rationale,
       out: outPlayer,
       in: best,

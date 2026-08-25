@@ -26,7 +26,7 @@ def _estimate_free_transfers(current_history: list[dict], chips: list[dict]) -> 
     number - it can drift if a manager takes a hit mid-chip-window edge case.
     """
     chip_gw = {c["event"]: c["name"] for c in chips}
-    free_transfers = 1
+    free_transfers = 0
     for gw in current_history:
         made = gw["event_transfers"]
         free_transfers = max(0, free_transfers - made)

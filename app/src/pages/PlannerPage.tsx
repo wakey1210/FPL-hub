@@ -63,6 +63,7 @@ export function PlannerPage() {
       free_transfers_after: s.freeTransfersAfter,
       bank_after: s.bankAfter,
       rationale: s.rationale,
+      swap_rationale: s.swapRationale,
       out: s.transfersOut.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p),
       in: s.transfersIn.map((id) => byId.get(id)).filter((p): p is PlayerEV => !!p),
     }))
@@ -71,8 +72,13 @@ export function PlannerPage() {
   if (ticker.loading) return <Layout title="Planner"><LoadingState /></Layout>
   if (ticker.error || !ticker.data) return <Layout title="Planner"><ErrorState message={ticker.error ?? 'no data'} /></Layout>
 
-  const gwCount = Math.max(...ticker.data.map((t) => t.fixtures.length), 0)
-  const gwLabels = Array.from({ length: gwCount }, (_, i) => i + 1)
+  // The real gameweek numbers the ticker actually covers - not always 1..N:
+  // once a gameweek's played, engine/model.py's forecast window starts from
+  // the next unplayed one instead, so a hardcoded 1-based range would mislabel
+  // every column.
+  const gwLabels = Array.from(new Set(ticker.data.flatMap((t) => t.fixtures.map((f) => f.event)))).sort(
+    (a, b) => a - b
+  )
   const liveSteps = hasLiveTeam && transferPlan.data?.available ? transferPlan.data.steps ?? [] : []
   const activeSteps = hasLiveTeam ? liveSteps : declaredSteps
   const hasPlan = activeSteps.length > 0

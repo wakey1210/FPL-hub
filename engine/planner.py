@@ -1,29 +1,31 @@
 """Five-gameweek-ahead transfer and chip planner.
 
 Deliberately a greedy week-by-week simulation that reuses
-`engine.transfers.suggest_transfers`/`suggest_multiple_transfers` as its
-per-gameweek building block, NOT a joint multi-period MILP. A true joint
-optimisation across 5 gameweeks needs binary bought/sold-by-week variables
-and hit-cost terms per player per week - a much harder, far less explainable
-problem than `optimise.py`'s one-shot squad pick, and it would cut against
-this project's stated "transparent heuristic, don't over-engineer" ethos.
-Chip timing is a handful of rare, discrete decisions - better handled as
-explicit rule checks than solver variables.
+`engine.transfers.suggest_multiple_transfers` as its per-gameweek building
+block, NOT a joint multi-period MILP. A true joint optimisation across 5
+gameweeks needs binary bought/sold-by-week variables per player per week - a
+much harder, far less explainable problem than `optimise.py`'s one-shot
+squad pick, and it would cut against this project's stated "transparent
+heuristic, don't over-engineer" ethos. Chip timing is a handful of rare,
+discrete decisions - better handled as explicit rule checks than solver
+variables.
 
-Each simulated week can now make as many transfers as free transfers allow
-(via `suggest_multiple_transfers`), optionally one more paid-hit swap beyond
-that, or bank the week entirely if a one-week lookahead shows a bigger
-combined move is available next week with a pooled free transfer. A
-Wildcard, when it clears `WILDCARD_MIN_GAIN`, replaces a week's incremental
-logic with a full `optimise.select_squad` rebuild - genuinely unlimited
-transfers, not an annotated single swap.
+Each simulated week makes as many transfers as free transfers allow (via
+`suggest_multiple_transfers`), or banks the week entirely if a one-week
+lookahead shows a bigger combined move is available next week with a pooled
+free transfer. A paid transfer ("-4 hit") is never suggested outside an
+actual chip - a hit is always a real-money bet against genuine uncertainty
+in a heuristic model, not a decision this planner should make on a user's
+behalf. A Wildcard, when it clears `WILDCARD_MIN_GAIN`, replaces a week's
+incremental logic with a full `optimise.select_squad` rebuild - genuinely
+unlimited free transfers, not an annotated single swap.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
 
 from engine.model import PlayerEV
-from engine.transfers import HIT_COST, suggest_multiple_transfers, suggest_transfers
+from engine.transfers import HIT_COST, suggest_multiple_transfers
 
 # Verified live from bootstrap["chips"] for the 26/27 season: each chip has two
 # copies, split across the season at the GW19/20 boundary. Wildcard/Free Hit
@@ -37,7 +39,6 @@ CHIP_WINDOWS: dict[str, list[tuple[int, int]]] = {
 }
 MAX_FREE_TRANSFERS = 5
 MAX_FREE_BATCH_PER_WEEK = 5  # matches MAX_FREE_TRANSFERS - can't have more banked than the cap allows
-BANK_PREMIUM_MAX = 2.0  # extra margin (on top of the flat 4pt hit) required early in the horizon
 BENCH_BOOST_MIN_EV = 8.0  # bench must project at least this many points to be worth boosting
 TRIPLE_CAPTAIN_MIN_UPLIFT = 1.5  # peak single-GW EV must beat the player's own horizon average by this multiple
 # Hand-picked starting point, not derived from first principles - a real
@@ -58,6 +59,13 @@ class PlanStep:
     free_transfers_after: int = 0
     bank_after: int = 0
     rationale: str = ""
+    # One rationale list per swap, index-parallel with transfers_out/
+    # transfers_in - only populated for the free-transfer-batch case (each
+    # entry is that swap's own TransferSuggestion.rationale, the same text
+    # the Transfers page shows). Left empty for a wildcard rebuild, a banked
+    # week, or a hold, which describe themselves as one whole-step sentence
+    # in `rationale` instead of a list of independent swaps.
+    swap_rationale: list[list[str]] = field(default_factory=list)
 
 
 def _remaining_ev(player: PlayerEV, from_event: int) -> float:
@@ -93,16 +101,16 @@ def _chip_available(remaining: dict[str, list[tuple[int, int]]], chip: str, even
 
 
 def _describe_batch(
-    pre_transfer_squad: list[PlayerEV], all_players: list[PlayerEV], batch, hit_suggestion_id: int | None
+    pre_transfer_squad: list[PlayerEV], all_players: list[PlayerEV], batch
 ) -> str:
     """One rationale line per swap in a (possibly multi-transfer) batch,
     leading with the incoming player's own top "why" factor - same reasoning
     style as the single-transfer case, just repeated per swap. `batch` is
-    every suggestion applied this week (free + at most one hit-costing
-    extra); `hit_suggestion_id` is that extra swap's `in_id`, if any, so its
-    line can note the hit. `pre_transfer_squad` must be a snapshot taken
-    *before* any of this week's swaps were applied, so outgoing players can
-    still be looked up by id.
+    every free-transfer suggestion applied this week. `pre_transfer_squad`
+    must be a snapshot taken *before* any of this week's swaps were applied,
+    so outgoing players can still be looked up by id. This is the one-line-
+    per-step summary; see `PlanStep.swap_rationale` for each swap's full,
+    Transfers-page-style rationale.
     """
     by_id = {p.id: p for p in pre_transfer_squad}
     lines = []
@@ -112,20 +120,22 @@ def _describe_batch(
         if not out_player or not in_player:
             continue
         why_prefix = f"{in_player.why[0]} — " if in_player.why else ""
-        hit_note = f", -{HIT_COST} hit" if s.in_id == hit_suggestion_id else ""
-        lines.append(f"{why_prefix}OUT {out_player.web_name} → IN {in_player.web_name} (+{s.ev_delta:.1f} EV{hit_note})")
+        lines.append(f"{why_prefix}OUT {out_player.web_name} → IN {in_player.web_name} (+{s.ev_delta:.1f} EV)")
     return "; ".join(lines)
 
 
 def _try_wildcard_rebuild(
-    squad: list[PlayerEV], all_players: list[PlayerEV], bank: int, min_gain: float
+    squad: list[PlayerEV], all_players: list[PlayerEV], bank: int, min_gain: float, label: str = "Wildcard rebuild"
 ) -> tuple[list[PlayerEV], float, str] | None:
     """Full budget-constrained squad rebuild via `optimise.select_squad` -
     genuinely unlimited transfers, not an annotated single swap. `squad` and
     `all_players` must already be remaining-horizon-EV-adjusted (via
     `_remaining_ev`) by the caller. Returns None if the confirmed gain
     doesn't clear `min_gain` (pass a very negative number, e.g. `float("-inf")`,
-    for an unconditional pre-season rebuild).
+    for an unconditional pre-season rebuild). `label` distinguishes an actual
+    Wildcard chip spend from the free pre-first-deadline rebuild in the
+    returned rationale - both call this function, but only one of them
+    actually costs a chip, and the two must never read identically.
     """
     from engine.optimise import select_squad
 
@@ -140,7 +150,7 @@ def _try_wildcard_rebuild(
         return None
 
     rationale = (
-        f"Wildcard rebuild: +{actual_gain:.1f} EV over the current squad's remaining-horizon "
+        f"{label}: +{actual_gain:.1f} EV over the current squad's remaining-horizon "
         f"value from a full reshuffle within budget."
     )
     return new_squad, actual_gain, rationale
@@ -175,7 +185,6 @@ def _simulate_transfers(
 
     for idx, event in enumerate(horizon_events):
         weeks_remaining = horizon - idx
-        bank_premium = BANK_PREMIUM_MAX * (weeks_remaining / horizon)
 
         adjusted_squad = [replace(p, total_ev=_remaining_ev(p, event)) for p in current_squad]
         adjusted_pool = [replace(p, total_ev=_remaining_ev(p, event)) for p in all_players]
@@ -190,7 +199,9 @@ def _simulate_transfers(
 
         rebuild_result = None
         if force_rebuild:
-            rebuild_result = _try_wildcard_rebuild(adjusted_squad, adjusted_pool, current_bank, min_gain=float("-inf"))
+            rebuild_result = _try_wildcard_rebuild(
+                adjusted_squad, adjusted_pool, current_bank, min_gain=float("-inf"), label="Free pre-season rebuild"
+            )
         elif wildcard_eligible:
             rebuild_result = _try_wildcard_rebuild(adjusted_squad, adjusted_pool, current_bank, min_gain=WILDCARD_MIN_GAIN)
 
@@ -253,7 +264,6 @@ def _simulate_transfers(
             else:
                 pre_transfer_squad = current_squad
                 applied_ev = 0.0
-                all_applied = list(free_batch)
                 for s in free_batch:
                     in_player_full = next(p for p in all_players if p.id == s.in_id)
                     current_squad = [p for p in current_squad if p.id != s.out_id] + [in_player_full]
@@ -263,36 +273,10 @@ def _simulate_transfers(
                     step.transfers_in.append(s.in_id)
                     applied_ev += s.ev_delta
 
-                # One additional hit-costing swap beyond the free allocation,
-                # evaluated against the post-batch squad - same threshold
-                # logic as before, just relocated to run after the free
-                # batch instead of instead of it.
-                post_batch_squad = [replace(p, total_ev=_remaining_ev(p, event)) for p in current_squad]
-                post_batch_pool = [p for p in adjusted_pool if p.id not in {s.id for s in current_squad}]
-                hit_candidates = suggest_transfers(
-                    post_batch_squad,
-                    post_batch_pool,
-                    current_bank,
-                    free_transfers=1,
-                    top_n=1,
-                    sell_prices=sell_prices,
-                )
-                hit_best = hit_candidates[0] if hit_candidates else None
-                hit_in_id = None
-                if hit_best and hit_best.ev_delta > HIT_COST + bank_premium:
-                    in_player_full = next(p for p in all_players if p.id == hit_best.in_id)
-                    current_squad = [p for p in current_squad if p.id != hit_best.out_id] + [in_player_full]
-                    current_bank -= hit_best.cost_delta
-                    step.transfers_out.append(hit_best.out_id)
-                    step.transfers_in.append(hit_best.in_id)
-                    step.hit_cost = HIT_COST
-                    applied_ev += hit_best.ev_delta
-                    all_applied.append(hit_best)
-                    hit_in_id = hit_best.in_id
-
-                step.projected_gain = round(applied_ev - step.hit_cost, 2)
+                step.projected_gain = round(applied_ev, 2)
                 if step.transfers_out:
-                    step.rationale = _describe_batch(pre_transfer_squad, all_players, all_applied, hit_in_id)
+                    step.rationale = _describe_batch(pre_transfer_squad, all_players, free_batch)
+                    step.swap_rationale = [list(s.rationale) for s in free_batch]
                 else:
                     step.rationale = "No beneficial swap found - hold."
 

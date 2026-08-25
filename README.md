@@ -228,11 +228,12 @@ a greedy week-by-week simulation (not a joint solver: chip timing is a
 handful of rare, discrete decisions, better handled as explicit rule checks
 than MILP variables) that reuses `engine/transfers.py`'s single-swap search
 as its per-week building block, re-evaluating each candidate's *remaining*-
-horizon EV as the plan progresses. Whether a transfer is worth a -4 hit
-depends on a decaying "bank premium" (a hit needs to clear more than the
-flat 4-point cost early in the horizon, when saving the transfer for a
-still-unknown future swap has real option value) - stated as an actual
-number in the plan's rationale text, never hidden. Verified against the
+horizon EV as the plan progresses. A paid transfer ("-4 hit") is never
+suggested outside an actual chip - it's always a real-money bet against
+genuine uncertainty in a heuristic model, so the planner only ever proposes
+as many transfers as free transfers (or an actual Wildcard) allow, banking
+the week instead when a one-week lookahead shows a bigger combined move is
+available next week with a pooled free transfer. Verified against the
 live 26/27 chip rules: Wildcard/Free Hit playable from GW2, Bench Boost/
 Triple Captain from GW1, both halves splitting at GW19/20, with chip
 *availability* derived by diffing already-used chips against those windows

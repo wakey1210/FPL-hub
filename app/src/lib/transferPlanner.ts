@@ -1,6 +1,6 @@
 import type { PlayerEV } from '../types/fpl'
 import type { ChipUseRecord } from '../types/declaredTeam'
-import { suggestTransfers, suggestMultipleTransfers, HIT_COST, type TransferSuggestionResult } from './transferSuggestions'
+import { suggestMultipleTransfers, HIT_COST, type TransferSuggestionResult } from './transferSuggestions'
 import { optimiseStartingXI } from './formation'
 import { selectSquad } from './squadOptimiser'
 import { CHIP_WINDOWS } from './chipStatus'
@@ -12,7 +12,6 @@ import { CHIP_WINDOWS } from './chipStatus'
 // sync with it.
 const MAX_FREE_TRANSFERS = 5
 const MAX_FREE_BATCH_PER_WEEK = 5 // matches MAX_FREE_TRANSFERS - can't have more banked than the cap allows
-const BANK_PREMIUM_MAX = 2.0
 const BENCH_BOOST_MIN_EV = 8.0
 const TRIPLE_CAPTAIN_MIN_UPLIFT = 1.5
 // Hand-picked starting point, not derived from first principles - a real
@@ -30,6 +29,11 @@ export interface PlanStepResult {
   freeTransfersAfter: number
   bankAfter: number
   rationale: string
+  // One rationale list per swap, index-parallel with transfersOut/
+  // transfersIn - only populated for the free-transfer-batch case. Empty
+  // for a wildcard rebuild, a banked week, or a hold, which describe
+  // themselves as one whole-step sentence in `rationale` instead.
+  swapRationale: string[][]
 }
 
 /** Sum of this player's fixture-by-fixture EV from `fromEvent` onward, not
@@ -68,13 +72,13 @@ function chipAvailable(remaining: Record<string, [number, number][]>, chip: stri
  * with the incoming player's own top "why" factor - same reasoning style as
  * the single-transfer case, just repeated per swap. `preTransferSquad` must
  * be a snapshot taken *before* any of this week's swaps were applied, so
- * outgoing players can still be looked up by id. `hitSuggestionInId` is the
- * hit-costing extra swap's `inId`, if any, so its line can note the hit. */
+ * outgoing players can still be looked up by id. This is the one-line-per-
+ * step summary; see PlanStepResult.swapRationale for each swap's full,
+ * Transfers-page-style rationale. */
 function describeBatch(
   preTransferSquad: PlayerEV[],
   allPlayers: PlayerEV[],
-  batch: TransferSuggestionResult[],
-  hitSuggestionInId: number | null
+  batch: TransferSuggestionResult[]
 ): string {
   const byId = new Map(preTransferSquad.map((p) => [p.id, p]))
   const lines: string[] = []
@@ -83,8 +87,7 @@ function describeBatch(
     const inPlayer = allPlayers.find((p) => p.id === s.inId)
     if (!outPlayer || !inPlayer) continue
     const whyPrefix = inPlayer.why[0] ? `${inPlayer.why[0]} — ` : ''
-    const hitNote = s.inId === hitSuggestionInId ? `, -${HIT_COST} hit` : ''
-    lines.push(`${whyPrefix}OUT ${outPlayer.web_name} → IN ${inPlayer.web_name} (+${s.evDelta.toFixed(1)} EV${hitNote})`)
+    lines.push(`${whyPrefix}OUT ${outPlayer.web_name} → IN ${inPlayer.web_name} (+${s.evDelta.toFixed(1)} EV)`)
   }
   return lines.join('; ')
 }
@@ -98,7 +101,8 @@ function tryWildcardRebuild(
   squad: PlayerEV[],
   allPlayers: PlayerEV[],
   bank: number,
-  minGain: number
+  minGain: number,
+  label = 'Wildcard rebuild'
 ): { newSquad: PlayerEV[]; actualGain: number; rationale: string } | null {
   const budget = bank + squad.reduce((sum, p) => sum + p.now_cost, 0)
   const result = selectSquad(allPlayers, budget)
@@ -110,7 +114,7 @@ function tryWildcardRebuild(
   if (actualGain <= minGain) return null
 
   const rationale =
-    `Wildcard rebuild: +${actualGain.toFixed(1)} EV over the current squad's remaining-horizon ` +
+    `${label}: +${actualGain.toFixed(1)} EV over the current squad's remaining-horizon ` +
     `value from a full reshuffle within budget.`
   return { newSquad, actualGain, rationale }
 }
@@ -134,7 +138,6 @@ function simulateTransfers(
 
   horizonEvents.forEach((event, idx) => {
     const weeksRemaining = horizon - idx
-    const bankPremium = BANK_PREMIUM_MAX * (weeksRemaining / horizon)
 
     const adjustedSquad = currentSquad.map((p) => withRemainingEv(p, event))
     const adjustedPool = allPlayers.map((p) => withRemainingEv(p, event))
@@ -149,6 +152,7 @@ function simulateTransfers(
       freeTransfersAfter: 0,
       bankAfter: 0,
       rationale: '',
+      swapRationale: [],
     }
 
     // Pre-first-deadline: an unconditional full rebuild, no chip token
@@ -157,7 +161,7 @@ function simulateTransfers(
     const wildcardEligible = !wildcardUsed && chipAvailable(remainingChips, 'wildcard', event)
 
     const rebuildResult = forceRebuild
-      ? tryWildcardRebuild(adjustedSquad, adjustedPool, currentBank, -Infinity)
+      ? tryWildcardRebuild(adjustedSquad, adjustedPool, currentBank, -Infinity, 'Free pre-season rebuild')
       : wildcardEligible
         ? tryWildcardRebuild(adjustedSquad, adjustedPool, currentBank, WILDCARD_MIN_GAIN)
         : null
@@ -220,7 +224,6 @@ function simulateTransfers(
       } else {
         const preTransferSquad = currentSquad
         let appliedEv = 0
-        const allApplied: TransferSuggestionResult[] = [...freeBatch]
         for (const s of freeBatch) {
           const inPlayerFull = allPlayers.find((p) => p.id === s.inId)!
           currentSquad = currentSquad.filter((p) => p.id !== s.outId).concat(inPlayerFull)
@@ -231,32 +234,13 @@ function simulateTransfers(
           appliedEv += s.evDelta
         }
 
-        // One additional hit-costing swap beyond the free allocation,
-        // evaluated against the post-batch squad - same threshold logic as
-        // before, just relocated to run after the free batch.
-        const postBatchSquad = currentSquad.map((p) => withRemainingEv(p, event))
-        const postBatchIds = new Set(currentSquad.map((p) => p.id))
-        const postBatchPool = adjustedPool.filter((p) => !postBatchIds.has(p.id))
-        const hitCandidates = suggestTransfers(postBatchSquad, postBatchPool, currentBank, 1, 1)
-        const hitBest = hitCandidates[0] ?? null
-        let hitInId: number | null = null
-        if (hitBest && hitBest.evDelta > HIT_COST + bankPremium) {
-          const inPlayerFull = allPlayers.find((p) => p.id === hitBest.inId)!
-          currentSquad = currentSquad.filter((p) => p.id !== hitBest.outId).concat(inPlayerFull)
-          currentBank -= hitBest.costDelta
-          step.transfersOut.push(hitBest.outId)
-          step.transfersIn.push(hitBest.inId)
-          step.hitCost = HIT_COST
-          appliedEv += hitBest.evDelta
-          allApplied.push(hitBest)
-          hitInId = hitBest.inId
+        step.projectedGain = Math.round(appliedEv * 100) / 100
+        if (step.transfersOut.length > 0) {
+          step.rationale = describeBatch(preTransferSquad, allPlayers, freeBatch)
+          step.swapRationale = freeBatch.map((s) => s.rationale)
+        } else {
+          step.rationale = 'No beneficial swap found - hold.'
         }
-
-        step.projectedGain = Math.round((appliedEv - step.hitCost) * 100) / 100
-        step.rationale =
-          step.transfersOut.length > 0
-            ? describeBatch(preTransferSquad, allPlayers, allApplied, hitInId)
-            : 'No beneficial swap found - hold.'
       }
     }
 
