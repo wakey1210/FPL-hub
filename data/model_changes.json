@@ -1,6 +1,63 @@
 {
-  "generated_at": "2026-08-26T12:55:21.753114+00:00",
+  "generated_at": "2026-08-26T16:19:22.431951+00:00",
   "has_previous": true,
   "risers": [],
-  "fallers": []
+  "fallers": [
+    {
+      "id": 208,
+      "web_name": "Sarr",
+      "team_short": "CRY",
+      "position": "MID",
+      "now_cost": 65,
+      "prev_ev": 7.89,
+      "current_ev": 0.0,
+      "ev_delta": -7.89,
+      "why": [
+        "Availability flagged: Groin injury - Unknown return date",
+        "Underlying output: 0.49 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 206,
+      "web_name": "Chadi Riad",
+      "team_short": "CRY",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 7.7,
+      "current_ev": 0.0,
+      "ev_delta": -7.7,
+      "why": [
+        "Availability flagged: Knee injury - Unknown return date",
+        "24% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 125,
+      "web_name": "Georginio",
+      "team_short": "BHA",
+      "position": "FWD",
+      "now_cost": 55,
+      "prev_ev": 17.86,
+      "current_ev": 14.56,
+      "ev_delta": -3.3,
+      "why": [
+        "Availability flagged: Unspecified injury - 75% chance of playing (~88 min when playing)",
+        "Underlying output: 0.34 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 365,
+      "web_name": "Ramsay",
+      "team_short": "LIV",
+      "position": "DEF",
+      "now_cost": 40,
+      "prev_ev": 0.42,
+      "current_ev": 0.0,
+      "ev_delta": -0.42,
+      "why": [
+        "Availability flagged: Has joined St Mirren on loan for the rest of the season",
+        "30% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ]
 }
