@@ -1,6 +1,64 @@
 {
-  "generated_at": "2026-08-27T00:57:30.359477+00:00",
+  "generated_at": "2026-08-27T13:54:10.634004+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 481,
+      "web_name": "Anderson",
+      "team_short": "MCI",
+      "position": "MID",
+      "now_cost": 65,
+      "prev_ev": 16.53,
+      "current_ev": 20.27,
+      "ev_delta": 3.74,
+      "why": [
+        "Availability flagged: 100% chance of playing (~88 min when playing)",
+        "Underlying output: 0.22 combined xG+xA per 90 minutes"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 465,
+      "web_name": "Osula",
+      "team_short": "NEW",
+      "position": "FWD",
+      "now_cost": 60,
+      "prev_ev": 11.79,
+      "current_ev": 5.9,
+      "ev_delta": -5.89,
+      "why": [
+        "Availability flagged: Foot injury - 25% chance of playing (~95 min when playing)",
+        "Underlying output: 0.46 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 389,
+      "web_name": "Matheus N.",
+      "team_short": "MCI",
+      "position": "DEF",
+      "now_cost": 60,
+      "prev_ev": 8.28,
+      "current_ev": 6.35,
+      "ev_delta": -1.93,
+      "why": [
+        "Availability flagged: Unspecified injury - 50% chance of playing (~89 min when playing)",
+        "30% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 370,
+      "web_name": "Chiesa",
+      "team_short": "LIV",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 0.96,
+      "current_ev": 0.0,
+      "ev_delta": -0.96,
+      "why": [
+        "Availability flagged: Back injury - Unknown return date",
+        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
+      ]
+    }
+  ]
 }
