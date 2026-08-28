@@ -1,6 +1,232 @@
 {
-  "generated_at": "2026-08-28T01:13:48.303373+00:00",
+  "generated_at": "2026-08-28T15:06:18.498320+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 331,
+      "web_name": "Gudmundsson",
+      "team_short": "LEE",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 0.0,
+      "current_ev": 5.52,
+      "ev_delta": 5.52,
+      "why": [
+        "Availability flagged: Hamstring injury - 75% chance of playing (~85 min when playing)",
+        "22% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 341,
+      "web_name": "Gnonto",
+      "team_short": "LEE",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 0.0,
+      "current_ev": 4.16,
+      "ev_delta": 4.16,
+      "why": [
+        "Availability flagged: Hamstring injury - 75% chance of playing (~95 min when playing)",
+        "Underlying output: 0.24 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 489,
+      "web_name": "Yates",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 45,
+      "prev_ev": 0.0,
+      "current_ev": 4.14,
+      "ev_delta": 4.14,
+      "why": [
+        "Availability flagged: 100% chance of playing (~95 min when playing)",
+        "Underlying output: 0.14 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 480,
+      "web_name": "Gibbs-White",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 80,
+      "prev_ev": 17.54,
+      "current_ev": 21.0,
+      "ev_delta": 3.46,
+      "why": [
+        "Availability flagged: 100% chance of playing (~87 min when playing)",
+        "Underlying output: 0.36 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 397,
+      "web_name": "Semenyo",
+      "team_short": "MCI",
+      "position": "MID",
+      "now_cost": 85,
+      "prev_ev": 23.7,
+      "current_ev": 24.39,
+      "ev_delta": 0.69,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~87 min when playing)",
+        "Underlying output: 0.34 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 91,
+      "web_name": "Pinnock",
+      "team_short": "COV",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 5.06,
+      "current_ev": 5.35,
+      "ev_delta": 0.29,
+      "why": [
+        "Expected to start (a fringe player based on multi-season history) (~91 min when playing)",
+        "26% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 123,
+      "web_name": "Hinshelwood",
+      "team_short": "BHA",
+      "position": "MID",
+      "now_cost": 60,
+      "prev_ev": 23.36,
+      "current_ev": 8.99,
+      "ev_delta": -14.37,
+      "why": [
+        "Availability flagged: Unspecified injury - 25% chance of playing (~87 min when playing)",
+        "Underlying output: 0.61 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 488,
+      "web_name": "I.Sangar\u00e9",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 14.13,
+      "current_ev": 0.0,
+      "ev_delta": -14.13,
+      "why": [
+        "Availability flagged: Calf injury - Unknown return date",
+        "Underlying output: 0.10 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 431,
+      "web_name": "Amad",
+      "team_short": "MUN",
+      "position": "MID",
+      "now_cost": 59,
+      "prev_ev": 7.84,
+      "current_ev": 0.0,
+      "ev_delta": -7.84,
+      "why": [
+        "Availability flagged: Unspecified injury - Unknown return date",
+        "Underlying output: 0.40 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 247,
+      "web_name": "Hackney",
+      "team_short": "EVE",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 7.84,
+      "current_ev": 6.04,
+      "ev_delta": -1.8,
+      "why": [
+        "Availability flagged: Ankle injury - 50% chance of playing (~75 min when playing)",
+        "Underlying output: 0.00 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 401,
+      "web_name": "Marmoush",
+      "team_short": "TOT",
+      "position": "FWD",
+      "now_cost": 70,
+      "prev_ev": 7.34,
+      "current_ev": 6.48,
+      "ev_delta": -0.86,
+      "why": [
+        "Expected to start (a fringe player based on multi-season history) (~85 min when playing)",
+        "Capped upside: 0.53 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    },
+    {
+      "id": 153,
+      "web_name": "Disasi",
+      "team_short": "CRY",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 4.1,
+      "current_ev": 3.76,
+      "ev_delta": -0.34,
+      "why": [
+        "Expected to start (a fringe player based on multi-season history) (~90 min when playing)",
+        "24% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 612,
+      "web_name": "Methalie",
+      "team_short": "SUN",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 0.26,
+      "current_ev": 0.0,
+      "ev_delta": -0.26,
+      "why": [
+        "Availability flagged: Suspended until 5 Sep",
+        "22% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 512,
+      "web_name": "Kudus",
+      "team_short": "TOT",
+      "position": "MID",
+      "now_cost": 65,
+      "prev_ev": 7.04,
+      "current_ev": 6.86,
+      "ev_delta": -0.18,
+      "why": [
+        "Availability flagged: Thigh injury - 75% chance of playing (~84 min when playing)",
+        "Underlying output: 0.30 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 167,
+      "web_name": "Delap",
+      "team_short": "NFO",
+      "position": "FWD",
+      "now_cost": 55,
+      "prev_ev": 6.23,
+      "current_ev": 6.09,
+      "ev_delta": -0.14,
+      "why": [
+        "Expected to start (a fringe player based on multi-season history) (~84 min when playing)",
+        "Capped upside: 0.40 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    },
+    {
+      "id": 405,
+      "web_name": "N.Gonzalez",
+      "team_short": "NEW",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 4.57,
+      "current_ev": 4.47,
+      "ev_delta": -0.1,
+      "why": [
+        "Expected to start (a fringe player based on multi-season history) (~90 min when playing)",
+        "Underlying output: 0.11 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
