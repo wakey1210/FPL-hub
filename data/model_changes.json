@@ -1,19 +1,33 @@
 {
-  "generated_at": "2026-08-27T13:54:10.634004+00:00",
+  "generated_at": "2026-08-28T00:17:23.376538+00:00",
   "has_previous": true,
   "risers": [
     {
-      "id": 481,
-      "web_name": "Anderson",
-      "team_short": "MCI",
-      "position": "MID",
-      "now_cost": 65,
-      "prev_ev": 16.53,
-      "current_ev": 20.27,
-      "ev_delta": 3.74,
+      "id": 279,
+      "web_name": "Ajayi",
+      "team_short": "HUL",
+      "position": "DEF",
+      "now_cost": 40,
+      "prev_ev": 10.35,
+      "current_ev": 12.71,
+      "ev_delta": 2.36,
       "why": [
-        "Availability flagged: 100% chance of playing (~88 min when playing)",
-        "Underlying output: 0.22 combined xG+xA per 90 minutes"
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "20% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 389,
+      "web_name": "Matheus N.",
+      "team_short": "MCI",
+      "position": "DEF",
+      "now_cost": 60,
+      "prev_ev": 6.35,
+      "current_ev": 8.28,
+      "ev_delta": 1.93,
+      "why": [
+        "Availability flagged: Unspecified injury - 75% chance of playing (~89 min when playing)",
+        "30% average clean-sheet chance over the next 6 GWs"
       ]
     }
   ],
@@ -24,40 +38,82 @@
       "team_short": "NEW",
       "position": "FWD",
       "now_cost": 60,
-      "prev_ev": 11.79,
-      "current_ev": 5.9,
-      "ev_delta": -5.89,
+      "prev_ev": 5.9,
+      "current_ev": 0.0,
+      "ev_delta": -5.9,
       "why": [
-        "Availability flagged: Foot injury - 25% chance of playing (~95 min when playing)",
+        "Availability flagged: Foot injury - Unknown return date",
         "Underlying output: 0.46 combined xG+xA per 90 minutes"
       ]
     },
     {
-      "id": 389,
-      "web_name": "Matheus N.",
-      "team_short": "MCI",
+      "id": 180,
+      "web_name": "Woolfenden",
+      "team_short": "COV",
       "position": "DEF",
-      "now_cost": 60,
-      "prev_ev": 8.28,
-      "current_ev": 6.35,
-      "ev_delta": -1.93,
+      "now_cost": 40,
+      "prev_ev": 2.8,
+      "current_ev": 0.0,
+      "ev_delta": -2.8,
       "why": [
-        "Availability flagged: Unspecified injury - 50% chance of playing (~89 min when playing)",
-        "30% average clean-sheet chance over the next 6 GWs"
+        "Availability flagged: Knee injury - Unknown return date",
+        "26% average clean-sheet chance over the next 6 GWs"
       ]
     },
     {
-      "id": 370,
-      "web_name": "Chiesa",
-      "team_short": "LIV",
+      "id": 485,
+      "web_name": "Bakwa",
+      "team_short": "NFO",
       "position": "MID",
       "now_cost": 55,
+      "prev_ev": 2.35,
+      "current_ev": 0.0,
+      "ev_delta": -2.35,
+      "why": [
+        "Availability flagged: Has joined Lille on loan for the rest of the season",
+        "Underlying output: 0.25 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 322,
+      "web_name": "Al-Hamadi",
+      "team_short": "IPS",
+      "position": "FWD",
+      "now_cost": 50,
       "prev_ev": 0.96,
       "current_ev": 0.0,
       "ev_delta": -0.96,
       "why": [
-        "Availability flagged: Back injury - Unknown return date",
-        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
+        "Availability flagged: Has joined Sheffield Wednesday on loan for the rest of the season",
+        "Average run of fixtures (avg FDR 3.5 over next 6 GWs)"
+      ]
+    },
+    {
+      "id": 59,
+      "web_name": "Dennis",
+      "team_short": "BOU",
+      "position": "GKP",
+      "now_cost": 40,
+      "prev_ev": 0.31,
+      "current_ev": 0.0,
+      "ev_delta": -0.31,
+      "why": [
+        "Availability flagged: Has joined MK Dons permanently",
+        "25% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 177,
+      "web_name": "Kesler-Hayden",
+      "team_short": "COV",
+      "position": "DEF",
+      "now_cost": 40,
+      "prev_ev": 0.3,
+      "current_ev": 0.0,
+      "ev_delta": -0.3,
+      "why": [
+        "Availability flagged: Hamstring injury - Unknown return date",
+        "26% average clean-sheet chance over the next 6 GWs"
       ]
     }
   ]
