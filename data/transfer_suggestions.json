@@ -6,14 +6,14 @@
     {
       "out_id": 527,
       "in_id": 249,
-      "ev_delta": 19.78,
+      "ev_delta": 19.08,
       "cost_delta": -4,
-      "net_gain": 19.78,
+      "net_gain": 19.08,
       "uses_hit": false,
       "rationale": [
         "Expected to start (a regular starter based on recent form) (~90 min when playing)",
         "Underlying output: 0.70 combined xG+xA per 90 minutes",
-        "+19.8 EV over Richarlison across the next 6 gameweeks"
+        "+19.1 EV over Richarlison across the next 6 gameweeks"
       ],
       "out_sell_price": 59,
       "out": {
@@ -29,8 +29,8 @@
         "p_appearance": 0.3,
         "p_60_plus": 0.3,
         "expected_minutes_if_appears": 95.0,
-        "total_ev": 7.15,
-        "uncertainty": 3.35,
+        "total_ev": 7.18,
+        "uncertainty": 3.37,
         "why": [
           "Expected to start (a fringe player based on recent form) (~95 min when playing)",
           "Capped upside: 0.44 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points",
@@ -42,10 +42,10 @@
             "opponent_short": "NFO",
             "is_home": false,
             "fdr": 3,
-            "points": 1.15,
-            "attack_mult": 0.901,
-            "cs_prob": 0.299,
-            "expected_conceded": 1.207,
+            "points": 1.12,
+            "attack_mult": 0.851,
+            "cs_prob": 0.265,
+            "expected_conceded": 1.33,
             "ml_points": 1.23
           },
           {
@@ -53,11 +53,11 @@
             "opponent_short": "EVE",
             "is_home": true,
             "fdr": 3,
-            "points": 1.2,
-            "attack_mult": 1.0,
-            "cs_prob": 0.291,
-            "expected_conceded": 1.213,
-            "ml_points": 1.28
+            "points": 1.26,
+            "attack_mult": 1.126,
+            "cs_prob": 0.387,
+            "expected_conceded": 1.031,
+            "ml_points": 1.31
           },
           {
             "event": 5,
@@ -109,7 +109,7 @@
         "dc90": 4.2262,
         "saves90": 0.0,
         "dc_prob": 0.1057,
-        "ml_ev": 7.29,
+        "ml_ev": 7.32,
         "ml_uncertainty": 1.02,
         "ml_why": [
           "expected goals per 90",
@@ -118,8 +118,8 @@
         ],
         "cost_change_event": -1,
         "cost_change_start": -1,
-        "transfers_in_event": 4173,
-        "transfers_out_event": 56516,
+        "transfers_in_event": 4486,
+        "transfers_out_event": 60596,
         "code": 212319,
         "team_code": 6,
         "clean_sheets": 0,
@@ -141,8 +141,8 @@
         "p_appearance": 0.92,
         "p_60_plus": 0.72,
         "expected_minutes_if_appears": 90.4,
-        "total_ev": 26.93,
-        "uncertainty": 7.25,
+        "total_ev": 26.26,
+        "uncertainty": 7.08,
         "why": [
           "Expected to start (a regular starter based on recent form) (~90 min when playing)",
           "Underlying output: 0.70 combined xG+xA per 90 minutes",
@@ -154,10 +154,10 @@
             "opponent_short": "MUN",
             "is_home": true,
             "fdr": 4,
-            "points": 4.19,
-            "attack_mult": 0.861,
-            "cs_prob": 0.248,
-            "expected_conceded": 1.521,
+            "points": 4.26,
+            "attack_mult": 0.889,
+            "cs_prob": 0.231,
+            "expected_conceded": 1.605,
             "ml_points": 2.51
           },
           {
@@ -165,11 +165,11 @@
             "opponent_short": "TOT",
             "is_home": false,
             "fdr": 3,
-            "points": 4.55,
-            "attack_mult": 1.0,
-            "cs_prob": 0.261,
-            "expected_conceded": 1.213,
-            "ml_points": 2.54
+            "points": 3.81,
+            "attack_mult": 0.711,
+            "cs_prob": 0.196,
+            "expected_conceded": 1.632,
+            "ml_points": 2.49
           },
           {
             "event": 5,
@@ -221,7 +221,7 @@
         "dc90": 3.5814,
         "saves90": 0.0,
         "dc_prob": 0.0895,
-        "ml_ev": 16.68,
+        "ml_ev": 16.63,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "expected goals per 90",
@@ -230,8 +230,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 83912,
-        "transfers_out_event": 41150,
+        "transfers_in_event": 91464,
+        "transfers_out_event": 45164,
         "code": 586309,
         "team_code": 11,
         "clean_sheets": 1,
@@ -244,14 +244,14 @@
     {
       "out_id": 418,
       "in_id": 115,
-      "ev_delta": 18.37,
+      "ev_delta": 17.4,
       "cost_delta": -3,
-      "net_gain": 18.37,
+      "net_gain": 17.4,
       "uses_hit": false,
       "rationale": [
         "Expected to start (a regular starter based on recent form) (~83 min when playing)",
-        "28% average clean-sheet chance over the next 6 GWs",
-        "+18.4 EV over Maguire across the next 6 gameweeks"
+        "26% average clean-sheet chance over the next 6 GWs",
+        "+17.4 EV over Maguire across the next 6 gameweeks"
       ],
       "out_sell_price": 50,
       "out": {
@@ -260,15 +260,15 @@
         "team_short": "MUN",
         "position": "DEF",
         "now_cost": 50,
-        "selected_by_percent": 15.7,
+        "selected_by_percent": 15.5,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
         "p_appearance": 0.92,
         "p_60_plus": 0.71,
         "expected_minutes_if_appears": 89.4,
-        "total_ev": 16.02,
-        "uncertainty": 4.3,
+        "total_ev": 16.08,
+        "uncertainty": 4.31,
         "why": [
           "Expected to start (a regular starter based on recent form) (~89 min when playing)",
           "24% average clean-sheet chance over the next 6 GWs",
@@ -280,22 +280,22 @@
             "opponent_short": "EVE",
             "is_home": false,
             "fdr": 3,
-            "points": 2.92,
-            "attack_mult": 1.049,
-            "cs_prob": 0.287,
-            "expected_conceded": 1.249,
-            "ml_points": 2.21
+            "points": 2.89,
+            "attack_mult": 1.107,
+            "cs_prob": 0.275,
+            "expected_conceded": 1.289,
+            "ml_points": 2.31
           },
           {
             "event": 4,
             "opponent_short": "MCI",
             "is_home": true,
             "fdr": 4,
-            "points": 2.2,
-            "attack_mult": 0.734,
-            "cs_prob": 0.169,
-            "expected_conceded": 1.727,
-            "ml_points": 1.61
+            "points": 2.29,
+            "attack_mult": 1.076,
+            "cs_prob": 0.174,
+            "expected_conceded": 1.94,
+            "ml_points": 1.65
           },
           {
             "event": 5,
@@ -347,7 +347,7 @@
         "dc90": 5.6855,
         "saves90": 0.0,
         "dc_prob": 0.2047,
-        "ml_ev": 12.14,
+        "ml_ev": 12.28,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "clean-sheet probability",
@@ -356,8 +356,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 26471,
-        "transfers_out_event": 119245,
+        "transfers_in_event": 29134,
+        "transfers_out_event": 130458,
         "code": 95658,
         "team_code": 1,
         "clean_sheets": 0,
@@ -372,18 +372,18 @@
         "team_short": "BHA",
         "position": "DEF",
         "now_cost": 47,
-        "selected_by_percent": 13.2,
+        "selected_by_percent": 13.5,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
         "p_appearance": 0.92,
         "p_60_plus": 0.69,
         "expected_minutes_if_appears": 82.6,
-        "total_ev": 34.39,
-        "uncertainty": 9.45,
+        "total_ev": 33.48,
+        "uncertainty": 9.21,
         "why": [
           "Expected to start (a regular starter based on recent form) (~83 min when playing)",
-          "28% average clean-sheet chance over the next 6 GWs",
+          "26% average clean-sheet chance over the next 6 GWs",
           "Defensive output: 1.6 tackles + 1.6 blocks/clearances/interceptions + 3.2 recoveries per 90"
         ],
         "fixtures": [
@@ -392,22 +392,22 @@
             "opponent_short": "LEE",
             "is_home": true,
             "fdr": 2,
-            "points": 7.11,
-            "attack_mult": 1.269,
-            "cs_prob": 0.427,
-            "expected_conceded": 0.924,
-            "ml_points": 4.12
+            "points": 6.94,
+            "attack_mult": 1.235,
+            "cs_prob": 0.413,
+            "expected_conceded": 0.961,
+            "ml_points": 4.05
           },
           {
             "event": 4,
             "opponent_short": "COV",
             "is_home": false,
             "fdr": 1,
-            "points": 7.68,
-            "attack_mult": 1.413,
-            "cs_prob": 0.434,
-            "expected_conceded": 0.729,
-            "ml_points": 5.26
+            "points": 6.94,
+            "attack_mult": 1.282,
+            "cs_prob": 0.364,
+            "expected_conceded": 1.011,
+            "ml_points": 4.93
           },
           {
             "event": 5,
@@ -459,7 +459,7 @@
         "dc90": 3.6826,
         "saves90": 0.0,
         "dc_prob": 0.1326,
-        "ml_ev": 20.66,
+        "ml_ev": 20.26,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "expected goals per 90",
@@ -468,8 +468,8 @@
         ],
         "cost_change_event": 1,
         "cost_change_start": 2,
-        "transfers_in_event": 393250,
-        "transfers_out_event": 48221,
+        "transfers_in_event": 422900,
+        "transfers_out_event": 54173,
         "code": 465730,
         "team_code": 36,
         "clean_sheets": 1,
@@ -482,14 +482,14 @@
     {
       "out_id": 539,
       "in_id": 305,
-      "ev_delta": 15.44,
+      "ev_delta": 14.78,
       "cost_delta": 0,
-      "net_gain": 15.44,
+      "net_gain": 14.78,
       "uses_hit": false,
       "rationale": [
         "Expected to start (a regular starter based on recent form) (~86 min when playing)",
-        "22% average clean-sheet chance over the next 6 GWs",
-        "+15.4 EV over O'Nien across the next 6 gameweeks"
+        "20% average clean-sheet chance over the next 6 GWs",
+        "+14.8 EV over O'Nien across the next 6 gameweeks"
       ],
       "out_sell_price": 40,
       "out": {
@@ -505,11 +505,11 @@
         "p_appearance": 0.3,
         "p_60_plus": 0.3,
         "expected_minutes_if_appears": 95.0,
-        "total_ev": 5.09,
-        "uncertainty": 2.31,
+        "total_ev": 4.99,
+        "uncertainty": 2.27,
         "why": [
           "Expected to start (a fringe player based on recent form) (~95 min when playing)",
-          "22% average clean-sheet chance over the next 6 GWs",
+          "21% average clean-sheet chance over the next 6 GWs",
           "Defensive output: 1.4 tackles + 5.5 blocks/clearances/interceptions + 5.5 recoveries per 90"
         ],
         "fixtures": [
@@ -518,10 +518,10 @@
             "opponent_short": "BRE",
             "is_home": false,
             "fdr": 3,
-            "points": 0.69,
-            "attack_mult": 0.543,
-            "cs_prob": 0.149,
-            "expected_conceded": 1.905,
+            "points": 0.67,
+            "attack_mult": 0.513,
+            "cs_prob": 0.137,
+            "expected_conceded": 1.985,
             "ml_points": 0.73
           },
           {
@@ -529,10 +529,10 @@
             "opponent_short": "ARS",
             "is_home": true,
             "fdr": 4,
-            "points": 0.76,
-            "attack_mult": 0.734,
-            "cs_prob": 0.169,
-            "expected_conceded": 1.727,
+            "points": 0.68,
+            "attack_mult": 0.402,
+            "cs_prob": 0.162,
+            "expected_conceded": 2.022,
             "ml_points": 0.7
           },
           {
@@ -594,8 +594,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 2591,
-        "transfers_out_event": 16115,
+        "transfers_in_event": 2878,
+        "transfers_out_event": 17646,
         "code": 167512,
         "team_code": 56,
         "clean_sheets": 0,
@@ -610,18 +610,18 @@
         "team_short": "IPS",
         "position": "DEF",
         "now_cost": 40,
-        "selected_by_percent": 4.9,
+        "selected_by_percent": 5.0,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
         "p_appearance": 0.92,
         "p_60_plus": 0.81,
         "expected_minutes_if_appears": 85.7,
-        "total_ev": 20.53,
-        "uncertainty": 4.78,
+        "total_ev": 19.77,
+        "uncertainty": 4.61,
         "why": [
           "Expected to start (a regular starter based on recent form) (~86 min when playing)",
-          "22% average clean-sheet chance over the next 6 GWs",
+          "20% average clean-sheet chance over the next 6 GWs",
           "Defensive output: 0.0 tackles + 5.5 blocks/clearances/interceptions + 2.5 recoveries per 90"
         ],
         "fixtures": [
@@ -630,10 +630,10 @@
             "opponent_short": "LIV",
             "is_home": true,
             "fdr": 4,
-            "points": 2.71,
-            "attack_mult": 0.584,
-            "cs_prob": 0.167,
-            "expected_conceded": 1.99,
+            "points": 2.6,
+            "attack_mult": 0.766,
+            "cs_prob": 0.126,
+            "expected_conceded": 2.348,
             "ml_points": 0.99
           },
           {
@@ -641,11 +641,11 @@
             "opponent_short": "CRY",
             "is_home": false,
             "fdr": 3,
-            "points": 3.63,
-            "attack_mult": 1.0,
-            "cs_prob": 0.231,
-            "expected_conceded": 1.364,
-            "ml_points": 1.25
+            "points": 2.98,
+            "attack_mult": 0.658,
+            "cs_prob": 0.184,
+            "expected_conceded": 1.693,
+            "ml_points": 1.32
           },
           {
             "event": 5,
@@ -697,7 +697,7 @@
         "dc90": 5.2117,
         "saves90": 0.0,
         "dc_prob": 0.1876,
-        "ml_ev": 7.81,
+        "ml_ev": 7.88,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "price",
@@ -706,8 +706,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 26692,
-        "transfers_out_event": 17544,
+        "transfers_in_event": 29743,
+        "transfers_out_event": 19188,
         "code": 455084,
         "team_code": 40,
         "clean_sheets": 0,
@@ -720,14 +720,14 @@
     {
       "out_id": 229,
       "in_id": 115,
-      "ev_delta": 15.21,
+      "ev_delta": 14.77,
       "cost_delta": -13,
-      "net_gain": 15.21,
+      "net_gain": 14.77,
       "uses_hit": false,
       "rationale": [
         "Expected to start (a regular starter based on recent form) (~83 min when playing)",
-        "28% average clean-sheet chance over the next 6 GWs",
-        "+15.2 EV over Tarkowski across the next 6 gameweeks"
+        "26% average clean-sheet chance over the next 6 GWs",
+        "+14.8 EV over Tarkowski across the next 6 gameweeks"
       ],
       "out_sell_price": 60,
       "out": {
@@ -736,18 +736,18 @@
         "team_short": "EVE",
         "position": "DEF",
         "now_cost": 60,
-        "selected_by_percent": 10.0,
+        "selected_by_percent": 10.1,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
         "p_appearance": 0.92,
         "p_60_plus": 0.83,
         "expected_minutes_if_appears": 89.6,
-        "total_ev": 19.18,
-        "uncertainty": 4.46,
+        "total_ev": 18.71,
+        "uncertainty": 4.36,
         "why": [
           "Expected to start (a regular starter based on recent form) (~90 min when playing)",
-          "25% average clean-sheet chance over the next 6 GWs",
+          "24% average clean-sheet chance over the next 6 GWs",
           "Defensive output: 1.0 tackles + 8.5 blocks/clearances/interceptions + 3.5 recoveries per 90"
         ],
         "fixtures": [
@@ -756,10 +756,10 @@
             "opponent_short": "MUN",
             "is_home": true,
             "fdr": 4,
-            "points": 3.08,
-            "attack_mult": 0.861,
-            "cs_prob": 0.248,
-            "expected_conceded": 1.521,
+            "points": 3.0,
+            "attack_mult": 0.889,
+            "cs_prob": 0.231,
+            "expected_conceded": 1.605,
             "ml_points": 3.17
           },
           {
@@ -767,11 +767,11 @@
             "opponent_short": "TOT",
             "is_home": false,
             "fdr": 3,
-            "points": 3.17,
-            "attack_mult": 1.0,
-            "cs_prob": 0.231,
-            "expected_conceded": 1.364,
-            "ml_points": 3.32
+            "points": 2.78,
+            "attack_mult": 0.711,
+            "cs_prob": 0.196,
+            "expected_conceded": 1.632,
+            "ml_points": 3.35
           },
           {
             "event": 5,
@@ -823,7 +823,7 @@
         "dc90": 9.0504,
         "saves90": 0.0,
         "dc_prob": 0.3258,
-        "ml_ev": 21.13,
+        "ml_ev": 21.16,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "fixture difficulty",
@@ -832,8 +832,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 121100,
-        "transfers_out_event": 36839,
+        "transfers_in_event": 131560,
+        "transfers_out_event": 40661,
         "code": 17761,
         "team_code": 11,
         "clean_sheets": 1,
@@ -848,18 +848,18 @@
         "team_short": "BHA",
         "position": "DEF",
         "now_cost": 47,
-        "selected_by_percent": 13.2,
+        "selected_by_percent": 13.5,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
         "p_appearance": 0.92,
         "p_60_plus": 0.69,
         "expected_minutes_if_appears": 82.6,
-        "total_ev": 34.39,
-        "uncertainty": 9.45,
+        "total_ev": 33.48,
+        "uncertainty": 9.21,
         "why": [
           "Expected to start (a regular starter based on recent form) (~83 min when playing)",
-          "28% average clean-sheet chance over the next 6 GWs",
+          "26% average clean-sheet chance over the next 6 GWs",
           "Defensive output: 1.6 tackles + 1.6 blocks/clearances/interceptions + 3.2 recoveries per 90"
         ],
         "fixtures": [
@@ -868,22 +868,22 @@
             "opponent_short": "LEE",
             "is_home": true,
             "fdr": 2,
-            "points": 7.11,
-            "attack_mult": 1.269,
-            "cs_prob": 0.427,
-            "expected_conceded": 0.924,
-            "ml_points": 4.12
+            "points": 6.94,
+            "attack_mult": 1.235,
+            "cs_prob": 0.413,
+            "expected_conceded": 0.961,
+            "ml_points": 4.05
           },
           {
             "event": 4,
             "opponent_short": "COV",
             "is_home": false,
             "fdr": 1,
-            "points": 7.68,
-            "attack_mult": 1.413,
-            "cs_prob": 0.434,
-            "expected_conceded": 0.729,
-            "ml_points": 5.26
+            "points": 6.94,
+            "attack_mult": 1.282,
+            "cs_prob": 0.364,
+            "expected_conceded": 1.011,
+            "ml_points": 4.93
           },
           {
             "event": 5,
@@ -935,7 +935,7 @@
         "dc90": 3.6826,
         "saves90": 0.0,
         "dc_prob": 0.1326,
-        "ml_ev": 20.66,
+        "ml_ev": 20.26,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "expected goals per 90",
@@ -944,8 +944,8 @@
         ],
         "cost_change_event": 1,
         "cost_change_start": 2,
-        "transfers_in_event": 393250,
-        "transfers_out_event": 48221,
+        "transfers_in_event": 422900,
+        "transfers_out_event": 54173,
         "code": 465730,
         "team_code": 36,
         "clean_sheets": 1,
@@ -958,14 +958,14 @@
     {
       "out_id": 4,
       "in_id": 115,
-      "ev_delta": 15.12,
+      "ev_delta": 12.71,
       "cost_delta": -33,
-      "net_gain": 15.12,
+      "net_gain": 12.71,
       "uses_hit": false,
       "rationale": [
         "Expected to start (a regular starter based on recent form) (~83 min when playing)",
-        "28% average clean-sheet chance over the next 6 GWs",
-        "+15.1 EV over Gabriel across the next 6 gameweeks"
+        "26% average clean-sheet chance over the next 6 GWs",
+        "+12.7 EV over Gabriel across the next 6 gameweeks"
       ],
       "out_sell_price": 80,
       "out": {
@@ -974,18 +974,18 @@
         "team_short": "ARS",
         "position": "DEF",
         "now_cost": 80,
-        "selected_by_percent": 27.3,
+        "selected_by_percent": 27.1,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
         "p_appearance": 0.92,
         "p_60_plus": 0.79,
         "expected_minutes_if_appears": 89.0,
-        "total_ev": 19.27,
-        "uncertainty": 4.45,
+        "total_ev": 20.77,
+        "uncertainty": 4.79,
         "why": [
           "Expected to start (a regular starter based on recent form) (~89 min when playing)",
-          "29% average clean-sheet chance over the next 6 GWs",
+          "34% average clean-sheet chance over the next 6 GWs",
           "Defensive output: 1.0 tackles + 6.0 blocks/clearances/interceptions + 3.5 recoveries per 90"
         ],
         "fixtures": [
@@ -994,22 +994,22 @@
             "opponent_short": "CHE",
             "is_home": true,
             "fdr": 4,
-            "points": 4.14,
-            "attack_mult": 1.332,
-            "cs_prob": 0.483,
-            "expected_conceded": 0.791,
-            "ml_points": 4.41
+            "points": 4.01,
+            "attack_mult": 1.322,
+            "cs_prob": 0.454,
+            "expected_conceded": 0.858,
+            "ml_points": 4.32
           },
           {
             "event": 4,
             "opponent_short": "SUN",
             "is_home": false,
             "fdr": 3,
-            "points": 2.88,
-            "attack_mult": 1.0,
-            "cs_prob": 0.231,
-            "expected_conceded": 1.364,
-            "ml_points": 2.7
+            "points": 4.51,
+            "attack_mult": 1.394,
+            "cs_prob": 0.559,
+            "expected_conceded": 0.582,
+            "ml_points": 4.49
           },
           {
             "event": 5,
@@ -1061,7 +1061,7 @@
         "dc90": 6.7279,
         "saves90": 0.0,
         "dc_prob": 0.2422,
-        "ml_ev": 19.44,
+        "ml_ev": 21.14,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "price",
@@ -1070,8 +1070,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 24261,
-        "transfers_out_event": 155238,
+        "transfers_in_event": 26442,
+        "transfers_out_event": 171416,
         "code": 226597,
         "team_code": 3,
         "clean_sheets": 2,
@@ -1086,18 +1086,18 @@
         "team_short": "BHA",
         "position": "DEF",
         "now_cost": 47,
-        "selected_by_percent": 13.2,
+        "selected_by_percent": 13.5,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
         "p_appearance": 0.92,
         "p_60_plus": 0.69,
         "expected_minutes_if_appears": 82.6,
-        "total_ev": 34.39,
-        "uncertainty": 9.45,
+        "total_ev": 33.48,
+        "uncertainty": 9.21,
         "why": [
           "Expected to start (a regular starter based on recent form) (~83 min when playing)",
-          "28% average clean-sheet chance over the next 6 GWs",
+          "26% average clean-sheet chance over the next 6 GWs",
           "Defensive output: 1.6 tackles + 1.6 blocks/clearances/interceptions + 3.2 recoveries per 90"
         ],
         "fixtures": [
@@ -1106,22 +1106,22 @@
             "opponent_short": "LEE",
             "is_home": true,
             "fdr": 2,
-            "points": 7.11,
-            "attack_mult": 1.269,
-            "cs_prob": 0.427,
-            "expected_conceded": 0.924,
-            "ml_points": 4.12
+            "points": 6.94,
+            "attack_mult": 1.235,
+            "cs_prob": 0.413,
+            "expected_conceded": 0.961,
+            "ml_points": 4.05
           },
           {
             "event": 4,
             "opponent_short": "COV",
             "is_home": false,
             "fdr": 1,
-            "points": 7.68,
-            "attack_mult": 1.413,
-            "cs_prob": 0.434,
-            "expected_conceded": 0.729,
-            "ml_points": 5.26
+            "points": 6.94,
+            "attack_mult": 1.282,
+            "cs_prob": 0.364,
+            "expected_conceded": 1.011,
+            "ml_points": 4.93
           },
           {
             "event": 5,
@@ -1173,7 +1173,7 @@
         "dc90": 3.6826,
         "saves90": 0.0,
         "dc_prob": 0.1326,
-        "ml_ev": 20.66,
+        "ml_ev": 20.26,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "expected goals per 90",
@@ -1182,8 +1182,8 @@
         ],
         "cost_change_event": 1,
         "cost_change_start": 2,
-        "transfers_in_event": 393250,
-        "transfers_out_event": 48221,
+        "transfers_in_event": 422900,
+        "transfers_out_event": 54173,
         "code": 465730,
         "team_code": 36,
         "clean_sheets": 1,
