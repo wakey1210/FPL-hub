@@ -22,7 +22,7 @@
         "team_short": "TOT",
         "position": "FWD",
         "now_cost": 59,
-        "selected_by_percent": 2.3,
+        "selected_by_percent": 2.2,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.3,
@@ -118,8 +118,8 @@
         ],
         "cost_change_event": -1,
         "cost_change_start": -1,
-        "transfers_in_event": 3651,
-        "transfers_out_event": 49907,
+        "transfers_in_event": 3840,
+        "transfers_out_event": 52003,
         "code": 212319,
         "team_code": 6,
         "clean_sheets": 0,
@@ -134,7 +134,7 @@
         "team_short": "EVE",
         "position": "FWD",
         "now_cost": 55,
-        "selected_by_percent": 4.0,
+        "selected_by_percent": 4.1,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -230,8 +230,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 72107,
-        "transfers_out_event": 35130,
+        "transfers_in_event": 76296,
+        "transfers_out_event": 37355,
         "code": 586309,
         "team_code": 11,
         "clean_sheets": 1,
@@ -245,7 +245,7 @@
       "out_id": 418,
       "in_id": 115,
       "ev_delta": 16.99,
-      "cost_delta": -4,
+      "cost_delta": -3,
       "net_gain": 16.99,
       "uses_hit": false,
       "rationale": [
@@ -356,8 +356,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 22497,
-        "transfers_out_event": 102236,
+        "transfers_in_event": 23984,
+        "transfers_out_event": 109408,
         "code": 95658,
         "team_code": 1,
         "clean_sheets": 0,
@@ -371,8 +371,8 @@
         "web_name": "De Cuyper",
         "team_short": "BHA",
         "position": "DEF",
-        "now_cost": 46,
-        "selected_by_percent": 12.7,
+        "now_cost": 47,
+        "selected_by_percent": 12.9,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -396,7 +396,7 @@
             "attack_mult": 1.269,
             "cs_prob": 0.427,
             "expected_conceded": 0.924,
-            "ml_points": 4.05
+            "ml_points": 4.12
           },
           {
             "event": 4,
@@ -407,7 +407,7 @@
             "attack_mult": 1.413,
             "cs_prob": 0.434,
             "expected_conceded": 0.729,
-            "ml_points": 5.19
+            "ml_points": 5.26
           },
           {
             "event": 5,
@@ -418,7 +418,7 @@
             "attack_mult": 0.734,
             "cs_prob": 0.169,
             "expected_conceded": 1.727,
-            "ml_points": 2.2
+            "ml_points": 2.24
           },
           {
             "event": 6,
@@ -429,7 +429,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.231,
             "expected_conceded": 1.364,
-            "ml_points": 3.17
+            "ml_points": 3.23
           },
           {
             "event": 7,
@@ -440,7 +440,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.261,
             "expected_conceded": 1.364,
-            "ml_points": 3.44
+            "ml_points": 3.49
           },
           {
             "event": 8,
@@ -451,7 +451,7 @@
             "attack_mult": 0.734,
             "cs_prob": 0.139,
             "expected_conceded": 1.727,
-            "ml_points": 2.28
+            "ml_points": 2.32
           }
         ],
         "xg90": 0.463,
@@ -459,17 +459,17 @@
         "dc90": 3.6826,
         "saves90": 0.0,
         "dc_prob": 0.1326,
-        "ml_ev": 20.33,
+        "ml_ev": 20.66,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "expected goals per 90",
           "clean-sheet probability",
           "expected assists per 90"
         ],
-        "cost_change_event": 0,
-        "cost_change_start": 1,
-        "transfers_in_event": 344947,
-        "transfers_out_event": 39362,
+        "cost_change_event": 1,
+        "cost_change_start": 2,
+        "transfers_in_event": 364522,
+        "transfers_out_event": 42686,
         "code": 465730,
         "team_code": 36,
         "clean_sheets": 1,
@@ -483,7 +483,7 @@
       "out_id": 229,
       "in_id": 115,
       "ev_delta": 16.15,
-      "cost_delta": -14,
+      "cost_delta": -13,
       "net_gain": 16.15,
       "uses_hit": false,
       "rationale": [
@@ -594,8 +594,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 105025,
-        "transfers_out_event": 30994,
+        "transfers_in_event": 110536,
+        "transfers_out_event": 33396,
         "code": 17761,
         "team_code": 11,
         "clean_sheets": 1,
@@ -609,8 +609,8 @@
         "web_name": "De Cuyper",
         "team_short": "BHA",
         "position": "DEF",
-        "now_cost": 46,
-        "selected_by_percent": 12.7,
+        "now_cost": 47,
+        "selected_by_percent": 12.9,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -634,7 +634,7 @@
             "attack_mult": 1.269,
             "cs_prob": 0.427,
             "expected_conceded": 0.924,
-            "ml_points": 4.05
+            "ml_points": 4.12
           },
           {
             "event": 4,
@@ -645,7 +645,7 @@
             "attack_mult": 1.413,
             "cs_prob": 0.434,
             "expected_conceded": 0.729,
-            "ml_points": 5.19
+            "ml_points": 5.26
           },
           {
             "event": 5,
@@ -656,7 +656,7 @@
             "attack_mult": 0.734,
             "cs_prob": 0.169,
             "expected_conceded": 1.727,
-            "ml_points": 2.2
+            "ml_points": 2.24
           },
           {
             "event": 6,
@@ -667,7 +667,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.231,
             "expected_conceded": 1.364,
-            "ml_points": 3.17
+            "ml_points": 3.23
           },
           {
             "event": 7,
@@ -678,7 +678,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.261,
             "expected_conceded": 1.364,
-            "ml_points": 3.44
+            "ml_points": 3.49
           },
           {
             "event": 8,
@@ -689,7 +689,7 @@
             "attack_mult": 0.734,
             "cs_prob": 0.139,
             "expected_conceded": 1.727,
-            "ml_points": 2.28
+            "ml_points": 2.32
           }
         ],
         "xg90": 0.463,
@@ -697,17 +697,17 @@
         "dc90": 3.6826,
         "saves90": 0.0,
         "dc_prob": 0.1326,
-        "ml_ev": 20.33,
+        "ml_ev": 20.66,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "expected goals per 90",
           "clean-sheet probability",
           "expected assists per 90"
         ],
-        "cost_change_event": 0,
-        "cost_change_start": 1,
-        "transfers_in_event": 344947,
-        "transfers_out_event": 39362,
+        "cost_change_event": 1,
+        "cost_change_start": 2,
+        "transfers_in_event": 364522,
+        "transfers_out_event": 42686,
         "code": 465730,
         "team_code": 36,
         "clean_sheets": 1,
@@ -721,7 +721,7 @@
       "out_id": 4,
       "in_id": 115,
       "ev_delta": 15.12,
-      "cost_delta": -34,
+      "cost_delta": -33,
       "net_gain": 15.12,
       "uses_hit": false,
       "rationale": [
@@ -736,7 +736,7 @@
         "team_short": "ARS",
         "position": "DEF",
         "now_cost": 80,
-        "selected_by_percent": 27.6,
+        "selected_by_percent": 27.5,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -832,23 +832,23 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 20967,
-        "transfers_out_event": 129630,
+        "transfers_in_event": 22219,
+        "transfers_out_event": 139534,
         "code": 226597,
         "team_code": 3,
         "clean_sheets": 2,
         "goals_conceded": 0,
         "saves": 0,
         "starts": 2,
-        "expected_goals_conceded": 0.51
+        "expected_goals_conceded": 0.53
       },
       "in": {
         "id": 115,
         "web_name": "De Cuyper",
         "team_short": "BHA",
         "position": "DEF",
-        "now_cost": 46,
-        "selected_by_percent": 12.7,
+        "now_cost": 47,
+        "selected_by_percent": 12.9,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -872,7 +872,7 @@
             "attack_mult": 1.269,
             "cs_prob": 0.427,
             "expected_conceded": 0.924,
-            "ml_points": 4.05
+            "ml_points": 4.12
           },
           {
             "event": 4,
@@ -883,7 +883,7 @@
             "attack_mult": 1.413,
             "cs_prob": 0.434,
             "expected_conceded": 0.729,
-            "ml_points": 5.19
+            "ml_points": 5.26
           },
           {
             "event": 5,
@@ -894,7 +894,7 @@
             "attack_mult": 0.734,
             "cs_prob": 0.169,
             "expected_conceded": 1.727,
-            "ml_points": 2.2
+            "ml_points": 2.24
           },
           {
             "event": 6,
@@ -905,7 +905,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.231,
             "expected_conceded": 1.364,
-            "ml_points": 3.17
+            "ml_points": 3.23
           },
           {
             "event": 7,
@@ -916,7 +916,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.261,
             "expected_conceded": 1.364,
-            "ml_points": 3.44
+            "ml_points": 3.49
           },
           {
             "event": 8,
@@ -927,7 +927,7 @@
             "attack_mult": 0.734,
             "cs_prob": 0.139,
             "expected_conceded": 1.727,
-            "ml_points": 2.28
+            "ml_points": 2.32
           }
         ],
         "xg90": 0.463,
@@ -935,17 +935,17 @@
         "dc90": 3.6826,
         "saves90": 0.0,
         "dc_prob": 0.1326,
-        "ml_ev": 20.33,
+        "ml_ev": 20.66,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "expected goals per 90",
           "clean-sheet probability",
           "expected assists per 90"
         ],
-        "cost_change_event": 0,
-        "cost_change_start": 1,
-        "transfers_in_event": 344947,
-        "transfers_out_event": 39362,
+        "cost_change_event": 1,
+        "cost_change_start": 2,
+        "transfers_in_event": 364522,
+        "transfers_out_event": 42686,
         "code": 465730,
         "team_code": 36,
         "clean_sheets": 1,
@@ -959,7 +959,7 @@
       "out_id": 8,
       "in_id": 115,
       "ev_delta": 15.12,
-      "cost_delta": -9,
+      "cost_delta": -8,
       "net_gain": 15.12,
       "uses_hit": false,
       "rationale": [
@@ -974,7 +974,7 @@
         "team_short": "ARS",
         "position": "DEF",
         "now_cost": 56,
-        "selected_by_percent": 41.9,
+        "selected_by_percent": 42.1,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -1070,23 +1070,23 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 1,
-        "transfers_in_event": 135793,
-        "transfers_out_event": 52047,
+        "transfers_in_event": 158830,
+        "transfers_out_event": 54057,
         "code": 466075,
         "team_code": 3,
         "clean_sheets": 2,
         "goals_conceded": 0,
         "saves": 0,
         "starts": 2,
-        "expected_goals_conceded": 0.37
+        "expected_goals_conceded": 0.39
       },
       "in": {
         "id": 115,
         "web_name": "De Cuyper",
         "team_short": "BHA",
         "position": "DEF",
-        "now_cost": 46,
-        "selected_by_percent": 12.7,
+        "now_cost": 47,
+        "selected_by_percent": 12.9,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -1110,7 +1110,7 @@
             "attack_mult": 1.269,
             "cs_prob": 0.427,
             "expected_conceded": 0.924,
-            "ml_points": 4.05
+            "ml_points": 4.12
           },
           {
             "event": 4,
@@ -1121,7 +1121,7 @@
             "attack_mult": 1.413,
             "cs_prob": 0.434,
             "expected_conceded": 0.729,
-            "ml_points": 5.19
+            "ml_points": 5.26
           },
           {
             "event": 5,
@@ -1132,7 +1132,7 @@
             "attack_mult": 0.734,
             "cs_prob": 0.169,
             "expected_conceded": 1.727,
-            "ml_points": 2.2
+            "ml_points": 2.24
           },
           {
             "event": 6,
@@ -1143,7 +1143,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.231,
             "expected_conceded": 1.364,
-            "ml_points": 3.17
+            "ml_points": 3.23
           },
           {
             "event": 7,
@@ -1154,7 +1154,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.261,
             "expected_conceded": 1.364,
-            "ml_points": 3.44
+            "ml_points": 3.49
           },
           {
             "event": 8,
@@ -1165,7 +1165,7 @@
             "attack_mult": 0.734,
             "cs_prob": 0.139,
             "expected_conceded": 1.727,
-            "ml_points": 2.28
+            "ml_points": 2.32
           }
         ],
         "xg90": 0.463,
@@ -1173,17 +1173,17 @@
         "dc90": 3.6826,
         "saves90": 0.0,
         "dc_prob": 0.1326,
-        "ml_ev": 20.33,
+        "ml_ev": 20.66,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "expected goals per 90",
           "clean-sheet probability",
           "expected assists per 90"
         ],
-        "cost_change_event": 0,
-        "cost_change_start": 1,
-        "transfers_in_event": 344947,
-        "transfers_out_event": 39362,
+        "cost_change_event": 1,
+        "cost_change_start": 2,
+        "transfers_in_event": 364522,
+        "transfers_out_event": 42686,
         "code": 465730,
         "team_code": 36,
         "clean_sheets": 1,
