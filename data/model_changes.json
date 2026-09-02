@@ -1,6 +1,232 @@
 {
-  "generated_at": "2026-09-02T10:51:41.587856+00:00",
+  "generated_at": "2026-09-02T16:10:09.938824+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 367,
+      "web_name": "Gakpo",
+      "team_short": "LIV",
+      "position": "MID",
+      "now_cost": 70,
+      "prev_ev": 28.06,
+      "current_ev": 29.44,
+      "ev_delta": 1.38,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~86 min when playing)",
+        "Underlying output: 0.50 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 525,
+      "web_name": "Fernandes",
+      "team_short": "TOT",
+      "position": "MID",
+      "now_cost": 59,
+      "prev_ev": 15.05,
+      "current_ev": 15.97,
+      "ev_delta": 0.92,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~86 min when playing)",
+        "Underlying output: 0.17 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 492,
+      "web_name": "Awoniyi",
+      "team_short": "COV",
+      "position": "FWD",
+      "now_cost": 55,
+      "prev_ev": 16.34,
+      "current_ev": 17.0,
+      "ev_delta": 0.66,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~95 min when playing)",
+        "Capped upside: 0.72 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    },
+    {
+      "id": 483,
+      "web_name": "Ndoye",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 15.47,
+      "current_ev": 16.13,
+      "ev_delta": 0.66,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~83 min when playing)",
+        "Underlying output: 0.32 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 541,
+      "web_name": "Meunier",
+      "team_short": "SUN",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 8.49,
+      "current_ev": 9.15,
+      "ev_delta": 0.66,
+      "why": [
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "21% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 155,
+      "web_name": "Enzo",
+      "team_short": "MCI",
+      "position": "MID",
+      "now_cost": 69,
+      "prev_ev": 8.08,
+      "current_ev": 8.37,
+      "ev_delta": 0.29,
+      "why": [
+        "Expected to start (a fringe player based on recent form) (~89 min when playing)",
+        "Capped upside: 0.44 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 314,
+      "web_name": "Ogbene",
+      "team_short": "IPS",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 5.38,
+      "current_ev": 0.0,
+      "ev_delta": -5.38,
+      "why": [
+        "Availability flagged: Has joined Lincoln City on loan until January",
+        "Underlying output: 0.36 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 518,
+      "web_name": "P.M.Sarr",
+      "team_short": "TOT",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 4.94,
+      "current_ev": 0.0,
+      "ev_delta": -4.94,
+      "why": [
+        "Availability flagged: Has joined Juventus on loan for the rest of the season",
+        "Underlying output: 0.20 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 27,
+      "web_name": "G.Jesus",
+      "team_short": "ARS",
+      "position": "FWD",
+      "now_cost": 59,
+      "prev_ev": 3.63,
+      "current_ev": 0.0,
+      "ev_delta": -3.63,
+      "why": [
+        "Availability flagged: Has joined FC Barcelona permanently",
+        "Underlying output: 0.56 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 287,
+      "web_name": "Millar",
+      "team_short": "HUL",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 3.11,
+      "current_ev": 0.0,
+      "ev_delta": -3.11,
+      "why": [
+        "Availability flagged: Has joined Birmingham on loan for the rest of the season",
+        "Underlying output: 0.15 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 22,
+      "web_name": "Nwaneri",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 54,
+      "prev_ev": 2.95,
+      "current_ev": 0.0,
+      "ev_delta": -2.95,
+      "why": [
+        "Availability flagged: Has joined Borussia Dortmund on loan for the rest of the season",
+        "Underlying output: 0.30 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 215,
+      "web_name": "Devenny",
+      "team_short": "CRY",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 2.28,
+      "current_ev": 0.0,
+      "ev_delta": -2.28,
+      "why": [
+        "Availability flagged: Has joined Stoke City permanently",
+        "Underlying output: 0.21 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 118,
+      "web_name": "Igor",
+      "team_short": "BHA",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 2.22,
+      "current_ev": 0.0,
+      "ev_delta": -2.22,
+      "why": [
+        "Availability flagged: Has joined Burnley permanently",
+        "26% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 341,
+      "web_name": "Gnonto",
+      "team_short": "LEE",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 2.2,
+      "current_ev": 0.0,
+      "ev_delta": -2.2,
+      "why": [
+        "Availability flagged: Has joined ACF Fiorentina on loan for the rest of the season",
+        "Underlying output: 0.24 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 23,
+      "web_name": "F\u00e1bio Vieira",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 0.96,
+      "current_ev": 0.0,
+      "ev_delta": -0.96,
+      "why": [
+        "Availability flagged: Has joined Hamburger SV permanently",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ]
+    },
+    {
+      "id": 624,
+      "web_name": "Cozier-Duberry",
+      "team_short": "BHA",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 0.96,
+      "current_ev": 0.0,
+      "ev_delta": -0.96,
+      "why": [
+        "Availability flagged: Has joined Middlesbrough on loan for the rest of the season",
+        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
+      ]
+    }
+  ]
 }
