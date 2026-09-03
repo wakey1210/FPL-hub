@@ -1,78 +1,21 @@
 {
-  "generated_at": "2026-09-03T15:59:20.920245+00:00",
+  "generated_at": "2026-09-03T19:30:26.157271+00:00",
   "has_previous": true,
   "risers": [
     {
-      "id": 340,
-      "web_name": "Gelhardt",
-      "team_short": "HUL",
+      "id": 488,
+      "web_name": "I.Sangar\u00e9",
+      "team_short": "NFO",
       "position": "MID",
-      "now_cost": 50,
+      "now_cost": 49,
       "prev_ev": 0.0,
-      "current_ev": 0.96,
-      "ev_delta": 0.96,
+      "current_ev": 9.92,
+      "ev_delta": 9.92,
       "why": [
-        "Availability flagged: 100% chance of playing (~75 min when playing)",
-        "Average run of fixtures (avg FDR 3.2 over next 6 GWs)"
-      ]
-    },
-    {
-      "id": 382,
-      "web_name": "Danns",
-      "team_short": "LIV",
-      "position": "FWD",
-      "now_cost": 45,
-      "prev_ev": 0.0,
-      "current_ev": 0.96,
-      "ev_delta": 0.96,
-      "why": [
-        "Availability flagged: 100% chance of playing (~75 min when playing)",
-        "Average run of fixtures (avg FDR 2.7 over next 6 GWs)"
+        "Availability flagged: 100% chance of playing (~82 min when playing)",
+        "Underlying output: 0.10 combined xG+xA per 90 minutes"
       ]
     }
   ],
-  "fallers": [
-    {
-      "id": 329,
-      "web_name": "Rodon",
-      "team_short": "LEE",
-      "position": "DEF",
-      "now_cost": 45,
-      "prev_ev": 7.81,
-      "current_ev": 0.0,
-      "ev_delta": -7.81,
-      "why": [
-        "Availability flagged: Hamstring injury - Expected back 21 Nov",
-        "20% average clean-sheet chance over the next 6 GWs"
-      ]
-    },
-    {
-      "id": 543,
-      "web_name": "Diarra",
-      "team_short": "SUN",
-      "position": "MID",
-      "now_cost": 55,
-      "prev_ev": 5.32,
-      "current_ev": 0.0,
-      "ev_delta": -5.32,
-      "why": [
-        "Availability flagged: Hamstring injury - Unknown return date",
-        "Underlying output: 0.36 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 407,
-      "web_name": "Echeverri",
-      "team_short": "MCI",
-      "position": "MID",
-      "now_cost": 49,
-      "prev_ev": 0.96,
-      "current_ev": 0.0,
-      "ev_delta": -0.96,
-      "why": [
-        "Availability flagged: Has joined Benfica on loan for the rest of the season",
-        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
-      ]
-    }
-  ]
+  "fallers": []
 }
