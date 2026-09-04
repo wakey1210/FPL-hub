@@ -4,10 +4,10 @@
   "manager_name": "Chris Wake",
   "team_name": "Wake XI",
   "has_squad": true,
-  "picks_event": 2,
+  "picks_event": 3,
   "picks": [
     {
-      "element": 1,
+      "element": 250,
       "position": 1,
       "multiplier": 1,
       "is_captain": false,
@@ -15,7 +15,7 @@
       "element_type": 1
     },
     {
-      "element": 4,
+      "element": 449,
       "position": 2,
       "multiplier": 1,
       "is_captain": false,
@@ -23,7 +23,7 @@
       "element_type": 2
     },
     {
-      "element": 418,
+      "element": 115,
       "position": 3,
       "multiplier": 1,
       "is_captain": false,
@@ -39,7 +39,7 @@
       "element_type": 2
     },
     {
-      "element": 397,
+      "element": 368,
       "position": 5,
       "multiplier": 1,
       "is_captain": false,
@@ -47,31 +47,31 @@
       "element_type": 3
     },
     {
-      "element": 426,
+      "element": 154,
       "position": 6,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 3
+    },
+    {
+      "element": 427,
+      "position": 7,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 3
+    },
+    {
+      "element": 399,
+      "position": 8,
       "multiplier": 1,
       "is_captain": false,
       "is_vice_captain": true,
       "element_type": 3
     },
     {
-      "element": 427,
-      "position": 7,
-      "multiplier": 2,
-      "is_captain": true,
-      "is_vice_captain": false,
-      "element_type": 3
-    },
-    {
-      "element": 368,
-      "position": 8,
-      "multiplier": 1,
-      "is_captain": false,
-      "is_vice_captain": false,
-      "element_type": 3
-    },
-    {
-      "element": 237,
+      "element": 124,
       "position": 9,
       "multiplier": 1,
       "is_captain": false,
@@ -79,15 +79,15 @@
       "element_type": 3
     },
     {
-      "element": 165,
+      "element": 411,
       "position": 10,
-      "multiplier": 1,
-      "is_captain": false,
+      "multiplier": 2,
+      "is_captain": true,
       "is_vice_captain": false,
       "element_type": 4
     },
     {
-      "element": 346,
+      "element": 464,
       "position": 11,
       "multiplier": 1,
       "is_captain": false,
@@ -95,7 +95,7 @@
       "element_type": 4
     },
     {
-      "element": 496,
+      "element": 109,
       "position": 12,
       "multiplier": 0,
       "is_captain": false,
@@ -103,7 +103,7 @@
       "element_type": 1
     },
     {
-      "element": 527,
+      "element": 165,
       "position": 13,
       "multiplier": 0,
       "is_captain": false,
@@ -111,7 +111,7 @@
       "element_type": 4
     },
     {
-      "element": 229,
+      "element": 31,
       "position": 14,
       "multiplier": 0,
       "is_captain": false,
@@ -128,22 +128,262 @@
     }
   ],
   "summary": {
-    "overall_points": 173,
-    "overall_rank": 370271,
-    "gameweek_points": 104,
-    "bank": 0,
-    "team_value": 1002,
-    "free_transfers_estimate": 2
+    "overall_points": 174,
+    "overall_rank": 499337,
+    "gameweek_points": 1,
+    "bank": 7,
+    "team_value": 1007,
+    "free_transfers_estimate": 1
   },
   "chips_used": [
     {
       "name": "bboost",
       "time": "2026-08-21T14:51:48.893202Z",
       "event": 1
+    },
+    {
+      "name": "wildcard",
+      "time": "2026-08-30T11:53:18.355338Z",
+      "event": 3
     }
   ],
-  "transfers_made_this_season": 0,
-  "transfers": [],
+  "transfers_made_this_season": 26,
+  "transfers": [
+    {
+      "element_in": 250,
+      "element_in_cost": 45,
+      "element_out": 111,
+      "element_out_cost": 40,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-09-01T19:50:54.914198Z"
+    },
+    {
+      "element_in": 8,
+      "element_in_cost": 56,
+      "element_out": 88,
+      "element_out_cost": 46,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-09-01T19:50:54.913991Z"
+    },
+    {
+      "element_in": 109,
+      "element_in_cost": 45,
+      "element_out": 1,
+      "element_out_cost": 60,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-09-01T19:50:54.913736Z"
+    },
+    {
+      "element_in": 31,
+      "element_in_cost": 44,
+      "element_out": 391,
+      "element_out_cost": 56,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-09-01T09:05:50.172416Z"
+    },
+    {
+      "element_in": 111,
+      "element_in_cost": 40,
+      "element_out": 250,
+      "element_out_cost": 45,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-09-01T09:05:50.172039Z"
+    },
+    {
+      "element_in": 1,
+      "element_in_cost": 60,
+      "element_out": 57,
+      "element_out_cost": 45,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-09-01T09:05:50.171773Z"
+    },
+    {
+      "element_in": 411,
+      "element_in_cost": 155,
+      "element_out": 379,
+      "element_out_cost": 90,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-09-01T09:05:50.171510Z"
+    },
+    {
+      "element_in": 449,
+      "element_in_cost": 50,
+      "element_out": 229,
+      "element_out_cost": 60,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-09-01T09:05:50.171291Z"
+    },
+    {
+      "element_in": 368,
+      "element_in_cost": 70,
+      "element_out": 426,
+      "element_out_cost": 120,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-09-01T09:05:50.170997Z"
+    },
+    {
+      "element_in": 427,
+      "element_in_cost": 80,
+      "element_out": 290,
+      "element_out_cost": 45,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-31T06:33:35.479396Z"
+    },
+    {
+      "element_in": 57,
+      "element_in_cost": 45,
+      "element_out": 1,
+      "element_out_cost": 60,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-31T06:33:35.479224Z"
+    },
+    {
+      "element_in": 88,
+      "element_in_cost": 46,
+      "element_out": 449,
+      "element_out_cost": 50,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-31T06:33:35.479056Z"
+    },
+    {
+      "element_in": 391,
+      "element_in_cost": 56,
+      "element_out": 4,
+      "element_out_cost": 80,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-31T06:33:35.478896Z"
+    },
+    {
+      "element_in": 426,
+      "element_in_cost": 120,
+      "element_out": 565,
+      "element_out_cost": 56,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-31T06:33:35.478728Z"
+    },
+    {
+      "element_in": 379,
+      "element_in_cost": 90,
+      "element_out": 411,
+      "element_out_cost": 155,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-31T06:33:35.478507Z"
+    },
+    {
+      "element_in": 464,
+      "element_in_cost": 60,
+      "element_out": 249,
+      "element_out_cost": 55,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T14:58:33.874517Z"
+    },
+    {
+      "element_in": 124,
+      "element_in_cost": 55,
+      "element_out": 237,
+      "element_out_cost": 60,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T14:58:33.874261Z"
+    },
+    {
+      "element_in": 249,
+      "element_in_cost": 55,
+      "element_out": 346,
+      "element_out_cost": 60,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T11:59:11.167380Z"
+    },
+    {
+      "element_in": 290,
+      "element_in_cost": 45,
+      "element_out": 427,
+      "element_out_cost": 80,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T11:59:11.167025Z"
+    },
+    {
+      "element_in": 449,
+      "element_in_cost": 50,
+      "element_out": 8,
+      "element_out_cost": 55,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T11:59:11.166808Z"
+    },
+    {
+      "element_in": 411,
+      "element_in_cost": 155,
+      "element_out": 527,
+      "element_out_cost": 60,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T11:59:11.166599Z"
+    },
+    {
+      "element_in": 565,
+      "element_in_cost": 56,
+      "element_out": 397,
+      "element_out_cost": 85,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T11:59:11.166379Z"
+    },
+    {
+      "element_in": 154,
+      "element_in_cost": 96,
+      "element_out": 426,
+      "element_out_cost": 120,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T11:59:11.166158Z"
+    },
+    {
+      "element_in": 399,
+      "element_in_cost": 76,
+      "element_out": 368,
+      "element_out_cost": 70,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T11:59:11.165950Z"
+    },
+    {
+      "element_in": 115,
+      "element_in_cost": 46,
+      "element_out": 418,
+      "element_out_cost": 50,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T11:59:11.165728Z"
+    },
+    {
+      "element_in": 250,
+      "element_in_cost": 45,
+      "element_out": 496,
+      "element_out_cost": 45,
+      "entry": 4809304,
+      "event": 3,
+      "time": "2026-08-30T11:59:11.165445Z"
+    }
+  ],
   "gw_history": [
     {
       "event": 1,
@@ -174,6 +414,21 @@
       "event_transfers": 0,
       "event_transfers_cost": 0,
       "points_on_bench": 13
+    },
+    {
+      "event": 3,
+      "points": 0,
+      "total_points": 173,
+      "rank": null,
+      "rank_sort": null,
+      "overall_rank": 370271,
+      "percentile_rank": null,
+      "overall_rank_percentage": null,
+      "bank": 7,
+      "value": 1007,
+      "event_transfers": 0,
+      "event_transfers_cost": 0,
+      "points_on_bench": 0
     }
   ],
   "recent_seasons": [
