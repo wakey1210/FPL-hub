@@ -1,147 +1,21 @@
 {
-  "generated_at": "2026-09-04T14:09:50.087885+00:00",
+  "generated_at": "2026-09-04T15:56:33.208624+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": [
+  "risers": [
     {
-      "id": 97,
-      "web_name": "Jensen",
-      "team_short": "BRE",
-      "position": "MID",
-      "now_cost": 55,
-      "prev_ev": 13.3,
-      "current_ev": 0.0,
-      "ev_delta": -13.3,
-      "why": [
-        "Availability flagged: Unspecified injury - Expected back 18 Sep",
-        "Underlying output: 0.35 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 18,
-      "web_name": "Martinelli",
-      "team_short": "ARS",
-      "position": "MID",
-      "now_cost": 63,
-      "prev_ev": 7.34,
-      "current_ev": 0.0,
-      "ev_delta": -7.34,
-      "why": [
-        "Availability flagged: Has joined Al Hilal permanently",
-        "Underlying output: 0.47 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 527,
-      "web_name": "Richarlison",
-      "team_short": "TOT",
-      "position": "FWD",
-      "now_cost": 59,
-      "prev_ev": 7.19,
-      "current_ev": 0.0,
-      "ev_delta": -7.19,
-      "why": [
-        "Availability flagged: not included in squad.",
-        "Underlying output: 0.44 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 523,
-      "web_name": "Moore",
-      "team_short": "TOT",
-      "position": "MID",
-      "now_cost": 50,
-      "prev_ev": 5.06,
-      "current_ev": 0.0,
-      "ev_delta": -5.06,
-      "why": [
-        "Availability flagged: Has joined FC K\u00f6ln on loan for the rest of the season",
-        "Underlying output: 0.09 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 44,
-      "web_name": "Bailey",
-      "team_short": "AVL",
-      "position": "MID",
-      "now_cost": 54,
-      "prev_ev": 3.25,
-      "current_ev": 0.0,
-      "ev_delta": -3.25,
-      "why": [
-        "Availability flagged: Has joined Olympiakos permanently",
-        "Underlying output: 0.45 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 11,
-      "web_name": "Mosquera",
+      "id": 5,
+      "web_name": "J.Timber",
       "team_short": "ARS",
       "position": "DEF",
-      "now_cost": 55,
-      "prev_ev": 14.94,
-      "current_ev": 12.17,
-      "ev_delta": -2.77,
+      "now_cost": 65,
+      "prev_ev": 0.0,
+      "current_ev": 5.19,
+      "ev_delta": 5.19,
       "why": [
-        "Availability flagged: Unspecified injury - 75% chance of playing (~95 min when playing)",
+        "Availability flagged: Groin injury - 25% chance of playing (~88 min when playing)",
         "34% average clean-sheet chance over the next 6 GWs"
       ]
-    },
-    {
-      "id": 307,
-      "web_name": "Johnson",
-      "team_short": "IPS",
-      "position": "DEF",
-      "now_cost": 40,
-      "prev_ev": 1.56,
-      "current_ev": 0.0,
-      "ev_delta": -1.56,
-      "why": [
-        "Availability flagged: Has joined Stoke City on loan for the rest of the season",
-        "20% average clean-sheet chance over the next 6 GWs"
-      ]
-    },
-    {
-      "id": 607,
-      "web_name": "Lynch",
-      "team_short": "AVL",
-      "position": "MID",
-      "now_cost": 45,
-      "prev_ev": 0.96,
-      "current_ev": 0.0,
-      "ev_delta": -0.96,
-      "why": [
-        "Availability flagged: Has joined Oxford United on loan until January",
-        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
-      ]
-    },
-    {
-      "id": 103,
-      "web_name": "Dasilva",
-      "team_short": "BRE",
-      "position": "MID",
-      "now_cost": 50,
-      "prev_ev": 0.96,
-      "current_ev": 0.0,
-      "ev_delta": -0.96,
-      "why": [
-        "Availability flagged: Hamstring injury - Expected back 10 Oct",
-        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
-      ]
-    },
-    {
-      "id": 652,
-      "web_name": "Azeez",
-      "team_short": "BHA",
-      "position": "MID",
-      "now_cost": 55,
-      "prev_ev": 0.96,
-      "current_ev": 0.0,
-      "ev_delta": -0.96,
-      "why": [
-        "Availability flagged: Unspecified injury - Expected back 13 Sep",
-        "Average run of fixtures (avg FDR 2.8 over next 6 GWs)"
-      ]
     }
-  ]
+  ],
+  "fallers": []
 }
