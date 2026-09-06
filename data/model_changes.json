@@ -1,6 +1,134 @@
 {
-  "generated_at": "2026-09-06T20:52:38.510715+00:00",
+  "generated_at": "2026-09-06T22:45:45.163479+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 15,
+      "web_name": "\u00d8degaard",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 66,
+      "prev_ev": 26.47,
+      "current_ev": 26.58,
+      "ev_delta": 0.11,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~88 min when playing)",
+        "Underlying output: 0.54 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 165,
+      "web_name": "Jo\u00e3o Pedro",
+      "team_short": "CHE",
+      "position": "FWD",
+      "now_cost": 77,
+      "prev_ev": 28.42,
+      "current_ev": 28.5,
+      "ev_delta": 0.08,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~88 min when playing)",
+        "Underlying output: 0.61 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 142,
+      "web_name": "James",
+      "team_short": "CHE",
+      "position": "DEF",
+      "now_cost": 54,
+      "prev_ev": 12.89,
+      "current_ev": 12.94,
+      "ev_delta": 0.05,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~95 min when playing)",
+        "27% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 157,
+      "web_name": "Est\u00eav\u00e3o",
+      "team_short": "CHE",
+      "position": "MID",
+      "now_cost": 64,
+      "prev_ev": 7.1,
+      "current_ev": 7.12,
+      "ev_delta": 0.02,
+      "why": [
+        "Expected to start (a fringe player based on recent form) (~70 min when playing)",
+        "Capped upside: 0.53 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 8,
+      "web_name": "Calafiori",
+      "team_short": "ARS",
+      "position": "DEF",
+      "now_cost": 57,
+      "prev_ev": 21.57,
+      "current_ev": 21.45,
+      "ev_delta": -0.12,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~80 min when playing)",
+        "29% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 13,
+      "web_name": "Rice",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 74,
+      "prev_ev": 20.51,
+      "current_ev": 20.39,
+      "ev_delta": -0.12,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~87 min when playing)",
+        "Underlying output: 0.26 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 12,
+      "web_name": "Saka",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 95,
+      "prev_ev": 35.06,
+      "current_ev": 34.96,
+      "ev_delta": -0.1,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~87 min when playing)",
+        "Underlying output: 0.75 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 26,
+      "web_name": "Havertz",
+      "team_short": "ARS",
+      "position": "FWD",
+      "now_cost": 75,
+      "prev_ev": 21.47,
+      "current_ev": 21.39,
+      "ev_delta": -0.08,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~87 min when playing)",
+        "Underlying output: 0.43 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 557,
+      "web_name": "Tzolis",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 65,
+      "prev_ev": 11.76,
+      "current_ev": 11.74,
+      "ev_delta": -0.02,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~75 min when playing)",
+        "Underlying output: 0.07 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
