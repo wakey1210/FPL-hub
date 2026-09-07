@@ -1,6 +1,288 @@
 {
-  "generated_at": "2026-09-07T03:29:26.762753+00:00",
+  "generated_at": "2026-09-07T11:52:14.856609+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 640,
+      "web_name": "Flemming",
+      "team_short": "IPS",
+      "position": "FWD",
+      "now_cost": 55,
+      "prev_ev": 1.36,
+      "current_ev": 5.57,
+      "ev_delta": 4.21,
+      "why": [
+        "Expected to start (a fringe player based on recent form) (~84 min when playing)",
+        "Capped upside: 0.40 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    },
+    {
+      "id": 630,
+      "web_name": "Harwood-Bellis",
+      "team_short": "AVL",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 0.37,
+      "current_ev": 4.32,
+      "ev_delta": 3.95,
+      "why": [
+        "Expected to start (a fringe player based on multi-season history) (~88 min when playing)",
+        "27% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 15,
+      "web_name": "\u00d8degaard",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 66,
+      "prev_ev": 26.58,
+      "current_ev": 28.93,
+      "ev_delta": 2.35,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~88 min when playing)",
+        "Underlying output: 0.58 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 230,
+      "web_name": "Branthwaite",
+      "team_short": "EVE",
+      "position": "DEF",
+      "now_cost": 55,
+      "prev_ev": 15.51,
+      "current_ev": 17.83,
+      "ev_delta": 2.32,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~91 min when playing)",
+        "24% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 504,
+      "web_name": "Vuskovic",
+      "team_short": "BHA",
+      "position": "DEF",
+      "now_cost": 50,
+      "prev_ev": 12.33,
+      "current_ev": 14.0,
+      "ev_delta": 1.67,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~75 min when playing)",
+        "21% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 4,
+      "web_name": "Gabriel",
+      "team_short": "ARS",
+      "position": "DEF",
+      "now_cost": 80,
+      "prev_ev": 19.97,
+      "current_ev": 21.61,
+      "ev_delta": 1.64,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~89 min when playing)",
+        "29% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 68,
+      "web_name": "Tavernier",
+      "team_short": "BOU",
+      "position": "MID",
+      "now_cost": 60,
+      "prev_ev": 28.71,
+      "current_ev": 30.09,
+      "ev_delta": 1.38,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~90 min when playing)",
+        "Underlying output: 0.58 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 28,
+      "web_name": "Martinez",
+      "team_short": "CHE",
+      "position": "GKP",
+      "now_cost": 50,
+      "prev_ev": 17.49,
+      "current_ev": 18.87,
+      "ev_delta": 1.38,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~88 min when playing)",
+        "3.6 saves per 90 minutes"
+      ]
+    },
+    {
+      "id": 198,
+      "web_name": "Henderson",
+      "team_short": "CRY",
+      "position": "GKP",
+      "now_cost": 50,
+      "prev_ev": 19.86,
+      "current_ev": 21.24,
+      "ev_delta": 1.38,
+      "why": [
+        "Availability flagged: 100% chance of playing (~90 min when playing)",
+        "3.2 saves per 90 minutes"
+      ]
+    },
+    {
+      "id": 8,
+      "web_name": "Calafiori",
+      "team_short": "ARS",
+      "position": "DEF",
+      "now_cost": 57,
+      "prev_ev": 21.45,
+      "current_ev": 22.59,
+      "ev_delta": 1.14,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~80 min when playing)",
+        "29% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 635,
+      "web_name": "Larsson",
+      "team_short": "FUL",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 10.94,
+      "current_ev": 1.26,
+      "ev_delta": -9.68,
+      "why": [
+        "Expected to start (unproven / very little senior game time) (~75 min when playing)",
+        "Underlying output: 0.08 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 115,
+      "web_name": "De Cuyper",
+      "team_short": "BHA",
+      "position": "DEF",
+      "now_cost": 47,
+      "prev_ev": 28.65,
+      "current_ev": 25.64,
+      "ev_delta": -3.01,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~83 min when playing)",
+        "21% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 124,
+      "web_name": "Gro\u00df",
+      "team_short": "BHA",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 26.88,
+      "current_ev": 24.75,
+      "ev_delta": -2.13,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~91 min when playing)",
+        "Underlying output: 0.51 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 642,
+      "web_name": "Thomas",
+      "team_short": "HUL",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 2.61,
+      "current_ev": 1.01,
+      "ev_delta": -1.6,
+      "why": [
+        "Expected to start (unproven / very little senior game time) (~75 min when playing)",
+        "Underlying output: 0.01 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 57,
+      "web_name": "Petrovi\u0107",
+      "team_short": "BOU",
+      "position": "GKP",
+      "now_cost": 45,
+      "prev_ev": 19.17,
+      "current_ev": 17.79,
+      "ev_delta": -1.38,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~90 min when playing)",
+        "3.0 saves per 90 minutes"
+      ]
+    },
+    {
+      "id": 87,
+      "web_name": "Ajer",
+      "team_short": "BRE",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 17.7,
+      "current_ev": 16.32,
+      "ev_delta": -1.38,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~88 min when playing)",
+        "23% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 88,
+      "web_name": "Kayode",
+      "team_short": "BRE",
+      "position": "DEF",
+      "now_cost": 46,
+      "prev_ev": 20.21,
+      "current_ev": 18.83,
+      "ev_delta": -1.38,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~88 min when playing)",
+        "23% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 94,
+      "web_name": "Schade",
+      "team_short": "BRE",
+      "position": "MID",
+      "now_cost": 60,
+      "prev_ev": 26.3,
+      "current_ev": 24.92,
+      "ev_delta": -1.38,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~86 min when playing)",
+        "Underlying output: 0.41 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 226,
+      "web_name": "Pickford",
+      "team_short": "EVE",
+      "position": "GKP",
+      "now_cost": 55,
+      "prev_ev": 19.69,
+      "current_ev": 18.31,
+      "ev_delta": -1.38,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~90 min when playing)",
+        "2.9 saves per 90 minutes"
+      ]
+    },
+    {
+      "id": 390,
+      "web_name": "R\u00faben",
+      "team_short": "MCI",
+      "position": "DEF",
+      "now_cost": 55,
+      "prev_ev": 19.0,
+      "current_ev": 17.62,
+      "ev_delta": -1.38,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~90 min when playing)",
+        "25% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ]
 }
