@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T11:16:06.823347+00:00",
+  "generated_at": "2026-09-07T09:51:58.292851+00:00",
   "season": "2025",
   "players": {
     "411": {
@@ -91,12 +91,6 @@
       "matched_via": "name+team",
       "pens_share_of_xg": 0.445,
       "matches_used": 26
-    },
-    "155": {
-      "understat_id": "11356",
-      "matched_via": "name+team",
-      "pens_share_of_xg": 0.128,
-      "matches_used": 36
     },
     "208": {
       "understat_id": "5675",
@@ -210,12 +204,6 @@
       "understat_id": "7148",
       "matched_via": "name+team",
       "pens_share_of_xg": 0.0,
-      "matches_used": 32
-    },
-    "237": {
-      "understat_id": "9307",
-      "matched_via": "name+team",
-      "pens_share_of_xg": 0.248,
       "matches_used": 32
     },
     "368": {
@@ -493,6 +481,12 @@
       "matched_via": "name+team",
       "pens_share_of_xg": 0.0,
       "matches_used": 27
+    },
+    "238": {
+      "understat_id": "675",
+      "matched_via": "name+team",
+      "pens_share_of_xg": 0.0,
+      "matches_used": 20
     },
     "56": {
       "understat_id": "702",
@@ -1172,23 +1166,11 @@
       "pens_share_of_xg": 0.0,
       "matches_used": 13
     },
-    "501": {
-      "understat_id": "5261",
-      "matched_via": "name+team",
-      "pens_share_of_xg": 0.0,
-      "matches_used": 24
-    },
     "442": {
       "understat_id": "5552",
       "matched_via": "name+team",
       "pens_share_of_xg": 0.0,
       "matches_used": 27
-    },
-    "147": {
-      "understat_id": "5590",
-      "matched_via": "name+team",
-      "pens_share_of_xg": 0.0,
-      "matches_used": 16
     },
     "343": {
       "understat_id": "5595",
@@ -1387,12 +1369,6 @@
       "matched_via": "name+team",
       "pens_share_of_xg": 0.0,
       "matches_used": 32
-    },
-    "240": {
-      "understat_id": "9554",
-      "matched_via": "name+team",
-      "pens_share_of_xg": 0.0,
-      "matches_used": 29
     },
     "29": {
       "understat_id": "9614",
@@ -1789,6 +1765,11 @@
       "team": "Manchester United"
     },
     {
+      "understat_id": "11356",
+      "player_name": "Enzo Fern\u00e1ndez",
+      "team": "Chelsea"
+    },
+    {
       "understat_id": "12412",
       "player_name": "Morgan Rogers",
       "team": "Aston Villa"
@@ -1847,6 +1828,11 @@
       "understat_id": "8150",
       "player_name": "Anthony Gordon",
       "team": "Newcastle United"
+    },
+    {
+      "understat_id": "9307",
+      "player_name": "Iliman Ndiaye",
+      "team": "Everton"
     },
     {
       "understat_id": "10948",
@@ -2001,11 +1987,6 @@
     {
       "understat_id": "668",
       "player_name": "Idrissa Gueye",
-      "team": "Everton"
-    },
-    {
-      "understat_id": "675",
-      "player_name": "Jack Grealish",
       "team": "Everton"
     },
     {
@@ -2379,6 +2360,11 @@
       "team": "Arsenal"
     },
     {
+      "understat_id": "5261",
+      "player_name": "Kevin Danso",
+      "team": "Tottenham"
+    },
+    {
       "understat_id": "5355",
       "player_name": "Jacob Bruun Larsen",
       "team": "Burnley"
@@ -2392,6 +2378,11 @@
       "understat_id": "5584",
       "player_name": "Aaron Wan-Bissaka",
       "team": "West Ham"
+    },
+    {
+      "understat_id": "5590",
+      "player_name": "Tosin Adarabioyo",
+      "team": "Chelsea"
     },
     {
       "understat_id": "5598",
@@ -2567,6 +2558,11 @@
       "understat_id": "9487",
       "player_name": "Maxime Est\u00e8ve",
       "team": "Burnley"
+    },
+    {
+      "understat_id": "9554",
+      "player_name": "Tim Iroegbunam",
+      "team": "Everton"
     },
     {
       "understat_id": "9676",
