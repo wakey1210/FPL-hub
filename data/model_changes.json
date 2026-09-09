@@ -1,34 +1,62 @@
 {
-  "generated_at": "2026-09-09T10:55:27.936160+00:00",
+  "generated_at": "2026-09-09T16:07:13.644317+00:00",
   "has_previous": true,
   "risers": [],
   "fallers": [
     {
-      "id": 618,
-      "web_name": "Goretzka",
-      "team_short": "AVL",
+      "id": 563,
+      "web_name": "Morita",
+      "team_short": "HUL",
       "position": "MID",
-      "now_cost": 60,
-      "prev_ev": 0.96,
+      "now_cost": 50,
+      "prev_ev": 3.57,
       "current_ev": 0.0,
-      "ev_delta": -0.96,
+      "ev_delta": -3.57,
       "why": [
-        "Availability flagged: Knee injury - Expected back 10 Oct",
-        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+        "Availability flagged: Calf injury - Expected back 11 Oct",
+        "Also contributes defensively: 0.0 tackles + 4.0 blocks/clearances/interceptions + 2.0 recoveries per 90"
       ]
     },
     {
-      "id": 632,
-      "web_name": "Ansah",
-      "team_short": "HUL",
-      "position": "FWD",
-      "now_cost": 50,
-      "prev_ev": 0.96,
-      "current_ev": 0.0,
-      "ev_delta": -0.96,
+      "id": 32,
+      "web_name": "Cash",
+      "team_short": "AVL",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 16.41,
+      "current_ev": 13.37,
+      "ev_delta": -3.04,
       "why": [
-        "Availability flagged: Back injury - Unknown return date",
-        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+        "Availability flagged: Muscular injury - 75% chance of playing (~89 min when playing)",
+        "26% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 593,
+      "web_name": "Dedi\u0107",
+      "team_short": "NEW",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 14.3,
+      "current_ev": 11.65,
+      "ev_delta": -2.65,
+      "why": [
+        "Availability flagged: Hamstring injury - 75% chance of playing (~75 min when playing)",
+        "31% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 547,
+      "web_name": "Mundle",
+      "team_short": "SUN",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 1.15,
+      "current_ev": 0.0,
+      "ev_delta": -1.15,
+      "why": [
+        "Availability flagged: Knee injury - Unknown return date",
+        "Underlying output: 0.04 combined xG+xA per 90 minutes"
       ]
     }
   ]
