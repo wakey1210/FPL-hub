@@ -1,6 +1,35 @@
 {
-  "generated_at": "2026-09-09T03:39:32.136226+00:00",
+  "generated_at": "2026-09-09T10:55:27.936160+00:00",
   "has_previous": true,
   "risers": [],
-  "fallers": []
+  "fallers": [
+    {
+      "id": 618,
+      "web_name": "Goretzka",
+      "team_short": "AVL",
+      "position": "MID",
+      "now_cost": 60,
+      "prev_ev": 0.96,
+      "current_ev": 0.0,
+      "ev_delta": -0.96,
+      "why": [
+        "Availability flagged: Knee injury - Expected back 10 Oct",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ]
+    },
+    {
+      "id": 632,
+      "web_name": "Ansah",
+      "team_short": "HUL",
+      "position": "FWD",
+      "now_cost": 50,
+      "prev_ev": 0.96,
+      "current_ev": 0.0,
+      "ev_delta": -0.96,
+      "why": [
+        "Availability flagged: Back injury - Unknown return date",
+        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
+      ]
+    }
+  ]
 }
