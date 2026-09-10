@@ -1,35 +1,133 @@
 {
-  "generated_at": "2026-09-10T10:52:00.791194+00:00",
+  "generated_at": "2026-09-10T16:00:28.554676+00:00",
   "has_previous": true,
   "risers": [
     {
-      "id": 652,
-      "web_name": "Azeez",
-      "team_short": "BHA",
+      "id": 551,
+      "web_name": "N.Angulo",
+      "team_short": "SUN",
       "position": "MID",
-      "now_cost": 55,
-      "prev_ev": 0.0,
-      "current_ev": 0.96,
-      "ev_delta": 0.96,
+      "now_cost": 50,
+      "prev_ev": 10.42,
+      "current_ev": 10.77,
+      "ev_delta": 0.35,
       "why": [
-        "Availability flagged: Hamstring injury - 50% chance of playing (~75 min when playing)",
-        "Average run of fixtures (avg FDR 3.3 over next 6 GWs)"
+        "Expected to start (a rotation risk based on recent form) (~75 min when playing)",
+        "Underlying output: 0.06 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 166,
+      "web_name": "N.Jackson",
+      "team_short": "AVL",
+      "position": "FWD",
+      "now_cost": 65,
+      "prev_ev": 15.71,
+      "current_ev": 16.01,
+      "ev_delta": 0.3,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~83 min when playing)",
+        "Underlying output: 0.55 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 267,
+      "web_name": "Luki\u0107",
+      "team_short": "IPS",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 15.54,
+      "current_ev": 15.84,
+      "ev_delta": 0.3,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~85 min when playing)",
+        "Underlying output: 0.13 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 290,
+      "web_name": "Slater",
+      "team_short": "HUL",
+      "position": "MID",
+      "now_cost": 45,
+      "prev_ev": 12.25,
+      "current_ev": 12.54,
+      "ev_delta": 0.29,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~75 min when playing)",
+        "Underlying output: 0.08 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 157,
+      "web_name": "Est\u00eav\u00e3o",
+      "team_short": "CHE",
+      "position": "MID",
+      "now_cost": 64,
+      "prev_ev": 7.22,
+      "current_ev": 7.43,
+      "ev_delta": 0.21,
+      "why": [
+        "Expected to start (a fringe player based on recent form) (~70 min when playing)",
+        "Capped upside: 0.55 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
       ]
     }
   ],
   "fallers": [
     {
-      "id": 219,
-      "web_name": "J.Rak-Sakyi",
-      "team_short": "CRY",
+      "id": 135,
+      "web_name": "Yohanna",
+      "team_short": "BHA",
       "position": "MID",
       "now_cost": 49,
-      "prev_ev": 0.96,
+      "prev_ev": 0.97,
       "current_ev": 0.0,
-      "ev_delta": -0.96,
+      "ev_delta": -0.97,
       "why": [
-        "Availability flagged: has joined  Kasimpasa on loan for the rest of the seaon.",
-        "Average run of fixtures (avg FDR 2.7 over next 6 GWs)"
+        "Availability flagged: Unspecified injury - Expected back 10 Oct",
+        "Underlying output: 0.01 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 544,
+      "web_name": "Xhaka",
+      "team_short": "SUN",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 19.17,
+      "current_ev": 18.69,
+      "ev_delta": -0.48,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~89 min when playing)",
+        "Underlying output: 0.17 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 282,
+      "web_name": "Giles",
+      "team_short": "HUL",
+      "position": "DEF",
+      "now_cost": 40,
+      "prev_ev": 11.84,
+      "current_ev": 11.53,
+      "ev_delta": -0.31,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~95 min when playing)",
+        "21% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 309,
+      "web_name": "N\u00fa\u00f1ez",
+      "team_short": "IPS",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 5.08,
+      "current_ev": 4.97,
+      "ev_delta": -0.11,
+      "why": [
+        "Expected to start (a fringe player based on recent form) (~75 min when playing)",
+        "Underlying output: 0.03 combined xG+xA per 90 minutes"
       ]
     }
   ]
