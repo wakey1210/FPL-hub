@@ -1,6 +1,36 @@
 {
-  "generated_at": "2026-09-10T03:37:17.853971+00:00",
+  "generated_at": "2026-09-10T10:52:00.791194+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 652,
+      "web_name": "Azeez",
+      "team_short": "BHA",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 0.0,
+      "current_ev": 0.96,
+      "ev_delta": 0.96,
+      "why": [
+        "Availability flagged: Hamstring injury - 50% chance of playing (~75 min when playing)",
+        "Average run of fixtures (avg FDR 3.3 over next 6 GWs)"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 219,
+      "web_name": "J.Rak-Sakyi",
+      "team_short": "CRY",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 0.96,
+      "current_ev": 0.0,
+      "ev_delta": -0.96,
+      "why": [
+        "Availability flagged: has joined  Kasimpasa on loan for the rest of the seaon.",
+        "Average run of fixtures (avg FDR 2.7 over next 6 GWs)"
+      ]
+    }
+  ]
 }
