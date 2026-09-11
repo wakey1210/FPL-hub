@@ -1,77 +1,20 @@
 {
-  "generated_at": "2026-09-11T16:04:04.915140+00:00",
+  "generated_at": "2026-09-11T17:47:24.933997+00:00",
   "has_previous": true,
-  "risers": [
-    {
-      "id": 53,
-      "web_name": "Manzambi",
-      "team_short": "AVL",
-      "position": "MID",
-      "now_cost": 59,
-      "prev_ev": 0.0,
-      "current_ev": 0.96,
-      "ev_delta": 0.96,
-      "why": [
-        "Availability flagged: Knee injury - 50% chance of playing (~75 min when playing)",
-        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
-      ]
-    }
-  ],
+  "risers": [],
   "fallers": [
     {
-      "id": 217,
-      "web_name": "M.Fran\u00e7a",
-      "team_short": "CRY",
-      "position": "MID",
-      "now_cost": 49,
-      "prev_ev": 0.96,
-      "current_ev": 0.0,
-      "ev_delta": -0.96,
-      "why": [
-        "Availability flagged: Has joined Alverca on loan for the rest of the season",
-        "Average run of fixtures (avg FDR 2.7 over next 6 GWs)"
-      ]
-    },
-    {
-      "id": 296,
-      "web_name": "Akintola",
-      "team_short": "HUL",
-      "position": "MID",
-      "now_cost": 50,
-      "prev_ev": 0.96,
-      "current_ev": 0.0,
-      "ev_delta": -0.96,
-      "why": [
-        "Availability flagged: Has joined Omonoia FC permanently",
-        "Average run of fixtures (avg FDR 3.0 over next 6 GWs)"
-      ]
-    },
-    {
-      "id": 609,
-      "web_name": "Shahar",
-      "team_short": "NEW",
+      "id": 152,
+      "web_name": "Palestra",
+      "team_short": "CHE",
       "position": "DEF",
-      "now_cost": 40,
-      "prev_ev": 0.44,
+      "now_cost": 54,
+      "prev_ev": 0.38,
       "current_ev": 0.0,
-      "ev_delta": -0.44,
+      "ev_delta": -0.38,
       "why": [
-        "Availability flagged: has joined Arouca on loan for the rest of the seaon.",
-        "31% average clean-sheet chance over the next 6 GWs"
-      ]
-    },
-    {
-      "id": 610,
-      "web_name": "De Fougerolles",
-      "team_short": "FUL",
-      "position": "DEF",
-      "now_cost": 40,
-      "prev_ev": 0.33,
-      "current_ev": 0.0,
-      "ev_delta": -0.33,
-      "why": [
-        "Availability flagged: has joined  Real Salt Lake on loan for the rest of the seaon.",
-        "27% average clean-sheet chance over the next 6 GWs"
+        "Availability flagged: Unspecified injury - Expected back 18 Sep",
+        "28% average clean-sheet chance over the next 6 GWs"
       ]
     }
   ]
