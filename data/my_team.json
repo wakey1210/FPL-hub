@@ -4,10 +4,10 @@
   "manager_name": "Chris Wake",
   "team_name": "Wake XI",
   "has_squad": true,
-  "picks_event": 3,
+  "picks_event": 4,
   "picks": [
     {
-      "element": 250,
+      "element": 109,
       "position": 1,
       "multiplier": 1,
       "is_captain": false,
@@ -15,7 +15,7 @@
       "element_type": 1
     },
     {
-      "element": 449,
+      "element": 115,
       "position": 2,
       "multiplier": 1,
       "is_captain": false,
@@ -23,7 +23,7 @@
       "element_type": 2
     },
     {
-      "element": 115,
+      "element": 8,
       "position": 3,
       "multiplier": 1,
       "is_captain": false,
@@ -31,7 +31,7 @@
       "element_type": 2
     },
     {
-      "element": 8,
+      "element": 204,
       "position": 4,
       "multiplier": 1,
       "is_captain": false,
@@ -39,15 +39,15 @@
       "element_type": 2
     },
     {
-      "element": 368,
+      "element": 31,
       "position": 5,
       "multiplier": 1,
       "is_captain": false,
       "is_vice_captain": false,
-      "element_type": 3
+      "element_type": 2
     },
     {
-      "element": 154,
+      "element": 368,
       "position": 6,
       "multiplier": 1,
       "is_captain": false,
@@ -55,10 +55,10 @@
       "element_type": 3
     },
     {
-      "element": 427,
+      "element": 154,
       "position": 7,
-      "multiplier": 1,
-      "is_captain": false,
+      "multiplier": 2,
+      "is_captain": true,
       "is_vice_captain": false,
       "element_type": 3
     },
@@ -67,7 +67,7 @@
       "position": 8,
       "multiplier": 1,
       "is_captain": false,
-      "is_vice_captain": true,
+      "is_vice_captain": false,
       "element_type": 3
     },
     {
@@ -81,13 +81,13 @@
     {
       "element": 411,
       "position": 10,
-      "multiplier": 2,
-      "is_captain": true,
-      "is_vice_captain": false,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true,
       "element_type": 4
     },
     {
-      "element": 464,
+      "element": 165,
       "position": 11,
       "multiplier": 1,
       "is_captain": false,
@@ -95,7 +95,7 @@
       "element_type": 4
     },
     {
-      "element": 109,
+      "element": 250,
       "position": 12,
       "multiplier": 0,
       "is_captain": false,
@@ -103,23 +103,23 @@
       "element_type": 1
     },
     {
-      "element": 165,
+      "element": 427,
       "position": 13,
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 3
+    },
+    {
+      "element": 464,
+      "position": 14,
       "multiplier": 0,
       "is_captain": false,
       "is_vice_captain": false,
       "element_type": 4
     },
     {
-      "element": 31,
-      "position": 14,
-      "multiplier": 0,
-      "is_captain": false,
-      "is_vice_captain": false,
-      "element_type": 2
-    },
-    {
-      "element": 539,
+      "element": 449,
       "position": 15,
       "multiplier": 0,
       "is_captain": false,
@@ -129,10 +129,10 @@
   ],
   "summary": {
     "overall_points": 219,
-    "overall_rank": 689559,
-    "gameweek_points": 46,
-    "bank": 7,
-    "team_value": 1007,
+    "overall_rank": 679312,
+    "gameweek_points": 0,
+    "bank": 2,
+    "team_value": 1014,
     "free_transfers_estimate": 1
   },
   "chips_used": [
@@ -147,8 +147,17 @@
       "event": 3
     }
   ],
-  "transfers_made_this_season": 26,
+  "transfers_made_this_season": 27,
   "transfers": [
+    {
+      "element_in": 204,
+      "element_in_cost": 45,
+      "element_out": 539,
+      "element_out_cost": 40,
+      "entry": 4809304,
+      "event": 4,
+      "time": "2026-09-09T16:18:50.394698Z"
+    },
     {
       "element_in": 250,
       "element_in_cost": 45,
@@ -429,6 +438,21 @@
       "event_transfers": 0,
       "event_transfers_cost": 0,
       "points_on_bench": 8
+    },
+    {
+      "event": 4,
+      "points": 0,
+      "total_points": 219,
+      "rank": null,
+      "rank_sort": null,
+      "overall_rank": 689559,
+      "percentile_rank": null,
+      "overall_rank_percentage": null,
+      "bank": 2,
+      "value": 1014,
+      "event_transfers": 1,
+      "event_transfers_cost": 0,
+      "points_on_bench": 0
     }
   ],
   "recent_seasons": [
