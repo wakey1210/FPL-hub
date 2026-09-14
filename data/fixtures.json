@@ -4,12 +4,6 @@
     "team_name": "Coventry City",
     "fixtures": [
       {
-        "event": 4,
-        "opponent_short": "BHA",
-        "is_home": true,
-        "fdr": 2
-      },
-      {
         "event": 5,
         "opponent_short": "NFO",
         "is_home": false,
@@ -38,52 +32,58 @@
         "opponent_short": "SUN",
         "is_home": true,
         "fdr": 2
+      },
+      {
+        "event": 10,
+        "opponent_short": "EVE",
+        "is_home": false,
+        "fdr": 3
       }
     ],
-    "avg_fdr": 2.33,
+    "avg_fdr": 2.5,
     "double_events": [],
     "blank_events": [],
     "unscheduled_count": 0
   },
   {
-    "team_short": "CRY",
-    "team_name": "Crystal Palace",
+    "team_short": "FUL",
+    "team_name": "Fulham",
     "fixtures": [
       {
-        "event": 4,
+        "event": 5,
+        "opponent_short": "MUN",
+        "is_home": true,
+        "fdr": 4
+      },
+      {
+        "event": 6,
         "opponent_short": "IPS",
+        "is_home": false,
+        "fdr": 2
+      },
+      {
+        "event": 7,
+        "opponent_short": "HUL",
         "is_home": true,
         "fdr": 2
       },
       {
-        "event": 5,
-        "opponent_short": "LEE",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
-        "event": 6,
-        "opponent_short": "NFO",
-        "is_home": true,
-        "fdr": 3
-      },
-      {
-        "event": 7,
-        "opponent_short": "BHA",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
         "event": 8,
-        "opponent_short": "NEW",
-        "is_home": true,
+        "opponent_short": "COV",
+        "is_home": false,
         "fdr": 2
       },
       {
         "event": 9,
-        "opponent_short": "TOT",
+        "opponent_short": "AVL",
         "is_home": false,
-        "fdr": 3
+        "fdr": 4
+      },
+      {
+        "event": 10,
+        "opponent_short": "NEW",
+        "is_home": true,
+        "fdr": 2
       }
     ],
     "avg_fdr": 2.67,
@@ -95,12 +95,6 @@
     "team_short": "NEW",
     "team_name": "Newcastle",
     "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "LEE",
-        "is_home": false,
-        "fdr": 3
-      },
       {
         "event": 5,
         "opponent_short": "HUL",
@@ -130,6 +124,12 @@
         "opponent_short": "EVE",
         "is_home": true,
         "fdr": 3
+      },
+      {
+        "event": 10,
+        "opponent_short": "FUL",
+        "is_home": false,
+        "fdr": 3
       }
     ],
     "avg_fdr": 2.67,
@@ -141,12 +141,6 @@
     "team_short": "ARS",
     "team_name": "Arsenal",
     "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "SUN",
-        "is_home": false,
-        "fdr": 3
-      },
       {
         "event": 5,
         "opponent_short": "BHA",
@@ -176,143 +170,149 @@
         "opponent_short": "LIV",
         "is_home": false,
         "fdr": 4
-      }
-    ],
-    "avg_fdr": 3.0,
-    "double_events": [],
-    "blank_events": [],
-    "unscheduled_count": 0
-  },
-  {
-    "team_short": "AVL",
-    "team_name": "Aston Villa",
-    "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "NFO",
-        "is_home": true,
-        "fdr": 3
       },
       {
-        "event": 5,
-        "opponent_short": "TOT",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
-        "event": 6,
-        "opponent_short": "BRE",
-        "is_home": true,
-        "fdr": 3
-      },
-      {
-        "event": 7,
-        "opponent_short": "NEW",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
-        "event": 8,
-        "opponent_short": "MCI",
-        "is_home": true,
-        "fdr": 4
-      },
-      {
-        "event": 9,
-        "opponent_short": "FUL",
-        "is_home": true,
-        "fdr": 2
-      }
-    ],
-    "avg_fdr": 3.0,
-    "double_events": [],
-    "blank_events": [],
-    "unscheduled_count": 0
-  },
-  {
-    "team_short": "CHE",
-    "team_name": "Chelsea",
-    "fixtures": [
-      {
-        "event": 4,
+        "event": 10,
         "opponent_short": "HUL",
         "is_home": true,
         "fdr": 2
-      },
-      {
-        "event": 5,
-        "opponent_short": "BRE",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
-        "event": 6,
-        "opponent_short": "BOU",
-        "is_home": true,
-        "fdr": 3
-      },
-      {
-        "event": 7,
-        "opponent_short": "EVE",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
-        "event": 8,
-        "opponent_short": "TOT",
-        "is_home": true,
-        "fdr": 3
-      },
-      {
-        "event": 9,
-        "opponent_short": "MUN",
-        "is_home": true,
-        "fdr": 4
       }
     ],
-    "avg_fdr": 3.0,
+    "avg_fdr": 2.83,
     "double_events": [],
     "blank_events": [],
     "unscheduled_count": 0
   },
   {
-    "team_short": "FUL",
-    "team_name": "Fulham",
+    "team_short": "MCI",
+    "team_name": "Man City",
     "fixtures": [
       {
-        "event": 4,
+        "event": 5,
+        "opponent_short": "SUN",
+        "is_home": true,
+        "fdr": 2
+      },
+      {
+        "event": 6,
         "opponent_short": "LIV",
         "is_home": false,
         "fdr": 4
       },
       {
-        "event": 5,
-        "opponent_short": "MUN",
-        "is_home": true,
-        "fdr": 4
-      },
-      {
-        "event": 6,
-        "opponent_short": "IPS",
-        "is_home": false,
-        "fdr": 2
-      },
-      {
         "event": 7,
-        "opponent_short": "HUL",
+        "opponent_short": "IPS",
         "is_home": true,
         "fdr": 2
       },
       {
         "event": 8,
-        "opponent_short": "COV",
+        "opponent_short": "AVL",
         "is_home": false,
+        "fdr": 4
+      },
+      {
+        "event": 9,
+        "opponent_short": "BHA",
+        "is_home": true,
+        "fdr": 2
+      },
+      {
+        "event": 10,
+        "opponent_short": "NFO",
+        "is_home": false,
+        "fdr": 3
+      }
+    ],
+    "avg_fdr": 2.83,
+    "double_events": [],
+    "blank_events": [],
+    "unscheduled_count": 0
+  },
+  {
+    "team_short": "BOU",
+    "team_name": "Bournemouth",
+    "fixtures": [
+      {
+        "event": 5,
+        "opponent_short": "LIV",
+        "is_home": true,
+        "fdr": 4
+      },
+      {
+        "event": 6,
+        "opponent_short": "CHE",
+        "is_home": false,
+        "fdr": 4
+      },
+      {
+        "event": 7,
+        "opponent_short": "SUN",
+        "is_home": true,
+        "fdr": 2
+      },
+      {
+        "event": 8,
+        "opponent_short": "MUN",
+        "is_home": false,
+        "fdr": 4
+      },
+      {
+        "event": 9,
+        "opponent_short": "LEE",
+        "is_home": true,
+        "fdr": 2
+      },
+      {
+        "event": 10,
+        "opponent_short": "IPS",
+        "is_home": false,
+        "fdr": 2
+      }
+    ],
+    "avg_fdr": 3.0,
+    "double_events": [],
+    "blank_events": [],
+    "unscheduled_count": 0
+  },
+  {
+    "team_short": "CRY",
+    "team_name": "Crystal Palace",
+    "fixtures": [
+      {
+        "event": 5,
+        "opponent_short": "LEE",
+        "is_home": false,
+        "fdr": 3
+      },
+      {
+        "event": 6,
+        "opponent_short": "NFO",
+        "is_home": true,
+        "fdr": 3
+      },
+      {
+        "event": 7,
+        "opponent_short": "BHA",
+        "is_home": false,
+        "fdr": 3
+      },
+      {
+        "event": 8,
+        "opponent_short": "NEW",
+        "is_home": true,
         "fdr": 2
       },
       {
         "event": 9,
-        "opponent_short": "AVL",
+        "opponent_short": "TOT",
         "is_home": false,
+        "fdr": 3
+      },
+      {
+        "event": 10,
+        "opponent_short": "LIV",
+        "is_home": true,
         "fdr": 4
       }
     ],
@@ -322,42 +322,42 @@
     "unscheduled_count": 0
   },
   {
-    "team_short": "HUL",
-    "team_name": "Hull City",
+    "team_short": "EVE",
+    "team_name": "Everton",
     "fixtures": [
       {
-        "event": 4,
-        "opponent_short": "CHE",
+        "event": 5,
+        "opponent_short": "IPS",
+        "is_home": true,
+        "fdr": 2
+      },
+      {
+        "event": 6,
+        "opponent_short": "HUL",
         "is_home": false,
+        "fdr": 2
+      },
+      {
+        "event": 7,
+        "opponent_short": "CHE",
+        "is_home": true,
         "fdr": 4
       },
       {
-        "event": 5,
+        "event": 8,
+        "opponent_short": "ARS",
+        "is_home": false,
+        "fdr": 5
+      },
+      {
+        "event": 9,
         "opponent_short": "NEW",
         "is_home": false,
         "fdr": 3
       },
       {
-        "event": 6,
-        "opponent_short": "EVE",
-        "is_home": true,
-        "fdr": 3
-      },
-      {
-        "event": 7,
-        "opponent_short": "FUL",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
-        "event": 8,
-        "opponent_short": "BRE",
-        "is_home": true,
-        "fdr": 3
-      },
-      {
-        "event": 9,
-        "opponent_short": "IPS",
+        "event": 10,
+        "opponent_short": "COV",
         "is_home": true,
         "fdr": 2
       }
@@ -372,12 +372,6 @@
     "team_name": "Ipswich Town",
     "fixtures": [
       {
-        "event": 4,
-        "opponent_short": "CRY",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
         "event": 5,
         "opponent_short": "EVE",
         "is_home": false,
@@ -406,98 +400,12 @@
         "opponent_short": "HUL",
         "is_home": false,
         "fdr": 2
-      }
-    ],
-    "avg_fdr": 3.0,
-    "double_events": [],
-    "blank_events": [],
-    "unscheduled_count": 0
-  },
-  {
-    "team_short": "LIV",
-    "team_name": "Liverpool",
-    "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "FUL",
-        "is_home": true,
-        "fdr": 2
       },
       {
-        "event": 5,
+        "event": 10,
         "opponent_short": "BOU",
-        "is_home": false,
+        "is_home": true,
         "fdr": 3
-      },
-      {
-        "event": 6,
-        "opponent_short": "MCI",
-        "is_home": true,
-        "fdr": 4
-      },
-      {
-        "event": 7,
-        "opponent_short": "BRE",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
-        "event": 8,
-        "opponent_short": "BHA",
-        "is_home": true,
-        "fdr": 2
-      },
-      {
-        "event": 9,
-        "opponent_short": "ARS",
-        "is_home": true,
-        "fdr": 4
-      }
-    ],
-    "avg_fdr": 3.0,
-    "double_events": [],
-    "blank_events": [],
-    "unscheduled_count": 0
-  },
-  {
-    "team_short": "MCI",
-    "team_name": "Man City",
-    "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "MUN",
-        "is_home": false,
-        "fdr": 4
-      },
-      {
-        "event": 5,
-        "opponent_short": "SUN",
-        "is_home": true,
-        "fdr": 2
-      },
-      {
-        "event": 6,
-        "opponent_short": "LIV",
-        "is_home": false,
-        "fdr": 4
-      },
-      {
-        "event": 7,
-        "opponent_short": "IPS",
-        "is_home": true,
-        "fdr": 2
-      },
-      {
-        "event": 8,
-        "opponent_short": "AVL",
-        "is_home": false,
-        "fdr": 4
-      },
-      {
-        "event": 9,
-        "opponent_short": "BHA",
-        "is_home": true,
-        "fdr": 2
       }
     ],
     "avg_fdr": 3.0,
@@ -509,12 +417,6 @@
     "team_short": "NFO",
     "team_name": "Nott'm Forest",
     "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "AVL",
-        "is_home": false,
-        "fdr": 4
-      },
       {
         "event": 5,
         "opponent_short": "COV",
@@ -544,6 +446,12 @@
         "opponent_short": "BRE",
         "is_home": false,
         "fdr": 3
+      },
+      {
+        "event": 10,
+        "opponent_short": "MCI",
+        "is_home": true,
+        "fdr": 4
       }
     ],
     "avg_fdr": 3.0,
@@ -555,12 +463,6 @@
     "team_short": "SUN",
     "team_name": "Sunderland",
     "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "ARS",
-        "is_home": true,
-        "fdr": 4
-      },
       {
         "event": 5,
         "opponent_short": "MCI",
@@ -590,6 +492,12 @@
         "opponent_short": "COV",
         "is_home": false,
         "fdr": 2
+      },
+      {
+        "event": 10,
+        "opponent_short": "CHE",
+        "is_home": true,
+        "fdr": 4
       }
     ],
     "avg_fdr": 3.0,
@@ -598,44 +506,44 @@
     "unscheduled_count": 0
   },
   {
-    "team_short": "BOU",
-    "team_name": "Bournemouth",
+    "team_short": "AVL",
+    "team_name": "Aston Villa",
     "fixtures": [
       {
-        "event": 4,
+        "event": 5,
+        "opponent_short": "TOT",
+        "is_home": false,
+        "fdr": 3
+      },
+      {
+        "event": 6,
         "opponent_short": "BRE",
         "is_home": true,
         "fdr": 3
       },
       {
-        "event": 5,
-        "opponent_short": "LIV",
-        "is_home": true,
-        "fdr": 4
-      },
-      {
-        "event": 6,
-        "opponent_short": "CHE",
-        "is_home": false,
-        "fdr": 4
-      },
-      {
         "event": 7,
-        "opponent_short": "SUN",
-        "is_home": true,
-        "fdr": 2
+        "opponent_short": "NEW",
+        "is_home": false,
+        "fdr": 3
       },
       {
         "event": 8,
-        "opponent_short": "MUN",
-        "is_home": false,
+        "opponent_short": "MCI",
+        "is_home": true,
         "fdr": 4
       },
       {
         "event": 9,
-        "opponent_short": "LEE",
+        "opponent_short": "FUL",
         "is_home": true,
         "fdr": 2
+      },
+      {
+        "event": 10,
+        "opponent_short": "MUN",
+        "is_home": false,
+        "fdr": 4
       }
     ],
     "avg_fdr": 3.17,
@@ -644,43 +552,181 @@
     "unscheduled_count": 0
   },
   {
-    "team_short": "EVE",
-    "team_name": "Everton",
+    "team_short": "CHE",
+    "team_name": "Chelsea",
     "fixtures": [
       {
-        "event": 4,
-        "opponent_short": "TOT",
+        "event": 5,
+        "opponent_short": "BRE",
         "is_home": false,
         "fdr": 3
       },
       {
+        "event": 6,
+        "opponent_short": "BOU",
+        "is_home": true,
+        "fdr": 3
+      },
+      {
+        "event": 7,
+        "opponent_short": "EVE",
+        "is_home": false,
+        "fdr": 3
+      },
+      {
+        "event": 8,
+        "opponent_short": "TOT",
+        "is_home": true,
+        "fdr": 3
+      },
+      {
+        "event": 9,
+        "opponent_short": "MUN",
+        "is_home": true,
+        "fdr": 4
+      },
+      {
+        "event": 10,
+        "opponent_short": "SUN",
+        "is_home": false,
+        "fdr": 3
+      }
+    ],
+    "avg_fdr": 3.17,
+    "double_events": [],
+    "blank_events": [],
+    "unscheduled_count": 0
+  },
+  {
+    "team_short": "HUL",
+    "team_name": "Hull City",
+    "fixtures": [
+      {
         "event": 5,
+        "opponent_short": "NEW",
+        "is_home": false,
+        "fdr": 3
+      },
+      {
+        "event": 6,
+        "opponent_short": "EVE",
+        "is_home": true,
+        "fdr": 3
+      },
+      {
+        "event": 7,
+        "opponent_short": "FUL",
+        "is_home": false,
+        "fdr": 3
+      },
+      {
+        "event": 8,
+        "opponent_short": "BRE",
+        "is_home": true,
+        "fdr": 3
+      },
+      {
+        "event": 9,
         "opponent_short": "IPS",
         "is_home": true,
         "fdr": 2
       },
       {
-        "event": 6,
-        "opponent_short": "HUL",
+        "event": 10,
+        "opponent_short": "ARS",
         "is_home": false,
-        "fdr": 2
+        "fdr": 5
+      }
+    ],
+    "avg_fdr": 3.17,
+    "double_events": [],
+    "blank_events": [],
+    "unscheduled_count": 0
+  },
+  {
+    "team_short": "LIV",
+    "team_name": "Liverpool",
+    "fixtures": [
+      {
+        "event": 5,
+        "opponent_short": "BOU",
+        "is_home": false,
+        "fdr": 3
       },
       {
-        "event": 7,
-        "opponent_short": "CHE",
+        "event": 6,
+        "opponent_short": "MCI",
         "is_home": true,
         "fdr": 4
       },
       {
-        "event": 8,
-        "opponent_short": "ARS",
+        "event": 7,
+        "opponent_short": "BRE",
         "is_home": false,
-        "fdr": 5
+        "fdr": 3
+      },
+      {
+        "event": 8,
+        "opponent_short": "BHA",
+        "is_home": true,
+        "fdr": 2
       },
       {
         "event": 9,
-        "opponent_short": "NEW",
+        "opponent_short": "ARS",
+        "is_home": true,
+        "fdr": 4
+      },
+      {
+        "event": 10,
+        "opponent_short": "CRY",
         "is_home": false,
+        "fdr": 3
+      }
+    ],
+    "avg_fdr": 3.17,
+    "double_events": [],
+    "blank_events": [],
+    "unscheduled_count": 0
+  },
+  {
+    "team_short": "MUN",
+    "team_name": "Man Utd",
+    "fixtures": [
+      {
+        "event": 5,
+        "opponent_short": "FUL",
+        "is_home": false,
+        "fdr": 3
+      },
+      {
+        "event": 6,
+        "opponent_short": "TOT",
+        "is_home": true,
+        "fdr": 3
+      },
+      {
+        "event": 7,
+        "opponent_short": "LEE",
+        "is_home": false,
+        "fdr": 3
+      },
+      {
+        "event": 8,
+        "opponent_short": "BOU",
+        "is_home": true,
+        "fdr": 3
+      },
+      {
+        "event": 9,
+        "opponent_short": "CHE",
+        "is_home": false,
+        "fdr": 4
+      },
+      {
+        "event": 10,
+        "opponent_short": "AVL",
+        "is_home": true,
         "fdr": 3
       }
     ],
@@ -694,12 +740,6 @@
     "team_name": "Spurs",
     "fixtures": [
       {
-        "event": 4,
-        "opponent_short": "EVE",
-        "is_home": true,
-        "fdr": 3
-      },
-      {
         "event": 5,
         "opponent_short": "AVL",
         "is_home": true,
@@ -728,6 +768,12 @@
         "opponent_short": "CRY",
         "is_home": true,
         "fdr": 3
+      },
+      {
+        "event": 10,
+        "opponent_short": "LEE",
+        "is_home": false,
+        "fdr": 3
       }
     ],
     "avg_fdr": 3.17,
@@ -739,12 +785,6 @@
     "team_short": "BRE",
     "team_name": "Brentford",
     "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "BOU",
-        "is_home": false,
-        "fdr": 3
-      },
       {
         "event": 5,
         "opponent_short": "CHE",
@@ -774,6 +814,12 @@
         "opponent_short": "NFO",
         "is_home": true,
         "fdr": 3
+      },
+      {
+        "event": 10,
+        "opponent_short": "BHA",
+        "is_home": false,
+        "fdr": 3
       }
     ],
     "avg_fdr": 3.33,
@@ -785,12 +831,6 @@
     "team_short": "LEE",
     "team_name": "Leeds",
     "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "NEW",
-        "is_home": true,
-        "fdr": 2
-      },
       {
         "event": 5,
         "opponent_short": "CRY",
@@ -820,55 +860,15 @@
         "opponent_short": "BOU",
         "is_home": false,
         "fdr": 3
-      }
-    ],
-    "avg_fdr": 3.33,
-    "double_events": [],
-    "blank_events": [],
-    "unscheduled_count": 0
-  },
-  {
-    "team_short": "MUN",
-    "team_name": "Man Utd",
-    "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "MCI",
-        "is_home": true,
-        "fdr": 4
       },
       {
-        "event": 5,
-        "opponent_short": "FUL",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
-        "event": 6,
+        "event": 10,
         "opponent_short": "TOT",
         "is_home": true,
         "fdr": 3
-      },
-      {
-        "event": 7,
-        "opponent_short": "LEE",
-        "is_home": false,
-        "fdr": 3
-      },
-      {
-        "event": 8,
-        "opponent_short": "BOU",
-        "is_home": true,
-        "fdr": 3
-      },
-      {
-        "event": 9,
-        "opponent_short": "CHE",
-        "is_home": false,
-        "fdr": 4
       }
     ],
-    "avg_fdr": 3.33,
+    "avg_fdr": 3.5,
     "double_events": [],
     "blank_events": [],
     "unscheduled_count": 0
@@ -877,12 +877,6 @@
     "team_short": "BHA",
     "team_name": "Brighton",
     "fixtures": [
-      {
-        "event": 4,
-        "opponent_short": "COV",
-        "is_home": false,
-        "fdr": 2
-      },
       {
         "event": 5,
         "opponent_short": "ARS",
@@ -912,9 +906,15 @@
         "opponent_short": "MCI",
         "is_home": false,
         "fdr": 5
+      },
+      {
+        "event": 10,
+        "opponent_short": "BRE",
+        "is_home": true,
+        "fdr": 3
       }
     ],
-    "avg_fdr": 3.5,
+    "avg_fdr": 3.67,
     "double_events": [],
     "blank_events": [],
     "unscheduled_count": 0
