@@ -1,6 +1,35 @@
 {
-  "generated_at": "2026-09-17T03:57:03.436151+00:00",
+  "generated_at": "2026-09-17T11:12:16.813871+00:00",
   "has_previous": true,
   "risers": [],
-  "fallers": []
+  "fallers": [
+    {
+      "id": 182,
+      "web_name": "Amenda",
+      "team_short": "COV",
+      "position": "DEF",
+      "now_cost": 40,
+      "prev_ev": 12.3,
+      "current_ev": 3.34,
+      "ev_delta": -8.96,
+      "why": [
+        "Availability flagged: Calf injury - 25% chance of playing (~75 min when playing)",
+        "24% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 244,
+      "web_name": "Armstrong",
+      "team_short": "EVE",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 15.99,
+      "current_ev": 13.04,
+      "ev_delta": -2.95,
+      "why": [
+        "Availability flagged: Unspecified injury - 75% chance of playing (~87 min when playing)",
+        "Underlying output: 0.11 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
