@@ -1,105 +1,48 @@
 {
-  "generated_at": "2026-09-18T14:19:31.751901+00:00",
+  "generated_at": "2026-09-18T16:01:08.215579+00:00",
   "has_previous": true,
-  "risers": [
-    {
-      "id": 131,
-      "web_name": "Baleba",
-      "team_short": "MUN",
-      "position": "MID",
-      "now_cost": 49,
-      "prev_ev": 0.0,
-      "current_ev": 4.08,
-      "ev_delta": 4.08,
-      "why": [
-        "Availability flagged: Ankle injury - 50% chance of playing (~79 min when playing)",
-        "Underlying output: 0.11 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 455,
-      "web_name": "Tonali",
-      "team_short": "TOT",
-      "position": "MID",
-      "now_cost": 54,
-      "prev_ev": 14.71,
-      "current_ev": 18.05,
-      "ev_delta": 3.34,
-      "why": [
-        "Availability flagged: 100% chance of playing (~86 min when playing)",
-        "Underlying output: 0.17 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 400,
-      "web_name": "Doku",
-      "team_short": "MCI",
-      "position": "MID",
-      "now_cost": 74,
-      "prev_ev": 0.0,
-      "current_ev": 3.28,
-      "ev_delta": 3.28,
-      "why": [
-        "Availability flagged: Calf injury - 75% chance of playing (~93 min when playing)",
-        "Underlying output: 0.41 combined xG+xA per 90 minutes"
-      ]
-    }
-  ],
+  "risers": [],
   "fallers": [
     {
-      "id": 246,
-      "web_name": "R\u00f6hl",
-      "team_short": "EVE",
-      "position": "MID",
-      "now_cost": 49,
-      "prev_ev": 11.46,
-      "current_ev": 0.0,
-      "ev_delta": -11.46,
-      "why": [
-        "Availability flagged: Unspecified injury - Expected back 11 Oct",
-        "Underlying output: 0.10 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 260,
-      "web_name": "Wilson",
-      "team_short": "LEE",
-      "position": "MID",
-      "now_cost": 62,
-      "prev_ev": 10.77,
-      "current_ev": 0.0,
-      "ev_delta": -10.77,
-      "why": [
-        "Availability flagged: Thigh injury - Unknown return date",
-        "Underlying output: 0.28 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 423,
-      "web_name": "Shaw",
-      "team_short": "MUN",
+      "id": 34,
+      "web_name": "Pau",
+      "team_short": "AVL",
       "position": "DEF",
-      "now_cost": 44,
-      "prev_ev": 11.78,
-      "current_ev": 7.85,
-      "ev_delta": -3.93,
+      "now_cost": 45,
+      "prev_ev": 10.07,
+      "current_ev": 0.0,
+      "ev_delta": -10.07,
       "why": [
-        "Availability flagged: Unspecified injury - 50% chance of playing (~84 min when playing)",
-        "24% average clean-sheet chance over the next 6 GWs"
+        "Availability flagged: Hamstring injury - Expected back 10 Oct",
+        "22% average clean-sheet chance over the next 6 GWs"
       ]
     },
     {
-      "id": 256,
-      "web_name": "Tete",
-      "team_short": "FUL",
+      "id": 36,
+      "web_name": "Maatsen",
+      "team_short": "AVL",
       "position": "DEF",
-      "now_cost": 44,
-      "prev_ev": 3.19,
+      "now_cost": 45,
+      "prev_ev": 4.57,
       "current_ev": 0.0,
-      "ev_delta": -3.19,
+      "ev_delta": -4.57,
       "why": [
-        "Availability flagged: Concussion - Expected back 10 Oct",
-        "30% average clean-sheet chance over the next 6 GWs"
+        "Availability flagged: Ankle injury - Unknown return date",
+        "22% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 29,
+      "web_name": "M.Bizot",
+      "team_short": "AVL",
+      "position": "GKP",
+      "now_cost": 45,
+      "prev_ev": 4.56,
+      "current_ev": 0.0,
+      "ev_delta": -4.56,
+      "why": [
+        "Availability flagged: Back injury - Expected back 10 Oct",
+        "2.9 saves per 90 minutes"
       ]
     }
   ]
