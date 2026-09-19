@@ -1,6 +1,64 @@
 {
-  "generated_at": "2026-09-18T23:10:38.479307+00:00",
+  "generated_at": "2026-09-19T03:41:02.847296+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 86,
+      "web_name": "Lewis-Potter",
+      "team_short": "BRE",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 23.93,
+      "current_ev": 24.14,
+      "ev_delta": 0.21,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~88 min when playing)",
+        "Underlying output: 0.39 combined xG+xA per 90 minutes"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 102,
+      "web_name": "Yarmoliuk",
+      "team_short": "BRE",
+      "position": "MID",
+      "now_cost": 48,
+      "prev_ev": 10.16,
+      "current_ev": 9.97,
+      "ev_delta": -0.19,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~91 min when playing)",
+        "Underlying output: 0.12 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 156,
+      "web_name": "Neto",
+      "team_short": "CHE",
+      "position": "MID",
+      "now_cost": 65,
+      "prev_ev": 21.93,
+      "current_ev": 21.75,
+      "ev_delta": -0.18,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~89 min when playing)",
+        "Underlying output: 0.36 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 96,
+      "web_name": "Damsgaard",
+      "team_short": "BRE",
+      "position": "MID",
+      "now_cost": 54,
+      "prev_ev": 14.02,
+      "current_ev": 13.95,
+      "ev_delta": -0.07,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~87 min when playing)",
+        "Underlying output: 0.30 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
