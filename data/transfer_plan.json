@@ -26,7 +26,7 @@
       "projected_gain": 0.0,
       "free_transfers_after": 3,
       "bank_after": 12,
-      "rationale": "Banking this week: acting now nets +15.4 EV vs +17.2 EV available next week with 3 free transfers pooled (using next week's fixture-adjusted projections).",
+      "rationale": "Banking this week: acting now nets +15.4 EV vs +17.4 EV available next week with 3 free transfers pooled (using next week's fixture-adjusted projections).",
       "swap_rationale": [],
       "out": [],
       "in": []
@@ -45,10 +45,10 @@
       ],
       "hit_cost": 0,
       "chip_played": null,
-      "projected_gain": 17.2,
+      "projected_gain": 17.39,
       "free_transfers_after": 1,
       "bank_after": 18,
-      "rationale": "Expected to start (a regular starter based on recent form) (~86 min when playing) \u2014 OUT Konsa \u2192 IN Davis (+8.0 EV); Expected to start (a regular starter based on recent form) (~90 min when playing) \u2014 OUT Cherki \u2192 IN Tavernier (+4.9 EV); Expected to start (a regular starter based on recent form) (~87 min when playing) \u2014 OUT Gibbs-White \u2192 IN Saka (+4.3 EV)",
+      "rationale": "Expected to start (a regular starter based on recent form) (~86 min when playing) \u2014 OUT Konsa \u2192 IN Davis (+8.0 EV); Expected to start (a regular starter based on recent form) (~90 min when playing) \u2014 OUT Cherki \u2192 IN Tavernier (+4.9 EV); Expected to start (a regular starter based on recent form) (~87 min when playing) \u2014 OUT Gibbs-White \u2192 IN Saka (+4.5 EV)",
       "swap_rationale": [
         [
           "Expected to start (a regular starter based on recent form) (~86 min when playing)",
@@ -63,7 +63,7 @@
         [
           "Expected to start (a regular starter based on recent form) (~87 min when playing)",
           "Underlying output: 0.88 combined xG+xA per 90 minutes",
-          "+4.3 EV over Gibbs-White across the next 6 gameweeks"
+          "+4.5 EV over Gibbs-White across the next 6 gameweeks"
         ]
       ],
       "out": [
@@ -169,8 +169,8 @@
           ],
           "cost_change_event": 1,
           "cost_change_start": 1,
-          "transfers_in_event": 33920,
-          "transfers_out_event": 6497,
+          "transfers_in_event": 35650,
+          "transfers_out_event": 7958,
           "code": 199798,
           "team_code": 3,
           "clean_sheets": 1,
@@ -185,7 +185,7 @@
           "team_short": "MCI",
           "position": "MID",
           "now_cost": 78,
-          "selected_by_percent": 27.9,
+          "selected_by_percent": 27.8,
           "status": "a",
           "news": "",
           "expected_minutes_ratio": 0.65,
@@ -281,8 +281,8 @@
           ],
           "cost_change_event": 0,
           "cost_change_start": 3,
-          "transfers_in_event": 7077,
-          "transfers_out_event": 24947,
+          "transfers_in_event": 8186,
+          "transfers_out_event": 28717,
           "code": 466052,
           "team_code": 43,
           "clean_sheets": 1,
@@ -304,12 +304,12 @@
           "p_appearance": 0.92,
           "p_60_plus": 0.84,
           "expected_minutes_if_appears": 86.9,
-          "total_ev": 30.6,
-          "uncertainty": 6.81,
+          "total_ev": 30.22,
+          "uncertainty": 6.7,
           "why": [
             "Availability flagged: 100% chance of playing (~87 min when playing)",
             "Underlying output: 0.59 combined xG+xA per 90 minutes",
-            "Also contributes defensively: 1.1 tackles + 0.5 blocks/clearances/interceptions + 3.0 recoveries per 90"
+            "Also contributes defensively: 1.0 tackles + 0.4 blocks/clearances/interceptions + 2.8 recoveries per 90"
           ],
           "fixtures": [
             {
@@ -317,74 +317,74 @@
               "opponent_short": "COV",
               "is_home": true,
               "fdr": 1,
-              "points": 6.18,
+              "points": 6.09,
               "attack_mult": 1.402,
               "cs_prob": 0.474,
               "expected_conceded": 0.813,
-              "ml_points": 7.39
+              "ml_points": 7.78
             },
             {
               "event": 6,
               "opponent_short": "CRY",
               "is_home": false,
               "fdr": 3,
-              "points": 4.74,
+              "points": 4.69,
               "attack_mult": 0.871,
               "cs_prob": 0.287,
               "expected_conceded": 1.248,
-              "ml_points": 4.58
+              "ml_points": 4.97
             },
             {
               "event": 7,
               "opponent_short": "ARS",
               "is_home": true,
               "fdr": 4,
-              "points": 4.62,
+              "points": 4.57,
               "attack_mult": 0.854,
               "cs_prob": 0.193,
               "expected_conceded": 1.563,
-              "ml_points": 4.45
+              "ml_points": 4.64
             },
             {
               "event": 8,
               "opponent_short": "IPS",
               "is_home": false,
               "fdr": 2,
-              "points": 5.42,
+              "points": 5.35,
               "attack_mult": 1.146,
               "cs_prob": 0.308,
               "expected_conceded": 0.972,
-              "ml_points": 4.82
+              "ml_points": 5.3
             },
             {
               "event": 9,
               "opponent_short": "BRE",
               "is_home": false,
               "fdr": 3,
-              "points": 5.02,
+              "points": 4.95,
               "attack_mult": 1.0,
               "cs_prob": 0.245,
               "expected_conceded": 1.192,
-              "ml_points": 4.2
+              "ml_points": 4.59
             },
             {
               "event": 10,
               "opponent_short": "MCI",
               "is_home": true,
               "fdr": 4,
-              "points": 4.62,
+              "points": 4.57,
               "attack_mult": 0.854,
               "cs_prob": 0.193,
               "expected_conceded": 1.563,
-              "ml_points": 4.45
+              "ml_points": 4.64
             }
           ],
-          "xg90": 0.4157,
-          "xa90": 0.1781,
-          "dc90": 4.6799,
+          "xg90": 0.389,
+          "xa90": 0.202,
+          "dc90": 4.4059,
           "saves90": 0.0,
-          "dc_prob": 0.117,
-          "ml_ev": 29.89,
+          "dc_prob": 0.1101,
+          "ml_ev": 31.92,
           "ml_uncertainty": 3.11,
           "ml_why": [
             "price",
@@ -393,15 +393,15 @@
           ],
           "cost_change_event": 0,
           "cost_change_start": 0,
-          "transfers_in_event": 18278,
-          "transfers_out_event": 6543,
+          "transfers_in_event": 19815,
+          "transfers_out_event": 10480,
           "code": 222531,
           "team_code": 17,
           "clean_sheets": 1,
-          "goals_conceded": 4,
+          "goals_conceded": 5,
           "saves": 0,
           "starts": 5,
-          "expected_goals_conceded": 4.34
+          "expected_goals_conceded": 4.77
         }
       ],
       "in": [
@@ -507,15 +507,15 @@
           ],
           "cost_change_event": 0,
           "cost_change_start": 0,
-          "transfers_in_event": 12658,
-          "transfers_out_event": 3537,
+          "transfers_in_event": 14188,
+          "transfers_out_event": 4345,
           "code": 455084,
           "team_code": 40,
           "clean_sheets": 0,
           "goals_conceded": 11,
           "saves": 0,
           "starts": 5,
-          "expected_goals_conceded": 9.05
+          "expected_goals_conceded": 8.98
         },
         {
           "id": 68,
@@ -619,8 +619,8 @@
           ],
           "cost_change_event": 0,
           "cost_change_start": 1,
-          "transfers_in_event": 23828,
-          "transfers_out_event": 5593,
+          "transfers_in_event": 26140,
+          "transfers_out_event": 6623,
           "code": 201658,
           "team_code": 91,
           "clean_sheets": 0,
@@ -731,8 +731,8 @@
           ],
           "cost_change_event": 0,
           "cost_change_start": 0,
-          "transfers_in_event": 20545,
-          "transfers_out_event": 5919,
+          "transfers_in_event": 23096,
+          "transfers_out_event": 7390,
           "code": 223340,
           "team_code": 3,
           "clean_sheets": 3,
@@ -792,7 +792,7 @@
           "team_short": "CRY",
           "position": "DEF",
           "now_cost": 45,
-          "selected_by_percent": 6.1,
+          "selected_by_percent": 6.0,
           "status": "a",
           "news": "",
           "expected_minutes_ratio": 0.92,
@@ -888,8 +888,8 @@
           ],
           "cost_change_event": 0,
           "cost_change_start": 0,
-          "transfers_in_event": 1337,
-          "transfers_out_event": 3770,
+          "transfers_in_event": 1492,
+          "transfers_out_event": 4402,
           "code": 244723,
           "team_code": 31,
           "clean_sheets": 0,
@@ -1000,15 +1000,15 @@
           ],
           "cost_change_event": 0,
           "cost_change_start": 2,
-          "transfers_in_event": 29912,
-          "transfers_out_event": 3814,
+          "transfers_in_event": 36684,
+          "transfers_out_event": 4152,
           "code": 487838,
           "team_code": 4,
           "clean_sheets": 1,
           "goals_conceded": 9,
           "saves": 0,
           "starts": 5,
-          "expected_goals_conceded": 8.77
+          "expected_goals_conceded": 9.12
         }
       ],
       "in": [
@@ -1114,15 +1114,15 @@
           ],
           "cost_change_event": 0,
           "cost_change_start": 1,
-          "transfers_in_event": 22747,
-          "transfers_out_event": 3069,
+          "transfers_in_event": 30074,
+          "transfers_out_event": 3376,
           "code": 17761,
           "team_code": 11,
           "clean_sheets": 3,
           "goals_conceded": 3,
           "saves": 0,
           "starts": 5,
-          "expected_goals_conceded": 6.8
+          "expected_goals_conceded": 6.94
         },
         {
           "id": 258,
@@ -1226,8 +1226,8 @@
           ],
           "cost_change_event": 0,
           "cost_change_start": 0,
-          "transfers_in_event": 4466,
-          "transfers_out_event": 579,
+          "transfers_in_event": 4947,
+          "transfers_out_event": 680,
           "code": 166477,
           "team_code": 54,
           "clean_sheets": 2,
