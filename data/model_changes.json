@@ -1,6 +1,92 @@
 {
-  "generated_at": "2026-09-19T21:40:46.233767+00:00",
+  "generated_at": "2026-09-19T22:43:21.598225+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 486,
+      "web_name": "McAtee",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 20.17,
+      "current_ev": 20.36,
+      "ev_delta": 0.19,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~91 min when playing)",
+        "Underlying output: 0.28 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 483,
+      "web_name": "Ndoye",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 16.86,
+      "current_ev": 17.02,
+      "ev_delta": 0.16,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~83 min when playing)",
+        "Underlying output: 0.40 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 183,
+      "web_name": "Rudoni",
+      "team_short": "COV",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 14.62,
+      "current_ev": 14.67,
+      "ev_delta": 0.05,
+      "why": [
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "Underlying output: 0.29 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 472,
+      "web_name": "Murillo",
+      "team_short": "NFO",
+      "position": "DEF",
+      "now_cost": 55,
+      "prev_ev": 19.9,
+      "current_ev": 19.94,
+      "ev_delta": 0.04,
+      "why": [
+        "Availability flagged: 100% chance of playing (~87 min when playing)",
+        "27% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 491,
+      "web_name": "Igor Jesus",
+      "team_short": "NFO",
+      "position": "FWD",
+      "now_cost": 58,
+      "prev_ev": 13.36,
+      "current_ev": 13.07,
+      "ev_delta": -0.29,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~82 min when playing)",
+        "Underlying output: 0.38 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 575,
+      "web_name": "Yirenkyi",
+      "team_short": "COV",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 8.31,
+      "current_ev": 8.29,
+      "ev_delta": -0.02,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~75 min when playing)",
+        "Underlying output: 0.03 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
