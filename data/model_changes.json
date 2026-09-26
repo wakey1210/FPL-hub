@@ -1,6 +1,36 @@
 {
-  "generated_at": "2026-09-26T10:59:29.596766+00:00",
+  "generated_at": "2026-09-26T14:18:48.321322+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 525,
+      "web_name": "Fernandes",
+      "team_short": "TOT",
+      "position": "MID",
+      "now_cost": 57,
+      "prev_ev": 12.89,
+      "current_ev": 13.14,
+      "ev_delta": 0.25,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~86 min when playing)",
+        "Underlying output: 0.20 combined xG+xA per 90 minutes"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 502,
+      "web_name": "Robertson",
+      "team_short": "TOT",
+      "position": "DEF",
+      "now_cost": 44,
+      "prev_ev": 18.28,
+      "current_ev": 17.92,
+      "ev_delta": -0.36,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~93 min when playing)",
+        "28% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ]
 }
