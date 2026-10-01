@@ -1,6 +1,35 @@
 {
-  "generated_at": "2026-10-01T12:39:49.828554+00:00",
+  "generated_at": "2026-10-01T20:11:21.104912+00:00",
   "has_previous": true,
   "risers": [],
-  "fallers": []
+  "fallers": [
+    {
+      "id": 459,
+      "web_name": "L.Miley",
+      "team_short": "NEW",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 16.61,
+      "current_ev": 13.56,
+      "ev_delta": -3.05,
+      "why": [
+        "Availability flagged: Unspecified injury - 75% chance of playing (~95 min when playing)",
+        "Underlying output: 0.12 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 233,
+      "web_name": "Mykolenko",
+      "team_short": "EVE",
+      "position": "DEF",
+      "now_cost": 46,
+      "prev_ev": 16.44,
+      "current_ev": 13.42,
+      "ev_delta": -3.02,
+      "why": [
+        "Availability flagged: Leg injury - 75% chance of playing (~89 min when playing)",
+        "27% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ]
 }
