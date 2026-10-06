@@ -1,7 +1,42 @@
 {
-  "generated_at": "2026-10-05T21:52:46.981348+00:00",
-  "risers_today": [],
-  "fallers_today": [],
+  "generated_at": "2026-10-06T00:51:13.830891+00:00",
+  "risers_today": [
+    {
+      "id": 8,
+      "web_name": "Calafiori",
+      "team_short": "ARS",
+      "position": "DEF",
+      "now_cost": 59,
+      "cost_change_today": 1,
+      "cost_change_event": 1,
+      "transfers_in_event": 90600,
+      "transfers_out_event": 68933
+    },
+    {
+      "id": 12,
+      "web_name": "Saka",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 96,
+      "cost_change_today": 1,
+      "cost_change_event": 1,
+      "transfers_in_event": 150634,
+      "transfers_out_event": 51798
+    }
+  ],
+  "fallers_today": [
+    {
+      "id": 456,
+      "web_name": "J.Ramsey",
+      "team_short": "NEW",
+      "position": "MID",
+      "now_cost": 48,
+      "cost_change_today": -1,
+      "cost_change_event": -1,
+      "transfers_in_event": 79,
+      "transfers_out_event": 5009
+    }
+  ],
   "watchlist": [
     {
       "id": 124,
@@ -9,8 +44,8 @@
       "team_short": "BHA",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 842691,
-      "transfers_out_event": 14384,
+      "transfers_in_event": 843976,
+      "transfers_out_event": 14492,
       "cost_change_event": 2,
       "now_cost": 59
     },
@@ -20,8 +55,8 @@
       "team_short": "BRE",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 426870,
-      "transfers_out_event": 30574,
+      "transfers_in_event": 427855,
+      "transfers_out_event": 30826,
       "cost_change_event": 1,
       "now_cost": 62
     },
@@ -31,8 +66,8 @@
       "team_short": "BHA",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 342532,
-      "transfers_out_event": 22628,
+      "transfers_in_event": 343360,
+      "transfers_out_event": 22779,
       "cost_change_event": 1,
       "now_cost": 56
     },
@@ -42,8 +77,8 @@
       "team_short": "BHA",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 322440,
-      "transfers_out_event": 25162,
+      "transfers_in_event": 323170,
+      "transfers_out_event": 25590,
       "cost_change_event": 1,
       "now_cost": 50
     },
@@ -53,8 +88,8 @@
       "team_short": "NEW",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 266424,
-      "transfers_out_event": 24039,
+      "transfers_in_event": 267087,
+      "transfers_out_event": 24252,
       "cost_change_event": 1,
       "now_cost": 53
     },
@@ -64,8 +99,8 @@
       "team_short": "EVE",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 250348,
-      "transfers_out_event": 24855,
+      "transfers_in_event": 250815,
+      "transfers_out_event": 25077,
       "cost_change_event": 1,
       "now_cost": 62
     },
@@ -75,8 +110,8 @@
       "team_short": "NEW",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 176781,
-      "transfers_out_event": 23710,
+      "transfers_in_event": 177265,
+      "transfers_out_event": 25418,
       "cost_change_event": 1,
       "now_cost": 61
     },
@@ -86,8 +121,8 @@
       "team_short": "SUN",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 198123,
-      "transfers_out_event": 53661,
+      "transfers_in_event": 198197,
+      "transfers_out_event": 53864,
       "cost_change_event": -1,
       "now_cost": 57
     },
@@ -97,8 +132,8 @@
       "team_short": "HUL",
       "position": "GKP",
       "bucket": "rising",
-      "transfers_in_event": 133613,
-      "transfers_out_event": 25189,
+      "transfers_in_event": 133878,
+      "transfers_out_event": 25350,
       "cost_change_event": 1,
       "now_cost": 47
     },
@@ -108,8 +143,8 @@
       "team_short": "LEE",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 137292,
-      "transfers_out_event": 29049,
+      "transfers_in_event": 137676,
+      "transfers_out_event": 29205,
       "cost_change_event": 0,
       "now_cost": 46
     },
@@ -119,8 +154,8 @@
       "team_short": "MCI",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 159044,
-      "transfers_out_event": 61973,
+      "transfers_in_event": 159455,
+      "transfers_out_event": 62224,
       "cost_change_event": 0,
       "now_cost": 57
     },
@@ -130,21 +165,10 @@
       "team_short": "CHE",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 171900,
-      "transfers_out_event": 75996,
+      "transfers_in_event": 173006,
+      "transfers_out_event": 76179,
       "cost_change_event": 0,
       "now_cost": 77
-    },
-    {
-      "id": 12,
-      "web_name": "Saka",
-      "team_short": "ARS",
-      "position": "MID",
-      "bucket": "rising",
-      "transfers_in_event": 146797,
-      "transfers_out_event": 51693,
-      "cost_change_event": 0,
-      "now_cost": 95
     },
     {
       "id": 268,
@@ -152,8 +176,8 @@
       "team_short": "FUL",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 107267,
-      "transfers_out_event": 21198,
+      "transfers_in_event": 108422,
+      "transfers_out_event": 21311,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -163,21 +187,10 @@
       "team_short": "HUL",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 83104,
-      "transfers_out_event": 28026,
+      "transfers_in_event": 83325,
+      "transfers_out_event": 28122,
       "cost_change_event": 0,
       "now_cost": 51
-    },
-    {
-      "id": 249,
-      "web_name": "Barry",
-      "team_short": "EVE",
-      "position": "FWD",
-      "bucket": "rising",
-      "transfers_in_event": 92628,
-      "transfers_out_event": 43862,
-      "cost_change_event": 1,
-      "now_cost": 57
     },
     {
       "id": 504,
@@ -185,10 +198,21 @@
       "team_short": "BHA",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 64094,
-      "transfers_out_event": 15399,
+      "transfers_in_event": 64341,
+      "transfers_out_event": 15458,
       "cost_change_event": 0,
       "now_cost": 50
+    },
+    {
+      "id": 249,
+      "web_name": "Barry",
+      "team_short": "EVE",
+      "position": "FWD",
+      "bucket": "rising",
+      "transfers_in_event": 92857,
+      "transfers_out_event": 44058,
+      "cost_change_event": 1,
+      "now_cost": 57
     },
     {
       "id": 569,
@@ -196,8 +220,8 @@
       "team_short": "FUL",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 82542,
-      "transfers_out_event": 35811,
+      "transfers_in_event": 83163,
+      "transfers_out_event": 35932,
       "cost_change_event": 0,
       "now_cost": 60
     },
@@ -207,8 +231,8 @@
       "team_short": "MCI",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 128651,
-      "transfers_out_event": 83909,
+      "transfers_in_event": 128724,
+      "transfers_out_event": 84448,
       "cost_change_event": 0,
       "now_cost": 84
     },
@@ -218,8 +242,8 @@
       "team_short": "BOU",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 92126,
-      "transfers_out_event": 49888,
+      "transfers_in_event": 92434,
+      "transfers_out_event": 50145,
       "cost_change_event": 0,
       "now_cost": 61
     },
@@ -229,8 +253,8 @@
       "team_short": "FUL",
       "position": "GKP",
       "bucket": "rising",
-      "transfers_in_event": 45663,
-      "transfers_out_event": 13261,
+      "transfers_in_event": 45956,
+      "transfers_out_event": 13353,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -240,8 +264,8 @@
       "team_short": "AVL",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 41082,
-      "transfers_out_event": 9135,
+      "transfers_in_event": 41200,
+      "transfers_out_event": 9166,
       "cost_change_event": 0,
       "now_cost": 65
     },
@@ -251,8 +275,8 @@
       "team_short": "IPS",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 57346,
-      "transfers_out_event": 30703,
+      "transfers_in_event": 57683,
+      "transfers_out_event": 30814,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -262,8 +286,8 @@
       "team_short": "AVL",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 30099,
-      "transfers_out_event": 3894,
+      "transfers_in_event": 30166,
+      "transfers_out_event": 3918,
       "cost_change_event": 0,
       "now_cost": 59
     },
@@ -273,8 +297,8 @@
       "team_short": "BRE",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 66015,
-      "transfers_out_event": 41820,
+      "transfers_in_event": 66188,
+      "transfers_out_event": 41910,
       "cost_change_event": 0,
       "now_cost": 78
     },
@@ -284,8 +308,8 @@
       "team_short": "LIV",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 38080,
-      "transfers_out_event": 14844,
+      "transfers_in_event": 38212,
+      "transfers_out_event": 14907,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -295,8 +319,8 @@
       "team_short": "MCI",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 33446,
-      "transfers_out_event": 16207,
+      "transfers_in_event": 33502,
+      "transfers_out_event": 16264,
       "cost_change_event": 0,
       "now_cost": 69
     },
@@ -306,8 +330,8 @@
       "team_short": "EVE",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 20848,
-      "transfers_out_event": 5366,
+      "transfers_in_event": 20894,
+      "transfers_out_event": 5389,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -317,8 +341,8 @@
       "team_short": "IPS",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 39644,
-      "transfers_out_event": 24771,
+      "transfers_in_event": 39768,
+      "transfers_out_event": 24821,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -328,21 +352,10 @@
       "team_short": "BRE",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 16813,
-      "transfers_out_event": 2769,
+      "transfers_in_event": 16888,
+      "transfers_out_event": 2779,
       "cost_change_event": 0,
       "now_cost": 45
-    },
-    {
-      "id": 233,
-      "web_name": "Mykolenko",
-      "team_short": "EVE",
-      "position": "DEF",
-      "bucket": "rising",
-      "transfers_in_event": 41796,
-      "transfers_out_event": 27762,
-      "cost_change_event": 1,
-      "now_cost": 46
     },
     {
       "id": 230,
@@ -350,10 +363,21 @@
       "team_short": "EVE",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 21978,
-      "transfers_out_event": 8146,
+      "transfers_in_event": 22049,
+      "transfers_out_event": 8173,
       "cost_change_event": 0,
       "now_cost": 55
+    },
+    {
+      "id": 233,
+      "web_name": "Mykolenko",
+      "team_short": "EVE",
+      "position": "DEF",
+      "bucket": "rising",
+      "transfers_in_event": 41810,
+      "transfers_out_event": 28858,
+      "cost_change_event": 1,
+      "now_cost": 46
     },
     {
       "id": 258,
@@ -361,8 +385,8 @@
       "team_short": "FUL",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 16616,
-      "transfers_out_event": 5471,
+      "transfers_in_event": 16690,
+      "transfers_out_event": 5496,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -372,8 +396,8 @@
       "team_short": "FUL",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 18543,
-      "transfers_out_event": 7564,
+      "transfers_in_event": 18672,
+      "transfers_out_event": 7607,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -383,8 +407,8 @@
       "team_short": "ARS",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 14655,
-      "transfers_out_event": 4711,
+      "transfers_in_event": 14724,
+      "transfers_out_event": 4732,
       "cost_change_event": 0,
       "now_cost": 65
     },
@@ -394,8 +418,8 @@
       "team_short": "AVL",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 13673,
-      "transfers_out_event": 4793,
+      "transfers_in_event": 13718,
+      "transfers_out_event": 4810,
       "cost_change_event": 0,
       "now_cost": 59
     },
@@ -405,8 +429,8 @@
       "team_short": "NEW",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 10530,
-      "transfers_out_event": 1781,
+      "transfers_in_event": 10554,
+      "transfers_out_event": 1787,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -416,8 +440,19 @@
       "team_short": "HUL",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 22928,
-      "transfers_out_event": 15011,
+      "transfers_in_event": 23005,
+      "transfers_out_event": 15053,
+      "cost_change_event": 0,
+      "now_cost": 40
+    },
+    {
+      "id": 667,
+      "web_name": "Wright",
+      "team_short": "AVL",
+      "position": "GKP",
+      "bucket": "rising",
+      "transfers_in_event": 8677,
+      "transfers_out_event": 1000,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -427,8 +462,8 @@
       "team_short": "AVL",
       "position": "GKP",
       "bucket": "rising",
-      "transfers_in_event": 14792,
-      "transfers_out_event": 7244,
+      "transfers_in_event": 14814,
+      "transfers_out_event": 7268,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -438,8 +473,8 @@
       "team_short": "NEW",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 10481,
-      "transfers_out_event": 3086,
+      "transfers_in_event": 10512,
+      "transfers_out_event": 3091,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -449,21 +484,10 @@
       "team_short": "LIV",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 18604,
-      "transfers_out_event": 11266,
+      "transfers_in_event": 18636,
+      "transfers_out_event": 11282,
       "cost_change_event": 0,
       "now_cost": 54
-    },
-    {
-      "id": 667,
-      "web_name": "Wright",
-      "team_short": "AVL",
-      "position": "GKP",
-      "bucket": "rising",
-      "transfers_in_event": 8019,
-      "transfers_out_event": 998,
-      "cost_change_event": 0,
-      "now_cost": 40
     },
     {
       "id": 650,
@@ -471,8 +495,8 @@
       "team_short": "FUL",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 8583,
-      "transfers_out_event": 2022,
+      "transfers_in_event": 8722,
+      "transfers_out_event": 2046,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -482,8 +506,8 @@
       "team_short": "SUN",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 19015,
-      "transfers_out_event": 12719,
+      "transfers_in_event": 19052,
+      "transfers_out_event": 12750,
       "cost_change_event": -1,
       "now_cost": 39
     },
@@ -493,8 +517,8 @@
       "team_short": "COV",
       "position": "GKP",
       "bucket": "rising",
-      "transfers_in_event": 8804,
-      "transfers_out_event": 2563,
+      "transfers_in_event": 8860,
+      "transfers_out_event": 2575,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -504,8 +528,8 @@
       "team_short": "COV",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 7348,
-      "transfers_out_event": 2075,
+      "transfers_in_event": 7385,
+      "transfers_out_event": 2079,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -515,8 +539,8 @@
       "team_short": "FUL",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 6982,
-      "transfers_out_event": 2113,
+      "transfers_in_event": 7045,
+      "transfers_out_event": 2128,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -526,8 +550,8 @@
       "team_short": "BOU",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 8829,
-      "transfers_out_event": 4522,
+      "transfers_in_event": 9016,
+      "transfers_out_event": 4557,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -537,8 +561,8 @@
       "team_short": "TOT",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 8045,
-      "transfers_out_event": 4278,
+      "transfers_in_event": 8061,
+      "transfers_out_event": 4287,
       "cost_change_event": -1,
       "now_cost": 39
     },
@@ -548,9 +572,20 @@
       "team_short": "IPS",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 6821,
-      "transfers_out_event": 3208,
+      "transfers_in_event": 6834,
+      "transfers_out_event": 3220,
       "cost_change_event": 0,
+      "now_cost": 39
+    },
+    {
+      "id": 177,
+      "web_name": "Kesler-Hayden",
+      "team_short": "COV",
+      "position": "DEF",
+      "bucket": "rising",
+      "transfers_in_event": 4010,
+      "transfers_out_event": 1008,
+      "cost_change_event": -1,
       "now_cost": 39
     },
     {
@@ -559,8 +594,8 @@
       "team_short": "MCI",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 5042,
-      "transfers_out_event": 2291,
+      "transfers_in_event": 5052,
+      "transfers_out_event": 2294,
       "cost_change_event": 0,
       "now_cost": 74
     },
@@ -570,8 +605,8 @@
       "team_short": "COV",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 9084,
-      "transfers_out_event": 6489,
+      "transfers_in_event": 9115,
+      "transfers_out_event": 6501,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -581,7 +616,7 @@
       "team_short": "BHA",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 2939,
+      "transfers_in_event": 2951,
       "transfers_out_event": 349,
       "cost_change_event": 0,
       "now_cost": 55
@@ -592,8 +627,8 @@
       "team_short": "BRE",
       "position": "GKP",
       "bucket": "rising",
-      "transfers_in_event": 3122,
-      "transfers_out_event": 610,
+      "transfers_in_event": 3142,
+      "transfers_out_event": 616,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -603,8 +638,8 @@
       "team_short": "NEW",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 5352,
-      "transfers_out_event": 3361,
+      "transfers_in_event": 5374,
+      "transfers_out_event": 3372,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -614,8 +649,8 @@
       "team_short": "BRE",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 2574,
-      "transfers_out_event": 683,
+      "transfers_in_event": 2585,
+      "transfers_out_event": 686,
       "cost_change_event": 0,
       "now_cost": 59
     },
@@ -625,8 +660,8 @@
       "team_short": "SUN",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 9514,
-      "transfers_out_event": 7665,
+      "transfers_in_event": 9532,
+      "transfers_out_event": 7679,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -636,8 +671,8 @@
       "team_short": "FUL",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 2979,
-      "transfers_out_event": 1205,
+      "transfers_in_event": 2984,
+      "transfers_out_event": 1207,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -647,8 +682,8 @@
       "team_short": "COV",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 4262,
-      "transfers_out_event": 2672,
+      "transfers_in_event": 4392,
+      "transfers_out_event": 2781,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -658,8 +693,8 @@
       "team_short": "BHA",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 2350,
-      "transfers_out_event": 886,
+      "transfers_in_event": 2360,
+      "transfers_out_event": 889,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -669,8 +704,8 @@
       "team_short": "CHE",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 2800,
-      "transfers_out_event": 1403,
+      "transfers_in_event": 2809,
+      "transfers_out_event": 1407,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -680,8 +715,8 @@
       "team_short": "TOT",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 2540,
-      "transfers_out_event": 1275,
+      "transfers_in_event": 2545,
+      "transfers_out_event": 1280,
       "cost_change_event": 0,
       "now_cost": 65
     },
@@ -691,8 +726,8 @@
       "team_short": "LIV",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 3764,
-      "transfers_out_event": 2573,
+      "transfers_in_event": 3767,
+      "transfers_out_event": 2580,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -702,8 +737,8 @@
       "team_short": "COV",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 1983,
-      "transfers_out_event": 922,
+      "transfers_in_event": 1987,
+      "transfers_out_event": 923,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -713,8 +748,8 @@
       "team_short": "BHA",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 3391,
-      "transfers_out_event": 2341,
+      "transfers_in_event": 3395,
+      "transfers_out_event": 2343,
       "cost_change_event": -1,
       "now_cost": 59
     },
@@ -725,7 +760,7 @@
       "position": "DEF",
       "bucket": "rising",
       "transfers_in_event": 1368,
-      "transfers_out_event": 490,
+      "transfers_out_event": 491,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -735,30 +770,8 @@
       "team_short": "SUN",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 1815,
-      "transfers_out_event": 992,
-      "cost_change_event": 0,
-      "now_cost": 45
-    },
-    {
-      "id": 588,
-      "web_name": "Khalaili",
-      "team_short": "CRY",
-      "position": "DEF",
-      "bucket": "rising",
-      "transfers_in_event": 2219,
-      "transfers_out_event": 1400,
-      "cost_change_event": 0,
-      "now_cost": 50
-    },
-    {
-      "id": 659,
-      "web_name": "Miley",
-      "team_short": "NEW",
-      "position": "MID",
-      "bucket": "rising",
-      "transfers_in_event": 1490,
-      "transfers_out_event": 672,
+      "transfers_in_event": 1819,
+      "transfers_out_event": 995,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -768,21 +781,32 @@
       "team_short": "FUL",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 2770,
-      "transfers_out_event": 1962,
+      "transfers_in_event": 2786,
+      "transfers_out_event": 1964,
       "cost_change_event": 0,
       "now_cost": 55
     },
     {
-      "id": 177,
-      "web_name": "Kesler-Hayden",
-      "team_short": "COV",
+      "id": 659,
+      "web_name": "Miley",
+      "team_short": "NEW",
+      "position": "MID",
+      "bucket": "rising",
+      "transfers_in_event": 1491,
+      "transfers_out_event": 673,
+      "cost_change_event": 0,
+      "now_cost": 45
+    },
+    {
+      "id": 588,
+      "web_name": "Khalaili",
+      "team_short": "CRY",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 1406,
-      "transfers_out_event": 617,
-      "cost_change_event": -1,
-      "now_cost": 39
+      "transfers_in_event": 2221,
+      "transfers_out_event": 1414,
+      "cost_change_event": 0,
+      "now_cost": 50
     },
     {
       "id": 634,
@@ -790,8 +814,8 @@
       "team_short": "NEW",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 2296,
-      "transfers_out_event": 1533,
+      "transfers_in_event": 2303,
+      "transfers_out_event": 1535,
       "cost_change_event": 0,
       "now_cost": 60
     },
@@ -801,8 +825,8 @@
       "team_short": "HUL",
       "position": "FWD",
       "bucket": "rising",
-      "transfers_in_event": 1966,
-      "transfers_out_event": 1242,
+      "transfers_in_event": 1967,
+      "transfers_out_event": 1244,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -812,8 +836,8 @@
       "team_short": "MUN",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 1494,
-      "transfers_out_event": 803,
+      "transfers_in_event": 1501,
+      "transfers_out_event": 806,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -867,7 +891,7 @@
       "team_short": "CRY",
       "position": "GKP",
       "bucket": "rising",
-      "transfers_in_event": 746,
+      "transfers_in_event": 750,
       "transfers_out_event": 417,
       "cost_change_event": 0,
       "now_cost": 45
@@ -878,21 +902,10 @@
       "team_short": "AVL",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 501,
+      "transfers_in_event": 502,
       "transfers_out_event": 210,
       "cost_change_event": 0,
       "now_cost": 55
-    },
-    {
-      "id": 662,
-      "web_name": "Nicoll-Jazuli",
-      "team_short": "CHE",
-      "position": "MID",
-      "bucket": "rising",
-      "transfers_in_event": 356,
-      "transfers_out_event": 78,
-      "cost_change_event": 0,
-      "now_cost": 45
     },
     {
       "id": 580,
@@ -900,19 +913,19 @@
       "team_short": "FUL",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 762,
-      "transfers_out_event": 495,
+      "transfers_in_event": 777,
+      "transfers_out_event": 497,
       "cost_change_event": 0,
       "now_cost": 50
     },
     {
-      "id": 331,
-      "web_name": "Gudmundsson",
-      "team_short": "LEE",
-      "position": "DEF",
+      "id": 662,
+      "web_name": "Nicoll-Jazuli",
+      "team_short": "CHE",
+      "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 644,
-      "transfers_out_event": 379,
+      "transfers_in_event": 358,
+      "transfers_out_event": 79,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -922,8 +935,19 @@
       "team_short": "AVL",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 628,
+      "transfers_in_event": 632,
       "transfers_out_event": 365,
+      "cost_change_event": 0,
+      "now_cost": 45
+    },
+    {
+      "id": 331,
+      "web_name": "Gudmundsson",
+      "team_short": "LEE",
+      "position": "DEF",
+      "bucket": "rising",
+      "transfers_in_event": 646,
+      "transfers_out_event": 379,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -934,7 +958,7 @@
       "position": "MID",
       "bucket": "rising",
       "transfers_in_event": 1006,
-      "transfers_out_event": 756,
+      "transfers_out_event": 758,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -950,6 +974,17 @@
       "now_cost": 49
     },
     {
+      "id": 617,
+      "web_name": "Cho",
+      "team_short": "HUL",
+      "position": "MID",
+      "bucket": "rising",
+      "transfers_in_event": 376,
+      "transfers_out_event": 164,
+      "cost_change_event": 0,
+      "now_cost": 50
+    },
+    {
       "id": 666,
       "web_name": "Thompson",
       "team_short": "NEW",
@@ -959,17 +994,6 @@
       "transfers_out_event": 37,
       "cost_change_event": 0,
       "now_cost": 45
-    },
-    {
-      "id": 617,
-      "web_name": "Cho",
-      "team_short": "HUL",
-      "position": "MID",
-      "bucket": "rising",
-      "transfers_in_event": 375,
-      "transfers_out_event": 164,
-      "cost_change_event": 0,
-      "now_cost": 50
     },
     {
       "id": 644,
@@ -988,7 +1012,7 @@
       "team_short": "HUL",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 526,
+      "transfers_in_event": 527,
       "transfers_out_event": 370,
       "cost_change_event": 0,
       "now_cost": 55
@@ -1021,8 +1045,8 @@
       "team_short": "IPS",
       "position": "MID",
       "bucket": "rising",
-      "transfers_in_event": 396,
-      "transfers_out_event": 300,
+      "transfers_in_event": 397,
+      "transfers_out_event": 301,
       "cost_change_event": -1,
       "now_cost": 44
     },
@@ -1060,26 +1084,26 @@
       "now_cost": 45
     },
     {
+      "id": 354,
+      "web_name": "Jaros",
+      "team_short": "LIV",
+      "position": "GKP",
+      "bucket": "rising",
+      "transfers_in_event": 220,
+      "transfers_out_event": 171,
+      "cost_change_event": 0,
+      "now_cost": 40
+    },
+    {
       "id": 75,
       "web_name": "Christie",
       "team_short": "BOU",
       "position": "MID",
       "bucket": "rising",
       "transfers_in_event": 320,
-      "transfers_out_event": 272,
+      "transfers_out_event": 273,
       "cost_change_event": 0,
       "now_cost": 50
-    },
-    {
-      "id": 354,
-      "web_name": "Jaros",
-      "team_short": "LIV",
-      "position": "GKP",
-      "bucket": "rising",
-      "transfers_in_event": 219,
-      "transfers_out_event": 171,
-      "cost_change_event": 0,
-      "now_cost": 40
     },
     {
       "id": 119,
@@ -1164,7 +1188,7 @@
       "team_short": "LEE",
       "position": "DEF",
       "bucket": "rising",
-      "transfers_in_event": 104,
+      "transfers_in_event": 105,
       "transfers_out_event": 84,
       "cost_change_event": 0,
       "now_cost": 45
@@ -1236,6 +1260,17 @@
       "now_cost": 50
     },
     {
+      "id": 92,
+      "web_name": "Ji-soo",
+      "team_short": "BRE",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 65,
+      "transfers_out_event": 91,
+      "cost_change_event": -1,
+      "now_cost": 44
+    },
+    {
       "id": 652,
       "web_name": "Azeez",
       "team_short": "BHA",
@@ -1247,17 +1282,6 @@
       "now_cost": 55
     },
     {
-      "id": 92,
-      "web_name": "Ji-soo",
-      "team_short": "BRE",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 64,
-      "transfers_out_event": 91,
-      "cost_change_event": -1,
-      "now_cost": 44
-    },
-    {
       "id": 513,
       "web_name": "Xavi",
       "team_short": "TOT",
@@ -1267,17 +1291,6 @@
       "transfers_out_event": 86,
       "cost_change_event": 0,
       "now_cost": 59
-    },
-    {
-      "id": 291,
-      "web_name": "Matazo",
-      "team_short": "HUL",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 34,
-      "transfers_out_event": 62,
-      "cost_change_event": 0,
-      "now_cost": 45
     },
     {
       "id": 386,
@@ -1322,6 +1335,17 @@
       "transfers_out_event": 29,
       "cost_change_event": 0,
       "now_cost": 49
+    },
+    {
+      "id": 291,
+      "web_name": "Matazo",
+      "team_short": "HUL",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 34,
+      "transfers_out_event": 63,
+      "cost_change_event": 0,
+      "now_cost": 45
     },
     {
       "id": 275,
@@ -1450,8 +1474,8 @@
       "team_short": "BHA",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 141,
-      "transfers_out_event": 187,
+      "transfers_in_event": 142,
+      "transfers_out_event": 188,
       "cost_change_event": 0,
       "now_cost": 59
     },
@@ -1654,17 +1678,6 @@
       "now_cost": 50
     },
     {
-      "id": 292,
-      "web_name": "\u00d6m\u00fcr",
-      "team_short": "HUL",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 90,
-      "transfers_out_event": 155,
-      "cost_change_event": 0,
-      "now_cost": 49
-    },
-    {
       "id": 478,
       "web_name": "Netz",
       "team_short": "NFO",
@@ -1676,15 +1689,15 @@
       "now_cost": 44
     },
     {
-      "id": 179,
-      "web_name": "Latibeaudiere",
-      "team_short": "COV",
-      "position": "DEF",
+      "id": 292,
+      "web_name": "\u00d6m\u00fcr",
+      "team_short": "HUL",
+      "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 79,
-      "transfers_out_event": 147,
+      "transfers_in_event": 90,
+      "transfers_out_event": 157,
       "cost_change_event": 0,
-      "now_cost": 40
+      "now_cost": 49
     },
     {
       "id": 314,
@@ -1740,6 +1753,17 @@
       "transfers_out_event": 90,
       "cost_change_event": 0,
       "now_cost": 54
+    },
+    {
+      "id": 179,
+      "web_name": "Latibeaudiere",
+      "team_short": "COV",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 79,
+      "transfers_out_event": 149,
+      "cost_change_event": 0,
+      "now_cost": 40
     },
     {
       "id": 187,
@@ -1814,7 +1838,7 @@
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 90,
+      "transfers_out_event": 91,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -1836,7 +1860,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 10,
-      "transfers_out_event": 110,
+      "transfers_out_event": 112,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -1852,13 +1876,24 @@
       "now_cost": 60
     },
     {
+      "id": 181,
+      "web_name": "Brau",
+      "team_short": "COV",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 0,
+      "transfers_out_event": 112,
+      "cost_change_event": 0,
+      "now_cost": 40
+    },
+    {
       "id": 444,
       "web_name": "Jaouen",
       "team_short": "NEW",
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 20,
-      "transfers_out_event": 130,
+      "transfers_out_event": 132,
       "cost_change_event": -1,
       "now_cost": 44
     },
@@ -1869,20 +1904,9 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 159,
-      "transfers_out_event": 271,
+      "transfers_out_event": 272,
       "cost_change_event": -1,
       "now_cost": 58
-    },
-    {
-      "id": 181,
-      "web_name": "Brau",
-      "team_short": "COV",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 0,
-      "transfers_out_event": 112,
-      "cost_change_event": 0,
-      "now_cost": 40
     },
     {
       "id": 164,
@@ -2132,8 +2156,8 @@
       "team_short": "CHE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 255,
-      "transfers_out_event": 481,
+      "transfers_in_event": 256,
+      "transfers_out_event": 482,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -2155,7 +2179,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 206,
-      "transfers_out_event": 439,
+      "transfers_out_event": 440,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -2166,7 +2190,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 20,
-      "transfers_out_event": 254,
+      "transfers_out_event": 257,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -2199,7 +2223,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 17,
-      "transfers_out_event": 263,
+      "transfers_out_event": 264,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -2215,17 +2239,6 @@
       "now_cost": 49
     },
     {
-      "id": 30,
-      "web_name": "Digne",
-      "team_short": "AVL",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 0,
-      "transfers_out_event": 249,
-      "cost_change_event": 0,
-      "now_cost": 45
-    },
-    {
       "id": 653,
       "web_name": "Samba",
       "team_short": "MCI",
@@ -2237,13 +2250,24 @@
       "now_cost": 45
     },
     {
+      "id": 30,
+      "web_name": "Digne",
+      "team_short": "AVL",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 0,
+      "transfers_out_event": 251,
+      "cost_change_event": 0,
+      "now_cost": 45
+    },
+    {
       "id": 72,
       "web_name": "Gannon-Doak",
       "team_short": "BOU",
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 158,
-      "transfers_out_event": 411,
+      "transfers_out_event": 412,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -2264,8 +2288,8 @@
       "team_short": "EVE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 167,
-      "transfers_out_event": 429,
+      "transfers_in_event": 168,
+      "transfers_out_event": 430,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -2276,7 +2300,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 81,
-      "transfers_out_event": 344,
+      "transfers_out_event": 345,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -2287,7 +2311,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 265,
+      "transfers_out_event": 266,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -2309,7 +2333,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 179,
-      "transfers_out_event": 460,
+      "transfers_out_event": 461,
       "cost_change_event": -1,
       "now_cost": 49
     },
@@ -2330,8 +2354,8 @@
       "team_short": "SUN",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 553,
-      "transfers_out_event": 837,
+      "transfers_in_event": 554,
+      "transfers_out_event": 838,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -2342,7 +2366,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 254,
-      "transfers_out_event": 540,
+      "transfers_out_event": 541,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -2375,31 +2399,9 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 161,
-      "transfers_out_event": 455,
+      "transfers_out_event": 456,
       "cost_change_event": -1,
       "now_cost": 44
-    },
-    {
-      "id": 374,
-      "web_name": "Endo",
-      "team_short": "LIV",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 173,
-      "transfers_out_event": 469,
-      "cost_change_event": 0,
-      "now_cost": 49
-    },
-    {
-      "id": 186,
-      "web_name": "Mason-Clark",
-      "team_short": "COV",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 79,
-      "transfers_out_event": 376,
-      "cost_change_event": -1,
-      "now_cost": 53
     },
     {
       "id": 209,
@@ -2411,6 +2413,28 @@
       "transfers_out_event": 767,
       "cost_change_event": 0,
       "now_cost": 59
+    },
+    {
+      "id": 374,
+      "web_name": "Endo",
+      "team_short": "LIV",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 173,
+      "transfers_out_event": 470,
+      "cost_change_event": 0,
+      "now_cost": 49
+    },
+    {
+      "id": 186,
+      "web_name": "Mason-Clark",
+      "team_short": "COV",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 79,
+      "transfers_out_event": 378,
+      "cost_change_event": -1,
+      "now_cost": 53
     },
     {
       "id": 104,
@@ -2463,7 +2487,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 313,
+      "transfers_out_event": 314,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -2485,7 +2509,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 318,
+      "transfers_out_event": 319,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -2496,7 +2520,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 326,
+      "transfers_out_event": 327,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -2506,8 +2530,8 @@
       "team_short": "IPS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 564,
-      "transfers_out_event": 897,
+      "transfers_in_event": 565,
+      "transfers_out_event": 899,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -2517,8 +2541,8 @@
       "team_short": "IPS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 224,
-      "transfers_out_event": 568,
+      "transfers_in_event": 225,
+      "transfers_out_event": 570,
       "cost_change_event": -1,
       "now_cost": 49
     },
@@ -2529,7 +2553,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 345,
+      "transfers_out_event": 346,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -2539,8 +2563,8 @@
       "team_short": "HUL",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 149,
-      "transfers_out_event": 497,
+      "transfers_in_event": 150,
+      "transfers_out_event": 498,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -2556,17 +2580,6 @@
       "now_cost": 49
     },
     {
-      "id": 190,
-      "web_name": "Tchaouna",
-      "team_short": "COV",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 27,
-      "transfers_out_event": 382,
-      "cost_change_event": 0,
-      "now_cost": 54
-    },
-    {
       "id": 294,
       "web_name": "Zambrano",
       "team_short": "HUL",
@@ -2578,13 +2591,24 @@
       "now_cost": 45
     },
     {
+      "id": 190,
+      "web_name": "Tchaouna",
+      "team_short": "COV",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 27,
+      "transfers_out_event": 384,
+      "cost_change_event": 0,
+      "now_cost": 54
+    },
+    {
       "id": 632,
       "web_name": "Ansah",
       "team_short": "HUL",
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 79,
-      "transfers_out_event": 449,
+      "transfers_out_event": 450,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -2639,20 +2663,9 @@
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 275,
-      "transfers_out_event": 662,
+      "transfers_out_event": 663,
       "cost_change_event": -1,
       "now_cost": 48
-    },
-    {
-      "id": 307,
-      "web_name": "Johnson",
-      "team_short": "IPS",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 0,
-      "transfers_out_event": 391,
-      "cost_change_event": 0,
-      "now_cost": 40
     },
     {
       "id": 343,
@@ -2677,6 +2690,28 @@
       "now_cost": 49
     },
     {
+      "id": 307,
+      "web_name": "Johnson",
+      "team_short": "IPS",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 0,
+      "transfers_out_event": 393,
+      "cost_change_event": 0,
+      "now_cost": 40
+    },
+    {
+      "id": 180,
+      "web_name": "Woolfenden",
+      "team_short": "COV",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 178,
+      "transfers_out_event": 575,
+      "cost_change_event": -1,
+      "now_cost": 39
+    },
+    {
       "id": 484,
       "web_name": "Hutchinson",
       "team_short": "NFO",
@@ -2694,7 +2729,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 403,
+      "transfers_out_event": 404,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -2716,7 +2751,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 45,
-      "transfers_out_event": 474,
+      "transfers_out_event": 476,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -2760,7 +2795,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 421,
-      "transfers_out_event": 895,
+      "transfers_out_event": 896,
       "cost_change_event": 0,
       "now_cost": 74
     },
@@ -2770,8 +2805,8 @@
       "team_short": "CRY",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 469,
-      "transfers_out_event": 946,
+      "transfers_in_event": 471,
+      "transfers_out_event": 948,
       "cost_change_event": -1,
       "now_cost": 48
     },
@@ -2782,7 +2817,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 168,
-      "transfers_out_event": 646,
+      "transfers_out_event": 648,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -2793,7 +2828,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 114,
-      "transfers_out_event": 593,
+      "transfers_out_event": 594,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -2804,20 +2839,9 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 119,
-      "transfers_out_event": 598,
+      "transfers_out_event": 599,
       "cost_change_event": 0,
       "now_cost": 53
-    },
-    {
-      "id": 180,
-      "web_name": "Woolfenden",
-      "team_short": "COV",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 90,
-      "transfers_out_event": 574,
-      "cost_change_event": -1,
-      "now_cost": 39
     },
     {
       "id": 378,
@@ -2826,7 +2850,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 1099,
-      "transfers_out_event": 1600,
+      "transfers_out_event": 1603,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -2837,20 +2861,9 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 512,
+      "transfers_out_event": 515,
       "cost_change_event": 0,
       "now_cost": 40
-    },
-    {
-      "id": 339,
-      "web_name": "Longstaff",
-      "team_short": "LEE",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 155,
-      "transfers_out_event": 672,
-      "cost_change_event": -1,
-      "now_cost": 48
     },
     {
       "id": 62,
@@ -2858,8 +2871,8 @@
       "team_short": "BOU",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 506,
-      "transfers_out_event": 1024,
+      "transfers_in_event": 507,
+      "transfers_out_event": 1025,
       "cost_change_event": -1,
       "now_cost": 49
     },
@@ -2870,9 +2883,20 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 518,
+      "transfers_out_event": 519,
       "cost_change_event": 0,
       "now_cost": 50
+    },
+    {
+      "id": 339,
+      "web_name": "Longstaff",
+      "team_short": "LEE",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 155,
+      "transfers_out_event": 674,
+      "cost_change_event": -1,
+      "now_cost": 48
     },
     {
       "id": 610,
@@ -2903,7 +2927,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 115,
-      "transfers_out_event": 662,
+      "transfers_out_event": 663,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -2914,7 +2938,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 51,
-      "transfers_out_event": 605,
+      "transfers_out_event": 606,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -2924,7 +2948,7 @@
       "team_short": "NEW",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 361,
+      "transfers_in_event": 364,
       "transfers_out_event": 920,
       "cost_change_event": 0,
       "now_cost": 58
@@ -2936,7 +2960,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 565,
+      "transfers_out_event": 569,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -2947,7 +2971,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 23,
-      "transfers_out_event": 591,
+      "transfers_out_event": 592,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -2958,7 +2982,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 575,
+      "transfers_out_event": 576,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -2969,7 +2993,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 381,
-      "transfers_out_event": 967,
+      "transfers_out_event": 968,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -2980,7 +3004,7 @@
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 595,
+      "transfers_out_event": 596,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -3002,7 +3026,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 604,
+      "transfers_out_event": 605,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -3013,20 +3037,9 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 235,
-      "transfers_out_event": 840,
+      "transfers_out_event": 846,
       "cost_change_event": 0,
       "now_cost": 50
-    },
-    {
-      "id": 606,
-      "web_name": "Rowe",
-      "team_short": "AVL",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 336,
-      "transfers_out_event": 948,
-      "cost_change_event": 0,
-      "now_cost": 40
     },
     {
       "id": 246,
@@ -3040,17 +3053,6 @@
       "now_cost": 49
     },
     {
-      "id": 309,
-      "web_name": "N\u00fa\u00f1ez",
-      "team_short": "IPS",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 103,
-      "transfers_out_event": 715,
-      "cost_change_event": 0,
-      "now_cost": 49
-    },
-    {
       "id": 604,
       "web_name": "Cresswell",
       "team_short": "LEE",
@@ -3060,6 +3062,28 @@
       "transfers_out_event": 938,
       "cost_change_event": 0,
       "now_cost": 45
+    },
+    {
+      "id": 606,
+      "web_name": "Rowe",
+      "team_short": "AVL",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 336,
+      "transfers_out_event": 950,
+      "cost_change_event": 0,
+      "now_cost": 40
+    },
+    {
+      "id": 309,
+      "web_name": "N\u00fa\u00f1ez",
+      "team_short": "IPS",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 103,
+      "transfers_out_event": 717,
+      "cost_change_event": 0,
+      "now_cost": 49
     },
     {
       "id": 601,
@@ -3090,7 +3114,7 @@
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 647,
+      "transfers_out_event": 649,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -3101,7 +3125,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 653,
+      "transfers_out_event": 655,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3112,7 +3136,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 674,
+      "transfers_out_event": 675,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -3123,7 +3147,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 22,
-      "transfers_out_event": 698,
+      "transfers_out_event": 699,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -3133,8 +3157,8 @@
       "team_short": "FUL",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 702,
-      "transfers_out_event": 1397,
+      "transfers_in_event": 703,
+      "transfers_out_event": 1400,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -3155,8 +3179,8 @@
       "team_short": "BOU",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 219,
-      "transfers_out_event": 949,
+      "transfers_in_event": 220,
+      "transfers_out_event": 950,
       "cost_change_event": 0,
       "now_cost": 74
     },
@@ -3167,7 +3191,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 199,
-      "transfers_out_event": 935,
+      "transfers_out_event": 936,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -3178,7 +3202,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 736,
+      "transfers_out_event": 738,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3189,7 +3213,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 744,
+      "transfers_out_event": 745,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3200,7 +3224,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 322,
-      "transfers_out_event": 1072,
+      "transfers_out_event": 1075,
       "cost_change_event": -1,
       "now_cost": 48
     },
@@ -3210,8 +3234,8 @@
       "team_short": "ARS",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 438,
-      "transfers_out_event": 1194,
+      "transfers_in_event": 440,
+      "transfers_out_event": 1197,
       "cost_change_event": 0,
       "now_cost": 59
     },
@@ -3222,7 +3246,7 @@
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 757,
+      "transfers_out_event": 758,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3244,7 +3268,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 772,
+      "transfers_out_event": 775,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3254,8 +3278,8 @@
       "team_short": "EVE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 250,
-      "transfers_out_event": 1048,
+      "transfers_in_event": 251,
+      "transfers_out_event": 1049,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3266,7 +3290,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 503,
-      "transfers_out_event": 1301,
+      "transfers_out_event": 1303,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -3277,7 +3301,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 28,
-      "transfers_out_event": 833,
+      "transfers_out_event": 835,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3287,8 +3311,8 @@
       "team_short": "IPS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 171,
-      "transfers_out_event": 1001,
+      "transfers_in_event": 175,
+      "transfers_out_event": 1006,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -3299,9 +3323,20 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 800,
-      "transfers_out_event": 1643,
+      "transfers_out_event": 1644,
       "cost_change_event": 0,
       "now_cost": 62
+    },
+    {
+      "id": 278,
+      "web_name": "Hughes",
+      "team_short": "HUL",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 1201,
+      "transfers_out_event": 2075,
+      "cost_change_event": 0,
+      "now_cost": 39
     },
     {
       "id": 477,
@@ -3310,7 +3345,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 886,
+      "transfers_out_event": 890,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -3321,20 +3356,9 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 368,
-      "transfers_out_event": 1258,
+      "transfers_out_event": 1261,
       "cost_change_event": -1,
       "now_cost": 48
-    },
-    {
-      "id": 278,
-      "web_name": "Hughes",
-      "team_short": "HUL",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 1175,
-      "transfers_out_event": 2065,
-      "cost_change_event": 0,
-      "now_cost": 39
     },
     {
       "id": 535,
@@ -3343,31 +3367,9 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 242,
-      "transfers_out_event": 1147,
+      "transfers_out_event": 1150,
       "cost_change_event": -1,
       "now_cost": 48
-    },
-    {
-      "id": 271,
-      "web_name": "Muniz",
-      "team_short": "FUL",
-      "position": "FWD",
-      "bucket": "falling",
-      "transfers_in_event": 1919,
-      "transfers_out_event": 2848,
-      "cost_change_event": 0,
-      "now_cost": 54
-    },
-    {
-      "id": 395,
-      "web_name": "Lewis",
-      "team_short": "MCI",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 339,
-      "transfers_out_event": 1272,
-      "cost_change_event": 0,
-      "now_cost": 44
     },
     {
       "id": 621,
@@ -3381,15 +3383,26 @@
       "now_cost": 45
     },
     {
-      "id": 71,
-      "web_name": "Cook",
-      "team_short": "BOU",
-      "position": "MID",
+      "id": 271,
+      "web_name": "Muniz",
+      "team_short": "FUL",
+      "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 293,
-      "transfers_out_event": 1230,
+      "transfers_in_event": 1922,
+      "transfers_out_event": 2856,
       "cost_change_event": 0,
-      "now_cost": 50
+      "now_cost": 54
+    },
+    {
+      "id": 395,
+      "web_name": "Lewis",
+      "team_short": "MCI",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 339,
+      "transfers_out_event": 1273,
+      "cost_change_event": 0,
+      "now_cost": 44
     },
     {
       "id": 482,
@@ -3397,10 +3410,21 @@
       "team_short": "NFO",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 291,
-      "transfers_out_event": 1228,
+      "transfers_in_event": 292,
+      "transfers_out_event": 1229,
       "cost_change_event": 0,
       "now_cost": 58
+    },
+    {
+      "id": 71,
+      "web_name": "Cook",
+      "team_short": "BOU",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 294,
+      "transfers_out_event": 1232,
+      "cost_change_event": 0,
+      "now_cost": 50
     },
     {
       "id": 511,
@@ -3409,7 +3433,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 943,
+      "transfers_out_event": 946,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -3420,7 +3444,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 214,
-      "transfers_out_event": 1161,
+      "transfers_out_event": 1164,
       "cost_change_event": -1,
       "now_cost": 54
     },
@@ -3442,7 +3466,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 68,
-      "transfers_out_event": 1081,
+      "transfers_out_event": 1082,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -3453,7 +3477,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 434,
-      "transfers_out_event": 1454,
+      "transfers_out_event": 1455,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -3464,7 +3488,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 374,
-      "transfers_out_event": 1415,
+      "transfers_out_event": 1418,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3474,8 +3498,8 @@
       "team_short": "FUL",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 336,
-      "transfers_out_event": 1381,
+      "transfers_in_event": 337,
+      "transfers_out_event": 1382,
       "cost_change_event": -1,
       "now_cost": 43
     },
@@ -3486,7 +3510,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 627,
-      "transfers_out_event": 1692,
+      "transfers_out_event": 1693,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3507,8 +3531,8 @@
       "team_short": "CHE",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 92,
-      "transfers_out_event": 1161,
+      "transfers_in_event": 93,
+      "transfers_out_event": 1163,
       "cost_change_event": -1,
       "now_cost": 49
     },
@@ -3519,7 +3543,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 1095,
+      "transfers_out_event": 1096,
       "cost_change_event": 0,
       "now_cost": 59
     },
@@ -3540,8 +3564,8 @@
       "team_short": "NEW",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 460,
-      "transfers_out_event": 1612,
+      "transfers_in_event": 461,
+      "transfers_out_event": 1614,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -3552,7 +3576,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 149,
-      "transfers_out_event": 1318,
+      "transfers_out_event": 1323,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -3562,8 +3586,8 @@
       "team_short": "MUN",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 2139,
-      "transfers_out_event": 3324,
+      "transfers_in_event": 2143,
+      "transfers_out_event": 3327,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -3573,8 +3597,8 @@
       "team_short": "NEW",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 689,
-      "transfers_out_event": 1909,
+      "transfers_in_event": 691,
+      "transfers_out_event": 1911,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -3584,8 +3608,8 @@
       "team_short": "BHA",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 2923,
-      "transfers_out_event": 4148,
+      "transfers_in_event": 2927,
+      "transfers_out_event": 4156,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -3595,7 +3619,7 @@
       "team_short": "TOT",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 844,
+      "transfers_in_event": 845,
       "transfers_out_event": 2112,
       "cost_change_event": 0,
       "now_cost": 63
@@ -3606,8 +3630,8 @@
       "team_short": "BRE",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 1332,
-      "transfers_out_event": 2604,
+      "transfers_in_event": 1333,
+      "transfers_out_event": 2607,
       "cost_change_event": -1,
       "now_cost": 54
     },
@@ -3617,8 +3641,8 @@
       "team_short": "FUL",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1140,
-      "transfers_out_event": 2422,
+      "transfers_in_event": 1149,
+      "transfers_out_event": 2425,
       "cost_change_event": -1,
       "now_cost": 44
     },
@@ -3628,8 +3652,8 @@
       "team_short": "AVL",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 610,
-      "transfers_out_event": 1898,
+      "transfers_in_event": 612,
+      "transfers_out_event": 1900,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -3640,20 +3664,9 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 1291,
+      "transfers_out_event": 1297,
       "cost_change_event": 0,
       "now_cost": 45
-    },
-    {
-      "id": 421,
-      "web_name": "Heaven",
-      "team_short": "MUN",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 272,
-      "transfers_out_event": 1587,
-      "cost_change_event": -1,
-      "now_cost": 43
     },
     {
       "id": 616,
@@ -3661,10 +3674,21 @@
       "team_short": "MCI",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 885,
-      "transfers_out_event": 2201,
+      "transfers_in_event": 887,
+      "transfers_out_event": 2202,
       "cost_change_event": 0,
       "now_cost": 55
+    },
+    {
+      "id": 421,
+      "web_name": "Heaven",
+      "team_short": "MUN",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 273,
+      "transfers_out_event": 1588,
+      "cost_change_event": -1,
+      "now_cost": 43
     },
     {
       "id": 506,
@@ -3673,7 +3697,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 363,
-      "transfers_out_event": 1734,
+      "transfers_out_event": 1738,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -3684,7 +3708,7 @@
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 1393,
+      "transfers_out_event": 1398,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3694,8 +3718,8 @@
       "team_short": "SUN",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 238,
-      "transfers_out_event": 1635,
+      "transfers_in_event": 239,
+      "transfers_out_event": 1643,
       "cost_change_event": -1,
       "now_cost": 44
     },
@@ -3706,7 +3730,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 148,
-      "transfers_out_event": 1561,
+      "transfers_out_event": 1566,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -3717,7 +3741,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 1470,
+      "transfers_out_event": 1473,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3727,8 +3751,8 @@
       "team_short": "HUL",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 644,
-      "transfers_out_event": 2148,
+      "transfers_in_event": 645,
+      "transfers_out_event": 2151,
       "cost_change_event": -1,
       "now_cost": 44
     },
@@ -3738,8 +3762,8 @@
       "team_short": "CHE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 453,
-      "transfers_out_event": 2066,
+      "transfers_in_event": 454,
+      "transfers_out_event": 2071,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3749,8 +3773,8 @@
       "team_short": "AVL",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 287,
-      "transfers_out_event": 1915,
+      "transfers_in_event": 290,
+      "transfers_out_event": 1919,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -3761,7 +3785,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 1657,
+      "transfers_out_event": 1659,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -3771,8 +3795,8 @@
       "team_short": "LEE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1997,
-      "transfers_out_event": 3693,
+      "transfers_in_event": 2009,
+      "transfers_out_event": 3704,
       "cost_change_event": 0,
       "now_cost": 58
     },
@@ -3783,7 +3807,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 562,
-      "transfers_out_event": 2321,
+      "transfers_out_event": 2324,
       "cost_change_event": -1,
       "now_cost": 52
     },
@@ -3793,8 +3817,8 @@
       "team_short": "LEE",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 2176,
-      "transfers_out_event": 3950,
+      "transfers_in_event": 2181,
+      "transfers_out_event": 3955,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -3805,7 +3829,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 497,
-      "transfers_out_event": 2305,
+      "transfers_out_event": 2308,
       "cost_change_event": -1,
       "now_cost": 48
     },
@@ -3816,7 +3840,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 145,
-      "transfers_out_event": 2007,
+      "transfers_out_event": 2010,
       "cost_change_event": 0,
       "now_cost": 57
     },
@@ -3826,8 +3850,8 @@
       "team_short": "TOT",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 213,
-      "transfers_out_event": 2086,
+      "transfers_in_event": 214,
+      "transfers_out_event": 2091,
       "cost_change_event": -1,
       "now_cost": 57
     },
@@ -3849,7 +3873,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 2003,
+      "transfers_out_event": 2006,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -3860,7 +3884,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 35,
-      "transfers_out_event": 2127,
+      "transfers_out_event": 2129,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -3870,8 +3894,8 @@
       "team_short": "CHE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 486,
-      "transfers_out_event": 2589,
+      "transfers_in_event": 487,
+      "transfers_out_event": 2592,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -3881,8 +3905,8 @@
       "team_short": "BRE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1462,
-      "transfers_out_event": 3583,
+      "transfers_in_event": 1465,
+      "transfers_out_event": 3591,
       "cost_change_event": 0,
       "now_cost": 48
     },
@@ -3892,8 +3916,8 @@
       "team_short": "CRY",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 746,
-      "transfers_out_event": 2874,
+      "transfers_in_event": 747,
+      "transfers_out_event": 2884,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -3904,7 +3928,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 2135,
+      "transfers_out_event": 2138,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3914,8 +3938,8 @@
       "team_short": "CRY",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 1408,
-      "transfers_out_event": 3568,
+      "transfers_in_event": 1409,
+      "transfers_out_event": 3578,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -3925,7 +3949,7 @@
       "team_short": "ARS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 841,
+      "transfers_in_event": 846,
       "transfers_out_event": 3036,
       "cost_change_event": -1,
       "now_cost": 57
@@ -3936,8 +3960,8 @@
       "team_short": "IPS",
       "position": "GKP",
       "bucket": "falling",
-      "transfers_in_event": 739,
-      "transfers_out_event": 2987,
+      "transfers_in_event": 743,
+      "transfers_out_event": 2992,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -3948,7 +3972,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 462,
-      "transfers_out_event": 2738,
+      "transfers_out_event": 2741,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -3958,8 +3982,8 @@
       "team_short": "AVL",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 597,
-      "transfers_out_event": 2929,
+      "transfers_in_event": 600,
+      "transfers_out_event": 2931,
       "cost_change_event": 0,
       "now_cost": 58
     },
@@ -3969,8 +3993,8 @@
       "team_short": "NEW",
       "position": "GKP",
       "bucket": "falling",
-      "transfers_in_event": 935,
-      "transfers_out_event": 3343,
+      "transfers_in_event": 937,
+      "transfers_out_event": 3348,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -3981,9 +4005,20 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 138,
-      "transfers_out_event": 2600,
+      "transfers_out_event": 2602,
       "cost_change_event": -1,
       "now_cost": 58
+    },
+    {
+      "id": 643,
+      "web_name": "Chilwell",
+      "team_short": "CRY",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 612,
+      "transfers_out_event": 3109,
+      "cost_change_event": 0,
+      "now_cost": 45
     },
     {
       "id": 422,
@@ -3992,20 +4027,9 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 613,
-      "transfers_out_event": 3101,
+      "transfers_out_event": 3111,
       "cost_change_event": 0,
       "now_cost": 44
-    },
-    {
-      "id": 643,
-      "web_name": "Chilwell",
-      "team_short": "CRY",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 610,
-      "transfers_out_event": 3099,
-      "cost_change_event": 0,
-      "now_cost": 45
     },
     {
       "id": 157,
@@ -4013,8 +4037,8 @@
       "team_short": "CHE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 2000,
-      "transfers_out_event": 4548,
+      "transfers_in_event": 2003,
+      "transfers_out_event": 4552,
       "cost_change_event": 0,
       "now_cost": 63
     },
@@ -4024,8 +4048,8 @@
       "team_short": "EVE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 936,
-      "transfers_out_event": 3507,
+      "transfers_in_event": 937,
+      "transfers_out_event": 3509,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -4036,7 +4060,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 65,
-      "transfers_out_event": 2715,
+      "transfers_out_event": 2718,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -4047,7 +4071,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 673,
-      "transfers_out_event": 3591,
+      "transfers_out_event": 3593,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4058,7 +4082,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 337,
-      "transfers_out_event": 3319,
+      "transfers_out_event": 3324,
       "cost_change_event": -1,
       "now_cost": 48
     },
@@ -4069,7 +4093,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 905,
-      "transfers_out_event": 3951,
+      "transfers_out_event": 3958,
       "cost_change_event": 0,
       "now_cost": 63
     },
@@ -4079,8 +4103,8 @@
       "team_short": "LIV",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 4102,
-      "transfers_out_event": 7325,
+      "transfers_in_event": 4109,
+      "transfers_out_event": 7330,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -4090,8 +4114,8 @@
       "team_short": "IPS",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 522,
-      "transfers_out_event": 3807,
+      "transfers_in_event": 523,
+      "transfers_out_event": 3816,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -4102,7 +4126,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 48,
-      "transfers_out_event": 3358,
+      "transfers_out_event": 3362,
       "cost_change_event": -1,
       "now_cost": 44
     },
@@ -4113,19 +4137,8 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 226,
-      "transfers_out_event": 3612,
+      "transfers_out_event": 3615,
       "cost_change_event": -1,
-      "now_cost": 53
-    },
-    {
-      "id": 19,
-      "web_name": "Zubimendi",
-      "team_short": "ARS",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 541,
-      "transfers_out_event": 3958,
-      "cost_change_event": 0,
       "now_cost": 53
     },
     {
@@ -4134,10 +4147,21 @@
       "team_short": "COV",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 2231,
-      "transfers_out_event": 5653,
+      "transfers_in_event": 2243,
+      "transfers_out_event": 5665,
       "cost_change_event": -1,
       "now_cost": 49
+    },
+    {
+      "id": 19,
+      "web_name": "Zubimendi",
+      "team_short": "ARS",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 541,
+      "transfers_out_event": 3966,
+      "cost_change_event": 0,
+      "now_cost": 53
     },
     {
       "id": 116,
@@ -4145,8 +4169,8 @@
       "team_short": "BHA",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 7729,
-      "transfers_out_event": 11167,
+      "transfers_in_event": 7734,
+      "transfers_out_event": 11186,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4156,8 +4180,8 @@
       "team_short": "COV",
       "position": "GKP",
       "bucket": "falling",
-      "transfers_in_event": 2824,
-      "transfers_out_event": 6306,
+      "transfers_in_event": 2829,
+      "transfers_out_event": 6321,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4167,8 +4191,8 @@
       "team_short": "CRY",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1247,
-      "transfers_out_event": 4789,
+      "transfers_in_event": 1249,
+      "transfers_out_event": 4796,
       "cost_change_event": -1,
       "now_cost": 54
     },
@@ -4178,8 +4202,8 @@
       "team_short": "LEE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1839,
-      "transfers_out_event": 5394,
+      "transfers_in_event": 1848,
+      "transfers_out_event": 5409,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -4190,7 +4214,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 877,
-      "transfers_out_event": 4499,
+      "transfers_out_event": 4505,
       "cost_change_event": -1,
       "now_cost": 57
     },
@@ -4200,8 +4224,8 @@
       "team_short": "EVE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 436,
-      "transfers_out_event": 4088,
+      "transfers_in_event": 437,
+      "transfers_out_event": 4091,
       "cost_change_event": 0,
       "now_cost": 48
     },
@@ -4212,7 +4236,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 1036,
-      "transfers_out_event": 4696,
+      "transfers_out_event": 4710,
       "cost_change_event": 0,
       "now_cost": 58
     },
@@ -4222,8 +4246,8 @@
       "team_short": "IPS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 2657,
-      "transfers_out_event": 6544,
+      "transfers_in_event": 2670,
+      "transfers_out_event": 6557,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -4233,8 +4257,8 @@
       "team_short": "TOT",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 2215,
-      "transfers_out_event": 6127,
+      "transfers_in_event": 2218,
+      "transfers_out_event": 6136,
       "cost_change_event": 0,
       "now_cost": 58
     },
@@ -4244,8 +4268,8 @@
       "team_short": "CHE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 269,
-      "transfers_out_event": 4227,
+      "transfers_in_event": 271,
+      "transfers_out_event": 4242,
       "cost_change_event": 0,
       "now_cost": 53
     },
@@ -4256,7 +4280,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 3965,
+      "transfers_out_event": 3972,
       "cost_change_event": 0,
       "now_cost": 59
     },
@@ -4267,7 +4291,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 4134,
+      "transfers_out_event": 4142,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4277,8 +4301,8 @@
       "team_short": "ARS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1056,
-      "transfers_out_event": 5223,
+      "transfers_in_event": 1058,
+      "transfers_out_event": 5229,
       "cost_change_event": -1,
       "now_cost": 54
     },
@@ -4288,8 +4312,8 @@
       "team_short": "MUN",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1088,
-      "transfers_out_event": 5273,
+      "transfers_in_event": 1089,
+      "transfers_out_event": 5279,
       "cost_change_event": 0,
       "now_cost": 48
     },
@@ -4299,8 +4323,8 @@
       "team_short": "CHE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 5919,
-      "transfers_out_event": 10204,
+      "transfers_in_event": 5948,
+      "transfers_out_event": 10220,
       "cost_change_event": 0,
       "now_cost": 65
     },
@@ -4310,8 +4334,8 @@
       "team_short": "TOT",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 3269,
-      "transfers_out_event": 7555,
+      "transfers_in_event": 3280,
+      "transfers_out_event": 7571,
       "cost_change_event": 0,
       "now_cost": 65
     },
@@ -4321,8 +4345,8 @@
       "team_short": "ARS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 2932,
-      "transfers_out_event": 7255,
+      "transfers_in_event": 2941,
+      "transfers_out_event": 7262,
       "cost_change_event": -1,
       "now_cost": 62
     },
@@ -4332,8 +4356,8 @@
       "team_short": "FUL",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 2941,
-      "transfers_out_event": 7318,
+      "transfers_in_event": 2942,
+      "transfers_out_event": 7329,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -4343,8 +4367,8 @@
       "team_short": "ARS",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1579,
-      "transfers_out_event": 6023,
+      "transfers_in_event": 1586,
+      "transfers_out_event": 6029,
       "cost_change_event": -1,
       "now_cost": 52
     },
@@ -4354,8 +4378,8 @@
       "team_short": "NFO",
       "position": "GKP",
       "bucket": "falling",
-      "transfers_in_event": 2212,
-      "transfers_out_event": 6661,
+      "transfers_in_event": 2220,
+      "transfers_out_event": 6674,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -4365,8 +4389,8 @@
       "team_short": "CHE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1221,
-      "transfers_out_event": 5732,
+      "transfers_in_event": 1231,
+      "transfers_out_event": 5743,
       "cost_change_event": -1,
       "now_cost": 48
     },
@@ -4376,8 +4400,8 @@
       "team_short": "AVL",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1959,
-      "transfers_out_event": 6472,
+      "transfers_in_event": 1963,
+      "transfers_out_event": 6479,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -4387,8 +4411,8 @@
       "team_short": "MCI",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 5047,
-      "transfers_out_event": 9675,
+      "transfers_in_event": 5054,
+      "transfers_out_event": 9689,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -4398,8 +4422,8 @@
       "team_short": "NFO",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 2226,
-      "transfers_out_event": 6871,
+      "transfers_in_event": 2228,
+      "transfers_out_event": 6886,
       "cost_change_event": 0,
       "now_cost": 58
     },
@@ -4409,21 +4433,10 @@
       "team_short": "IPS",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 5285,
-      "transfers_out_event": 10176,
+      "transfers_in_event": 5292,
+      "transfers_out_event": 10190,
       "cost_change_event": 0,
       "now_cost": 50
-    },
-    {
-      "id": 456,
-      "web_name": "J.Ramsey",
-      "team_short": "NEW",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 79,
-      "transfers_out_event": 5000,
-      "cost_change_event": 0,
-      "now_cost": 49
     },
     {
       "id": 327,
@@ -4431,8 +4444,8 @@
       "team_short": "LEE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 855,
-      "transfers_out_event": 5851,
+      "transfers_in_event": 857,
+      "transfers_out_event": 5862,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -4443,7 +4456,7 @@
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 5181,
+      "transfers_out_event": 5200,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -4453,8 +4466,8 @@
       "team_short": "IPS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1722,
-      "transfers_out_event": 6914,
+      "transfers_in_event": 1727,
+      "transfers_out_event": 6930,
       "cost_change_event": -1,
       "now_cost": 44
     },
@@ -4465,7 +4478,7 @@
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 5232,
+      "transfers_out_event": 5243,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -4476,7 +4489,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 78,
-      "transfers_out_event": 5382,
+      "transfers_out_event": 5394,
       "cost_change_event": -1,
       "now_cost": 54
     },
@@ -4486,8 +4499,8 @@
       "team_short": "CHE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1685,
-      "transfers_out_event": 7199,
+      "transfers_in_event": 1688,
+      "transfers_out_event": 7203,
       "cost_change_event": -1,
       "now_cost": 49
     },
@@ -4497,8 +4510,8 @@
       "team_short": "BOU",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 4570,
-      "transfers_out_event": 10451,
+      "transfers_in_event": 4585,
+      "transfers_out_event": 10471,
       "cost_change_event": -1,
       "now_cost": 63
     },
@@ -4509,7 +4522,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 124,
-      "transfers_out_event": 6256,
+      "transfers_out_event": 6263,
       "cost_change_event": -1,
       "now_cost": 48
     },
@@ -4520,7 +4533,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 6226,
+      "transfers_out_event": 6232,
       "cost_change_event": 0,
       "now_cost": 59
     },
@@ -4530,8 +4543,8 @@
       "team_short": "TOT",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 515,
-      "transfers_out_event": 7093,
+      "transfers_in_event": 516,
+      "transfers_out_event": 7103,
       "cost_change_event": -1,
       "now_cost": 57
     },
@@ -4541,8 +4554,8 @@
       "team_short": "MUN",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1454,
-      "transfers_out_event": 8063,
+      "transfers_in_event": 1459,
+      "transfers_out_event": 8084,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -4553,7 +4566,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 55,
-      "transfers_out_event": 6720,
+      "transfers_out_event": 6735,
       "cost_change_event": -1,
       "now_cost": 44
     },
@@ -4563,8 +4576,8 @@
       "team_short": "CHE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 920,
-      "transfers_out_event": 7799,
+      "transfers_in_event": 926,
+      "transfers_out_event": 7807,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4574,8 +4587,8 @@
       "team_short": "BHA",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 307,
-      "transfers_out_event": 7254,
+      "transfers_in_event": 308,
+      "transfers_out_event": 7264,
       "cost_change_event": 0,
       "now_cost": 59
     },
@@ -4585,8 +4598,8 @@
       "team_short": "AVL",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 3415,
-      "transfers_out_event": 10399,
+      "transfers_in_event": 3423,
+      "transfers_out_event": 10436,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4596,8 +4609,8 @@
       "team_short": "LIV",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 13190,
-      "transfers_out_event": 20256,
+      "transfers_in_event": 13241,
+      "transfers_out_event": 20285,
       "cost_change_event": 0,
       "now_cost": 80
     },
@@ -4608,7 +4621,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 640,
-      "transfers_out_event": 7806,
+      "transfers_out_event": 7819,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4619,7 +4632,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 42,
-      "transfers_out_event": 7287,
+      "transfers_out_event": 7298,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -4629,8 +4642,8 @@
       "team_short": "TOT",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 6364,
-      "transfers_out_event": 14116,
+      "transfers_in_event": 6403,
+      "transfers_out_event": 14165,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -4640,8 +4653,8 @@
       "team_short": "NFO",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 835,
-      "transfers_out_event": 8606,
+      "transfers_in_event": 839,
+      "transfers_out_event": 8622,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -4652,7 +4665,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 7807,
+      "transfers_out_event": 7815,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -4662,8 +4675,8 @@
       "team_short": "MUN",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 3400,
-      "transfers_out_event": 11322,
+      "transfers_in_event": 3406,
+      "transfers_out_event": 11334,
       "cost_change_event": 0,
       "now_cost": 58
     },
@@ -4673,8 +4686,8 @@
       "team_short": "MCI",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1534,
-      "transfers_out_event": 9469,
+      "transfers_in_event": 1536,
+      "transfers_out_event": 9477,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -4684,8 +4697,8 @@
       "team_short": "BOU",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 5179,
-      "transfers_out_event": 13242,
+      "transfers_in_event": 5195,
+      "transfers_out_event": 13274,
       "cost_change_event": -1,
       "now_cost": 54
     },
@@ -4695,8 +4708,8 @@
       "team_short": "LIV",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1329,
-      "transfers_out_event": 9578,
+      "transfers_in_event": 1334,
+      "transfers_out_event": 9593,
       "cost_change_event": -1,
       "now_cost": 58
     },
@@ -4706,8 +4719,8 @@
       "team_short": "SUN",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 3816,
-      "transfers_out_event": 12255,
+      "transfers_in_event": 3830,
+      "transfers_out_event": 12275,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -4717,8 +4730,8 @@
       "team_short": "LIV",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 2808,
-      "transfers_out_event": 11342,
+      "transfers_in_event": 2809,
+      "transfers_out_event": 11363,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -4729,7 +4742,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 8563,
+      "transfers_out_event": 8572,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4739,8 +4752,8 @@
       "team_short": "MUN",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 8017,
-      "transfers_out_event": 16603,
+      "transfers_in_event": 8026,
+      "transfers_out_event": 16631,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -4750,8 +4763,8 @@
       "team_short": "IPS",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 20010,
-      "transfers_out_event": 28778,
+      "transfers_in_event": 20077,
+      "transfers_out_event": 28833,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4761,8 +4774,8 @@
       "team_short": "BRE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 3987,
-      "transfers_out_event": 12766,
+      "transfers_in_event": 3996,
+      "transfers_out_event": 12785,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -4772,8 +4785,8 @@
       "team_short": "ARS",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1394,
-      "transfers_out_event": 10182,
+      "transfers_in_event": 1402,
+      "transfers_out_event": 10199,
       "cost_change_event": 0,
       "now_cost": 53
     },
@@ -4783,10 +4796,21 @@
       "team_short": "EVE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 2665,
-      "transfers_out_event": 11558,
+      "transfers_in_event": 2668,
+      "transfers_out_event": 11586,
       "cost_change_event": 0,
       "now_cost": 55
+    },
+    {
+      "id": 107,
+      "web_name": "Furo",
+      "team_short": "BRE",
+      "position": "FWD",
+      "bucket": "falling",
+      "transfers_in_event": 966,
+      "transfers_out_event": 10121,
+      "cost_change_event": 0,
+      "now_cost": 45
     },
     {
       "id": 159,
@@ -4795,20 +4819,9 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 440,
-      "transfers_out_event": 9587,
+      "transfers_out_event": 9600,
       "cost_change_event": 0,
       "now_cost": 53
-    },
-    {
-      "id": 107,
-      "web_name": "Furo",
-      "team_short": "BRE",
-      "position": "FWD",
-      "bucket": "falling",
-      "transfers_in_event": 739,
-      "transfers_out_event": 10104,
-      "cost_change_event": 0,
-      "now_cost": 45
     },
     {
       "id": 329,
@@ -4817,7 +4830,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 51,
-      "transfers_out_event": 9424,
+      "transfers_out_event": 9444,
       "cost_change_event": -1,
       "now_cost": 43
     },
@@ -4828,7 +4841,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 237,
-      "transfers_out_event": 9759,
+      "transfers_out_event": 9777,
       "cost_change_event": 0,
       "now_cost": 63
     },
@@ -4838,8 +4851,8 @@
       "team_short": "TOT",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 13454,
-      "transfers_out_event": 23281,
+      "transfers_in_event": 13502,
+      "transfers_out_event": 23317,
       "cost_change_event": 0,
       "now_cost": 70
     },
@@ -4850,7 +4863,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 128,
-      "transfers_out_event": 10171,
+      "transfers_out_event": 10186,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -4860,8 +4873,8 @@
       "team_short": "HUL",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 8983,
-      "transfers_out_event": 19228,
+      "transfers_in_event": 8998,
+      "transfers_out_event": 19267,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -4871,8 +4884,8 @@
       "team_short": "SUN",
       "position": "GKP",
       "bucket": "falling",
-      "transfers_in_event": 2210,
-      "transfers_out_event": 12628,
+      "transfers_in_event": 2216,
+      "transfers_out_event": 12664,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -4882,8 +4895,8 @@
       "team_short": "LIV",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 1648,
-      "transfers_out_event": 12131,
+      "transfers_in_event": 1651,
+      "transfers_out_event": 12149,
       "cost_change_event": 0,
       "now_cost": 65
     },
@@ -4894,7 +4907,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 119,
-      "transfers_out_event": 10632,
+      "transfers_out_event": 10651,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -4904,8 +4917,8 @@
       "team_short": "LIV",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1746,
-      "transfers_out_event": 13461,
+      "transfers_in_event": 1749,
+      "transfers_out_event": 13483,
       "cost_change_event": 0,
       "now_cost": 53
     },
@@ -4915,8 +4928,8 @@
       "team_short": "BRE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 12760,
-      "transfers_out_event": 24556,
+      "transfers_in_event": 12817,
+      "transfers_out_event": 24663,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4927,7 +4940,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 11906,
+      "transfers_out_event": 11920,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -4938,7 +4951,7 @@
       "position": "GKP",
       "bucket": "falling",
       "transfers_in_event": 161,
-      "transfers_out_event": 12125,
+      "transfers_out_event": 12148,
       "cost_change_event": -1,
       "now_cost": 49
     },
@@ -4949,20 +4962,9 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 69,
-      "transfers_out_event": 13037,
+      "transfers_out_event": 13065,
       "cost_change_event": -1,
       "now_cost": 54
-    },
-    {
-      "id": 304,
-      "web_name": "O'Shea",
-      "team_short": "IPS",
-      "position": "DEF",
-      "bucket": "falling",
-      "transfers_in_event": 2247,
-      "transfers_out_event": 15768,
-      "cost_change_event": 0,
-      "now_cost": 40
     },
     {
       "id": 455,
@@ -4970,10 +4972,21 @@
       "team_short": "TOT",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 2517,
-      "transfers_out_event": 16053,
+      "transfers_in_event": 2524,
+      "transfers_out_event": 16077,
       "cost_change_event": -1,
       "now_cost": 53
+    },
+    {
+      "id": 304,
+      "web_name": "O'Shea",
+      "team_short": "IPS",
+      "position": "DEF",
+      "bucket": "falling",
+      "transfers_in_event": 2261,
+      "transfers_out_event": 15823,
+      "cost_change_event": 0,
+      "now_cost": 40
     },
     {
       "id": 542,
@@ -4981,8 +4994,8 @@
       "team_short": "SUN",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 12533,
-      "transfers_out_event": 26161,
+      "transfers_in_event": 12576,
+      "transfers_out_event": 26253,
       "cost_change_event": -1,
       "now_cost": 57
     },
@@ -4993,7 +5006,7 @@
       "position": "FWD",
       "bucket": "falling",
       "transfers_in_event": 0,
-      "transfers_out_event": 13892,
+      "transfers_out_event": 13913,
       "cost_change_event": 0,
       "now_cost": 78
     },
@@ -5003,8 +5016,8 @@
       "team_short": "TOT",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 6715,
-      "transfers_out_event": 21361,
+      "transfers_in_event": 6736,
+      "transfers_out_event": 21404,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -5014,8 +5027,8 @@
       "team_short": "CHE",
       "position": "GKP",
       "bucket": "falling",
-      "transfers_in_event": 8576,
-      "transfers_out_event": 23404,
+      "transfers_in_event": 8598,
+      "transfers_out_event": 23443,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -5025,8 +5038,8 @@
       "team_short": "MUN",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 4305,
-      "transfers_out_event": 19181,
+      "transfers_in_event": 4306,
+      "transfers_out_event": 19217,
       "cost_change_event": 0,
       "now_cost": 70
     },
@@ -5036,8 +5049,8 @@
       "team_short": "LEE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 5323,
-      "transfers_out_event": 20892,
+      "transfers_in_event": 5333,
+      "transfers_out_event": 20936,
       "cost_change_event": 0,
       "now_cost": 60
     },
@@ -5047,8 +5060,8 @@
       "team_short": "SUN",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 3657,
-      "transfers_out_event": 19565,
+      "transfers_in_event": 3660,
+      "transfers_out_event": 19652,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -5058,8 +5071,8 @@
       "team_short": "EVE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 35929,
-      "transfers_out_event": 51953,
+      "transfers_in_event": 35967,
+      "transfers_out_event": 52456,
       "cost_change_event": 1,
       "now_cost": 66
     },
@@ -5069,8 +5082,8 @@
       "team_short": "NFO",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 8208,
-      "transfers_out_event": 24768,
+      "transfers_in_event": 8231,
+      "transfers_out_event": 24806,
       "cost_change_event": 0,
       "now_cost": 58
     },
@@ -5081,7 +5094,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 2311,
-      "transfers_out_event": 19707,
+      "transfers_out_event": 19754,
       "cost_change_event": 0,
       "now_cost": 60
     },
@@ -5091,8 +5104,8 @@
       "team_short": "TOT",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 19482,
-      "transfers_out_event": 37338,
+      "transfers_in_event": 19526,
+      "transfers_out_event": 37596,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -5102,8 +5115,8 @@
       "team_short": "SUN",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 6764,
-      "transfers_out_event": 24810,
+      "transfers_in_event": 6775,
+      "transfers_out_event": 24865,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -5113,8 +5126,8 @@
       "team_short": "MUN",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 6743,
-      "transfers_out_event": 25755,
+      "transfers_in_event": 6744,
+      "transfers_out_event": 25795,
       "cost_change_event": 0,
       "now_cost": 70
     },
@@ -5124,8 +5137,8 @@
       "team_short": "NFO",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1153,
-      "transfers_out_event": 21713,
+      "transfers_in_event": 1156,
+      "transfers_out_event": 21747,
       "cost_change_event": -1,
       "now_cost": 44
     },
@@ -5135,21 +5148,10 @@
       "team_short": "MCI",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 8591,
-      "transfers_out_event": 29771,
+      "transfers_in_event": 8607,
+      "transfers_out_event": 29830,
       "cost_change_event": 0,
       "now_cost": 63
-    },
-    {
-      "id": 69,
-      "web_name": "Scott",
-      "team_short": "BOU",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 26298,
-      "transfers_out_event": 47584,
-      "cost_change_event": 0,
-      "now_cost": 61
     },
     {
       "id": 384,
@@ -5157,8 +5159,8 @@
       "team_short": "MCI",
       "position": "GKP",
       "bucket": "falling",
-      "transfers_in_event": 11481,
-      "transfers_out_event": 32798,
+      "transfers_in_event": 11506,
+      "transfers_out_event": 32868,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -5168,10 +5170,21 @@
       "team_short": "TOT",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1307,
-      "transfers_out_event": 22828,
+      "transfers_in_event": 1310,
+      "transfers_out_event": 22869,
       "cost_change_event": 0,
       "now_cost": 58
+    },
+    {
+      "id": 69,
+      "web_name": "Scott",
+      "team_short": "BOU",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 26304,
+      "transfers_out_event": 48069,
+      "cost_change_event": 0,
+      "now_cost": 61
     },
     {
       "id": 200,
@@ -5179,21 +5192,10 @@
       "team_short": "CHE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 9051,
-      "transfers_out_event": 31307,
+      "transfers_in_event": 9084,
+      "transfers_out_event": 31350,
       "cost_change_event": -1,
       "now_cost": 59
-    },
-    {
-      "id": 290,
-      "web_name": "Slater",
-      "team_short": "HUL",
-      "position": "MID",
-      "bucket": "falling",
-      "transfers_in_event": 17087,
-      "transfers_out_event": 40705,
-      "cost_change_event": 0,
-      "now_cost": 45
     },
     {
       "id": 201,
@@ -5201,10 +5203,21 @@
       "team_short": "NFO",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 8537,
-      "transfers_out_event": 32203,
+      "transfers_in_event": 8559,
+      "transfers_out_event": 32273,
       "cost_change_event": 0,
       "now_cost": 54
+    },
+    {
+      "id": 290,
+      "web_name": "Slater",
+      "team_short": "HUL",
+      "position": "MID",
+      "bucket": "falling",
+      "transfers_in_event": 17131,
+      "transfers_out_event": 40867,
+      "cost_change_event": 0,
+      "now_cost": 45
     },
     {
       "id": 272,
@@ -5212,8 +5225,8 @@
       "team_short": "FUL",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 11844,
-      "transfers_out_event": 35603,
+      "transfers_in_event": 11871,
+      "transfers_out_event": 35665,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -5223,8 +5236,8 @@
       "team_short": "AVL",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 2957,
-      "transfers_out_event": 27031,
+      "transfers_in_event": 2963,
+      "transfers_out_event": 27080,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -5234,8 +5247,8 @@
       "team_short": "ARS",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 51014,
-      "transfers_out_event": 75612,
+      "transfers_in_event": 51031,
+      "transfers_out_event": 76092,
       "cost_change_event": 0,
       "now_cost": 76
     },
@@ -5245,8 +5258,8 @@
       "team_short": "HUL",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 7871,
-      "transfers_out_event": 34800,
+      "transfers_in_event": 7896,
+      "transfers_out_event": 34840,
       "cost_change_event": 0,
       "now_cost": 41
     },
@@ -5256,8 +5269,8 @@
       "team_short": "BHA",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 13193,
-      "transfers_out_event": 41463,
+      "transfers_in_event": 13226,
+      "transfers_out_event": 41614,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -5268,7 +5281,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 233,
-      "transfers_out_event": 30373,
+      "transfers_out_event": 30425,
       "cost_change_event": 0,
       "now_cost": 69
     },
@@ -5278,8 +5291,8 @@
       "team_short": "SUN",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 1308,
-      "transfers_out_event": 31854,
+      "transfers_in_event": 1311,
+      "transfers_out_event": 31931,
       "cost_change_event": -1,
       "now_cost": 43
     },
@@ -5289,8 +5302,8 @@
       "team_short": "CRY",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 9582,
-      "transfers_out_event": 47652,
+      "transfers_in_event": 9594,
+      "transfers_out_event": 47769,
       "cost_change_event": 0,
       "now_cost": 44
     },
@@ -5300,8 +5313,8 @@
       "team_short": "NFO",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 12215,
-      "transfers_out_event": 50642,
+      "transfers_in_event": 12250,
+      "transfers_out_event": 50821,
       "cost_change_event": 0,
       "now_cost": 50
     },
@@ -5311,8 +5324,8 @@
       "team_short": "NEW",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 281,
-      "transfers_out_event": 40113,
+      "transfers_in_event": 282,
+      "transfers_out_event": 40196,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -5322,8 +5335,8 @@
       "team_short": "LIV",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 4874,
-      "transfers_out_event": 44867,
+      "transfers_in_event": 4897,
+      "transfers_out_event": 44985,
       "cost_change_event": 0,
       "now_cost": 73
     },
@@ -5334,7 +5347,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 77,
-      "transfers_out_event": 43211,
+      "transfers_out_event": 43283,
       "cost_change_event": 0,
       "now_cost": 62
     },
@@ -5344,8 +5357,8 @@
       "team_short": "MUN",
       "position": "GKP",
       "bucket": "falling",
-      "transfers_in_event": 7462,
-      "transfers_out_event": 52412,
+      "transfers_in_event": 7479,
+      "transfers_out_event": 52516,
       "cost_change_event": 0,
       "now_cost": 49
     },
@@ -5355,8 +5368,8 @@
       "team_short": "NEW",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 98207,
-      "transfers_out_event": 149595,
+      "transfers_in_event": 98533,
+      "transfers_out_event": 149861,
       "cost_change_event": 0,
       "now_cost": 62
     },
@@ -5366,8 +5379,8 @@
       "team_short": "IPS",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 7784,
-      "transfers_out_event": 60009,
+      "transfers_in_event": 7806,
+      "transfers_out_event": 60166,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -5377,8 +5390,8 @@
       "team_short": "LIV",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 52210,
-      "transfers_out_event": 108366,
+      "transfers_in_event": 52225,
+      "transfers_out_event": 109000,
       "cost_change_event": 0,
       "now_cost": 72
     },
@@ -5388,8 +5401,8 @@
       "team_short": "MCI",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 7700,
-      "transfers_out_event": 73078,
+      "transfers_in_event": 7723,
+      "transfers_out_event": 73230,
       "cost_change_event": -1,
       "now_cost": 58
     },
@@ -5399,8 +5412,8 @@
       "team_short": "ARS",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 3306,
-      "transfers_out_event": 72545,
+      "transfers_in_event": 3307,
+      "transfers_out_event": 72689,
       "cost_change_event": 0,
       "now_cost": 55
     },
@@ -5410,8 +5423,8 @@
       "team_short": "MUN",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 4917,
-      "transfers_out_event": 79011,
+      "transfers_in_event": 4933,
+      "transfers_out_event": 79138,
       "cost_change_event": -1,
       "now_cost": 48
     },
@@ -5421,8 +5434,8 @@
       "team_short": "MCI",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 5415,
-      "transfers_out_event": 80279,
+      "transfers_in_event": 5416,
+      "transfers_out_event": 80469,
       "cost_change_event": -1,
       "now_cost": 63
     },
@@ -5432,8 +5445,8 @@
       "team_short": "MUN",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 4253,
-      "transfers_out_event": 80724,
+      "transfers_in_event": 4273,
+      "transfers_out_event": 80852,
       "cost_change_event": -1,
       "now_cost": 43
     },
@@ -5444,7 +5457,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 1772,
-      "transfers_out_event": 80546,
+      "transfers_out_event": 80715,
       "cost_change_event": 0,
       "now_cost": 54
     },
@@ -5454,8 +5467,8 @@
       "team_short": "LEE",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 102696,
-      "transfers_out_event": 182113,
+      "transfers_in_event": 102923,
+      "transfers_out_event": 182588,
       "cost_change_event": 0,
       "now_cost": 60
     },
@@ -5466,7 +5479,7 @@
       "position": "DEF",
       "bucket": "falling",
       "transfers_in_event": 1218,
-      "transfers_out_event": 82264,
+      "transfers_out_event": 82481,
       "cost_change_event": 0,
       "now_cost": 40
     },
@@ -5476,8 +5489,8 @@
       "team_short": "CHE",
       "position": "DEF",
       "bucket": "falling",
-      "transfers_in_event": 694,
-      "transfers_out_event": 82800,
+      "transfers_in_event": 698,
+      "transfers_out_event": 82912,
       "cost_change_event": -1,
       "now_cost": 53
     },
@@ -5487,8 +5500,8 @@
       "team_short": "ARS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 7819,
-      "transfers_out_event": 92864,
+      "transfers_in_event": 7824,
+      "transfers_out_event": 93076,
       "cost_change_event": 0,
       "now_cost": 74
     },
@@ -5498,8 +5511,8 @@
       "team_short": "MUN",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 42824,
-      "transfers_out_event": 139969,
+      "transfers_in_event": 43023,
+      "transfers_out_event": 140377,
       "cost_change_event": 0,
       "now_cost": 79
     },
@@ -5509,8 +5522,8 @@
       "team_short": "TOT",
       "position": "GKP",
       "bucket": "falling",
-      "transfers_in_event": 20804,
-      "transfers_out_event": 119587,
+      "transfers_in_event": 20920,
+      "transfers_out_event": 119940,
       "cost_change_event": 0,
       "now_cost": 45
     },
@@ -5520,8 +5533,8 @@
       "team_short": "BRE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 9064,
-      "transfers_out_event": 146660,
+      "transfers_in_event": 9086,
+      "transfers_out_event": 146937,
       "cost_change_event": -1,
       "now_cost": 56
     },
@@ -5531,8 +5544,8 @@
       "team_short": "CHE",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 52351,
-      "transfers_out_event": 191657,
+      "transfers_in_event": 52464,
+      "transfers_out_event": 192587,
       "cost_change_event": 0,
       "now_cost": 97
     },
@@ -5542,8 +5555,8 @@
       "team_short": "ARS",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 12510,
-      "transfers_out_event": 162441,
+      "transfers_in_event": 12513,
+      "transfers_out_event": 163103,
       "cost_change_event": -1,
       "now_cost": 63
     },
@@ -5553,8 +5566,8 @@
       "team_short": "MUN",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 51053,
-      "transfers_out_event": 208972,
+      "transfers_in_event": 51234,
+      "transfers_out_event": 209382,
       "cost_change_event": -1,
       "now_cost": 119
     },
@@ -5565,7 +5578,7 @@
       "position": "MID",
       "bucket": "falling",
       "transfers_in_event": 352,
-      "transfers_out_event": 174696,
+      "transfers_out_event": 174934,
       "cost_change_event": -1,
       "now_cost": 61
     },
@@ -5575,8 +5588,8 @@
       "team_short": "LIV",
       "position": "MID",
       "bucket": "falling",
-      "transfers_in_event": 39934,
-      "transfers_out_event": 232663,
+      "transfers_in_event": 40017,
+      "transfers_out_event": 233185,
       "cost_change_event": -1,
       "now_cost": 69
     },
@@ -5586,8 +5599,8 @@
       "team_short": "CHE",
       "position": "FWD",
       "bucket": "falling",
-      "transfers_in_event": 72086,
-      "transfers_out_event": 420037,
+      "transfers_in_event": 72378,
+      "transfers_out_event": 420744,
       "cost_change_event": -1,
       "now_cost": 77
     }

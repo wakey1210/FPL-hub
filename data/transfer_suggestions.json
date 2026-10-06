@@ -7,7 +7,7 @@
       "out_id": 154,
       "in_id": 12,
       "ev_delta": 15.81,
-      "cost_delta": -1,
+      "cost_delta": 0,
       "net_gain": 15.81,
       "uses_hit": false,
       "rationale": [
@@ -118,8 +118,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 2,
-        "transfers_in_event": 52351,
-        "transfers_out_event": 191657,
+        "transfers_in_event": 52464,
+        "transfers_out_event": 192587,
         "code": 244851,
         "team_code": 8,
         "clean_sheets": 0,
@@ -133,8 +133,8 @@
         "web_name": "Saka",
         "team_short": "ARS",
         "position": "MID",
-        "now_cost": 95,
-        "selected_by_percent": 14.0,
+        "now_cost": 96,
+        "selected_by_percent": 14.1,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -158,7 +158,7 @@
             "attack_mult": 1.583,
             "cs_prob": 0.598,
             "expected_conceded": 0.566,
-            "ml_points": 5.79
+            "ml_points": 5.63
           },
           {
             "event": 7,
@@ -169,7 +169,7 @@
             "attack_mult": 1.37,
             "cs_prob": 0.484,
             "expected_conceded": 0.725,
-            "ml_points": 6.12
+            "ml_points": 5.96
           },
           {
             "event": 8,
@@ -180,7 +180,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.275,
             "expected_conceded": 1.192,
-            "ml_points": 4.8
+            "ml_points": 4.64
           },
           {
             "event": 9,
@@ -191,7 +191,7 @@
             "attack_mult": 0.854,
             "cs_prob": 0.163,
             "expected_conceded": 1.563,
-            "ml_points": 4.58
+            "ml_points": 4.42
           },
           {
             "event": 10,
@@ -202,7 +202,7 @@
             "attack_mult": 1.292,
             "cs_prob": 0.472,
             "expected_conceded": 0.612,
-            "ml_points": 6.16
+            "ml_points": 6.0
           },
           {
             "event": 11,
@@ -213,7 +213,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.245,
             "expected_conceded": 1.192,
-            "ml_points": 4.62
+            "ml_points": 4.46
           }
         ],
         "xg90": 0.6368,
@@ -221,17 +221,17 @@
         "dc90": 6.2863,
         "saves90": 0.0,
         "dc_prob": 0.1572,
-        "ml_ev": 32.07,
+        "ml_ev": 31.11,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "price",
-          "expected assists per 90",
-          "expected goals per 90"
+          "expected goals per 90",
+          "expected assists per 90"
         ],
-        "cost_change_event": 0,
-        "cost_change_start": 0,
-        "transfers_in_event": 146797,
-        "transfers_out_event": 51693,
+        "cost_change_event": 1,
+        "cost_change_start": 1,
+        "transfers_in_event": 150634,
+        "transfers_out_event": 51798,
         "code": 223340,
         "team_code": 3,
         "clean_sheets": 3,
@@ -356,8 +356,8 @@
         ],
         "cost_change_event": 1,
         "cost_change_start": 1,
-        "transfers_in_event": 97871,
-        "transfers_out_event": 61158,
+        "transfers_in_event": 98016,
+        "transfers_out_event": 65034,
         "code": 199798,
         "team_code": 3,
         "clean_sheets": 1,
@@ -468,8 +468,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 57346,
-        "transfers_out_event": 30703,
+        "transfers_in_event": 57683,
+        "transfers_out_event": 30814,
         "code": 455084,
         "team_code": 40,
         "clean_sheets": 0,
@@ -594,8 +594,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 3,
-        "transfers_in_event": 135897,
-        "transfers_out_event": 99310,
+        "transfers_in_event": 136322,
+        "transfers_out_event": 99755,
         "code": 466052,
         "team_code": 43,
         "clean_sheets": 1,
@@ -706,8 +706,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 1,
-        "transfers_in_event": 92126,
-        "transfers_out_event": 49888,
+        "transfers_in_event": 92434,
+        "transfers_out_event": 50145,
         "code": 201658,
         "team_code": 91,
         "clean_sheets": 0,
@@ -832,8 +832,8 @@
         ],
         "cost_change_event": 1,
         "cost_change_start": 3,
-        "transfers_in_event": 266424,
-        "transfers_out_event": 24039,
+        "transfers_in_event": 267087,
+        "transfers_out_event": 24252,
         "code": 487838,
         "team_code": 4,
         "clean_sheets": 1,
@@ -944,8 +944,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 25513,
-        "transfers_out_event": 56021,
+        "transfers_in_event": 25570,
+        "transfers_out_event": 56158,
         "code": 209036,
         "team_code": 43,
         "clean_sheets": 2,
@@ -1070,8 +1070,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 16821,
-        "transfers_out_event": 17895,
+        "transfers_in_event": 16870,
+        "transfers_out_event": 17969,
         "code": 244723,
         "team_code": 31,
         "clean_sheets": 1,
@@ -1182,8 +1182,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 57346,
-        "transfers_out_event": 30703,
+        "transfers_in_event": 57683,
+        "transfers_out_event": 30814,
         "code": 455084,
         "team_code": 40,
         "clean_sheets": 0,
