@@ -1,6 +1,106 @@
 {
-  "generated_at": "2026-10-08T10:10:23.979515+00:00",
+  "generated_at": "2026-10-08T18:35:08.690136+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 260,
+      "web_name": "Wilson",
+      "team_short": "LEE",
+      "position": "MID",
+      "now_cost": 62,
+      "prev_ev": 0.0,
+      "current_ev": 5.85,
+      "ev_delta": 5.85,
+      "why": [
+        "Availability flagged: Thigh injury - 75% chance of playing (~88 min when playing)",
+        "Underlying output: 0.28 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 458,
+      "web_name": "Joelinton",
+      "team_short": "NEW",
+      "position": "MID",
+      "now_cost": 54,
+      "prev_ev": 0.0,
+      "current_ev": 2.72,
+      "ev_delta": 2.72,
+      "why": [
+        "Availability flagged: Unspecified injury - 75% chance of playing (~84 min when playing)",
+        "Underlying output: 0.20 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 177,
+      "web_name": "Kesler-Hayden",
+      "team_short": "COV",
+      "position": "DEF",
+      "now_cost": 39,
+      "prev_ev": 0.0,
+      "current_ev": 0.32,
+      "ev_delta": 0.32,
+      "why": [
+        "Availability flagged: Hamstring injury - 50% chance of playing (~75 min when playing)",
+        "25% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 552,
+      "web_name": "Brobbey",
+      "team_short": "SUN",
+      "position": "FWD",
+      "now_cost": 57,
+      "prev_ev": 18.97,
+      "current_ev": 0.0,
+      "ev_delta": -18.97,
+      "why": [
+        "Availability flagged: Hamstring injury - Expected back 25 Oct",
+        "Underlying output: 0.52 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 532,
+      "web_name": "Ballard",
+      "team_short": "SUN",
+      "position": "DEF",
+      "now_cost": 49,
+      "prev_ev": 14.81,
+      "current_ev": 0.0,
+      "ev_delta": -14.81,
+      "why": [
+        "Availability flagged: Hamstring injury - Unknown return date",
+        "26% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 69,
+      "web_name": "Scott",
+      "team_short": "BOU",
+      "position": "MID",
+      "now_cost": 61,
+      "prev_ev": 11.41,
+      "current_ev": 0.0,
+      "ev_delta": -11.41,
+      "why": [
+        "Availability flagged: Thigh injury - Unknown return date",
+        "Underlying output: 0.23 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 343,
+      "web_name": "James",
+      "team_short": "LEE",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 3.81,
+      "current_ev": 0.0,
+      "ev_delta": -3.81,
+      "why": [
+        "Availability flagged: Back injury - Expected back 18 Oct",
+        "Underlying output: 0.23 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
