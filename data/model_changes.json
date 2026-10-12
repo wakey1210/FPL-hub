@@ -1,6 +1,50 @@
 {
-  "generated_at": "2026-10-12T00:16:59.021362+00:00",
+  "generated_at": "2026-10-12T10:24:37.569655+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 576,
+      "web_name": "Stroud",
+      "team_short": "HUL",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 8.76,
+      "current_ev": 8.8,
+      "ev_delta": 0.04,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~75 min when playing)",
+        "Underlying output: 0.02 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 340,
+      "web_name": "Gelhardt",
+      "team_short": "HUL",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 4.73,
+      "current_ev": 4.74,
+      "ev_delta": 0.01,
+      "why": [
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "Underlying output: 0.23 combined xG+xA per 90 minutes"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 286,
+      "web_name": "Belloumi",
+      "team_short": "HUL",
+      "position": "MID",
+      "now_cost": 52,
+      "prev_ev": 13.01,
+      "current_ev": 12.97,
+      "ev_delta": -0.04,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~75 min when playing)",
+        "Underlying output: 0.16 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
