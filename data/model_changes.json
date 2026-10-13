@@ -1,49 +1,119 @@
 {
-  "generated_at": "2026-10-13T01:39:19.219737+00:00",
+  "generated_at": "2026-10-13T05:56:18.773183+00:00",
   "has_previous": true,
   "risers": [
     {
-      "id": 492,
-      "web_name": "Awoniyi",
+      "id": 453,
+      "web_name": "Barnes",
+      "team_short": "NEW",
+      "position": "MID",
+      "now_cost": 61,
+      "prev_ev": 22.45,
+      "current_ev": 22.62,
+      "ev_delta": 0.17,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~95 min when playing)",
+        "Underlying output: 0.37 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 599,
+      "web_name": "Cherif",
       "team_short": "COV",
       "position": "FWD",
-      "now_cost": 54,
-      "prev_ev": 0.0,
-      "current_ev": 8.26,
-      "ev_delta": 8.26,
+      "now_cost": 50,
+      "prev_ev": 3.11,
+      "current_ev": 3.22,
+      "ev_delta": 0.11,
+      "why": [
+        "Expected to start (a fringe player based on recent form) (~75 min when playing)",
+        "Underlying output: 0.07 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 461,
+      "web_name": "Tour\u00e9",
+      "team_short": "NEW",
+      "position": "MID",
+      "now_cost": 58,
+      "prev_ev": 2.75,
+      "current_ev": 2.81,
+      "ev_delta": 0.06,
+      "why": [
+        "Availability flagged: Unspecified injury - 75% chance of playing (~75 min when playing)",
+        "Underlying output: 0.10 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 195,
+      "web_name": "Simms",
+      "team_short": "COV",
+      "position": "FWD",
+      "now_cost": 49,
+      "prev_ev": 3.46,
+      "current_ev": 3.51,
+      "ev_delta": 0.05,
+      "why": [
+        "Expected to start (a fringe player based on recent form) (~75 min when playing)",
+        "Underlying output: 0.12 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 593,
+      "web_name": "Dedi\u0107",
+      "team_short": "NEW",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 8.4,
+      "current_ev": 8.45,
+      "ev_delta": 0.05,
+      "why": [
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "22% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 457,
+      "web_name": "J.Murphy",
+      "team_short": "NEW",
+      "position": "MID",
+      "now_cost": 59,
+      "prev_ev": 13.6,
+      "current_ev": 13.64,
+      "ev_delta": 0.04,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~81 min when playing)",
+        "Underlying output: 0.36 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 465,
+      "web_name": "Osula",
+      "team_short": "NEW",
+      "position": "FWD",
+      "now_cost": 58,
+      "prev_ev": 6.71,
+      "current_ev": 6.74,
+      "ev_delta": 0.03,
       "why": [
         "Availability flagged: 100% chance of playing (~95 min when playing)",
-        "Capped upside: 0.63 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+        "Capped upside: 0.54 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
       ]
     }
   ],
   "fallers": [
     {
-      "id": 432,
-      "web_name": "Mainoo",
-      "team_short": "MUN",
-      "position": "MID",
-      "now_cost": 55,
-      "prev_ev": 16.11,
-      "current_ev": 13.16,
-      "ev_delta": -2.95,
-      "why": [
-        "Availability flagged: Unspecified injury - 75% chance of playing (~92 min when playing)",
-        "Underlying output: 0.14 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 423,
-      "web_name": "Shaw",
-      "team_short": "MUN",
+      "id": 91,
+      "web_name": "Pinnock",
+      "team_short": "COV",
       "position": "DEF",
-      "now_cost": 43,
-      "prev_ev": 14.39,
-      "current_ev": 11.74,
-      "ev_delta": -2.65,
+      "now_cost": 45,
+      "prev_ev": 11.99,
+      "current_ev": 11.96,
+      "ev_delta": -0.03,
       "why": [
-        "Availability flagged: Unspecified injury - 75% chance of playing (~84 min when playing)",
-        "22% average clean-sheet chance over the next 6 GWs"
+        "Expected to start (a rotation risk based on recent form) (~91 min when playing)",
+        "25% average clean-sheet chance over the next 6 GWs"
       ]
     }
   ]
