@@ -1,35 +1,35 @@
 {
-  "generated_at": "2026-10-16T20:38:19.138665+00:00",
+  "generated_at": "2026-10-16T21:37:00.870212+00:00",
   "has_previous": true,
   "risers": [
     {
-      "id": 198,
-      "web_name": "Henderson",
-      "team_short": "CRY",
-      "position": "GKP",
+      "id": 183,
+      "web_name": "Rudoni",
+      "team_short": "COV",
+      "position": "MID",
       "now_cost": 49,
-      "prev_ev": 0.0,
-      "current_ev": 8.8,
-      "ev_delta": 8.8,
+      "prev_ev": 16.36,
+      "current_ev": 17.83,
+      "ev_delta": 1.47,
       "why": [
-        "Availability flagged: Foot injury - 50% chance of playing (~90 min when playing)",
-        "3.2 saves per 90 minutes"
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "Underlying output: 0.45 combined xG+xA per 90 minutes"
       ]
     }
   ],
   "fallers": [
     {
-      "id": 9,
-      "web_name": "Hincapie",
-      "team_short": "ARS",
-      "position": "DEF",
-      "now_cost": 52,
-      "prev_ev": 2.79,
-      "current_ev": 0.0,
-      "ev_delta": -2.79,
+      "id": 188,
+      "web_name": "Torp",
+      "team_short": "COV",
+      "position": "MID",
+      "now_cost": 53,
+      "prev_ev": 1.19,
+      "current_ev": 1.12,
+      "ev_delta": -0.07,
       "why": [
-        "Availability flagged: Ankle injury - Expected back 24 Oct",
-        "35% average clean-sheet chance over the next 6 GWs"
+        "Expected to start (unproven / very little senior game time) (~75 min when playing)",
+        "Underlying output: 0.05 combined xG+xA per 90 minutes"
       ]
     }
   ]
