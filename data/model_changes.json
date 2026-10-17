@@ -1,6 +1,92 @@
 {
-  "generated_at": "2026-10-17T21:22:20.287209+00:00",
+  "generated_at": "2026-10-17T22:56:09.154507+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 640,
+      "web_name": "Flemming",
+      "team_short": "IPS",
+      "position": "FWD",
+      "now_cost": 55,
+      "prev_ev": 6.99,
+      "current_ev": 7.14,
+      "ev_delta": 0.15,
+      "why": [
+        "Expected to start (a fringe player based on recent form) (~84 min when playing)",
+        "Capped upside: 0.70 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    },
+    {
+      "id": 580,
+      "web_name": "Charles",
+      "team_short": "FUL",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 10.49,
+      "current_ev": 10.55,
+      "ev_delta": 0.06,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~75 min when playing)",
+        "Underlying output: 0.06 combined xG+xA per 90 minutes"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 316,
+      "web_name": "Emersonn",
+      "team_short": "IPS",
+      "position": "FWD",
+      "now_cost": 56,
+      "prev_ev": 13.58,
+      "current_ev": 13.3,
+      "ev_delta": -0.28,
+      "why": [
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "Underlying output: 0.28 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 261,
+      "web_name": "Iwobi",
+      "team_short": "FUL",
+      "position": "MID",
+      "now_cost": 54,
+      "prev_ev": 23.65,
+      "current_ev": 23.47,
+      "ev_delta": -0.18,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~84 min when playing)",
+        "Underlying output: 0.43 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 264,
+      "web_name": "Bobb",
+      "team_short": "FUL",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 22.6,
+      "current_ev": 22.42,
+      "ev_delta": -0.18,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~94 min when playing)",
+        "Underlying output: 0.40 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 266,
+      "web_name": "Cairney",
+      "team_short": "FUL",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 2.04,
+      "current_ev": 2.03,
+      "ev_delta": -0.01,
+      "why": [
+        "Availability flagged: 100% chance of playing (~95 min when playing)",
+        "Underlying output: 0.24 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
