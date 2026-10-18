@@ -1,105 +1,20 @@
 {
-  "generated_at": "2026-10-17T23:20:24.239022+00:00",
+  "generated_at": "2026-10-18T03:34:02.129446+00:00",
   "has_previous": true,
-  "risers": [
-    {
-      "id": 53,
-      "web_name": "Manzambi",
-      "team_short": "AVL",
-      "position": "MID",
-      "now_cost": 60,
-      "prev_ev": 6.83,
-      "current_ev": 6.94,
-      "ev_delta": 0.11,
-      "why": [
-        "Availability flagged: Calf injury - 75% chance of playing (~75 min when playing)",
-        "Underlying output: 0.31 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 46,
-      "web_name": "Barkley",
-      "team_short": "AVL",
-      "position": "MID",
-      "now_cost": 50,
-      "prev_ev": 12.57,
-      "current_ev": 12.62,
-      "ev_delta": 0.05,
-      "why": [
-        "Availability flagged: 100% chance of playing (~95 min when playing)",
-        "Underlying output: 0.24 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 34,
-      "web_name": "Pau",
-      "team_short": "AVL",
-      "position": "DEF",
-      "now_cost": 44,
-      "prev_ev": 5.04,
-      "current_ev": 5.07,
-      "ev_delta": 0.03,
-      "why": [
-        "Availability flagged: 100% chance of playing (~91 min when playing)",
-        "23% average clean-sheet chance over the next 6 GWs"
-      ]
-    },
-    {
-      "id": 54,
-      "web_name": "Gomes",
-      "team_short": "AVL",
-      "position": "MID",
-      "now_cost": 55,
-      "prev_ev": 11.01,
-      "current_ev": 11.03,
-      "ev_delta": 0.02,
-      "why": [
-        "Availability flagged: 100% chance of playing (~86 min when playing)",
-        "Underlying output: 0.11 combined xG+xA per 90 minutes"
-      ]
-    }
-  ],
+  "risers": [],
   "fallers": [
     {
-      "id": 464,
-      "web_name": "Wissa",
-      "team_short": "NEW",
-      "position": "FWD",
-      "now_cost": 62,
-      "prev_ev": 23.21,
-      "current_ev": 23.04,
-      "ev_delta": -0.17,
+      "id": 28,
+      "web_name": "Martinez",
+      "team_short": "CHE",
+      "position": "GKP",
+      "now_cost": 50,
+      "prev_ev": 5.27,
+      "current_ev": 0.0,
+      "ev_delta": -5.27,
       "why": [
-        "Expected to start (a regular starter based on recent form) (~91 min when playing)",
-        "Underlying output: 0.53 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 459,
-      "web_name": "L.Miley",
-      "team_short": "NEW",
-      "position": "MID",
-      "now_cost": 55,
-      "prev_ev": 16.77,
-      "current_ev": 16.67,
-      "ev_delta": -0.1,
-      "why": [
-        "Availability flagged: 100% chance of playing (~95 min when playing)",
-        "Underlying output: 0.13 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 631,
-      "web_name": "Mbaye",
-      "team_short": "AVL",
-      "position": "MID",
-      "now_cost": 60,
-      "prev_ev": 2.93,
-      "current_ev": 2.91,
-      "ev_delta": -0.02,
-      "why": [
-        "Expected to start (a fringe player based on recent form) (~75 min when playing)",
-        "Underlying output: 0.12 combined xG+xA per 90 minutes"
+        "Availability flagged: Head injury - Unknown return date",
+        "3.5 saves per 90 minutes"
       ]
     }
   ]
