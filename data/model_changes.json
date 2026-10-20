@@ -1,21 +1,35 @@
 {
-  "generated_at": "2026-10-20T19:00:37.981854+00:00",
+  "generated_at": "2026-10-20T20:13:16.030611+00:00",
   "has_previous": true,
-  "risers": [
+  "risers": [],
+  "fallers": [
     {
-      "id": 411,
-      "web_name": "Haaland",
-      "team_short": "MCI",
-      "position": "FWD",
-      "now_cost": 157,
-      "prev_ev": 31.81,
-      "current_ev": 39.02,
-      "ev_delta": 7.21,
+      "id": 432,
+      "web_name": "Mainoo",
+      "team_short": "MUN",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 12.75,
+      "current_ev": 0.0,
+      "ev_delta": -12.75,
       "why": [
-        "Availability flagged: 100% chance of playing (~88 min when playing)",
-        "Underlying output: 1.00 combined xG+xA per 90 minutes"
+        "Availability flagged: Unspecified injury - Expected back 8 Nov",
+        "Underlying output: 0.14 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 423,
+      "web_name": "Shaw",
+      "team_short": "MUN",
+      "position": "DEF",
+      "now_cost": 43,
+      "prev_ev": 11.39,
+      "current_ev": 0.0,
+      "ev_delta": -11.39,
+      "why": [
+        "Availability flagged: Unspecified injury - Unknown return date",
+        "23% average clean-sheet chance over the next 6 GWs"
       ]
     }
-  ],
-  "fallers": []
+  ]
 }
