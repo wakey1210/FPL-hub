@@ -15,15 +15,15 @@
       "element_type": 1
     },
     {
-      "element": 8,
+      "element": 115,
       "position": 2,
       "multiplier": 1,
       "is_captain": false,
-      "is_vice_captain": false,
+      "is_vice_captain": true,
       "element_type": 2
     },
     {
-      "element": 449,
+      "element": 8,
       "position": 3,
       "multiplier": 1,
       "is_captain": false,
@@ -31,11 +31,11 @@
       "element_type": 2
     },
     {
-      "element": 115,
+      "element": 449,
       "position": 4,
       "multiplier": 1,
       "is_captain": false,
-      "is_vice_captain": true,
+      "is_vice_captain": false,
       "element_type": 2
     },
     {
@@ -71,12 +71,12 @@
       "element_type": 3
     },
     {
-      "element": 399,
+      "element": 249,
       "position": 9,
       "multiplier": 1,
       "is_captain": false,
       "is_vice_captain": false,
-      "element_type": 3
+      "element_type": 4
     },
     {
       "element": 411,
@@ -103,12 +103,12 @@
       "element_type": 1
     },
     {
-      "element": 249,
+      "element": 399,
       "position": 13,
       "multiplier": 0,
       "is_captain": false,
       "is_vice_captain": false,
-      "element_type": 4
+      "element_type": 3
     },
     {
       "element": 204,
@@ -128,9 +128,9 @@
     }
   ],
   "summary": {
-    "overall_points": 499,
-    "overall_rank": 395003,
-    "gameweek_points": 68,
+    "overall_points": 501,
+    "overall_rank": 384865,
+    "gameweek_points": 70,
     "bank": 8,
     "team_value": 1028,
     "free_transfers_estimate": 1
@@ -522,18 +522,18 @@
     },
     {
       "event": 7,
-      "points": 68,
-      "total_points": 499,
-      "rank": 2455612,
-      "rank_sort": 2479588,
-      "overall_rank": 395003,
+      "points": 70,
+      "total_points": 501,
+      "rank": 2480601,
+      "rank_sort": 2505146,
+      "overall_rank": 384865,
       "percentile_rank": 25,
       "overall_rank_percentage": "4",
       "bank": 8,
       "value": 1028,
       "event_transfers": 2,
       "event_transfers_cost": 0,
-      "points_on_bench": 17
+      "points_on_bench": 15
     }
   ],
   "recent_seasons": [
