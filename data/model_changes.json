@@ -1,6 +1,49 @@
 {
-  "generated_at": "2026-10-21T03:45:41.635709+00:00",
+  "generated_at": "2026-10-21T11:21:42.666997+00:00",
   "has_previous": true,
-  "risers": [],
+  "risers": [
+    {
+      "id": 589,
+      "web_name": "Gourna-Douath",
+      "team_short": "HUL",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 0.0,
+      "current_ev": 2.96,
+      "ev_delta": 2.96,
+      "why": [
+        "Availability flagged: Calf injury - 50% chance of playing (~75 min when playing)",
+        "Underlying output: 0.01 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 9,
+      "web_name": "Hincapie",
+      "team_short": "ARS",
+      "position": "DEF",
+      "now_cost": 52,
+      "prev_ev": 0.0,
+      "current_ev": 2.59,
+      "ev_delta": 2.59,
+      "why": [
+        "Availability flagged: Ankle injury - 75% chance of playing (~89 min when playing)",
+        "34% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 617,
+      "web_name": "Cho",
+      "team_short": "HUL",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 0.0,
+      "current_ev": 1.88,
+      "ev_delta": 1.88,
+      "why": [
+        "Availability flagged: Unspecified injury - 50% chance of playing (~75 min when playing)",
+        "Underlying output: 0.25 combined xG+xA per 90 minutes"
+      ]
+    }
+  ],
   "fallers": []
 }
