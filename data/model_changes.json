@@ -1,49 +1,64 @@
 {
-  "generated_at": "2026-10-21T11:21:42.666997+00:00",
+  "generated_at": "2026-10-21T16:48:14.475452+00:00",
   "has_previous": true,
   "risers": [
     {
-      "id": 589,
-      "web_name": "Gourna-Douath",
-      "team_short": "HUL",
+      "id": 480,
+      "web_name": "Gibbs-White",
+      "team_short": "NFO",
       "position": "MID",
-      "now_cost": 49,
-      "prev_ev": 0.0,
-      "current_ev": 2.96,
-      "ev_delta": 2.96,
+      "now_cost": 79,
+      "prev_ev": 23.37,
+      "current_ev": 28.67,
+      "ev_delta": 5.3,
       "why": [
-        "Availability flagged: Calf injury - 50% chance of playing (~75 min when playing)",
-        "Underlying output: 0.01 combined xG+xA per 90 minutes"
+        "Availability flagged: 100% chance of playing (~87 min when playing)",
+        "Underlying output: 0.60 combined xG+xA per 90 minutes"
       ]
     },
     {
-      "id": 9,
-      "web_name": "Hincapie",
-      "team_short": "ARS",
-      "position": "DEF",
-      "now_cost": 52,
+      "id": 78,
+      "web_name": "Kroupi.Jr",
+      "team_short": "BOU",
+      "position": "MID",
+      "now_cost": 73,
       "prev_ev": 0.0,
-      "current_ev": 2.59,
-      "ev_delta": 2.59,
+      "current_ev": 4.15,
+      "ev_delta": 4.15,
       "why": [
-        "Availability flagged: Ankle injury - 75% chance of playing (~89 min when playing)",
-        "34% average clean-sheet chance over the next 6 GWs"
+        "Availability flagged: Foot injury - 50% chance of playing (~79 min when playing)",
+        "Underlying output: 0.61 combined xG+xA per 90 minutes"
       ]
     },
     {
-      "id": 617,
-      "web_name": "Cho",
-      "team_short": "HUL",
-      "position": "MID",
-      "now_cost": 50,
+      "id": 414,
+      "web_name": "Heaton",
+      "team_short": "MUN",
+      "position": "GKP",
+      "now_cost": 40,
       "prev_ev": 0.0,
-      "current_ev": 1.88,
-      "ev_delta": 1.88,
+      "current_ev": 0.26,
+      "ev_delta": 0.26,
       "why": [
-        "Availability flagged: Unspecified injury - 50% chance of playing (~75 min when playing)",
-        "Underlying output: 0.25 combined xG+xA per 90 minutes"
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "23% average clean-sheet chance over the next 6 GWs"
       ]
     }
   ],
-  "fallers": []
+  "fallers": [
+    {
+      "id": 38,
+      "web_name": "A.Garc\u00eda",
+      "team_short": "AVL",
+      "position": "DEF",
+      "now_cost": 40,
+      "prev_ev": 0.31,
+      "current_ev": 0.0,
+      "ev_delta": -0.31,
+      "why": [
+        "Availability flagged: Has joined Getafe on loan for the rest of the season",
+        "24% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ]
 }
