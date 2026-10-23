@@ -4,10 +4,10 @@
   "manager_name": "Chris Wake",
   "team_name": "Wake XI",
   "has_squad": true,
-  "picks_event": 7,
+  "picks_event": 8,
   "picks": [
     {
-      "element": 109,
+      "element": 250,
       "position": 1,
       "multiplier": 1,
       "is_captain": false,
@@ -15,16 +15,8 @@
       "element_type": 1
     },
     {
-      "element": 115,
-      "position": 2,
-      "multiplier": 1,
-      "is_captain": false,
-      "is_vice_captain": true,
-      "element_type": 2
-    },
-    {
       "element": 8,
-      "position": 3,
+      "position": 2,
       "multiplier": 1,
       "is_captain": false,
       "is_vice_captain": false,
@@ -32,7 +24,23 @@
     },
     {
       "element": 449,
+      "position": 3,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 2
+    },
+    {
+      "element": 115,
       "position": 4,
+      "multiplier": 1,
+      "is_captain": false,
+      "is_vice_captain": true,
+      "element_type": 2
+    },
+    {
+      "element": 31,
+      "position": 5,
       "multiplier": 1,
       "is_captain": false,
       "is_vice_captain": false,
@@ -40,14 +48,6 @@
     },
     {
       "element": 452,
-      "position": 5,
-      "multiplier": 1,
-      "is_captain": false,
-      "is_vice_captain": false,
-      "element_type": 3
-    },
-    {
-      "element": 154,
       "position": 6,
       "multiplier": 1,
       "is_captain": false,
@@ -55,7 +55,7 @@
       "element_type": 3
     },
     {
-      "element": 124,
+      "element": 154,
       "position": 7,
       "multiplier": 1,
       "is_captain": false,
@@ -71,12 +71,12 @@
       "element_type": 3
     },
     {
-      "element": 249,
+      "element": 399,
       "position": 9,
       "multiplier": 1,
       "is_captain": false,
       "is_vice_captain": false,
-      "element_type": 4
+      "element_type": 3
     },
     {
       "element": 411,
@@ -95,7 +95,7 @@
       "element_type": 4
     },
     {
-      "element": 250,
+      "element": 109,
       "position": 12,
       "multiplier": 0,
       "is_captain": false,
@@ -103,37 +103,37 @@
       "element_type": 1
     },
     {
-      "element": 399,
+      "element": 204,
       "position": 13,
+      "multiplier": 0,
+      "is_captain": false,
+      "is_vice_captain": false,
+      "element_type": 2
+    },
+    {
+      "element": 124,
+      "position": 14,
       "multiplier": 0,
       "is_captain": false,
       "is_vice_captain": false,
       "element_type": 3
     },
     {
-      "element": 204,
-      "position": 14,
-      "multiplier": 0,
-      "is_captain": false,
-      "is_vice_captain": false,
-      "element_type": 2
-    },
-    {
-      "element": 31,
+      "element": 249,
       "position": 15,
       "multiplier": 0,
       "is_captain": false,
       "is_vice_captain": false,
-      "element_type": 2
+      "element_type": 4
     }
   ],
   "summary": {
-    "overall_points": 501,
-    "overall_rank": 384852,
-    "gameweek_points": 70,
+    "overall_points": 499,
+    "overall_rank": 387339,
+    "gameweek_points": 0,
     "bank": 8,
-    "team_value": 1028,
-    "free_transfers_estimate": 1
+    "team_value": 1035,
+    "free_transfers_estimate": 2
   },
   "chips_used": [
     {
@@ -534,6 +534,21 @@
       "event_transfers": 2,
       "event_transfers_cost": 0,
       "points_on_bench": 15
+    },
+    {
+      "event": 8,
+      "points": 0,
+      "total_points": 501,
+      "rank": null,
+      "rank_sort": null,
+      "overall_rank": 384865,
+      "percentile_rank": null,
+      "overall_rank_percentage": null,
+      "bank": 8,
+      "value": 1035,
+      "event_transfers": 0,
+      "event_transfers_cost": 0,
+      "points_on_bench": 0
     }
   ],
   "recent_seasons": [
