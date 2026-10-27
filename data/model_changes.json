@@ -1,64 +1,6 @@
 {
-  "generated_at": "2026-10-27T21:03:33.320972+00:00",
+  "generated_at": "2026-10-27T21:55:06.550553+00:00",
   "has_previous": true,
-  "risers": [
-    {
-      "id": 198,
-      "web_name": "Henderson",
-      "team_short": "CRY",
-      "position": "GKP",
-      "now_cost": 49,
-      "prev_ev": 7.54,
-      "current_ev": 9.79,
-      "ev_delta": 2.25,
-      "why": [
-        "Availability flagged: Foot injury - 75% chance of playing (~90 min when playing)",
-        "3.2 saves per 90 minutes"
-      ]
-    },
-    {
-      "id": 130,
-      "web_name": "Wieffer",
-      "team_short": "BHA",
-      "position": "DEF",
-      "now_cost": 48,
-      "prev_ev": 5.17,
-      "current_ev": 6.2,
-      "ev_delta": 1.03,
-      "why": [
-        "Availability flagged: Knee injury - 75% chance of playing (~87 min when playing)",
-        "26% average clean-sheet chance over the next 6 GWs"
-      ]
-    }
-  ],
-  "fallers": [
-    {
-      "id": 459,
-      "web_name": "L.Miley",
-      "team_short": "NEW",
-      "position": "MID",
-      "now_cost": 55,
-      "prev_ev": 15.61,
-      "current_ev": 12.71,
-      "ev_delta": -2.9,
-      "why": [
-        "Availability flagged: Muscular injury - 75% chance of playing (~95 min when playing)",
-        "Underlying output: 0.13 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 89,
-      "web_name": "Henry",
-      "team_short": "BRE",
-      "position": "DEF",
-      "now_cost": 44,
-      "prev_ev": 0.84,
-      "current_ev": 0.0,
-      "ev_delta": -0.84,
-      "why": [
-        "Availability flagged: Hip injury - Unknown return date",
-        "21% average clean-sheet chance over the next 6 GWs"
-      ]
-    }
-  ]
+  "risers": [],
+  "fallers": []
 }
