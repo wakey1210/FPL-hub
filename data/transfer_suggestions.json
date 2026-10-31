@@ -7,7 +7,7 @@
       "out_id": 452,
       "in_id": 68,
       "ev_delta": 28.43,
-      "cost_delta": -3,
+      "cost_delta": -2,
       "net_gain": 28.43,
       "uses_hit": false,
       "rationale": [
@@ -22,7 +22,7 @@
         "team_short": "ARS",
         "position": "MID",
         "now_cost": 67,
-        "selected_by_percent": 2.4,
+        "selected_by_percent": 2.3,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.3,
@@ -118,8 +118,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": -3,
-        "transfers_in_event": 12433,
-        "transfers_out_event": 20064,
+        "transfers_in_event": 12682,
+        "transfers_out_event": 20648,
         "code": 208706,
         "team_code": 3,
         "clean_sheets": 1,
@@ -133,8 +133,8 @@
         "web_name": "Tavernier",
         "team_short": "BOU",
         "position": "MID",
-        "now_cost": 64,
-        "selected_by_percent": 23.7,
+        "now_cost": 65,
+        "selected_by_percent": 24.2,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -158,7 +158,7 @@
             "attack_mult": 1.103,
             "cs_prob": 0.359,
             "expected_conceded": 1.112,
-            "ml_points": 4.2
+            "ml_points": 4.03
           },
           {
             "event": 10,
@@ -169,7 +169,7 @@
             "attack_mult": 1.224,
             "cs_prob": 0.311,
             "expected_conceded": 1.167,
-            "ml_points": 4.61
+            "ml_points": 4.44
           },
           {
             "event": 11,
@@ -180,7 +180,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.275,
             "expected_conceded": 1.192,
-            "ml_points": 3.98
+            "ml_points": 3.81
           },
           {
             "event": 12,
@@ -191,7 +191,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.245,
             "expected_conceded": 1.192,
-            "ml_points": 3.73
+            "ml_points": 3.56
           },
           {
             "event": 13,
@@ -202,7 +202,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.275,
             "expected_conceded": 1.192,
-            "ml_points": 3.98
+            "ml_points": 3.81
           },
           {
             "event": 14,
@@ -213,7 +213,7 @@
             "attack_mult": 1.292,
             "cs_prob": 0.472,
             "expected_conceded": 0.612,
-            "ml_points": 5.34
+            "ml_points": 5.1
           }
         ],
         "xg90": 0.4844,
@@ -221,17 +221,17 @@
         "dc90": 8.2605,
         "saves90": 0.0,
         "dc_prob": 0.2065,
-        "ml_ev": 25.84,
+        "ml_ev": 24.75,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "price",
-          "expected assists per 90",
-          "expected goals per 90"
+          "expected goals per 90",
+          "expected assists per 90"
         ],
-        "cost_change_event": 2,
-        "cost_change_start": 4,
-        "transfers_in_event": 1035268,
-        "transfers_out_event": 10641,
+        "cost_change_event": 3,
+        "cost_change_start": 5,
+        "transfers_in_event": 1082622,
+        "transfers_out_event": 11655,
         "code": 201658,
         "team_code": 91,
         "clean_sheets": 2,
@@ -260,7 +260,7 @@
         "team_short": "CHE",
         "position": "FWD",
         "now_cost": 78,
-        "selected_by_percent": 52.3,
+        "selected_by_percent": 51.0,
         "status": "i",
         "news": "Thigh injury - Unknown return date",
         "expected_minutes_ratio": 0.0,
@@ -356,8 +356,8 @@
         ],
         "cost_change_event": -1,
         "cost_change_start": 3,
-        "transfers_in_event": 26360,
-        "transfers_out_event": 2222815,
+        "transfers_in_event": 26401,
+        "transfers_out_event": 2353970,
         "code": 475168,
         "team_code": 8,
         "clean_sheets": 1,
@@ -372,7 +372,7 @@
         "team_short": "BRE",
         "position": "FWD",
         "now_cost": 78,
-        "selected_by_percent": 9.3,
+        "selected_by_percent": 9.4,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -468,8 +468,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": -2,
-        "transfers_in_event": 72288,
-        "transfers_out_event": 45821,
+        "transfers_in_event": 76178,
+        "transfers_out_event": 47364,
         "code": 502500,
         "team_code": 94,
         "clean_sheets": 2,
@@ -483,7 +483,7 @@
       "out_id": 399,
       "in_id": 68,
       "ev_delta": 11.16,
-      "cost_delta": -14,
+      "cost_delta": -13,
       "net_gain": 11.16,
       "uses_hit": false,
       "rationale": [
@@ -498,7 +498,7 @@
         "team_short": "MCI",
         "position": "MID",
         "now_cost": 80,
-        "selected_by_percent": 37.4,
+        "selected_by_percent": 37.3,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.65,
@@ -594,8 +594,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 5,
-        "transfers_in_event": 176036,
-        "transfers_out_event": 323021,
+        "transfers_in_event": 181044,
+        "transfers_out_event": 335804,
         "code": 466052,
         "team_code": 43,
         "clean_sheets": 2,
@@ -609,8 +609,8 @@
         "web_name": "Tavernier",
         "team_short": "BOU",
         "position": "MID",
-        "now_cost": 64,
-        "selected_by_percent": 23.7,
+        "now_cost": 65,
+        "selected_by_percent": 24.2,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -634,7 +634,7 @@
             "attack_mult": 1.103,
             "cs_prob": 0.359,
             "expected_conceded": 1.112,
-            "ml_points": 4.2
+            "ml_points": 4.03
           },
           {
             "event": 10,
@@ -645,7 +645,7 @@
             "attack_mult": 1.224,
             "cs_prob": 0.311,
             "expected_conceded": 1.167,
-            "ml_points": 4.61
+            "ml_points": 4.44
           },
           {
             "event": 11,
@@ -656,7 +656,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.275,
             "expected_conceded": 1.192,
-            "ml_points": 3.98
+            "ml_points": 3.81
           },
           {
             "event": 12,
@@ -667,7 +667,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.245,
             "expected_conceded": 1.192,
-            "ml_points": 3.73
+            "ml_points": 3.56
           },
           {
             "event": 13,
@@ -678,7 +678,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.275,
             "expected_conceded": 1.192,
-            "ml_points": 3.98
+            "ml_points": 3.81
           },
           {
             "event": 14,
@@ -689,7 +689,7 @@
             "attack_mult": 1.292,
             "cs_prob": 0.472,
             "expected_conceded": 0.612,
-            "ml_points": 5.34
+            "ml_points": 5.1
           }
         ],
         "xg90": 0.4844,
@@ -697,17 +697,17 @@
         "dc90": 8.2605,
         "saves90": 0.0,
         "dc_prob": 0.2065,
-        "ml_ev": 25.84,
+        "ml_ev": 24.75,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "price",
-          "expected assists per 90",
-          "expected goals per 90"
+          "expected goals per 90",
+          "expected assists per 90"
         ],
-        "cost_change_event": 2,
-        "cost_change_start": 4,
-        "transfers_in_event": 1035268,
-        "transfers_out_event": 10641,
+        "cost_change_event": 3,
+        "cost_change_start": 5,
+        "transfers_in_event": 1082622,
+        "transfers_out_event": 11655,
         "code": 201658,
         "team_code": 91,
         "clean_sheets": 2,
@@ -736,7 +736,7 @@
         "team_short": "ARS",
         "position": "DEF",
         "now_cost": 47,
-        "selected_by_percent": 20.9,
+        "selected_by_percent": 21.0,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -832,8 +832,8 @@
         ],
         "cost_change_event": 1,
         "cost_change_start": 2,
-        "transfers_in_event": 291175,
-        "transfers_out_event": 22869,
+        "transfers_in_event": 300752,
+        "transfers_out_event": 24525,
         "code": 199798,
         "team_code": 3,
         "clean_sheets": 3,
@@ -944,8 +944,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 10247,
-        "transfers_out_event": 31950,
+        "transfers_in_event": 10703,
+        "transfers_out_event": 33658,
         "code": 455084,
         "team_code": 40,
         "clean_sheets": 0,
@@ -959,7 +959,7 @@
       "out_id": 154,
       "in_id": 68,
       "ev_delta": 5.67,
-      "cost_delta": -33,
+      "cost_delta": -32,
       "net_gain": 5.67,
       "uses_hit": false,
       "rationale": [
@@ -1070,8 +1070,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 3,
-        "transfers_in_event": 96474,
-        "transfers_out_event": 231319,
+        "transfers_in_event": 101950,
+        "transfers_out_event": 237258,
         "code": 244851,
         "team_code": 8,
         "clean_sheets": 1,
@@ -1085,8 +1085,8 @@
         "web_name": "Tavernier",
         "team_short": "BOU",
         "position": "MID",
-        "now_cost": 64,
-        "selected_by_percent": 23.7,
+        "now_cost": 65,
+        "selected_by_percent": 24.2,
         "status": "a",
         "news": "",
         "expected_minutes_ratio": 0.92,
@@ -1110,7 +1110,7 @@
             "attack_mult": 1.103,
             "cs_prob": 0.359,
             "expected_conceded": 1.112,
-            "ml_points": 4.2
+            "ml_points": 4.03
           },
           {
             "event": 10,
@@ -1121,7 +1121,7 @@
             "attack_mult": 1.224,
             "cs_prob": 0.311,
             "expected_conceded": 1.167,
-            "ml_points": 4.61
+            "ml_points": 4.44
           },
           {
             "event": 11,
@@ -1132,7 +1132,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.275,
             "expected_conceded": 1.192,
-            "ml_points": 3.98
+            "ml_points": 3.81
           },
           {
             "event": 12,
@@ -1143,7 +1143,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.245,
             "expected_conceded": 1.192,
-            "ml_points": 3.73
+            "ml_points": 3.56
           },
           {
             "event": 13,
@@ -1154,7 +1154,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.275,
             "expected_conceded": 1.192,
-            "ml_points": 3.98
+            "ml_points": 3.81
           },
           {
             "event": 14,
@@ -1165,7 +1165,7 @@
             "attack_mult": 1.292,
             "cs_prob": 0.472,
             "expected_conceded": 0.612,
-            "ml_points": 5.34
+            "ml_points": 5.1
           }
         ],
         "xg90": 0.4844,
@@ -1173,17 +1173,17 @@
         "dc90": 8.2605,
         "saves90": 0.0,
         "dc_prob": 0.2065,
-        "ml_ev": 25.84,
+        "ml_ev": 24.75,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "price",
-          "expected assists per 90",
-          "expected goals per 90"
+          "expected goals per 90",
+          "expected assists per 90"
         ],
-        "cost_change_event": 2,
-        "cost_change_start": 4,
-        "transfers_in_event": 1035268,
-        "transfers_out_event": 10641,
+        "cost_change_event": 3,
+        "cost_change_start": 5,
+        "transfers_in_event": 1082622,
+        "transfers_out_event": 11655,
         "code": 201658,
         "team_code": 91,
         "clean_sheets": 2,
