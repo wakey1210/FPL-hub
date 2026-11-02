@@ -1,6 +1,162 @@
 {
-  "generated_at": "2026-11-02T00:30:31.029615+00:00",
+  "generated_at": "2026-11-02T10:40:34.981712+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 579,
+      "web_name": "Araujo",
+      "team_short": "LIV",
+      "position": "DEF",
+      "now_cost": 54,
+      "prev_ev": 10.17,
+      "current_ev": 10.34,
+      "ev_delta": 0.17,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~75 min when playing)",
+        "22% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 5,
+      "web_name": "J.Timber",
+      "team_short": "ARS",
+      "position": "DEF",
+      "now_cost": 65,
+      "prev_ev": 5.59,
+      "current_ev": 5.64,
+      "ev_delta": 0.05,
+      "why": [
+        "Availability flagged: 100% chance of playing (~88 min when playing)",
+        "30% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 17,
+      "web_name": "Merino",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 57,
+      "prev_ev": 7.35,
+      "current_ev": 7.36,
+      "ev_delta": 0.01,
+      "why": [
+        "Expected to start (a fringe player based on recent form) (~95 min when playing)",
+        "Capped upside: 0.44 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    },
+    {
+      "id": 26,
+      "web_name": "Havertz",
+      "team_short": "ARS",
+      "position": "FWD",
+      "now_cost": 74,
+      "prev_ev": 23.55,
+      "current_ev": 23.56,
+      "ev_delta": 0.01,
+      "why": [
+        "Availability flagged: 100% chance of playing (~87 min when playing)",
+        "Underlying output: 0.47 combined xG+xA per 90 minutes"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 358,
+      "web_name": "Kerkez",
+      "team_short": "LIV",
+      "position": "DEF",
+      "now_cost": 53,
+      "prev_ev": 14.04,
+      "current_ev": 13.85,
+      "ev_delta": -0.19,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~86 min when playing)",
+        "22% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 366,
+      "web_name": "Wirtz",
+      "team_short": "LIV",
+      "position": "MID",
+      "now_cost": 72,
+      "prev_ev": 25.0,
+      "current_ev": 24.81,
+      "ev_delta": -0.19,
+      "why": [
+        "Availability flagged: 100% chance of playing (~88 min when playing)",
+        "Underlying output: 0.37 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 372,
+      "web_name": "Mac Allister",
+      "team_short": "LIV",
+      "position": "MID",
+      "now_cost": 54,
+      "prev_ev": 18.32,
+      "current_ev": 18.14,
+      "ev_delta": -0.18,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~86 min when playing)",
+        "Underlying output: 0.24 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 16,
+      "web_name": "Madueke",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 62,
+      "prev_ev": 14.73,
+      "current_ev": 14.58,
+      "ev_delta": -0.15,
+      "why": [
+        "Availability flagged: 100% chance of playing (~76 min when playing)",
+        "Capped upside: 0.43 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    },
+    {
+      "id": 15,
+      "web_name": "\u00d8degaard",
+      "team_short": "ARS",
+      "position": "MID",
+      "now_cost": 67,
+      "prev_ev": 28.64,
+      "current_ev": 28.51,
+      "ev_delta": -0.13,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~88 min when playing)",
+        "Underlying output: 0.50 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 377,
+      "web_name": "Munoz",
+      "team_short": "LIV",
+      "position": "MID",
+      "now_cost": 65,
+      "prev_ev": 10.29,
+      "current_ev": 10.16,
+      "ev_delta": -0.13,
+      "why": [
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "Underlying output: 0.13 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 8,
+      "web_name": "Calafiori",
+      "team_short": "ARS",
+      "position": "DEF",
+      "now_cost": 59,
+      "prev_ev": 22.14,
+      "current_ev": 22.1,
+      "ev_delta": -0.04,
+      "why": [
+        "Availability flagged: 100% chance of playing (~80 min when playing)",
+        "30% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ]
 }
