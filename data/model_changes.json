@@ -1,287 +1,287 @@
 {
-  "generated_at": "2026-11-07T17:33:56.478525+00:00",
+  "generated_at": "2026-11-07T20:26:25.333731+00:00",
   "has_previous": true,
   "risers": [
     {
-      "id": 289,
-      "web_name": "Crooks",
-      "team_short": "HUL",
+      "id": 400,
+      "web_name": "Doku",
+      "team_short": "MCI",
+      "position": "MID",
+      "now_cost": 75,
+      "prev_ev": 8.73,
+      "current_ev": 15.81,
+      "ev_delta": 7.08,
+      "why": [
+        "Availability flagged: 100% chance of playing (~93 min when playing)",
+        "Capped upside: 0.50 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    },
+    {
+      "id": 155,
+      "web_name": "Enzo",
+      "team_short": "MCI",
+      "position": "MID",
+      "now_cost": 69,
+      "prev_ev": 17.26,
+      "current_ev": 23.17,
+      "ev_delta": 5.91,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~89 min when playing)",
+        "Underlying output: 0.43 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 489,
+      "web_name": "Yates",
+      "team_short": "NFO",
       "position": "MID",
       "now_cost": 44,
-      "prev_ev": 0.0,
-      "current_ev": 4.65,
-      "ev_delta": 4.65,
+      "prev_ev": 1.97,
+      "current_ev": 4.24,
+      "ev_delta": 2.27,
       "why": [
-        "Availability flagged: 100% chance of playing (~75 min when playing)",
-        "Underlying output: 0.01 combined xG+xA per 90 minutes"
+        "Availability flagged: 100% chance of playing (~95 min when playing)",
+        "Underlying output: 0.17 combined xG+xA per 90 minutes"
       ]
     },
     {
-      "id": 456,
-      "web_name": "J.Ramsey",
-      "team_short": "NEW",
-      "position": "MID",
-      "now_cost": 48,
-      "prev_ev": 0.0,
-      "current_ev": 3.82,
-      "ev_delta": 3.82,
-      "why": [
-        "Availability flagged: 100% chance of playing (~92 min when playing)",
-        "Underlying output: 0.23 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 449,
-      "web_name": "Hall",
-      "team_short": "NEW",
+      "id": 474,
+      "web_name": "Jair Cunha",
+      "team_short": "NFO",
       "position": "DEF",
-      "now_cost": 52,
-      "prev_ev": 20.03,
-      "current_ev": 20.79,
-      "ev_delta": 0.76,
+      "now_cost": 44,
+      "prev_ev": 11.78,
+      "current_ev": 13.11,
+      "ev_delta": 1.33,
       "why": [
-        "Expected to start (a regular starter based on recent form) (~91 min when playing)",
+        "Availability flagged: 100% chance of playing (~86 min when playing)",
         "23% average clean-sheet chance over the next 6 GWs"
       ]
     },
     {
-      "id": 572,
-      "web_name": "Tzolakis",
-      "team_short": "HUL",
-      "position": "GKP",
-      "now_cost": 47,
-      "prev_ev": 15.07,
-      "current_ev": 15.69,
-      "ev_delta": 0.62,
-      "why": [
-        "Expected to start (a regular starter based on recent form) (~75 min when playing)",
-        "2.4 saves per 90 minutes"
-      ]
-    },
-    {
-      "id": 15,
-      "web_name": "\u00d8degaard",
-      "team_short": "ARS",
-      "position": "MID",
-      "now_cost": 67,
-      "prev_ev": 28.8,
-      "current_ev": 29.06,
-      "ev_delta": 0.26,
-      "why": [
-        "Expected to start (a regular starter based on recent form) (~88 min when playing)",
-        "Underlying output: 0.50 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 16,
-      "web_name": "Madueke",
-      "team_short": "ARS",
-      "position": "MID",
-      "now_cost": 62,
-      "prev_ev": 15.46,
-      "current_ev": 15.69,
-      "ev_delta": 0.23,
-      "why": [
-        "Availability flagged: 100% chance of playing (~76 min when playing)",
-        "Capped upside: 0.45 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
-      ]
-    },
-    {
-      "id": 567,
-      "web_name": "Horn\u00ed\u010dek",
-      "team_short": "NEW",
-      "position": "GKP",
-      "now_cost": 50,
-      "prev_ev": 16.58,
-      "current_ev": 16.8,
-      "ev_delta": 0.22,
-      "why": [
-        "Expected to start (a regular starter based on recent form) (~75 min when playing)",
-        "2.1 saves per 90 minutes"
-      ]
-    },
-    {
-      "id": 257,
-      "web_name": "Bassey",
-      "team_short": "FUL",
+      "id": 471,
+      "web_name": "Milenkovi\u0107",
+      "team_short": "NFO",
       "position": "DEF",
-      "now_cost": 45,
-      "prev_ev": 15.36,
-      "current_ev": 15.49,
-      "ev_delta": 0.13,
-      "why": [
-        "Expected to start (a regular starter based on recent form) (~91 min when playing)",
-        "23% average clean-sheet chance over the next 6 GWs"
-      ]
-    },
-    {
-      "id": 261,
-      "web_name": "Iwobi",
-      "team_short": "FUL",
-      "position": "MID",
       "now_cost": 54,
-      "prev_ev": 25.31,
-      "current_ev": 25.44,
-      "ev_delta": 0.13,
+      "prev_ev": 10.15,
+      "current_ev": 10.6,
+      "ev_delta": 0.45,
       "why": [
-        "Expected to start (a regular starter based on recent form) (~84 min when playing)",
-        "Underlying output: 0.46 combined xG+xA per 90 minutes"
+        "Availability flagged: 100% chance of playing (~91 min when playing)",
+        "23% average clean-sheet chance over the next 6 GWs"
       ]
     },
     {
-      "id": 250,
-      "web_name": "Leno",
-      "team_short": "FUL",
-      "position": "GKP",
-      "now_cost": 45,
-      "prev_ev": 17.38,
-      "current_ev": 17.5,
-      "ev_delta": 0.12,
+      "id": 393,
+      "web_name": "Khusanov",
+      "team_short": "MCI",
+      "position": "DEF",
+      "now_cost": 53,
+      "prev_ev": 9.28,
+      "current_ev": 9.66,
+      "ev_delta": 0.38,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~93 min when playing)",
+        "23% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 388,
+      "web_name": "Gu\u00e9hi",
+      "team_short": "MCI",
+      "position": "DEF",
+      "now_cost": 60,
+      "prev_ev": 18.38,
+      "current_ev": 18.66,
+      "ev_delta": 0.28,
       "why": [
         "Expected to start (a regular starter based on recent form) (~90 min when playing)",
-        "2.8 saves per 90 minutes"
+        "23% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 201,
+      "web_name": "Mu\u00f1oz",
+      "team_short": "NFO",
+      "position": "DEF",
+      "now_cost": 53,
+      "prev_ev": 16.91,
+      "current_ev": 17.13,
+      "ev_delta": 0.22,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~85 min when playing)",
+        "23% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 598,
+      "web_name": "Elvedi",
+      "team_short": "LEE",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 10.71,
+      "current_ev": 10.92,
+      "ev_delta": 0.21,
+      "why": [
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "24% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 486,
+      "web_name": "McAtee",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 20.34,
+      "current_ev": 20.54,
+      "ev_delta": 0.2,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~91 min when playing)",
+        "Underlying output: 0.28 combined xG+xA per 90 minutes"
       ]
     }
   ],
   "fallers": [
     {
-      "id": 454,
-      "web_name": "Elanga",
-      "team_short": "NEW",
-      "position": "MID",
-      "now_cost": 60,
-      "prev_ev": 12.51,
-      "current_ev": 6.78,
-      "ev_delta": -5.73,
-      "why": [
-        "Availability flagged: 100% chance of playing (~88 min when playing)",
-        "Underlying output: 0.33 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 286,
-      "web_name": "Belloumi",
-      "team_short": "HUL",
-      "position": "MID",
-      "now_cost": 53,
-      "prev_ev": 17.78,
-      "current_ev": 13.87,
-      "ev_delta": -3.91,
-      "why": [
-        "Expected to start (a rotation risk based on recent form) (~75 min when playing)",
-        "Underlying output: 0.23 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 240,
-      "web_name": "Iroegbunam",
-      "team_short": "HUL",
-      "position": "MID",
-      "now_cost": 50,
-      "prev_ev": 9.0,
-      "current_ev": 5.43,
-      "ev_delta": -3.57,
-      "why": [
-        "Availability flagged: 100% chance of playing (~91 min when playing)",
-        "Underlying output: 0.12 combined xG+xA per 90 minutes"
-      ]
-    },
-    {
-      "id": 262,
-      "web_name": "Smith Rowe",
+      "id": 268,
+      "web_name": "King",
       "team_short": "FUL",
       "position": "MID",
-      "now_cost": 52,
-      "prev_ev": 4.6,
-      "current_ev": 2.5,
-      "ev_delta": -2.1,
+      "now_cost": 55,
+      "prev_ev": 23.11,
+      "current_ev": 18.85,
+      "ev_delta": -4.26,
       "why": [
-        "Availability flagged: 100% chance of playing (~84 min when playing)",
-        "Underlying output: 0.27 combined xG+xA per 90 minutes"
+        "Availability flagged: Groin injury - 75% chance of playing (~86 min when playing)",
+        "Underlying output: 0.32 combined xG+xA per 90 minutes"
       ]
     },
     {
-      "id": 447,
-      "web_name": "Botman",
-      "team_short": "NEW",
-      "position": "DEF",
-      "now_cost": 50,
-      "prev_ev": 13.84,
-      "current_ev": 11.84,
-      "ev_delta": -2.0,
+      "id": 482,
+      "web_name": "Hudson-Odoi",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 57,
+      "prev_ev": 4.13,
+      "current_ev": 2.24,
+      "ev_delta": -1.89,
       "why": [
-        "Expected to start (a rotation risk based on recent form) (~88 min when playing)",
+        "Availability flagged: 100% chance of playing (~88 min when playing)",
+        "Underlying output: 0.26 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 411,
+      "web_name": "Haaland",
+      "team_short": "MCI",
+      "position": "FWD",
+      "now_cost": 158,
+      "prev_ev": 36.37,
+      "current_ev": 35.62,
+      "ev_delta": -0.75,
+      "why": [
+        "Availability flagged: 100% chance of playing (~88 min when playing)",
+        "Underlying output: 0.90 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 473,
+      "web_name": "Aina",
+      "team_short": "NFO",
+      "position": "DEF",
+      "now_cost": 42,
+      "prev_ev": 10.41,
+      "current_ev": 9.68,
+      "ev_delta": -0.73,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~86 min when playing)",
         "23% average clean-sheet chance over the next 6 GWs"
       ]
     },
     {
-      "id": 8,
-      "web_name": "Calafiori",
-      "team_short": "ARS",
-      "position": "DEF",
-      "now_cost": 59,
-      "prev_ev": 23.8,
-      "current_ev": 22.34,
-      "ev_delta": -1.46,
+      "id": 237,
+      "web_name": "Ndiaye",
+      "team_short": "MCI",
+      "position": "MID",
+      "now_cost": 58,
+      "prev_ev": 23.53,
+      "current_ev": 22.89,
+      "ev_delta": -0.64,
       "why": [
-        "Availability flagged: 100% chance of playing (~80 min when playing)",
-        "32% average clean-sheet chance over the next 6 GWs"
+        "Expected to start (a regular starter based on recent form) (~86 min when playing)",
+        "Underlying output: 0.33 combined xG+xA per 90 minutes"
       ]
     },
     {
-      "id": 445,
-      "web_name": "Thiaw",
-      "team_short": "NEW",
+      "id": 480,
+      "web_name": "Gibbs-White",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 78,
+      "prev_ev": 28.35,
+      "current_ev": 27.71,
+      "ev_delta": -0.64,
+      "why": [
+        "Availability flagged: 100% chance of playing (~87 min when playing)",
+        "Underlying output: 0.59 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 399,
+      "web_name": "Cherki",
+      "team_short": "MCI",
+      "position": "MID",
+      "now_cost": 79,
+      "prev_ev": 22.78,
+      "current_ev": 22.33,
+      "ev_delta": -0.45,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~93 min when playing)",
+        "Underlying output: 0.68 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 398,
+      "web_name": "Foden",
+      "team_short": "MCI",
+      "position": "MID",
+      "now_cost": 68,
+      "prev_ev": 21.83,
+      "current_ev": 21.48,
+      "ev_delta": -0.35,
+      "why": [
+        "Availability flagged: 100% chance of playing (~89 min when playing)",
+        "Underlying output: 0.75 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 390,
+      "web_name": "R\u00faben",
+      "team_short": "MCI",
       "position": "DEF",
-      "now_cost": 49,
-      "prev_ev": 15.06,
-      "current_ev": 14.01,
-      "ev_delta": -1.05,
+      "now_cost": 55,
+      "prev_ev": 16.17,
+      "current_ev": 15.83,
+      "ev_delta": -0.34,
       "why": [
         "Expected to start (a regular starter based on recent form) (~90 min when playing)",
         "23% average clean-sheet chance over the next 6 GWs"
       ]
     },
     {
-      "id": 254,
-      "web_name": "Robinson",
-      "team_short": "FUL",
-      "position": "DEF",
-      "now_cost": 44,
-      "prev_ev": 18.24,
-      "current_ev": 17.2,
-      "ev_delta": -1.04,
+      "id": 167,
+      "web_name": "Delap",
+      "team_short": "NFO",
+      "position": "FWD",
+      "now_cost": 53,
+      "prev_ev": 19.3,
+      "current_ev": 18.97,
+      "ev_delta": -0.33,
       "why": [
-        "Availability flagged: 100% chance of playing (~89 min when playing)",
-        "23% average clean-sheet chance over the next 6 GWs"
-      ]
-    },
-    {
-      "id": 31,
-      "web_name": "Konsa",
-      "team_short": "ARS",
-      "position": "DEF",
-      "now_cost": 48,
-      "prev_ev": 18.03,
-      "current_ev": 17.07,
-      "ev_delta": -0.96,
-      "why": [
-        "Availability flagged: 100% chance of playing (~89 min when playing)",
-        "32% average clean-sheet chance over the next 6 GWs"
-      ]
-    },
-    {
-      "id": 10,
-      "web_name": "White",
-      "team_short": "ARS",
-      "position": "DEF",
-      "now_cost": 54,
-      "prev_ev": 14.17,
-      "current_ev": 13.28,
-      "ev_delta": -0.89,
-      "why": [
-        "Availability flagged: 100% chance of playing (~85 min when playing)",
-        "32% average clean-sheet chance over the next 6 GWs"
+        "Expected to start (a regular starter based on recent form) (~84 min when playing)",
+        "Underlying output: 0.43 combined xG+xA per 90 minutes"
       ]
     }
   ]
