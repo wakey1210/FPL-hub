@@ -1,6 +1,21 @@
 {
-  "generated_at": "2026-11-15T10:29:39.837544+00:00",
+  "generated_at": "2026-11-15T16:55:48.036232+00:00",
   "has_previous": true,
   "risers": [],
-  "fallers": []
+  "fallers": [
+    {
+      "id": 32,
+      "web_name": "Cash",
+      "team_short": "AVL",
+      "position": "DEF",
+      "now_cost": 43,
+      "prev_ev": 14.72,
+      "current_ev": 12.01,
+      "ev_delta": -2.71,
+      "why": [
+        "Availability flagged: Concussion - 75% chance of playing (~89 min when playing)",
+        "30% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ]
 }
