@@ -1,6 +1,106 @@
 {
-  "generated_at": "2026-11-19T11:16:03.031149+00:00",
+  "generated_at": "2026-11-19T20:08:00.793187+00:00",
   "has_previous": true,
-  "risers": [],
-  "fallers": []
+  "risers": [
+    {
+      "id": 335,
+      "web_name": "Stach",
+      "team_short": "LEE",
+      "position": "MID",
+      "now_cost": 60,
+      "prev_ev": 10.7,
+      "current_ev": 19.69,
+      "ev_delta": 8.99,
+      "why": [
+        "Availability flagged: 100% chance of playing (~85 min when playing)",
+        "Underlying output: 0.32 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 173,
+      "web_name": "Thomas",
+      "team_short": "COV",
+      "position": "DEF",
+      "now_cost": 40,
+      "prev_ev": 9.59,
+      "current_ev": 12.46,
+      "ev_delta": 2.87,
+      "why": [
+        "Availability flagged: Calf injury - 75% chance of playing (~75 min when playing)",
+        "23% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 331,
+      "web_name": "Gudmundsson",
+      "team_short": "LEE",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 11.0,
+      "current_ev": 13.49,
+      "ev_delta": 2.49,
+      "why": [
+        "Availability flagged: 100% chance of playing (~85 min when playing)",
+        "26% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 104,
+      "web_name": "Onyeka",
+      "team_short": "COV",
+      "position": "MID",
+      "now_cost": 48,
+      "prev_ev": 7.46,
+      "current_ev": 9.7,
+      "ev_delta": 2.24,
+      "why": [
+        "Availability flagged: Groin injury - 75% chance of playing (~95 min when playing)",
+        "Underlying output: 0.17 combined xG+xA per 90 minutes"
+      ]
+    }
+  ],
+  "fallers": [
+    {
+      "id": 552,
+      "web_name": "Brobbey",
+      "team_short": "SUN",
+      "position": "FWD",
+      "now_cost": 57,
+      "prev_ev": 16.09,
+      "current_ev": 0.0,
+      "ev_delta": -16.09,
+      "why": [
+        "Availability flagged: Muscular injury - Unknown return date",
+        "Underlying output: 0.53 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 544,
+      "web_name": "Xhaka",
+      "team_short": "SUN",
+      "position": "MID",
+      "now_cost": 53,
+      "prev_ev": 15.95,
+      "current_ev": 0.0,
+      "ev_delta": -15.95,
+      "why": [
+        "Availability flagged: Calf injury - Unknown return date",
+        "Underlying output: 0.22 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 482,
+      "web_name": "Hudson-Odoi",
+      "team_short": "NFO",
+      "position": "MID",
+      "now_cost": 57,
+      "prev_ev": 2.29,
+      "current_ev": 0.0,
+      "ev_delta": -2.29,
+      "why": [
+        "Availability flagged: Unspecified injury - Unknown return date",
+        "Underlying output: 0.26 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
