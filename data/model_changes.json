@@ -1,20 +1,287 @@
 {
-  "generated_at": "2026-11-20T11:00:10.869713+00:00",
+  "generated_at": "2026-11-20T18:28:33.864397+00:00",
   "has_previous": true,
-  "risers": [],
+  "risers": [
+    {
+      "id": 403,
+      "web_name": "S\u00e1vio",
+      "team_short": "TOT",
+      "position": "MID",
+      "now_cost": 64,
+      "prev_ev": 0.0,
+      "current_ev": 8.36,
+      "ev_delta": 8.36,
+      "why": [
+        "Availability flagged: 100% chance of playing (~95 min when playing)",
+        "Capped upside: 0.46 xGI/90 is strong, but rarely reaching 60' limits defensive/clean-sheet/bonus points"
+      ]
+    },
+    {
+      "id": 328,
+      "web_name": "Struijk",
+      "team_short": "BHA",
+      "position": "DEF",
+      "now_cost": 49,
+      "prev_ev": 0.0,
+      "current_ev": 5.96,
+      "ev_delta": 5.96,
+      "why": [
+        "Availability flagged: 100% chance of playing (~87 min when playing)",
+        "34% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 520,
+      "web_name": "Bergvall",
+      "team_short": "TOT",
+      "position": "MID",
+      "now_cost": 53,
+      "prev_ev": 0.0,
+      "current_ev": 5.25,
+      "ev_delta": 5.25,
+      "why": [
+        "Availability flagged: 100% chance of playing (~95 min when playing)",
+        "Underlying output: 0.17 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 357,
+      "web_name": "Frimpong",
+      "team_short": "LIV",
+      "position": "DEF",
+      "now_cost": 51,
+      "prev_ev": 0.0,
+      "current_ev": 4.37,
+      "ev_delta": 4.37,
+      "why": [
+        "Availability flagged: Hamstring injury - 75% chance of playing (~86 min when playing)",
+        "26% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 356,
+      "web_name": "Virgil",
+      "team_short": "LIV",
+      "position": "DEF",
+      "now_cost": 64,
+      "prev_ev": 15.8,
+      "current_ev": 19.51,
+      "ev_delta": 3.71,
+      "why": [
+        "Availability flagged: 100% chance of playing (~90 min when playing)",
+        "26% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 391,
+      "web_name": "Gvardiol",
+      "team_short": "MCI",
+      "position": "DEF",
+      "now_cost": 56,
+      "prev_ev": 15.58,
+      "current_ev": 19.13,
+      "ev_delta": 3.55,
+      "why": [
+        "Availability flagged: 100% chance of playing (~89 min when playing)",
+        "27% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 266,
+      "web_name": "Cairney",
+      "team_short": "FUL",
+      "position": "MID",
+      "now_cost": 49,
+      "prev_ev": 0.0,
+      "current_ev": 1.88,
+      "ev_delta": 1.88,
+      "why": [
+        "Availability flagged: 100% chance of playing (~95 min when playing)",
+        "Underlying output: 0.24 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 100,
+      "web_name": "Carvalho",
+      "team_short": "BRE",
+      "position": "MID",
+      "now_cost": 50,
+      "prev_ev": 0.0,
+      "current_ev": 1.6,
+      "ev_delta": 1.6,
+      "why": [
+        "Availability flagged: Knock - 75% chance of playing (~75 min when playing)",
+        "Underlying output: 0.15 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 652,
+      "web_name": "Azeez",
+      "team_short": "BHA",
+      "position": "MID",
+      "now_cost": 55,
+      "prev_ev": 0.0,
+      "current_ev": 0.96,
+      "ev_delta": 0.96,
+      "why": [
+        "Availability flagged: 100% chance of playing (~75 min when playing)",
+        "Average run of fixtures (avg FDR 2.5 over next 6 GWs)"
+      ]
+    },
+    {
+      "id": 109,
+      "web_name": "Verbruggen",
+      "team_short": "BHA",
+      "position": "GKP",
+      "now_cost": 47,
+      "prev_ev": 20.1,
+      "current_ev": 20.77,
+      "ev_delta": 0.67,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~90 min when playing)",
+        "2.7 saves per 90 minutes"
+      ]
+    }
+  ],
   "fallers": [
     {
-      "id": 19,
-      "web_name": "Zubimendi",
-      "team_short": "ARS",
+      "id": 514,
+      "web_name": "Tel",
+      "team_short": "TOT",
+      "position": "MID",
+      "now_cost": 56,
+      "prev_ev": 13.98,
+      "current_ev": 0.0,
+      "ev_delta": -13.98,
+      "why": [
+        "Availability flagged: Ankle injury - Expected back 6 Dec",
+        "Underlying output: 0.28 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 32,
+      "web_name": "Cash",
+      "team_short": "AVL",
+      "position": "DEF",
+      "now_cost": 43,
+      "prev_ev": 12.26,
+      "current_ev": 0.0,
+      "ev_delta": -12.26,
+      "why": [
+        "Availability flagged: Concussion - Expected back 28 Nov",
+        "31% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 84,
+      "web_name": "Collins",
+      "team_short": "BRE",
+      "position": "DEF",
+      "now_cost": 54,
+      "prev_ev": 6.45,
+      "current_ev": 0.0,
+      "ev_delta": -6.45,
+      "why": [
+        "Availability flagged: Knee injury - Expected back 2 Dec",
+        "22% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 90,
+      "web_name": "Hickey",
+      "team_short": "BRE",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 4.75,
+      "current_ev": 0.0,
+      "ev_delta": -4.75,
+      "why": [
+        "Availability flagged: Hamstring injury - Expected back 2 Dec",
+        "22% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 147,
+      "web_name": "Tosin",
+      "team_short": "TOT",
+      "position": "DEF",
+      "now_cost": 43,
+      "prev_ev": 3.09,
+      "current_ev": 0.0,
+      "ev_delta": -3.09,
+      "why": [
+        "Availability flagged: Calf injury - Expected back 29 Nov",
+        "31% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 262,
+      "web_name": "Smith Rowe",
+      "team_short": "FUL",
       "position": "MID",
       "now_cost": 52,
-      "prev_ev": 4.13,
+      "prev_ev": 2.44,
       "current_ev": 0.0,
-      "ev_delta": -4.13,
+      "ev_delta": -2.44,
+      "why": [
+        "Availability flagged: Hip injury - Expected back 29 Nov",
+        "Underlying output: 0.27 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 393,
+      "web_name": "Khusanov",
+      "team_short": "MCI",
+      "position": "DEF",
+      "now_cost": 53,
+      "prev_ev": 10.48,
+      "current_ev": 8.05,
+      "ev_delta": -2.43,
+      "why": [
+        "Availability flagged: Unspecified injury - 50% chance of playing (~93 min when playing)",
+        "27% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 389,
+      "web_name": "Matheus N.",
+      "team_short": "MCI",
+      "position": "DEF",
+      "now_cost": 59,
+      "prev_ev": 10.25,
+      "current_ev": 7.87,
+      "ev_delta": -2.38,
+      "why": [
+        "Availability flagged: Unspecified injury - 50% chance of playing (~89 min when playing)",
+        "27% average clean-sheet chance over the next 6 GWs"
+      ]
+    },
+    {
+      "id": 103,
+      "web_name": "Dasilva",
+      "team_short": "BRE",
+      "position": "MID",
+      "now_cost": 48,
+      "prev_ev": 0.96,
+      "current_ev": 0.0,
+      "ev_delta": -0.96,
       "why": [
         "Availability flagged: Hamstring injury - Unknown return date",
-        "Underlying output: 0.17 combined xG+xA per 90 minutes"
+        "Average run of fixtures (avg FDR 3.3 over next 6 GWs)"
+      ]
+    },
+    {
+      "id": 464,
+      "web_name": "Wissa",
+      "team_short": "NEW",
+      "position": "FWD",
+      "now_cost": 59,
+      "prev_ev": 22.23,
+      "current_ev": 21.68,
+      "ev_delta": -0.55,
+      "why": [
+        "Expected to start (a regular starter based on recent form) (~91 min when playing)",
+        "Underlying output: 0.58 combined xG+xA per 90 minutes"
       ]
     }
   ]
