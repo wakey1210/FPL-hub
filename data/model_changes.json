@@ -1,6 +1,35 @@
 {
-  "generated_at": "2026-11-23T01:26:49.136760+00:00",
+  "generated_at": "2026-11-23T11:57:00.726343+00:00",
   "has_previous": true,
   "risers": [],
-  "fallers": []
+  "fallers": [
+    {
+      "id": 300,
+      "web_name": "Walton",
+      "team_short": "IPS",
+      "position": "GKP",
+      "now_cost": 44,
+      "prev_ev": 11.12,
+      "current_ev": 11.01,
+      "ev_delta": -0.11,
+      "why": [
+        "Expected to start (a rotation risk based on recent form) (~90 min when playing)",
+        "3.0 saves per 90 minutes"
+      ]
+    },
+    {
+      "id": 601,
+      "web_name": "Williams-Barnett",
+      "team_short": "TOT",
+      "position": "MID",
+      "now_cost": 44,
+      "prev_ev": 2.81,
+      "current_ev": 2.78,
+      "ev_delta": -0.03,
+      "why": [
+        "Expected to start (unproven / very little senior game time) (~75 min when playing)",
+        "Underlying output: 0.27 combined xG+xA per 90 minutes"
+      ]
+    }
+  ]
 }
