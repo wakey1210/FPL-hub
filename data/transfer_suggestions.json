@@ -21,7 +21,7 @@
         "web_name": "Cherki",
         "team_short": "MCI",
         "position": "MID",
-        "now_cost": 79,
+        "now_cost": 78,
         "selected_by_percent": 32.6,
         "status": "a",
         "news": "",
@@ -46,7 +46,7 @@
             "attack_mult": 1.82,
             "cs_prob": 0.395,
             "expected_conceded": 1.008,
-            "ml_points": 4.1
+            "ml_points": 4.06
           },
           {
             "event": 12,
@@ -57,7 +57,7 @@
             "attack_mult": 0.806,
             "cs_prob": 0.191,
             "expected_conceded": 1.657,
-            "ml_points": 2.44
+            "ml_points": 2.4
           },
           {
             "event": 13,
@@ -68,7 +68,7 @@
             "attack_mult": 1.0,
             "cs_prob": 0.275,
             "expected_conceded": 1.192,
-            "ml_points": 2.99
+            "ml_points": 2.95
           },
           {
             "event": 14,
@@ -79,7 +79,7 @@
             "attack_mult": 0.854,
             "cs_prob": 0.163,
             "expected_conceded": 1.563,
-            "ml_points": 2.08
+            "ml_points": 2.05
           },
           {
             "event": 15,
@@ -90,7 +90,7 @@
             "attack_mult": 0.854,
             "cs_prob": 0.193,
             "expected_conceded": 1.563,
-            "ml_points": 2.62
+            "ml_points": 2.58
           },
           {
             "event": 16,
@@ -101,7 +101,7 @@
             "attack_mult": 1.292,
             "cs_prob": 0.472,
             "expected_conceded": 0.612,
-            "ml_points": 4.67
+            "ml_points": 4.61
           }
         ],
         "xg90": 0.2919,
@@ -109,17 +109,17 @@
         "dc90": 5.4004,
         "saves90": 0.0,
         "dc_prob": 0.135,
-        "ml_ev": 18.9,
+        "ml_ev": 18.65,
         "ml_uncertainty": 2.2,
         "ml_why": [
           "price",
           "expected assists per 90",
           "fixture difficulty"
         ],
-        "cost_change_event": 0,
-        "cost_change_start": 4,
-        "transfers_in_event": 5501,
-        "transfers_out_event": 118919,
+        "cost_change_event": -1,
+        "cost_change_start": 3,
+        "transfers_in_event": 5709,
+        "transfers_out_event": 126102,
         "code": 466052,
         "team_code": 43,
         "clean_sheets": 2,
@@ -230,8 +230,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 7,
-        "transfers_in_event": 70021,
-        "transfers_out_event": 5498,
+        "transfers_in_event": 72783,
+        "transfers_out_event": 5750,
         "code": 201658,
         "team_code": 91,
         "clean_sheets": 4,
@@ -356,8 +356,8 @@
         ],
         "cost_change_event": 1,
         "cost_change_start": 8,
-        "transfers_in_event": 26257,
-        "transfers_out_event": 12750,
+        "transfers_in_event": 27201,
+        "transfers_out_event": 13559,
         "code": 244850,
         "team_code": 8,
         "clean_sheets": 2,
@@ -468,8 +468,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 7,
-        "transfers_in_event": 70021,
-        "transfers_out_event": 5498,
+        "transfers_in_event": 72783,
+        "transfers_out_event": 5750,
         "code": 201658,
         "team_code": 91,
         "clean_sheets": 4,
@@ -594,8 +594,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 4,
-        "transfers_in_event": 13565,
-        "transfers_out_event": 17026,
+        "transfers_in_event": 14069,
+        "transfers_out_event": 17824,
         "code": 199798,
         "team_code": 3,
         "clean_sheets": 5,
@@ -706,8 +706,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 0,
-        "transfers_in_event": 809,
-        "transfers_out_event": 394,
+        "transfers_in_event": 856,
+        "transfers_out_event": 410,
         "code": 204120,
         "team_code": 36,
         "clean_sheets": 8,
@@ -735,7 +735,7 @@
         "web_name": "N.Jackson",
         "team_short": "AVL",
         "position": "FWD",
-        "now_cost": 72,
+        "now_cost": 73,
         "selected_by_percent": 36.2,
         "status": "a",
         "news": "",
@@ -760,7 +760,7 @@
             "attack_mult": 1.281,
             "cs_prob": 0.418,
             "expected_conceded": 0.947,
-            "ml_points": 5.26
+            "ml_points": 5.47
           },
           {
             "event": 12,
@@ -804,7 +804,7 @@
             "attack_mult": 1.24,
             "cs_prob": 0.485,
             "expected_conceded": 0.6,
-            "ml_points": 5.58
+            "ml_points": 5.78
           },
           {
             "event": 16,
@@ -815,7 +815,7 @@
             "attack_mult": 0.88,
             "cs_prob": 0.162,
             "expected_conceded": 1.5,
-            "ml_points": 2.91
+            "ml_points": 3.1
           }
         ],
         "xg90": 0.4318,
@@ -823,17 +823,17 @@
         "dc90": 2.908,
         "saves90": 0.0,
         "dc_prob": 0.0727,
-        "ml_ev": 27.11,
+        "ml_ev": 27.71,
         "ml_uncertainty": 3.11,
         "ml_why": [
           "price",
           "expected goals per 90",
           "clean-sheet probability"
         ],
-        "cost_change_event": 0,
-        "cost_change_start": 7,
-        "transfers_in_event": 61440,
-        "transfers_out_event": 11884,
+        "cost_change_event": 1,
+        "cost_change_start": 8,
+        "transfers_in_event": 63975,
+        "transfers_out_event": 12351,
         "code": 517052,
         "team_code": 7,
         "clean_sheets": 3,
@@ -944,8 +944,8 @@
         ],
         "cost_change_event": 1,
         "cost_change_start": 6,
-        "transfers_in_event": 92250,
-        "transfers_out_event": 3838,
+        "transfers_in_event": 95616,
+        "transfers_out_event": 4041,
         "code": 444102,
         "team_code": 91,
         "clean_sheets": 6,
@@ -1070,8 +1070,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 3,
-        "transfers_in_event": 8777,
-        "transfers_out_event": 52758,
+        "transfers_in_event": 9090,
+        "transfers_out_event": 56089,
         "code": 244851,
         "team_code": 8,
         "clean_sheets": 2,
@@ -1182,8 +1182,8 @@
         ],
         "cost_change_event": 0,
         "cost_change_start": 7,
-        "transfers_in_event": 70021,
-        "transfers_out_event": 5498,
+        "transfers_in_event": 72783,
+        "transfers_out_event": 5750,
         "code": 201658,
         "team_code": 91,
         "clean_sheets": 4,
