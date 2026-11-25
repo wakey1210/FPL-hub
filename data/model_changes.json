@@ -1,6 +1,49 @@
 {
-  "generated_at": "2026-11-25T03:59:09.193823+00:00",
+  "generated_at": "2026-11-25T16:55:40.146281+00:00",
   "has_previous": true,
   "risers": [],
-  "fallers": []
+  "fallers": [
+    {
+      "id": 367,
+      "web_name": "Gakpo",
+      "team_short": "LIV",
+      "position": "MID",
+      "now_cost": 71,
+      "prev_ev": 18.67,
+      "current_ev": 0.0,
+      "ev_delta": -18.67,
+      "why": [
+        "Availability flagged: Calf injury - Expected back 2 Dec",
+        "Underlying output: 0.47 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 371,
+      "web_name": "Gravenberch",
+      "team_short": "LIV",
+      "position": "MID",
+      "now_cost": 58,
+      "prev_ev": 6.2,
+      "current_ev": 0.0,
+      "ev_delta": -6.2,
+      "why": [
+        "Availability flagged: Foot injury - Unknown return date",
+        "Underlying output: 0.11 combined xG+xA per 90 minutes"
+      ]
+    },
+    {
+      "id": 114,
+      "web_name": "Boscagli",
+      "team_short": "BHA",
+      "position": "DEF",
+      "now_cost": 45,
+      "prev_ev": 18.47,
+      "current_ev": 15.06,
+      "ev_delta": -3.41,
+      "why": [
+        "Availability flagged: Illness - 75% chance of playing (~89 min when playing)",
+        "28% average clean-sheet chance over the next 6 GWs"
+      ]
+    }
+  ]
 }
